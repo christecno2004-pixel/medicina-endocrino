@@ -1,0 +1,1466 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Repaso de Endocrinología</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: cabecera con pestañas fijas; una columna de lectura (resumen) y tarjetas de pregunta apiladas (exámenes). */
+:root {
+  --bg: #f4f7f6;
+  --surface: #ffffff;
+  --surface-2: #eaf0ee;
+  --ink: #13201e;
+  --muted: #586966;
+  --line: #d6e0dd;
+  --accent: #0d6a64;
+  --accent-ink: #ffffff;
+  --accent-soft: #d8ecea;
+  --lab: #9a4f12;
+  --lab-soft: #fbeedd;
+  --good: #1b7a3c;
+  --good-soft: #e1f3e6;
+  --bad: #b3261e;
+  --bad-soft: #fbe5e3;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1514; --surface: #162120; --surface-2: #1d2a29; --ink: #e4eeec; --muted: #9db0ac; --line: #2b3a38;
+    --accent: #4fc4b9; --accent-ink: #062321; --accent-soft: #173b38; --lab: #f0a865; --lab-soft: #3a2a19;
+    --good: #66d48f; --good-soft: #163524; --bad: #ff8c84; --bad-soft: #3d1a18; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1514; --surface: #162120; --surface-2: #1d2a29; --ink: #e4eeec; --muted: #9db0ac; --line: #2b3a38;
+  --accent: #4fc4b9; --accent-ink: #062321; --accent-soft: #173b38; --lab: #f0a865; --lab-soft: #3a2a19;
+  --good: #66d48f; --good-soft: #163524; --bad: #ff8c84; --bad-soft: #3d1a18; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15.5px; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+.wrap { max-width: 920px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* Cabecera */
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.top-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; padding-block: 12px 0; }
+.brand { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.brand h1 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 1.45rem; letter-spacing: -0.01em; }
+.brand span { color: var(--muted); font-size: .85rem; }
+nav.tabs { display: flex; gap: 4px; overflow-x: auto; width: 100%; scrollbar-width: none; }
+nav.tabs::-webkit-scrollbar { display: none; }
+.tab { appearance: none; border: 0; background: none; color: var(--muted); font: 600 .92rem var(--font-body); padding: 10px 12px 12px; border-bottom: 3px solid transparent; cursor: pointer; white-space: nowrap; }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.tab:focus-visible, button:focus-visible, select:focus-visible, textarea:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+main { padding-block: 24px 64px; }
+section.view[hidden] { display: none; }
+h2 { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; line-height: 1.2; margin: 0 0 6px; text-wrap: balance; letter-spacing: -0.01em; }
+h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.18rem; margin: 26px 0 8px; text-wrap: balance; }
+h4 { font-size: .95rem; margin: 18px 0 6px; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; }
+p { margin: 0 0 10px; }
+.lede { color: var(--muted); max-width: 64ch; }
+ul.pts { margin: 0 0 10px; padding-left: 20px; }
+ul.pts li { margin: 3px 0; max-width: 72ch; }
+.lab { font-family: var(--font-mono); font-size: .86em; background: var(--lab-soft); color: var(--lab); padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+.key { background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; max-width: 72ch; }
+
+/* Controles */
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0 20px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { appearance: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 500 .85rem var(--font-body); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn { appearance: none; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); font: 600 .92rem var(--font-body); padding: 10px 18px; border-radius: 8px; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+label.sel { display: inline-flex; align-items: center; gap: 8px; font-size: .9rem; color: var(--muted); }
+select { font: 500 .9rem var(--font-body); padding: 7px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+
+/* Tablas */
+.tbl-wrap { overflow-x: auto; margin: 10px 0 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: var(--surface-2); font-weight: 600; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+
+/* Resumen */
+.topic { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px 12px; margin-bottom: 22px; }
+.topic > h3:first-child { margin-top: 0; font-size: 1.4rem; }
+.topic .src { font-size: .8rem; color: var(--muted); margin-top: -4px; margin-bottom: 8px; }
+
+/* Tarjetas de pregunta */
+.qlist { display: grid; gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; min-width: 0; }
+.card .meta { display: flex; justify-content: space-between; gap: 10px; font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+.card .q { font-weight: 600; margin-bottom: 10px; }
+.opts { display: grid; gap: 8px; }
+.opt { display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; cursor: pointer; background: var(--bg); }
+.opt input { margin-top: 4px; accent-color: var(--accent); flex: none; }
+.opt:hover { border-color: var(--accent); }
+.card.done .opt { cursor: default; }
+.opt.is-right { border-color: var(--good); background: var(--good-soft); }
+.opt.is-wrong { border-color: var(--bad); background: var(--bad-soft); text-decoration: line-through; text-decoration-color: var(--bad); }
+.card.ok { border-color: var(--good); box-shadow: inset 4px 0 0 var(--good); }
+.card.ko { border-color: var(--bad); box-shadow: inset 4px 0 0 var(--bad); }
+.verdict { font-weight: 700; font-size: .85rem; text-transform: none; letter-spacing: 0; }
+.verdict.ok { color: var(--good); } .verdict.ko { color: var(--bad); }
+.explain { margin-top: 10px; font-size: .92rem; background: var(--surface-2); border-radius: 8px; padding: 10px 12px; }
+.explain b { color: var(--accent); }
+textarea { width: 100%; min-height: 96px; resize: vertical; font: .95rem/1.5 var(--font-body); padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+.concepts { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+.concept { font-size: .8rem; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); }
+.concept.hit { background: var(--good-soft); border-color: var(--good); color: var(--good); }
+.concept.miss { background: var(--bad-soft); border-color: var(--bad); color: var(--bad); }
+.selfgrade { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; font-size: .88rem; color: var(--muted); }
+
+/* Barra de estado del examen */
+.status { position: sticky; bottom: 0; z-index: 4; background: var(--surface); border-top: 1px solid var(--line); margin-top: 20px; padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; border-radius: 12px 12px 0 0; }
+.progress { flex: 1 1 200px; min-width: 0; }
+.bar { height: 8px; background: var(--surface-2); border-radius: 99px; overflow: hidden; margin-top: 4px; }
+.bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .2s; }
+
+/* Resultado */
+.result { border-radius: 12px; padding: 20px 22px; margin-bottom: 18px; border: 1px solid var(--line); background: var(--surface); display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.result.pass { border-color: var(--good); background: var(--good-soft); }
+.result.fail { border-color: var(--bad); background: var(--bad-soft); }
+.result .score { font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.result .txt { flex: 1 1 240px; min-width: 0; }
+.result .txt strong { display: block; font-size: 1.15rem; margin-bottom: 2px; }
+.result .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.check { width: 72px; height: 72px; flex: none; }
+.check circle { fill: none; stroke: var(--good); stroke-width: 5; stroke-dasharray: 220; stroke-dashoffset: 220; animation: draw .6s ease-out forwards; }
+.check path { fill: none; stroke: var(--good); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 60; stroke-dashoffset: 60; animation: draw .4s .5s ease-out forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.xmark { width: 64px; height: 64px; flex: none; }
+.xmark circle { fill: none; stroke: var(--bad); stroke-width: 5; }
+.xmark path { stroke: var(--bad); stroke-width: 7; stroke-linecap: round; }
+#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 20; width: 100%; height: 100%; }
+@media (prefers-reduced-motion: reduce) { .check circle, .check path { animation: none; stroke-dashoffset: 0; } .bar i { transition: none; } }
+
+/* Flashcards */
+.flash .ans { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); }
+.linkbtn { appearance: none; background: none; border: 0; color: var(--accent); font: 600 .88rem var(--font-body); cursor: pointer; padding: 0; }
+.best { font-size: .85rem; color: var(--muted); }
+.intro-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+.empty { color: var(--muted); }
+.case-title { margin: 2px 0 6px; font-size: 1.15rem; }
+.case-text { margin-bottom: 10px; max-width: 72ch; }
+.labs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.labs span { font-family: var(--font-mono); font-size: .8rem; background: var(--lab-soft); color: var(--lab); padding: 3px 8px; border-radius: 6px; }
+.labs span b { font-family: var(--font-body); font-weight: 600; color: var(--ink); margin-right: 4px; }
+.step { border-top: 1px dashed var(--line); padding-top: 12px; margin-top: 12px; }
+.step .q { margin-bottom: 8px; }
+.locked { color: var(--muted); font-size: .88rem; margin-top: 10px; }
+.num-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.num-row input { width: 9rem; font: 600 1rem var(--font-mono); padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+.num-row .unit { color: var(--muted); font-size: .9rem; }
+.card.ok .num-row input { border-color: var(--good); }
+.card.ko .num-row input { border-color: var(--bad); }
+.sol { white-space: normal; }
+.sol code { font-family: var(--font-mono); font-size: .88em; }
+@media (max-width: 520px) { body { font-size: 15px; } h2 { font-size: 1.35rem; } .topic { padding: 16px 14px 8px; } .card { padding: 14px; } .result .score { font-size: 2.1rem; } }
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand"><h1>Repaso de Endocrinología</h1><span>Grupo 5-4 · Dr. Daniel Gómez</span></div>
+    <nav class="tabs" role="tablist" aria-label="Secciones">
+      <button class="tab" role="tab" id="tab-resumen" data-view="resumen">Resumen</button>
+      <button class="tab" role="tab" id="tab-cuestionario" data-view="cuestionario">Cuestionario</button>
+      <button class="tab" role="tab" id="tab-examen" data-view="examen">Examen · opción múltiple</button>
+      <button class="tab" role="tab" id="tab-abierto" data-view="abierto">Examen · preguntas abiertas</button>
+      <button class="tab" role="tab" id="tab-casos" data-view="casos">Casos clínicos</button>
+      <button class="tab" role="tab" id="tab-calculos" data-view="calculos">Cálculos</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ======================= RESUMEN ======================= -->
+<section class="view" id="view-resumen" role="tabpanel" aria-labelledby="tab-resumen">
+  <h2>Resumen por tema</h2>
+  <p class="lede">Lo más importante de las 5 presentaciones: Paratiroides y hueso, Diabetes (tipo 1, tipo 2 y gestacional), Crisis hiperglucémicas, Hipoglucemia y Complicaciones crónicas. Los valores de laboratorio vienen <span class="lab">resaltados así</span>.</p>
+  <div class="controls chips" id="sum-nav"></div>
+
+  <article class="topic" id="sum-P">
+    <h3>1. Trastornos paratiroideos y enfermedades metabólicas óseas</h3>
+    <div class="src">Presentación del Dr. Daniel Gómez</div>
+
+    <h4>Eje PTH – Calcio – Vitamina D</h4>
+    <ul class="pts">
+      <li>El <b>calcio ionizado bajo</b> lo detecta el receptor sensor de calcio (<b>CaSR</b>) de las paratiroides → <b>↑ PTH</b>. El calcio elevado inhibe la PTH.</li>
+      <li><b>Hueso:</b> PTH sostenida → osteoblastos/osteocitos expresan <b>RANKL</b> → activa osteoclastos → <b>resorción</b> y liberación de calcio y fosfato.</li>
+      <li><b>Riñón:</b> ↑ reabsorción de calcio, ↓ reabsorción de fosfato (fosfaturia) y ↑ <b>1α-hidroxilasa</b> → convierte 25(OH)D en <b>calcitriol</b>.</li>
+      <li><b>Intestino:</b> el calcitriol ↑ absorción de calcio y fosfato. El calcitriol también inhibe la síntesis de PTH.</li>
+      <li><b>25(OH)D</b> = principal marcador de las reservas de vitamina D. <b>Calcitriol [1,25(OH)₂D]</b> = forma hormonal activa.</li>
+    </ul>
+
+    <h4>Hiperparatiroidismo</h4>
+    <div class="tbl-wrap"><table>
+      <tr><th>Tipo</th><th>Causa</th><th>Calcio</th></tr>
+      <tr><td>Primario</td><td><b>Adenoma (80 %)</b>, hiperplasia, carcinoma; secreción autónoma de PTH</td><td>Alto</td></tr>
+      <tr><td>Secundario</td><td>Compensación por ERC, déficit de vitamina D o malabsorción</td><td>Normal o bajo</td></tr>
+      <tr><td>Terciario</td><td>Autonomía tras hiperparatiroidismo secundario prolongado (ERC)</td><td>Alto</td></tr>
+    </table></div>
+    <ul class="pts">
+      <li><b>Bioquímica del primario:</b> calcio ↑ + PTH elevada o <i>inapropiadamente normal</i> + fósforo bajo o normal. Ante hipercalcemia, la PTH debería estar suprimida.</li>
+      <li><b>Clínica:</b> pérdida de masa ósea, fracturas, debilidad; litiasis renal, poliuria/polidipsia, hipercalciuria; estreñimiento, náuseas; fatiga, confusión en hipercalcemia grave. Muchos son asintomáticos (análisis de rutina).</li>
+      <li><b>Diagnóstico:</b> medir calcio (corregido con albúmina o ionizado) y PTH juntos; fósforo, creatinina, 25(OH)D; calcio urinario de 24 h (descartar hipercalcemia hipocalciúrica familiar); DXA e imagen renal. <b>Ecografía cervical y sestamibi solo localizan antes de cirugía, NO confirman el diagnóstico.</b></li>
+      <li><b>Tratamiento:</b> <b>paratiroidectomía</b> es curativa (sintomáticos, litiasis, afectación ósea o renal, hipercalcemia importante, edad &lt;50 años). Si no hay cirugía: <b>cinacalcet</b> (baja el calcio), bisfosfonatos o denosumab (protegen hueso), hidratación, corregir vitamina D. Secundario: tratar la causa. Terciario: calcimiméticos o cirugía.</li>
+      <li><b>Urgencia:</b> hipercalcemia grave → hospital, suero isotónico IV y tratamiento para bajar el calcio.</li>
+    </ul>
+
+    <h4>Hipoparatiroidismo</h4>
+    <ul class="pts">
+      <li>Deficiencia o ausencia de PTH. <b>Causa más frecuente: posquirúrgica</b> (tiroidectomía, paratiroidectomía). Otras: autoinmune (aislada o poliglandular) y genética (DiGeorge, AIRE, CaSR activador).</li>
+      <li><b>Hipomagnesemia severa</b> bloquea la secreción y la acción de la PTH (defecto funcional reversible).</li>
+      <li><b>Patrón:</b> <b>hipocalcemia + hiperfosfatemia + PTH baja o inapropiadamente normal</b>.</li>
+      <li><b>Clínica:</b> hormigueo peribucal y en extremidades, calambres, tetania; <b>Chvostek</b> (contracción facial al percutir el nervio facial) y <b>Trousseau</b> (espasmo carpopedal con el manguito) orientan pero no confirman; graves: convulsiones, laringoespasmo, QT prolongado; crónicas: cataratas y calcificaciones intracraneales.</li>
+      <li><b>Tratamiento:</b> calcio oral + calcitriol, corregir magnesio y vitamina D. Meta: calcio en el rango bajo-normal sin provocar hipercalciuria. Si no basta: valorar PTH de reemplazo. <b>Urgencia: calcio IV y monitorización cardiaca.</b></li>
+    </ul>
+
+    <h4>Pseudohipoparatiroidismo</h4>
+    <ul class="pts">
+      <li>La PTH está presente y elevada, pero <b>el riñón no responde</b> (alteraciones de <b>GNAS</b>: falla la señalización intracelular del receptor).</li>
+      <li><b>Patrón: calcio bajo + fósforo alto + PTH elevada.</b> Algunos subtipos: talla baja, braquidactilia, osificaciones subcutáneas, resistencia a TSH.</li>
+      <li>Hipoparatiroidismo = <i>falta</i> de PTH. Pseudohipoparatiroidismo = <i>resistencia</i> a PTH. Tratamiento: calcitriol ± calcio oral.</li>
+    </ul>
+
+    <h4>Osteomalacia y raquitismo</h4>
+    <ul class="pts">
+      <li><b>Osteomalacia:</b> defecto de mineralización del osteoide en el adulto. <b>Raquitismo:</b> en niños, afecta la placa de crecimiento.</li>
+      <li><b>Causa más común: deficiencia de vitamina D</b> (poca exposición solar, dieta pobre, lactancia exclusiva sin suplemento &gt;6 meses, malabsorción, obesidad, anticonvulsivos/esteroides, insuficiencia hepática o renal, piel oscura). Otras: pérdida renal de fosfato y exceso de FGF23, hipofosfatasia, acidosis tubular renal.</li>
+      <li><b>Osteomalacia:</b> dolor óseo difuso, debilidad muscular proximal, fracturas por insuficiencia y <b>pseudofracturas de Looser</b>.</li>
+      <li><b>Raquitismo:</b> ensanchamiento de muñecas, piernas arqueadas, <b>rosario raquítico</b> (engrosamiento costocondral); en Rx placa ensanchada con acopamiento y deshilachamiento metafisario.</li>
+      <li><b>Laboratorio en déficit de vitamina D:</b> ↓ 25(OH)D, ↑ PTH, ↑ fosfatasa alcalina, calcio y fósforo normales o bajos. Una vitamina D baja sola no confirma el diagnóstico. La DXA no distingue osteomalacia de osteoporosis.</li>
+      <li><b>Tratamiento:</b> vitamina D y calcio; tratar malabsorción y pérdidas de fosfato. <b>Bisfosfonatos contraindicados</b> hasta corregir el defecto de mineralización.</li>
+    </ul>
+
+    <h4>Osteoporosis</h4>
+    <ul class="pts">
+      <li>Disminución de masa ósea y deterioro de la microarquitectura <b>con mineralización conservada</b>. Resorción &gt; formación.</li>
+      <li><b>Primaria:</b> posmenopausia (↓ estrógenos → ↑ RANKL → ↑ osteoclastos; la OPG es el receptor señuelo que frena la señal) y envejecimiento. La más frecuente en mujeres &gt;50 años. <b>Secundaria:</b> glucocorticoides, hipogonadismo, tirotoxicosis, hiperparatiroidismo, malabsorción, inmovilización.</li>
+      <li>Factores de riesgo: bajo peso, tabaquismo, alcohol, antecedentes familiares, caídas. Silenciosa hasta la primera fractura (vértebras, cadera, radio distal).</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Puntaje DXA</th><th>Resultado</th><th>Uso</th></tr>
+      <tr><td><span class="lab">T ≥ −1.0</span></td><td>Normal</td><td rowspan="3">T-score: posmenopáusicas y hombres ≥50 años (compara con adulto joven)</td></tr>
+      <tr><td><span class="lab">−2.5 &lt; T &lt; −1.0</span></td><td>Masa ósea baja (osteopenia)</td></tr>
+      <tr><td><span class="lab">T ≤ −2.5</span></td><td>Osteoporosis densitométrica</td></tr>
+      <tr><td><span class="lab">Z ≤ −2.0</span></td><td>Por debajo de lo esperado para la edad</td><td>Z-score: premenopáusicas, hombres &lt;50 y niños. No diagnostica osteoporosis por sí solo.</td></tr>
+    </table></div>
+    <ul class="pts">
+      <li>Una fractura vertebral o de cadera por fragilidad establece osteoporosis clínica aunque T sea &gt;−2.5. <b>FRAX</b> estima el riesgo de fractura a 10 años.</li>
+      <li><b>Tratamiento:</b> ejercicio de fuerza y equilibrio, prevenir caídas, calcio y vitamina D. <b>Bisfosfonatos de primera línea</b> en alto riesgo; denosumab como alternativa. Riesgo muy alto: anabólicos (<b>teriparatida, romosozumab</b>) seguidos obligatoriamente de antirresortivos. Romosozumab requiere evaluación cardiovascular previa. <b>No suspender denosumab</b> sin tratamiento secuencial (rebote).</li>
+    </ul>
+  </article>
+
+  <article class="topic" id="sum-D">
+    <h3>2. Diabetes mellitus: tipo 1, tipo 2 y gestacional</h3>
+    <div class="src">Definición, mecanismos, diagnóstico y tratamiento</div>
+
+    <h4>Fisiología de la insulina</h4>
+    <ul class="pts">
+      <li>En la célula beta: glucosa → ↑ ATP → <b>cierre de canales K<sub>ATP</sub></b> → despolarización → entrada de Ca²⁺ → liberación de insulina.</li>
+      <li>Hígado: ↑ glucógeno, ↓ producción de glucosa y ↓ cetogénesis. Músculo y tejido adiposo: la insulina moviliza <b>GLUT4</b> a la membrana (↑ captación de glucosa), ↑ triglicéridos, ↓ lipólisis.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Tipo</th><th>Mecanismo dominante</th><th>Idea clínica</th></tr>
+      <tr><td>DM1</td><td>Destrucción autoinmune de células beta</td><td>Déficit absoluto de insulina</td></tr>
+      <tr><td>DM2</td><td>Resistencia + fallo secretor progresivo</td><td>Insulina endógena variable</td></tr>
+      <tr><td>Gestacional</td><td>Compensación insuficiente en el embarazo</td><td>Resistencia inducida por la placenta</td></tr>
+    </table></div>
+    <p class="key">Edad y peso no bastan para clasificar el tipo de diabetes.</p>
+
+    <h4>Diabetes tipo 1</h4>
+    <ul class="pts">
+      <li>Predisposición genética <b>HLA</b> + inmunidad celular (linfocitos T) contra células beta + factores ambientales. Cualquier edad. No la causa comer azúcar.</li>
+      <li>Déficit de insulina → hiperglucemia (glucosuria, diuresis osmótica, poliuria, polidipsia), cetogénesis (cetoacidosis) y catabolismo (pérdida de peso, fatiga).</li>
+      <li>Vómito, dolor abdominal y respiración profunda = posible cetoacidosis (urgencia).</li>
+      <li><b>Pruebas:</b> anti-GAD, IA-2, ZnT8 y antiinsulina (apoyan autoinmunidad; medir antiinsulina antes de tratar); <b>péptido C</b> = secreción endógena. No retrasar la insulina esperando marcadores.</li>
+      <li><b>Tratamiento:</b> esquema basal-bolo. Basal (glargina, degludec) cubre entre comidas y la noche; prandial (lispro, aspart) cubre carbohidratos; corrección para glucosa alta. Bomba de insulina: <b>si se interrumpe la infusión puede haber cetosis rápida</b>. No suspender la basal por dejar de comer.</li>
+    </ul>
+
+    <h4>Diabetes tipo 2</h4>
+    <ul class="pts">
+      <li>Resistencia a la insulina (músculo ↓ captación, hígado ↑ producción, tejido adiposo ↑ lipólisis) + disfunción progresiva de células beta. Otros: ↑ glucagón, ↓ efecto incretina, ↑ reabsorción renal de glucosa; gluco y lipotoxicidad.</li>
+      <li>Factores: antecedentes familiares, adiposidad visceral, inactividad, edad, SOP, diabetes gestacional previa. Puede ocurrir sin obesidad.</li>
+      <li>Evolución: compensación inicial → prediabetes → DM2. Puede ser asintomática por años. <b>Acantosis nigricans</b> sugiere resistencia a la insulina pero no diagnostica diabetes.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Prueba (ADA 2026)</th><th>Normal</th><th>Prediabetes</th><th>Diabetes</th></tr>
+      <tr><td>Glucosa en ayuno (≥8 h)</td><td><span class="lab">&lt;100</span></td><td><span class="lab">100–125</span></td><td><span class="lab">≥126 mg/dL</span></td></tr>
+      <tr><td>PTOG 75 g a las 2 h</td><td><span class="lab">&lt;140</span></td><td><span class="lab">140–199</span></td><td><span class="lab">≥200 mg/dL</span></td></tr>
+      <tr><td>HbA1c</td><td><span class="lab">&lt;5.7 %</span></td><td><span class="lab">5.7–6.4 %</span></td><td><span class="lab">≥6.5 %</span></td></tr>
+    </table></div>
+    <ul class="pts">
+      <li>Sin hiperglucemia inequívoca se necesitan <b>dos resultados anormales</b>. Glucosa al azar <span class="lab">≥200</span> + síntomas clásicos o crisis hiperglucémica = diagnóstico.</li>
+      <li>La glucosa posprandial es meta de control, no criterio diagnóstico. HbA1c se altera con hemólisis, transfusión o variantes de hemoglobina.</li>
+      <li><b>Metas (adultos no embarazados):</b> HbA1c <span class="lab">&lt;7 %</span>, preprandial <span class="lab">80–130</span>, pico posprandial <span class="lab">&lt;180 mg/dL</span>.</li>
+      <li><b>Considerar insulina:</b> catabolismo o síntomas graves, HbA1c <span class="lab">&gt;10 %</span>, glucosa <span class="lab">≥300</span>. Usarla no convierte la DM2 en DM1.</li>
+      <li><b>Elegir según la persona:</b> insuficiencia cardiaca → SGLT2; ERC → SGLT2 o GLP-1; aterosclerosis → GLP-1 y/o SGLT2; obesidad → fármacos que bajan peso. La metformina es frecuente pero no obligatoria al inicio.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Fármaco</th><th>Acción principal</th></tr>
+      <tr><td>Metformina</td><td>↓ producción hepática de glucosa</td></tr>
+      <tr><td>SGLT2 (dapagliflozina, empagliflozina)</td><td>↑ glucosuria</td></tr>
+      <tr><td>GLP-1 / dual GIP-GLP-1 (semaglutida, liraglutida)</td><td>↑ señal incretina y saciedad</td></tr>
+      <tr><td>DPP-4 (sitagliptina, linagliptina)</td><td>Prolonga las incretinas</td></tr>
+      <tr><td>Sulfonilureas (glibenclamida)</td><td>↑ secreción de insulina</td></tr>
+      <tr><td>Tiazolidinedionas (pioglitazona)</td><td>↑ sensibilidad a la insulina</td></tr>
+      <tr><td>Insulina</td><td>Reemplaza la hormona deficitaria</td></tr>
+    </table></div>
+
+    <h4>Cálculo de insulina</h4>
+    <div class="tbl-wrap"><table>
+      <tr><th>Concepto</th><th>Fórmula</th><th>Ejemplo de la clase</th></tr>
+      <tr><td>Dosis diaria total (DDT)</td><td>Peso × <span class="lab">0.2–0.5 U/kg/día</span></td><td>60 kg × 0.5 = 30 U/día</td></tr>
+      <tr><td>Distribución</td><td>≈ 50 % basal / 50 % prandial</td><td>15 U basal + 15 U repartidas en comidas</td></tr>
+      <tr><td>Relación insulina/carbohidratos</td><td><b>Regla de 500:</b> 500 / DDT = g cubiertos por 1 U</td><td>DDT 50 → 1:10; comida de 60 g = 6 U</td></tr>
+      <tr><td>Factor de sensibilidad</td><td><b>Regla de 1800:</b> 1800 / DDT (mg/dL que baja 1 U)</td><td>DDT 50 → 36 mg/dL por unidad</td></tr>
+      <tr><td>Corrección</td><td>(Glucosa actual − objetivo) / factor de sensibilidad</td><td>(228 − 120) / 36 = 3 U; total con comida 6 + 3 = 9 U</td></tr>
+    </table></div>
+
+    <h4>Diabetes gestacional</h4>
+    <ul class="pts">
+      <li>Hiperglucemia diagnosticada en el <b>2.º o 3.er trimestre</b> sin diabetes previa clara. Factores: obesidad, familiares con DM2, DG previa, edad materna avanzada.</li>
+      <li>Hormonas placentarias (lactógeno placentario, GH placentaria) → resistencia en la segunda mitad del embarazo; el páncreas no compensa → hiperglucemia materna.</li>
+      <li><b>La glucosa cruza la placenta; la insulina materna no.</b> → hiperinsulinemia fetal → macrosomía y riesgo de <b>hipoglucemia neonatal</b>. Tras el parto persiste mayor riesgo de DM2.</li>
+      <li>Antes de 15 semanas: buscar diabetes no diagnosticada según riesgo. <b>Tamizaje habitual: 24–28 semanas.</b></li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Estrategia</th><th>Prueba</th><th>Umbrales</th><th>Diagnóstico</th></tr>
+      <tr><td>Un paso</td><td>PTOG 75 g, ayuno ≥8 h</td><td>Ayuno <span class="lab">≥92</span> · 1 h <span class="lab">≥180</span> · 2 h <span class="lab">≥153</span></td><td>1 o más valores alterados</td></tr>
+      <tr><td>Dos pasos</td><td>1) Tamiz 50 g sin ayuno (positivo ≥130, 135 o 140) → 2) PTOG 100 g (Carpenter-Coustan)</td><td>Ayuno <span class="lab">≥95</span> · 1 h <span class="lab">≥180</span> · 2 h <span class="lab">≥155</span> · 3 h <span class="lab">≥140</span></td><td>≥2 valores alterados</td></tr>
+    </table></div>
+    <p class="key">No mezclar los umbrales de 75 g y 100 g. La HbA1c no sustituye a la PTOG de las 24–28 semanas.</p>
+  </article>
+
+  <article class="topic" id="sum-C">
+    <h3>3. Crisis hiperglucémicas: CAD y EHH</h3>
+    <div class="src">ADA Standards of Care 2026, sección 16 · Consenso 2024</div>
+    <h4>Cetoacidosis diabética (CAD)</h4>
+    <ul class="pts">
+      <li>Deficiencia importante de insulina + ↑ hormonas contrarreguladoras (glucagón, catecolaminas, cortisol). Más frecuente en DM1, también en DM2.</li>
+      <li>Lipólisis → ácidos grasos → cetogénesis hepática → <b>β-hidroxibutirato y acetoacetato</b> → ↓ bicarbonato, ↓ pH → <b>acidosis metabólica con anión gap elevado</b>.</li>
+      <li><b>Desencadenantes:</b> <b>infección (el más frecuente)</b>, omisión o falla de insulina, debut de diabetes, estrés agudo (cirugía, infarto).</li>
+      <li><b>Clínica:</b> poliuria, polidipsia, pérdida de peso, vómito y dolor abdominal, <b>respiración de Kussmaul</b> (compensación: elimina CO₂), aliento afrutado (acetona), alteración de la conciencia (mayor gravedad).</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Criterio</th><th>CAD (se requieren los 3)</th><th>EHH (se requieren los 4)</th></tr>
+      <tr><td>Glucosa</td><td><span class="lab">&gt;200 mg/dL</span> o antecedente de diabetes</td><td><span class="lab">≥600 mg/dL</span></td></tr>
+      <tr><td>Cetonas</td><td>β-OHB <span class="lab">&gt;3.0 mmol/L</span> o cetonuria <span class="lab">&gt;2+</span></td><td>β-OHB <span class="lab">&lt;3 mmol/L</span> o cetonuria <span class="lab">&lt;2+</span></td></tr>
+      <tr><td>Ácido-base</td><td>pH <span class="lab">&lt;7.3</span> y/o HCO₃ <span class="lab">&lt;18 mmol/L</span></td><td>pH <span class="lab">≥7.3</span> y HCO₃ <span class="lab">≥15 mmol/L</span></td></tr>
+      <tr><td>Osmolalidad</td><td>Variable</td><td>Efectiva <span class="lab">&gt;300</span> o total <span class="lab">&gt;320 mOsm/kg</span></td></tr>
+    </table></div>
+
+    <h4>CAD euglucémica</h4>
+    <ul class="pts">
+      <li>Una glucosa poco elevada <b>no descarta</b> cetoacidosis. Situaciones: <b>uso de iSGLT2</b> (más glucosa por orina), ayuno, embarazo, enfermedad aguda.</li>
+      <li>Cetonas: preferir <b>β-hidroxibutirato en sangre</b>; la tira de orina mide acetoacetato, puede subestimar al inicio y seguir positiva en la recuperación. Cetonas positivas solas no son CAD: confirmar acidosis con gasometría.</li>
+    </ul>
+
+    <h4>Estado hiperglucémico hiperosmolar (EHH)</h4>
+    <ul class="pts">
+      <li>Déficit relativo de insulina: la insulina residual <b>limita la cetogénesis</b>. Hiperglucemia → glucosuria → pérdida de agua → ↓ perfusión renal → se elimina menos glucosa (círculo vicioso).</li>
+      <li>Instalación <b>más lenta (días)</b>, deshidratación profunda, confusión o somnolencia; convulsiones o coma posibles. <b>Kussmaul no es característica.</b> Favorecen: infección, enfermedad aguda, poco acceso al agua.</li>
+      <li>Puede existir cuadro mixto CAD + EHH: la glucosa sola no distingue el cuadro.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Fórmula</th><th>Cálculo</th></tr>
+      <tr><td>Osmolalidad efectiva</td><td><span class="lab">2 × Na + glucosa/18</span></td></tr>
+      <tr><td>Osmolalidad total</td><td><span class="lab">2 × Na + glucosa/18 + BUN/2.8</span> (la urea cruza membranas, por eso no entra en la efectiva)</td></tr>
+      <tr><td>Ejemplo de la clase</td><td>Na 145, glucosa 900 → 290 + 50 = <b>340 mOsm/kg</b> (hiperosmolaridad)</td></tr>
+      <tr><td>Anión gap</td><td><span class="lab">Na − (Cl + HCO₃)</span>. Elevado en CAD (cetoácidos); normal en diarrea. La albúmina baja puede ocultar un gap elevado.</td></tr>
+    </table></div>
+
+    <h4>Tratamiento hospitalario</h4>
+    <ul class="pts">
+      <li>Pilares: <b>líquidos</b> (recuperar volumen), <b>insulina</b> (detener cetogénesis), <b>electrolitos</b> (monitorizar y reponer) y <b>tratar la causa</b>. Evaluar signos vitales, estado mental, glucosa, cetonas, electrolitos, función renal, gasometría venosa, osmolalidad y ECG.</li>
+      <li><b>Potasio:</b> el K corporal total está bajo aunque el sérico sea normal o alto; la insulina mete el K a la célula. <b>Si K &lt;3.5 mmol/L: reponer y retrasar la insulina hasta K &gt;3.5.</b></li>
+      <li>Insulina regular en infusión <span class="lab">0.1 U/kg/h</span>. Cuando la glucosa baja de <span class="lab">250 mg/dL</span> → añadir dextrosa y seguir la insulina hasta resolver la cetosis.</li>
+      <li><b>Resolución de CAD:</b> β-OHB <span class="lab">&lt;0.6 mmol/L</span> y (pH <span class="lab">&gt;7.3</span> o HCO₃ <span class="lab">&gt;18</span>). Glucosa normal no significa resolución. Superponer insulina subcutánea 1–2 h antes de suspender la IV. <b>Bicarbonato solo si pH &lt;7.0.</b></li>
+      <li><b>EHH:</b> rehidratación gradual, vigilar sodio, osmolalidad, estado mental y diuresis. Meta: descenso de osmolalidad de <span class="lab">3–8 mOsm/kg/h</span>.</li>
+    </ul>
+  </article>
+
+  <article class="topic" id="sum-H">
+    <h3>4. Hipoglucemia y su manejo</h3>
+    <div class="src">ADA 2026 sección 6 · JBDS 2023 · Endocrine Society</div>
+    <ul class="pts">
+      <li>Glucosa insuficiente para las necesidades del organismo, sobre todo del cerebro. En diabetes, <b>&lt;70 mg/dL es valor de alerta</b> que requiere intervención.</li>
+      <li><b>Mecanismos:</b> exceso de acción insulínica, menor aporte (ayuno, alcohol, hepatopatía) o mayor uso (ejercicio). Defensa: ↓ insulina endógena, ↑ glucagón y adrenalina (glucogenólisis y gluconeogénesis); cortisol y GH más lentos.</li>
+      <li><b>Síntomas autonómicos:</b> sudoración, temblor, palpitaciones, hambre. <b>Neuroglucopenia:</b> confusión, conducta alterada, convulsiones, coma.</li>
+      <li><b>Causas en diabetes:</b> insulina, sulfonilureas (glibenclamida) y meglitinidas; comidas omitidas o ejercicio no previsto; alcohol; enfermedad renal (fármacos duran más). <b>Sin diabetes:</b> en ayuno (desnutrición, sepsis, insuficiencia hepática/renal/suprarrenal, insulinoma) o posprandial (cirugía gastrointestinal).</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Nivel ADA</th><th>Glucosa</th><th>Significado</th></tr>
+      <tr><td>1</td><td><span class="lab">≥54 y &lt;70 mg/dL</span></td><td>Alerta: actuar antes de que progrese</td></tr>
+      <tr><td>2</td><td><span class="lab">&lt;54 mg/dL</span></td><td>Clínicamente significativa</td></tr>
+      <tr><td>3</td><td>Sin umbral</td><td>Alteración mental o física que requiere ayuda de otra persona</td></tr>
+    </table></div>
+    <ul class="pts">
+      <li><b>Hipoglucemia inadvertida:</b> episodios repetidos reducen los síntomas de alarma y aumentan el riesgo de eventos graves.</li>
+      <li><b>Tríada de Whipple:</b> síntomas compatibles + glucosa plasmática baja + mejoría al corregirla.</li>
+      <li><b>Causa inexplicada:</b> muestra crítica durante el episodio (glucosa, insulina, péptido C, proinsulina, β-hidroxibutirato, búsqueda de secretagogos), sin retrasar el rescate.</li>
+      <li><b>Algoritmo:</b> ABC + glucosa capilar. ¿Alerta y traga bien? Sí → glucosa oral. No → <b>nada por boca</b>, ayuda urgente, glucosa IV en hospital o glucagón si no hay acceso.</li>
+      <li><b>Regla de los 15:</b> dar 15 g de glucosa rápida, esperar 15 min y medir, repetir si sigue &lt;70, pedir atención si persiste. Preferir tabletas o gel; alternativa jugo o refresco regular (≈120–150 mL). <b>Evitar al inicio</b> chocolate, alimentos grasos y refrescos sin azúcar. Después: comida o colación.</li>
+      <li><b>Grave (adultos):</b> glucosa IV <span class="lab">20 g = 200 mL al 10 % o 100 mL al 20 %</span> en ~15 min; sin vía IV: <b>glucagón 1 mg IM</b> (menos eficaz si se agotó el glucógeno hepático). Reevaluar a los 10–15 min. Posición lateral si está inconsciente y respira.</li>
+      <li><b>Por sulfonilureas:</b> puede reaparecer y prolongarse; observar. En casos severos, <b>octreótido</b> inhibe la secreción de insulina.</li>
+      <li><b>Prevención:</b> revisar dosis y función renal, coordinar comida y ejercicio, educar a paciente y familia, tener glucosa y glucagón, monitoreo continuo, reevaluar tras nivel 2 o 3. En DM1 ajustar la basal con el equipo, no suspenderla.</li>
+    </ul>
+  </article>
+
+  <article class="topic" id="sum-X">
+    <h3>5. Complicaciones crónicas de la diabetes</h3>
+    <div class="src">Exposición del equipo 5</div>
+    <h4>Neuropatía diabética</h4>
+    <ul class="pts">
+      <li>Daño progresivo de fibras nerviosas por hiperglucemia crónica. Mecanismos: <b>vía de los polioles</b> (glucosa → sorbitol → fructosa, depleción de NADPH, ↓ óxido nítrico, ↓ flujo endoneural), <b>estrés oxidativo y AGEs</b>, isquemia de la microcirculación.</li>
+      <li><b>Polineuropatía simétrica distal</b> (la clásica): hormigueo en manos y pies; síntomas positivos (parestesias, ardor, dolor) o negativos (pérdida de sensibilidad vibratoria, térmica y posicional); motora: atrofia de músculos del pie, dedos en garra, pérdida del reflejo aquíleo.</li>
+      <li><b>Focal/multifocal:</b> mononeuropatía del III par, túnel carpiano. <b>Amiotrofia diabética</b> (radiculoplexopatía lumbosacra): dolor súbito en cintura pélvica y muslo, debilidad proximal, pérdida de peso.</li>
+      <li><b>Autonómica:</b> taquicardia en reposo, hipotensión ortostática sin taquicardia compensadora; gastroparesia (saciedad temprana, vómitos), diarrea nocturna alternando con estreñimiento; vejiga neurógena, disfunción eréctil; anhidrosis distal; hipoglucemia inadvertida.</li>
+      <li><b>Diagnóstico:</b> monofilamento de Semmes-Weinstein <span class="lab">10 g</span>, diapasón <span class="lab">128 Hz</span>, reflejos; velocidad de conducción y electromiografía en formas atípicas.</li>
+      <li><b>Tratamiento:</b> control glucémico estricto (piedra angular); dolor: pregabalina, gabapentina, tricíclicos o IRSN; revisar los pies diario.</li>
+    </ul>
+    <h4>Retinopatía diabética</h4>
+    <ul class="pts">
+      <li>Daño microvascular de la retina: ↑ permeabilidad y obstrucción vascular. Factores: tiempo de evolución, hiperglucemia, HTA, dislipidemia, nefropatía, tabaquismo, embarazo.</li>
+      <li><b>No proliferativa:</b> leve con <b>microaneurismas</b> (signo característico); moderada con hemorragias, exudados duros y algodonosos; severa (regla <b>4-2-1</b>). <b>Proliferativa:</b> isquemia → <b>neovasos</b> frágiles → hemorragia vítrea, fibrosis, desprendimiento traccional, glaucoma neovascular.</li>
+      <li>Suele ser asintomática al inicio. Luego visión borrosa o fluctuante, distorsión de líneas, manchas flotantes. Cortina, destellos o muchas manchas → valoración oftalmológica inmediata. Diagnóstico por fondo de ojo.</li>
+      <li><b>Edema macular:</b> líquido en la mácula (visión central borrosa); puede existir sin neovasos. Tratamiento: <b>anti-VEGF intravítreo</b>, láser, corticosteroides.</li>
+    </ul>
+    <h4>Nefropatía diabética</h4>
+    <ul class="pts">
+      <li>Una de las principales causas de ERC; en DM1 y DM2; puede no dar síntomas al inicio.</li>
+      <li>Fisiopatología: hiperglucemia → estrés oxidativo e inflamación glomerular; <b>hiperfiltración</b> inicial; activación del <b>SRAA</b> (angiotensina II, aldosterona) → hipertensión intraglomerular.</li>
+      <li><b>Clínica:</b> <b>albuminuria</b>, HTA, edema en etapas avanzadas, ↓ tasa de filtración glomerular, ERC.</li>
+      <li><b>Tratamiento:</b> control glucémico individualizado, <b>iSGLT2</b> (beneficio renal y cardiovascular), <b>IECA o ARA-II</b> ante HTA y albuminuria, nefrología si hay deterioro importante.</li>
+    </ul>
+    <h4>Pie diabético</h4>
+    <ul class="pts">
+      <li>Infección, úlcera o destrucción de tejidos profundos del pie asociada a neuropatía, enfermedad arterial periférica (EAP) y alteraciones metabólicas (IWGDF/ADA).</li>
+      <li><b>Tres factores:</b> neuropatía (&gt;80 % de los casos: pérdida de sensibilidad protectora, deformidades, piel seca con fisuras), EAP (aterosclerosis, <b>calcificación de Mönckeberg</b>, arterias infrageniculares) e infección (neutrófilos alterados; polimicrobiana).</li>
+      <li><b>Evaluación:</b> monofilamento y diapasón; pulsos e <b>índice tobillo-brazo</b> (<span class="lab">&lt;0.9</span> = EAP, <span class="lab">&gt;1.3</span> = rigidez arterial); <b>probe-to-bone</b> con alto valor predictivo de osteomielitis; Rx y RM; cultivo de tejido profundo, no de hisopo superficial. Leves: <i>S. aureus</i> y estreptococos; graves: polimicrobiana con gramnegativos, anaerobios y <i>Pseudomonas</i>.</li>
+      <li><b>Manejo:</b> descarga de presión, desbridamiento, antibiótico según gravedad y cultivo, revascularización si hay isquemia, control metabólico y dejar de fumar.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Wagner</th><th>Lesión</th></tr>
+      <tr><td>0</td><td>Pie de riesgo, sin lesión abierta</td></tr>
+      <tr><td>1</td><td>Úlcera superficial</td></tr>
+      <tr><td>2</td><td>Úlcera profunda (tendón, cápsula), sin absceso ni hueso</td></tr>
+      <tr><td>3</td><td>Profunda con absceso, osteomielitis o tenosinovitis</td></tr>
+      <tr><td>4</td><td>Gangrena limitada (antepié, talón o digital)</td></tr>
+      <tr><td>5</td><td>Gangrena extensa de todo el pie</td></tr>
+    </table></div>
+    <p class="key"><b>Universidad de Texas:</b> grados de profundidad 0–III (III = hasta hueso o articulación) + etapas A–D (A sin infección ni isquemia, B infección, C isquemia, D infección e isquemia).</p>
+    <h4>Macroangiopatías</h4>
+    <ul class="pts">
+      <li>Daño de vasos de mediano y gran calibre por <b>aterosclerosis acelerada</b>: enfermedad coronaria (angina, infarto, que puede dar síntomas poco evidentes), cerebrovascular (EVC) y arterial periférica (<b>claudicación intermitente</b>, pies fríos, gangrena, amputación).</li>
+      <li>Factores: hiperglucemia, HTA, dislipidemia, tabaco, edad, sedentarismo, obesidad.</li>
+      <li>Diagnóstico: clínica, glucosa, HbA1c, perfil lipídico, función renal; ECG/troponinas, TAC o RM cerebral, ITB y Doppler según el órgano.</li>
+      <li>Prevención: metas de glucosa, presión y lípidos, hábitos saludables, sin tabaco. Tratamiento: stent o bypass, trombólisis o trombectomía en EVC, ejercicio supervisado y revascularización en EAP.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Metas pediátricas</th><th>Antes de comidas</th><th>Al acostarse</th><th>HbA1c</th></tr>
+      <tr><td>0–6 años</td><td>100–180</td><td>110–200</td><td><span class="lab">&lt;8.5 %</span></td></tr>
+      <tr><td>6–12 años</td><td>90–180</td><td>100–180</td><td><span class="lab">&lt;8 %</span></td></tr>
+      <tr><td>13–19 años</td><td>90–130</td><td>90–150</td><td><span class="lab">&lt;7.5 %</span></td></tr>
+    </table></div>
+  </article>
+</section>
+
+<!-- ======================= CUESTIONARIO ======================= -->
+<section class="view" id="view-cuestionario" role="tabpanel" aria-labelledby="tab-cuestionario" hidden>
+  <h2>Cuestionario de estudio</h2>
+  <p class="lede">Preguntas cortas con su respuesta. Intenta contestar en voz alta antes de abrir cada respuesta.</p>
+  <div class="controls">
+    <div class="chips" id="fc-topics"></div>
+    <button class="btn ghost" id="fc-shuffle" type="button">Revolver</button>
+    <button class="btn ghost" id="fc-toggle" type="button">Mostrar todas las respuestas</button>
+  </div>
+  <div class="qlist" id="fc-list"></div>
+</section>
+
+<!-- ======================= EXAMEN OPCIÓN MÚLTIPLE ======================= -->
+<section class="view" id="view-examen" role="tabpanel" aria-labelledby="tab-examen" hidden>
+  <h2>Examen de opción múltiple</h2>
+  <p class="lede">Cada intento toma preguntas al azar de un banco de <b id="mc-bank-size"></b> y revuelve las opciones. Se aprueba con <b>80 %</b>. Al calificar se marcan en rojo las que fallaste, con la respuesta correcta y la explicación.</p>
+  <div class="controls" id="mc-setup">
+    <label class="sel" for="mc-topic">Tema <select id="mc-topic"></select></label>
+    <label class="sel" for="mc-count">Preguntas <select id="mc-count"><option value="15">15</option><option value="25" selected>25</option><option value="40">40</option></select></label>
+    <button class="btn" id="mc-start" type="button">Nuevo examen</button>
+    <span class="best" id="mc-best"></span>
+  </div>
+  <div id="mc-result"></div>
+  <div class="controls" id="mc-filter" hidden>
+    <div class="chips"><button class="chip" type="button" data-f="all" aria-pressed="true">Todas</button><button class="chip" type="button" data-f="ko" aria-pressed="false">Solo las que fallé</button></div>
+  </div>
+  <div class="qlist" id="mc-list"></div>
+  <div class="status" id="mc-status" hidden>
+    <div class="progress"><span id="mc-prog-txt"></span><div class="bar"><i id="mc-prog"></i></div></div>
+    <button class="btn" id="mc-submit" type="button">Calificar examen</button>
+  </div>
+</section>
+
+<!-- ======================= EXAMEN ABIERTO ======================= -->
+<section class="view" id="view-abierto" role="tabpanel" aria-labelledby="tab-abierto" hidden>
+  <h2>Examen de preguntas abiertas</h2>
+  <p class="lede">Escribe tu respuesta con tus palabras. Al calificar verás la respuesta modelo y los conceptos clave que mencionaste (verde) o te faltaron (rojo). La calificación automática se puede corregir con los botones de cada pregunta. Se aprueba con <b>70 %</b>.</p>
+  <div class="controls">
+    <label class="sel" for="op-topic">Tema <select id="op-topic"></select></label>
+    <label class="sel" for="op-count">Preguntas <select id="op-count"><option value="6">6</option><option value="10" selected>10</option><option value="15">15</option></select></label>
+    <button class="btn" id="op-start" type="button">Nuevo examen</button>
+    <span class="best" id="op-best"></span>
+  </div>
+  <div id="op-result"></div>
+  <div class="controls" id="op-filter" hidden>
+    <div class="chips"><button class="chip" type="button" data-f="all" aria-pressed="true">Todas</button><button class="chip" type="button" data-f="ko" aria-pressed="false">Solo las que fallé</button></div>
+  </div>
+  <div class="qlist" id="op-list"></div>
+  <div class="status" id="op-status" hidden>
+    <div class="progress"><span id="op-prog-txt"></span><div class="bar"><i id="op-prog"></i></div></div>
+    <button class="btn" id="op-submit" type="button">Calificar examen</button>
+  </div>
+</section>
+
+<!-- ======================= CASOS CLÍNICOS ======================= -->
+<section class="view" id="view-casos" role="tabpanel" aria-labelledby="tab-casos" hidden>
+  <h2>Casos clínicos</h2>
+  <p class="lede">Pacientes con su historia y laboratorios. Cada caso tiene varias preguntas en cadena: al contestar una ves si acertaste y por qué, y se abre la siguiente. Hay <b id="cs-bank-size"></b> casos y cada intento toma algunos al azar. Se aprueba con <b>80 %</b> de los pasos correctos.</p>
+  <div class="controls">
+    <label class="sel" for="cs-topic">Tema <select id="cs-topic"></select></label>
+    <label class="sel" for="cs-count">Casos <select id="cs-count"><option value="3">3</option><option value="5" selected>5</option><option value="8">8</option></select></label>
+    <button class="btn" id="cs-start" type="button">Nuevos casos</button>
+    <span class="best" id="cs-best"></span>
+  </div>
+  <div id="cs-result"></div>
+  <div class="controls" id="cs-filter" hidden>
+    <div class="chips"><button class="chip" type="button" data-f="all" aria-pressed="true">Todos</button><button class="chip" type="button" data-f="ko" aria-pressed="false">Solo los casos con errores</button></div>
+  </div>
+  <div class="qlist" id="cs-list"></div>
+  <div class="status" id="cs-status" hidden>
+    <div class="progress"><span id="cs-prog-txt"></span><div class="bar"><i id="cs-prog"></i></div></div>
+  </div>
+</section>
+
+<!-- ======================= CÁLCULOS ======================= -->
+<section class="view" id="view-calculos" role="tabpanel" aria-labelledby="tab-calculos" hidden>
+  <h2>Práctica de cálculos</h2>
+  <p class="lede">Ejercicios con números nuevos en cada intento: osmolalidad, anión gap, dosis de insulina, reglas de 500 y 1800, glucosa IV y clasificación de laboratorios. Usa punto o coma para los decimales. Al calificar verás el procedimiento completo. Se aprueba con <b>80 %</b>.</p>
+  <div class="controls">
+    <label class="sel" for="ca-type">Tipo <select id="ca-type"></select></label>
+    <label class="sel" for="ca-count">Ejercicios <select id="ca-count"><option value="6">6</option><option value="10" selected>10</option><option value="15">15</option></select></label>
+    <button class="btn" id="ca-start" type="button">Nuevos ejercicios</button>
+    <span class="best" id="ca-best"></span>
+  </div>
+  <div id="ca-result"></div>
+  <div class="controls" id="ca-filter" hidden>
+    <div class="chips"><button class="chip" type="button" data-f="all" aria-pressed="true">Todos</button><button class="chip" type="button" data-f="ko" aria-pressed="false">Solo los que fallé</button></div>
+  </div>
+  <div class="qlist" id="ca-list"></div>
+  <div class="status" id="ca-status" hidden>
+    <div class="progress"><span id="ca-prog-txt"></span><div class="bar"><i id="ca-prog"></i></div></div>
+    <button class="btn" id="ca-submit" type="button">Calificar ejercicios</button>
+  </div>
+</section>
+</main>
+<canvas id="confetti" hidden></canvas>
+
+<script>
+const TOPICS = { P: 'Paratiroides y hueso', D: 'Diabetes mellitus', C: 'Crisis hiperglucémicas', H: 'Hipoglucemia', X: 'Complicaciones crónicas' };
+
+/* ---------- Banco de opción múltiple: [tema, pregunta, [correcta, incorrecta, incorrecta, incorrecta], explicación] ---------- */
+const MC = [
+['P','¿Cuál es la causa más frecuente de hiperparatiroidismo primario?',['Adenoma paratiroideo (≈80 %)','Hiperplasia de las 4 glándulas','Carcinoma paratiroideo','Déficit de vitamina D'],'El adenoma explica alrededor del 80 % de los casos; hiperplasia y carcinoma son menos frecuentes.'],
+['P','El hiperparatiroidismo secundario se debe a:',['Compensación por ERC, déficit de vitamina D o malabsorción','Secreción autónoma de PTH por un adenoma','Autonomía de la glándula tras un secundario prolongado','Resistencia renal a la PTH por GNAS'],'En el secundario la PTH sube para compensar un calcio que tiende a bajar; el calcio suele ser normal o bajo.'],
+['P','El hiperparatiroidismo terciario se define como:',['Autonomía de la paratiroides tras un hiperparatiroidismo secundario prolongado (ERC)','Hiperparatiroidismo por carcinoma','Hiperparatiroidismo en el embarazo','Hiperparatiroidismo por litio'],'Tras años de estímulo (típicamente ERC) la glándula se vuelve autónoma.'],
+['P','¿Qué efecto tiene la PTH en el riñón?',['↑ reabsorción de calcio, ↓ reabsorción de fosfato y ↑ 1α-hidroxilasa','↓ reabsorción de calcio y ↑ reabsorción de fosfato','↑ reabsorción de fosfato y ↓ calcitriol','No tiene efecto renal'],'Conserva calcio, elimina fosfato y activa la vitamina D (calcitriol).'],
+['P','¿Cuál es el principal marcador de las reservas de vitamina D?',['25(OH)D','1,25(OH)₂D (calcitriol)','PTH','Fosfatasa alcalina'],'La 25(OH)D refleja las reservas; el calcitriol es la forma hormonal activa.'],
+['P','La forma hormonal activa de la vitamina D es:',['Calcitriol [1,25(OH)₂D]','25(OH)D','Colecalciferol','Ergocalciferol'],'El riñón convierte 25(OH)D en calcitriol mediante la 1α-hidroxilasa.'],
+['P','¿Qué receptor detecta el calcio ionizado en las paratiroides?',['CaSR (receptor sensor de calcio)','RANK','Receptor de PTH tipo 1','VDR'],'El CaSR detecta el calcio; si baja, aumenta la secreción de PTH.'],
+['P','En el hueso, la PTH sostenida aumenta la resorción porque:',['Osteoblastos/osteocitos expresan RANKL que activa osteoclastos','Inhibe directamente a los osteoclastos','Aumenta la OPG','Disminuye la fosfatasa alcalina'],'RANKL activa RANK en precursores de osteoclastos; la OPG es el receptor señuelo que lo frena.'],
+['P','Patrón bioquímico del hiperparatiroidismo primario:',['Calcio alto + PTH elevada o inapropiadamente normal + fósforo bajo o normal','Calcio bajo + PTH alta + fósforo alto','Calcio bajo + PTH baja + fósforo alto','Calcio alto + PTH suprimida'],'Ante hipercalcemia la PTH debería estar suprimida; si es normal o alta, es inapropiada.'],
+['P','Patrón bioquímico del hipoparatiroidismo:',['Hipocalcemia + hiperfosfatemia + PTH baja o inapropiadamente normal','Hipercalcemia + hipofosfatemia + PTH alta','Hipocalcemia + hipofosfatemia + PTH alta','Calcio normal + PTH alta'],'Sin PTH, el riñón retiene fosfato y pierde calcio.'],
+['P','¿Cuál es la causa más frecuente de hipoparatiroidismo?',['Posquirúrgica (cirugía cervical)','Autoinmune','Síndrome de DiGeorge','Hipomagnesemia'],'La tiroidectomía o paratiroidectomía es la causa más común.'],
+['P','La hipomagnesemia severa produce hipocalcemia porque:',['Bloquea la secreción y la acción de la PTH (reversible)','Aumenta la PTH','Destruye las paratiroides','Aumenta el calcitriol'],'Es un defecto funcional que se corrige al reponer magnesio.'],
+['P','El signo de Chvostek consiste en:',['Contracción facial al percutir el nervio facial','Espasmo carpopedal al inflar el manguito','Prolongación del QT','Hormigueo peribucal'],'Orienta a hipocalcemia pero no confirma el diagnóstico.'],
+['P','El signo de Trousseau consiste en:',['Espasmo carpopedal al inflar el manguito de presión','Contracción facial al percutir el nervio facial','Reflejo aquíleo ausente','Calcificaciones intracraneales'],'Se busca hipocalcemia latente con el manguito por encima de la sistólica.'],
+['P','Patrón del pseudohipoparatiroidismo:',['Calcio bajo + fósforo alto + PTH elevada','Calcio bajo + fósforo alto + PTH baja','Calcio alto + fósforo bajo + PTH alta','Calcio normal + PTH baja'],'Hay PTH (alta) pero el riñón no responde: resistencia a PTH.'],
+['P','El pseudohipoparatiroidismo se asocia a alteraciones del gen:',['GNAS','AIRE','CaSR','HLA'],'GNAS altera la señalización intracelular del receptor de PTH.'],
+['P','En hiperparatiroidismo, la ecografía cervical y el sestamibi sirven para:',['Localizar la glándula antes de cirugía; no confirman el diagnóstico','Confirmar el diagnóstico bioquímico','Medir la densidad ósea','Descartar hipercalciuria'],'El diagnóstico es bioquímico (calcio y PTH); la imagen solo localiza.'],
+['P','¿Cuál es el tratamiento curativo del hiperparatiroidismo primario?',['Paratiroidectomía','Cinacalcet','Bisfosfonatos','Calcitriol'],'Indicada en sintomáticos o con criterios quirúrgicos (litiasis, daño óseo/renal, edad <50).'],
+['P','El cinacalcet:',['Reduce el calcio sanguíneo (calcimimético)','Aumenta la PTH','Es un bisfosfonato','Es vitamina D activa'],'Se usa cuando no se realiza cirugía o en el terciario.'],
+['P','Manejo de la hipocalcemia grave o sintomática:',['Calcio IV y monitorización cardiaca hospitalaria','Calcio oral y alta','Bisfosfonatos IV','Cinacalcet'],'La hipocalcemia grave puede dar laringoespasmo, convulsiones y QT prolongado.'],
+['P','Objetivo del tratamiento crónico del hipoparatiroidismo:',['Calcio bajo-normal sin provocar hipercalciuria','Calcio alto-normal para evitar síntomas','Normalizar la PTH','Fósforo bajo'],'Subir demasiado el calcio causa hipercalciuria y daño renal.'],
+['P','La osteomalacia es:',['Defecto de mineralización del osteoide en el adulto','Pérdida de masa ósea con mineralización conservada','Alteración de la placa de crecimiento en niños','Exceso de resorción por PTH'],'El raquitismo es su equivalente en niños, afectando la placa de crecimiento.'],
+['P','Causa más común de osteomalacia y raquitismo:',['Deficiencia de vitamina D','Exceso de FGF23','Hipofosfatasia','Acidosis tubular renal'],'Poca exposición solar, dieta pobre, malabsorción, etc.'],
+['P','Las pseudofracturas de Looser son características de:',['Osteomalacia','Osteoporosis','Hiperparatiroidismo','Raquitismo'],'Son un hallazgo característico, aunque no siempre presente.'],
+['P','Laboratorio habitual en déficit de vitamina D:',['↓ 25(OH)D, ↑ PTH, ↑ fosfatasa alcalina','↑ 25(OH)D, ↓ PTH, ↓ fosfatasa alcalina','↓ PTH, ↑ calcio, ↓ fósforo','Todo normal'],'El calcio y el fósforo pueden ser normales o bajos según la etapa.'],
+['P','En osteomalacia, los bisfosfonatos:',['Están contraindicados hasta corregir el defecto de mineralización','Son la primera línea','Se combinan siempre con teriparatida','Curan la enfermedad'],'No se debe frenar el recambio óseo sin mineralizar primero el osteoide.'],
+['P','El rosario raquítico es:',['Engrosamiento de las uniones costocondrales','Fractura vertebral múltiple','Calcificación de cartílagos','Nódulos subcutáneos'],'Junto con muñecas ensanchadas y piernas arqueadas es típico del raquitismo.'],
+['P','La osteoporosis se define como:',['Disminución de masa ósea y deterioro de la microarquitectura con mineralización conservada','Defecto de mineralización del osteoide','Aumento de la densidad ósea','Inflamación del hueso'],'Osteoporosis = menos hueso; osteomalacia = hueso mal mineralizado.'],
+['P','Un T-score de −2.7 en cuello femoral en una mujer de 67 años indica:',['Osteoporosis densitométrica','Osteopenia','Normal','Por debajo de lo esperado para la edad'],'T ≤ −2.5 = osteoporosis; entre −1 y −2.5 = osteopenia.'],
+['P','Un T-score de −1.8 corresponde a:',['Masa ósea baja (osteopenia)','Osteoporosis','Normal','Osteomalacia'],'−2.5 < T < −1.0 es masa ósea baja.'],
+['P','El Z-score se prefiere en:',['Mujeres premenopáusicas, hombres <50 años y niños','Mujeres posmenopáusicas','Hombres ≥50 años','Todos los adultos'],'Compara con personas de la misma edad y sexo; Z ≤ −2.0 está por debajo de lo esperado.'],
+['P','¿Qué estima la herramienta FRAX?',['El riesgo de fractura a 10 años','La densidad mineral ósea','El nivel de vitamina D','El riesgo de caídas en 1 año'],'Complementa la DXA; no mide densidad.'],
+['P','Tratamiento de primera línea en osteoporosis de alto riesgo:',['Bisfosfonatos','Romosozumab','Calcitonina','Teriparatida sola de por vida'],'Denosumab es alternativa según el perfil del paciente.'],
+['P','Tras un anabólico (teriparatida, romosozumab) se debe:',['Continuar obligatoriamente con un antirresortivo','Suspender todo tratamiento','Repetir el anabólico de por vida','Iniciar calcitriol'],'El antirresortivo consolida la ganancia de hueso.'],
+['P','¿Qué fármaco no debe suspenderse sin tratamiento secuencial por riesgo de rebote?',['Denosumab','Alendronato','Calcio','Vitamina D'],'Al suspender denosumab hay pérdida ósea acelerada y fracturas vertebrales.'],
+['P','El romosozumab requiere antes de iniciarlo:',['Evaluación cardiovascular','Biopsia ósea','Gammagrafía','Medición de PTH'],'Se ha asociado a eventos cardiovasculares.'],
+['P','En la menopausia, la caída de estrógenos produce osteoporosis porque:',['Aumenta la señal RANKL y la actividad de los osteoclastos','Aumenta la formación ósea','Disminuye la PTH','Bloquea la vitamina D'],'Más resorción que formación en cada ciclo de remodelado.'],
+
+['D','Mecanismo dominante de la diabetes tipo 1:',['Destrucción autoinmune de las células beta (déficit absoluto)','Resistencia a la insulina con fallo secretor progresivo','Resistencia inducida por la placenta','Exceso de glucagón aislado'],'HLA + linfocitos T contra células beta + factores ambientales.'],
+['D','Mecanismo de la diabetes tipo 2:',['Resistencia a la insulina + deterioro progresivo de la célula beta','Destrucción autoinmune de células beta','Ausencia total de insulina desde el inicio','Mutación de un solo gen'],'La diabetes aparece cuando la secreción ya no compensa la resistencia.'],
+['D','La diabetes gestacional se produce por:',['Compensación insuficiente ante la resistencia inducida por hormonas placentarias','Destrucción autoinmune de células beta','Exceso de insulina materna','Diabetes previa no diagnosticada'],'El lactógeno placentario y la GH placentaria aumentan la resistencia en la segunda mitad.'],
+['D','¿Cuál de estos NO es un autoanticuerpo de DM1?',['Anti-TPO','Anti-GAD','IA-2','ZnT8'],'Anti-GAD, IA-2, ZnT8 y antiinsulina apoyan autoinmunidad pancreática.'],
+['D','¿Qué refleja el péptido C?',['La secreción endógena de insulina','La glucosa promedio de 3 meses','La autoinmunidad','La resistencia a la insulina'],'Se interpreta junto con la glucosa y la función renal.'],
+['D','Secuencia correcta de la liberación de insulina en la célula beta:',['↑ ATP → cierre de canales KATP → despolarización → entrada de Ca²⁺','↓ ATP → apertura de KATP → hiperpolarización','Entrada de Ca²⁺ → ↑ ATP → cierre de KATP','Apertura de canales de Na⁺ → ↑ ATP'],'El metabolismo de la glucosa genera ATP que cierra los canales de potasio.'],
+['D','¿Qué transportador moviliza la insulina en músculo y tejido adiposo?',['GLUT4','GLUT2','SGLT2','GLUT1'],'La insulina lleva GLUT4 a la membrana para captar glucosa.'],
+['D','Glucosa en ayuno diagnóstica de diabetes:',['≥126 mg/dL','≥100 mg/dL','≥110 mg/dL','≥140 mg/dL'],'100–125 mg/dL es prediabetes.'],
+['D','Glucosa a las 2 h de la PTOG con 75 g compatible con prediabetes:',['140–199 mg/dL','100–125 mg/dL','≥200 mg/dL','<140 mg/dL'],'≥200 mg/dL es diabetes.'],
+['D','HbA1c diagnóstica de diabetes:',['≥6.5 %','≥5.7 %','≥7 %','≥6.0 %'],'5.7–6.4 % es prediabetes; <7 % es la meta habitual de control.'],
+['D','Glucosa al azar de 250 mg/dL con poliuria y polidipsia:',['Es diagnóstica de diabetes','Requiere repetir dos veces','Es prediabetes','No sirve para diagnóstico'],'Glucosa al azar ≥200 + síntomas clásicos o crisis = diagnóstico.'],
+['D','Sin hiperglucemia inequívoca, para diagnosticar diabetes se requieren:',['Dos resultados anormales','Un solo resultado anormal','Tres glucosas en ayuno','Una curva de insulina'],'Pueden ser dos pruebas distintas o la misma repetida.'],
+['D','La acantosis nigricans:',['Sugiere resistencia a la insulina pero no diagnostica diabetes','Es diagnóstica de diabetes','Indica DM1','Indica cetoacidosis'],'Es un signo de resistencia a la insulina.'],
+['D','Paciente con DM2 e insuficiencia cardiaca. ¿Qué grupo tiene beneficio demostrado?',['Inhibidores SGLT2','Sulfonilureas','Tiazolidinedionas','DPP-4'],'Los SGLT2 tienen beneficio en IC; las tiazolidinedionas retienen líquido.'],
+['D','Mecanismo principal de la metformina:',['↓ producción hepática de glucosa','↑ secreción de insulina','↑ glucosuria','Prolonga las incretinas'],'Es frecuente si es apropiada, pero no todos deben iniciar con ella.'],
+['D','Mecanismo de la dapagliflozina y la empagliflozina:',['↑ glucosuria (inhiben SGLT2)','↓ producción hepática de glucosa','↑ secreción de insulina','↑ sensibilidad a la insulina'],'Bloquean la reabsorción renal de glucosa.'],
+['D','La glibenclamida actúa:',['Aumentando la secreción de insulina (sulfonilurea)','Disminuyendo la producción hepática','Aumentando la glucosuria','Aumentando la sensibilidad a insulina'],'Por eso puede causar hipoglucemia prolongada.'],
+['D','La pioglitazona actúa:',['Aumentando la sensibilidad a la insulina','Aumentando la secreción de insulina','Prolongando las incretinas','Aumentando la glucosuria'],'Es una tiazolidinediona.'],
+['D','Los inhibidores DPP-4 (sitagliptina):',['Prolongan la acción de las incretinas','Aumentan la glucosuria','Reemplazan la insulina','Bloquean la absorción de carbohidratos'],'Evitan la degradación de GLP-1 y GIP.'],
+['D','¿Cuándo considerar insulina en DM2?',['HbA1c >10 %, glucosa ≥300 mg/dL o catabolismo','HbA1c de 6.8 %','Siempre al diagnóstico','Solo si la persona tiene DM1'],'Usarla no convierte la DM2 en DM1.'],
+['D','Meta habitual de HbA1c en adultos no embarazados:',['<7 %','<6.5 %','<8 %','<5.7 %'],'Individualizar para evitar hipoglucemia.'],
+['D','Meta de glucosa preprandial en adultos con diabetes:',['80–130 mg/dL','70–100 mg/dL','100–180 mg/dL','<180 mg/dL'],'El pico posprandial debe ser <180 mg/dL.'],
+['D','Adulto de 60 kg, se elige 0.5 U/kg/día. ¿Cuánta insulina basal?',['15 unidades/día','30 unidades/día','12 unidades/día','20 unidades/día'],'DDT = 60 × 0.5 = 30 U; ≈50 % basal = 15 U.'],
+['D','Paciente con DDT de 50 U. Con la regla de 500, ¿cuántas unidades para una comida de 60 g de carbohidratos?',['6 unidades','10 unidades','3 unidades','12 unidades'],'500/50 = 10 → 1 U por 10 g → 60/10 = 6 U.'],
+['D','DDT 50 U, glucosa actual 228 mg/dL, objetivo 120. ¿Dosis de corrección (regla 1800)?',['3 unidades','6 unidades','2 unidades','4 unidades'],'1800/50 = 36 mg/dL por U → (228−120)/36 = 3 U.'],
+['D','DDT de 40 U. ¿Cuál es el factor de sensibilidad con la regla de 1800?',['45 mg/dL por unidad','12.5 mg/dL por unidad','36 mg/dL por unidad','72 mg/dL por unidad'],'1800/40 = 45.'],
+['D','Ejemplo de insulina basal:',['Glargina o degludec','Lispro','Aspart','Regular en bolo'],'Lispro y aspart son prandiales (rápidas).'],
+['D','Riesgo principal si se interrumpe la bomba de insulina:',['Cetosis rápida','Hipoglucemia grave','Hipercalcemia','Lipodistrofia inmediata'],'La bomba solo usa insulina rápida; sin ella no hay reserva basal.'],
+['D','Estrategia de un paso para diabetes gestacional (PTOG 75 g). Umbrales:',['Ayuno ≥92, 1 h ≥180, 2 h ≥153 mg/dL','Ayuno ≥95, 1 h ≥180, 2 h ≥155, 3 h ≥140','Ayuno ≥126, 2 h ≥200','Ayuno ≥100, 2 h ≥140'],'Un solo valor alterado hace el diagnóstico.'],
+['D','En la estrategia de dos pasos de diabetes gestacional, el diagnóstico requiere:',['Habitualmente ≥2 valores alterados en la PTOG de 100 g','1 valor alterado en el tamiz de 50 g','HbA1c ≥6.5 %','Glucosa en ayuno ≥92'],'Criterios de Carpenter-Coustan; el tamiz de 50 g positivo solo indica hacer la prueba diagnóstica.'],
+['D','Momento habitual del tamizaje de diabetes gestacional:',['24–28 semanas','Antes de las 8 semanas','32–36 semanas','En el posparto'],'Antes de 15 semanas se busca diabetes no diagnosticada según riesgo.'],
+['D','En la diabetes gestacional, ¿qué cruza la placenta?',['La glucosa, pero no la insulina materna','La insulina, pero no la glucosa','Ambas','Ninguna'],'La glucosa fetal alta estimula el páncreas fetal → hiperinsulinemia fetal.'],
+['D','Consecuencia neonatal típica de la hiperinsulinemia fetal:',['Hipoglucemia neonatal','Hiperglucemia neonatal','Hipocalcemia materna','Cetoacidosis neonatal'],'Cesa el aporte de glucosa materna pero la insulina neonatal sigue alta.'],
+
+['C','Precipitante más frecuente de la cetoacidosis diabética:',['Infección','Omisión de insulina','Infarto','Cirugía'],'Buscar la causa es parte del tratamiento.'],
+['C','Criterios de CAD (ADA 2026):',['Glucosa >200 o antecedente de DM + β-OHB >3.0 mmol/L + pH <7.3 y/o HCO₃ <18','Glucosa ≥600 + osmolalidad >320','Glucosa >250 + pH <7.0','Cetonuria 1+ + HCO₃ <22'],'Se requieren los tres dominios: glucemia, cetosis y acidosis.'],
+['C','Glucosa necesaria para el diagnóstico de EHH:',['≥600 mg/dL','>200 mg/dL','≥300 mg/dL','≥400 mg/dL'],'Además osmolalidad efectiva >300, cetonas bajas, pH ≥7.3 y HCO₃ ≥15.'],
+['C','Na 140 mmol/L y glucosa 720 mg/dL. Osmolalidad efectiva:',['320 mOsm/kg','300 mOsm/kg','340 mOsm/kg','280 mOsm/kg'],'2 × 140 + 720/18 = 280 + 40 = 320.'],
+['C','¿Por qué la urea no entra en la osmolalidad efectiva?',['Porque cruza libremente las membranas','Porque no es soluble','Porque es igual a la glucosa','Porque se elimina por pulmón'],'No genera gradiente osmótico eficaz.'],
+['C','La respiración de Kussmaul en la CAD:',['Es compensación respiratoria que elimina CO₂','Indica edema pulmonar','Es característica del EHH','Se debe a la hipoglucemia'],'En el EHH la Kussmaul no es característica.'],
+['C','El aliento afrutado en la CAD se debe a:',['La acetona','La glucosa','El ácido láctico','La urea'],'La acetona da el olor pero no es la causa principal de la acidosis.'],
+['C','¿Qué fármaco se asocia a CAD euglucémica?',['Inhibidores SGLT2','Metformina','Insulina basal','Sulfonilureas'],'Aumentan la pérdida de glucosa por orina, así la glucosa no sube mucho.'],
+['C','Prueba preferida para medir cetonas en el diagnóstico y seguimiento:',['β-hidroxibutirato en sangre','Tira reactiva de orina','Acetona en aliento','Lactato sérico'],'La tira de orina mide acetoacetato y puede subestimar al inicio.'],
+['C','Paciente con CAD y K de 3.1 mmol/L. ¿Qué hacer?',['Reponer potasio y retrasar la insulina hasta K >3.5','Iniciar insulina de inmediato','Dar bicarbonato','Suspender los líquidos'],'La insulina mete K a la célula y empeoraría la hipopotasemia (riesgo de arritmias).'],
+['C','En la CAD, el potasio corporal total:',['Está disminuido aunque el sérico sea normal o alto','Siempre está alto','Siempre está normal','No cambia'],'Hay pérdidas urinarias; la acidosis y falta de insulina sacan K de la célula.'],
+['C','En CAD, cuando la glucosa baja de 250 mg/dL:',['Se añade dextrosa y se continúa la insulina hasta resolver la cetosis','Se suspende la insulina','Se da bicarbonato','Se da el alta'],'La meta es corregir la cetosis, no solo la glucosa.'],
+['C','Criterio de resolución de la CAD:',['β-OHB <0.6 mmol/L y (pH >7.3 o HCO₃ >18)','Glucosa <200 mg/dL','Cetonuria negativa','Anión gap de 20'],'Glucosa normal no implica resolución completa.'],
+['C','¿Cuándo considerar bicarbonato en la CAD?',['Solo si pH <7.0','Siempre','Si pH <7.3','Si la glucosa >600'],'No es rutinario.'],
+['C','Al pasar de insulina IV a subcutánea en CAD:',['Superponer la subcutánea 1–2 h antes de detener la IV','Suspender la IV y esperar 6 h','Dar solo insulina rápida','No dar insulina basal'],'Evita el rebote de cetosis.'],
+['C','Meta orientativa de descenso de osmolalidad en el EHH:',['3–8 mOsm/kg/h','15–20 mOsm/kg/h','1 mOsm/kg/día','Lo más rápido posible'],'La corrección debe ser gradual.'],
+['C','Fórmula del anión gap:',['Na − (Cl + HCO₃)','Na + K − Cl','2 × Na + glucosa/18','Cl − HCO₃'],'Apoya el diagnóstico pero no sustituye a las cetonas.'],
+['C','Acidosis metabólica con anión gap normal típica de:',['Diarrea','Cetoacidosis diabética','Acidosis láctica','Intoxicación por metanol'],'En la diarrea se pierde bicarbonato y sube el cloro.'],
+['C','Diferencia clave entre EHH y CAD:',['En el EHH hay insulina residual que limita la cetogénesis','El EHH solo ocurre en DM1','La CAD tiene glucosa más alta','El EHH tiene pH más bajo'],'EHH: hiperosmolaridad y deshidratación; CAD: cetosis y acidosis.'],
+['C','Instalación del EHH comparada con la CAD:',['Más lenta (días) con deshidratación profunda','Más rápida (horas)','Igual','Instantánea'],'La CAD es de instalación más rápida.'],
+
+['H','En personas con diabetes, el valor de alerta de hipoglucemia es:',['<70 mg/dL','<54 mg/dL','<90 mg/dL','<40 mg/dL'],'Requiere intervención.'],
+['H','Hipoglucemia nivel 2 (ADA):',['<54 mg/dL','≥54 y <70 mg/dL','Alteración que requiere ayuda','<40 mg/dL'],'Es clínicamente significativa.'],
+['H','La hipoglucemia nivel 3 se define por:',['Alteración mental o física que requiere ayuda de otra persona, sin umbral específico','Glucosa <40 mg/dL','Glucosa <54 mg/dL','Síntomas autonómicos'],'Lo que la define es la necesidad de asistencia.'],
+['H','La tríada de Whipple incluye:',['Síntomas compatibles, glucosa plasmática baja y mejoría al corregirla','Sudoración, temblor y hambre','Glucosa baja, insulina alta y péptido C bajo','Confusión, convulsiones y coma'],'Confirma hipoglucemia verdadera.'],
+['H','Regla de los 15:',['15 g de glucosa rápida, esperar 15 min, medir y repetir si <70','15 U de insulina cada 15 min','15 g de chocolate cada 15 min','15 mL de glucosa IV'],'Solo si está consciente y puede tragar.'],
+['H','¿Qué alimento conviene EVITAR al inicio del rescate?',['Chocolate','Tabletas de glucosa','Jugo','Refresco regular'],'La grasa retrasa la absorción; los refrescos sin azúcar no sirven.'],
+['H','Paciente con hipoglucemia inconsciente, sin acceso IV:',['Glucagón 1 mg IM','Jugo por boca','Insulina rápida','Esperar a que despierte'],'Nunca dar nada por boca si la deglución es insegura.'],
+['H','Dosis de glucosa IV en hipoglucemia grave del adulto:',['20 g: 200 mL al 10 % o 100 mL al 20 %','5 g en bolo','50 g al 5 %','10 mL al 50 %'],'Administrar en ~15 min y reevaluar a los 10–15 min.'],
+['H','El glucagón puede ser menos eficaz si:',['Se agotó el glucógeno hepático','El paciente es joven','Se aplica IM','La glucosa es <54'],'Por ejemplo en ayuno prolongado o alcohol.'],
+['H','La hipoglucemia inadvertida se debe a:',['Episodios repetidos que reducen los síntomas de alarma','Exceso de glucagón','Comer de más','Hipertiroidismo'],'También se asocia a neuropatía autonómica.'],
+['H','Característica de la hipoglucemia por sulfonilureas:',['Puede reaparecer y prolongarse','Se resuelve sola en minutos','No requiere observación','Nunca es grave'],'En casos severos se usa octreótido.'],
+['H','El octreótido en hipoglucemia por sulfonilureas:',['Inhibe la secreción pancreática de insulina','Aumenta la insulina','Es un antídoto del glucagón','Aumenta la glucosuria'],'Uso hospitalario o toxicológico.'],
+['H','Son síntomas autonómicos de hipoglucemia:',['Sudoración, temblor, palpitaciones y hambre','Confusión y coma','Convulsiones','Conducta alterada'],'Los otros son neuroglucopénicos.'],
+['H','Causa de hipoglucemia en ayuno en una persona SIN diabetes:',['Insulinoma','Cirugía gastrointestinal','Comida rica en azúcar','Ejercicio leve'],'También insuficiencia suprarrenal, hepática o renal, sepsis y desnutrición.'],
+['H','Fármacos que causan hipoglucemia en diabetes:',['Insulina, sulfonilureas y meglitinidas','Metformina sola','Inhibidores SGLT2 solos','Estatinas'],'La metformina sola rara vez causa hipoglucemia.'],
+['H','En DM1 con hipoglucemias, respecto a la insulina basal:',['Ajustarla con el equipo tratante, no suspenderla indiscriminadamente','Suspenderla por completo','Duplicarla','Cambiarla por metformina'],'Suspender la basal en DM1 puede llevar a cetoacidosis.'],
+['H','La muestra crítica en hipoglucemia inexplicada incluye:',['Glucosa, insulina, péptido C, proinsulina y β-hidroxibutirato','Solo HbA1c','TSH y T4','Calcio y PTH'],'Se toma durante el episodio, sin retrasar el rescate.'],
+
+['X','La vía de los polioles en la neuropatía diabética:',['Convierte glucosa en sorbitol y fructosa, agota NADPH y baja el óxido nítrico','Aumenta el óxido nítrico','Produce cetonas','Aumenta la insulina'],'Reduce el flujo sanguíneo endoneural.'],
+['X','Forma más frecuente de neuropatía diabética:',['Polineuropatía simétrica distal','Mononeuropatía del III par','Amiotrofia diabética','Neuropatía autonómica cardiovascular'],'Patrón de hormigueo en manos y pies.'],
+['X','Para evaluar la sensibilidad protectora del pie se usa:',['Monofilamento de Semmes-Weinstein de 10 g','Diapasón de 512 Hz','Martillo de reflejos solamente','Electromiografía de rutina'],'La vibración se evalúa con diapasón de 128 Hz.'],
+['X','Tratamiento del dolor neuropático diabético:',['Pregabalina, gabapentina, tricíclicos o IRSN','Opioides de primera línea','Antiinflamatorios de por vida','Insulina'],'El control glucémico es la piedra angular para prevenir y detener la progresión.'],
+['X','Hipotensión ortostática sin taquicardia compensadora sugiere:',['Neuropatía autonómica cardiovascular','Retinopatía','Nefropatía','Amiotrofia'],'También taquicardia en reposo y pérdida de variabilidad de la FC.'],
+['X','La gastroparesia diabética se manifiesta con:',['Náuseas, saciedad temprana y vómitos posprandiales','Diarrea con sangre','Dolor en el muslo','Visión borrosa'],'Por retraso del vaciamiento gástrico.'],
+['X','Dolor súbito en cintura pélvica y muslo, debilidad proximal y pérdida de peso:',['Amiotrofia diabética (radiculoplexopatía lumbosacra)','Polineuropatía distal','Túnel carpiano','Pie de Charcot'],'Es una neuropatía somática focal/multifocal.'],
+['X','Signo característico de la retinopatía no proliferativa leve:',['Microaneurismas','Neovasos','Desprendimiento de retina','Glaucoma neovascular'],'Son pequeñas dilataciones de los capilares retinianos.'],
+['X','Lo que define a la retinopatía proliferativa es:',['La formación de neovasos por isquemia','La presencia de microaneurismas','Los exudados duros','La visión normal'],'Los neovasos son frágiles: sangran y producen tracción.'],
+['X','La regla 4-2-1 se usa para identificar:',['Retinopatía no proliferativa severa','Pie diabético Wagner 4','Nefropatía estadio 4','Osteoporosis'],'Clasificación clínica de la retinopatía.'],
+['X','Tratamiento del edema macular diabético:',['Anti-VEGF intravítreo, láser o corticosteroides','Insulina intravítrea','Solo lentes','Bisfosfonatos'],'El edema macular puede existir sin neovasos.'],
+['X','Manifestación clave de la nefropatía diabética:',['Albuminuria','Hematuria macroscópica','Hipocalcemia','Poliuria aislada'],'Por alteración de la barrera de filtración glomerular.'],
+['X','Etapa inicial de la fisiopatología renal en la diabetes:',['Hiperfiltración glomerular','Atrofia renal inmediata','Litiasis','Pielonefritis'],'Después se pierde función progresivamente.'],
+['X','Fármacos indicados en nefropatía con HTA y albuminuria:',['IECA o ARA-II, además de iSGLT2 si es elegible','Sulfonilureas','Diuréticos de asa solos','AINE'],'El SRAA aumenta la presión intraglomerular.'],
+['X','Factor presente en más del 80 % de los casos de pie diabético:',['Neuropatía diabética','Enfermedad arterial periférica','Infección por Pseudomonas','Obesidad'],'Pérdida de sensibilidad protectora → traumatismos inadvertidos.'],
+['X','Úlcera profunda con absceso u osteomielitis en la escala de Wagner:',['Grado 3','Grado 1','Grado 2','Grado 5'],'Grado 4 = gangrena limitada; 5 = gangrena extensa.'],
+['X','Un índice tobillo-brazo de 0.7 indica:',['Enfermedad arterial periférica','Normal','Rigidez arterial','Neuropatía'],'<0.9 = EAP; >1.3 = rigidez arterial por calcificación.'],
+['X','Un índice tobillo-brazo >1.3 sugiere:',['Rigidez arterial por calcificación de la capa media','EAP grave','Normal','Trombosis venosa'],'Calcificación de Mönckeberg.'],
+['X','La prueba de contacto óseo (probe-to-bone) positiva:',['Tiene alto valor predictivo para osteomielitis','Descarta infección','Diagnostica EAP','Mide la sensibilidad'],'Se complementa con Rx, RM y biopsia/cultivo profundo.'],
+['X','En pie diabético, la muestra microbiológica correcta es:',['Biopsia tisular o curetaje profundo','Hisopo superficial','Hemocultivo solamente','Orina'],'El hisopo superficial no refleja los patógenos reales.'],
+['X','En la escala de la Universidad de Texas, la etapa D significa:',['Con infección e isquemia','Sin infección ni isquemia','Solo infección','Solo isquemia'],'A: ninguna, B: infección, C: isquemia, D: ambas.'],
+['X','Dolor al caminar que mejora con el reposo (claudicación intermitente) indica:',['Enfermedad arterial periférica','Neuropatía','Retinopatía','Hipoglucemia'],'Es una macroangiopatía.'],
+['X','En la diabetes, el infarto de miocardio puede:',['Presentarse con síntomas poco evidentes','Ser siempre muy doloroso','No ocurrir','Diagnosticarse solo con HbA1c'],'La neuropatía autonómica puede atenuar el dolor.'],
+['X','Meta de HbA1c en adolescentes de 13–19 años (tabla de la exposición):',['<7.5 %','<8.5 %','<6 %','<9 %'],'0–6 años <8.5 %; 6–12 años <8 %.'],
+['X','Las macroangiopatías diabéticas se deben principalmente a:',['Aterosclerosis acelerada','Microaneurismas','Vía de los polioles','Autoinmunidad'],'Afectan vasos de mediano y gran calibre.'],
+];
+
+/* ---------- Banco de preguntas abiertas: [tema, pregunta, respuesta modelo, [conceptos clave: [nombre, sinónimos...]]] ---------- */
+const OP = [
+['P','Explica cómo responde el eje PTH–calcio–vitamina D cuando baja el calcio ionizado.','El CaSR detecta el calcio bajo y aumenta la PTH. En el hueso la PTH estimula RANKL y la resorción (libera calcio y fosfato); en el riñón aumenta la reabsorción de calcio, elimina fosfato y activa la 1α-hidroxilasa para formar calcitriol; el calcitriol aumenta la absorción intestinal de calcio. El calcio sube hacia lo normal.',[['PTH aumenta','pth','paratohormona','parathormona'],['CaSR','casr','sensor'],['resorción ósea','resorcion','rankl','osteoclast'],['reabsorción renal de calcio','reabsor','riñon','rinon'],['elimina fosfato','fosfat','fosfaturia'],['calcitriol / 1α-hidroxilasa','calcitriol','hidroxilasa','1,25'],['absorción intestinal','intestin','absorcion']]],
+['P','Compara el hiperparatiroidismo primario, secundario y terciario (causa y calcio).','Primario: secreción autónoma de PTH, sobre todo por adenoma (80 %), con calcio alto. Secundario: la PTH sube para compensar ERC, déficit de vitamina D o malabsorción; calcio normal o bajo. Terciario: autonomía de la glándula tras un secundario prolongado (ERC), con calcio alto.',[['adenoma','adenoma'],['autónoma','autonom'],['ERC / insuficiencia renal','erc','renal'],['vitamina D','vitamina d','vit d'],['compensación','compens'],['terciario: secundario prolongado','prolongad','tras'],['calcio alto en primario','calcio alto','hipercalcemia','calcio elevado']]],
+['P','¿Cuál es el patrón bioquímico del hipoparatiroidismo y cuál es su causa más frecuente?','Hipocalcemia + hiperfosfatemia + PTH baja o inapropiadamente normal. La causa más frecuente es posquirúrgica (tiroidectomía o paratiroidectomía). La hipomagnesemia severa también bloquea la secreción y acción de la PTH.',[['hipocalcemia','hipocalcemia','calcio bajo'],['hiperfosfatemia','hiperfosfatemia','fosforo alto','fósforo alto'],['PTH baja','pth baja','pth inapropiad','pth disminuid'],['posquirúrgica','quirurg','cirugia','cirugía','tiroidectom'],['magnesio','magnes']]],
+['P','Menciona las manifestaciones clínicas de la hipocalcemia por hipoparatiroidismo, incluyendo los signos de exploración.','Hormigueo peribucal y en extremidades, calambres, espasmos y tetania. Signo de Chvostek (contracción facial al percutir el nervio facial) y de Trousseau (espasmo carpopedal con el manguito). Graves: convulsiones, laringoespasmo y prolongación del QT. Crónicas: cataratas y calcificaciones intracraneales.',[['parestesias / hormigueo','hormigueo','parestesia'],['tetania','tetania','calambre','espasmo'],['Chvostek','chvostek'],['Trousseau','trousseau'],['convulsiones','convuls'],['QT prolongado','qt'],['laringoespasmo','laringo']]],
+['P','¿Qué es el pseudohipoparatiroidismo y en qué se diferencia del hipoparatiroidismo?','Es una resistencia renal a la PTH por alteraciones de GNAS: la PTH está presente y elevada pero el riñón no responde. Patrón: calcio bajo, fósforo alto y PTH alta. En el hipoparatiroidismo falta la PTH (PTH baja).',[['resistencia a PTH','resistencia'],['GNAS','gnas'],['PTH elevada','pth alta','pth elevada','pth aumentada'],['calcio bajo','calcio bajo','hipocalcemia'],['fósforo alto','fosforo alto','fósforo alto','hiperfosfatemia'],['hipopara = falta de PTH','falta','ausencia','deficiencia']]],
+['P','¿Cuál es el tratamiento del hiperparatiroidismo primario y cuándo está indicada la cirugía?','La paratiroidectomía es el tratamiento curativo; indicada en pacientes sintomáticos o con criterios: litiasis, afectación ósea o renal, hipercalcemia importante o edad menor de 50 años. Si no se opera: cinacalcet para bajar el calcio, bisfosfonatos o denosumab para el hueso, hidratación y corregir vitamina D.',[['paratiroidectomía','paratiroidectom','cirug'],['sintomáticos','sintomat'],['litiasis / riñón','litiasis','renal'],['hueso / densidad','oseo','óseo','hueso','densidad'],['menor de 50 años','50'],['cinacalcet','cinacalcet'],['bisfosfonatos o denosumab','bisfosfonato','denosumab']]],
+['P','Diferencia osteomalacia, raquitismo y osteoporosis.','Osteomalacia: defecto de mineralización del osteoide en el adulto. Raquitismo: lo mismo en niños, afectando la placa de crecimiento. Osteoporosis: disminución de masa ósea y deterioro de la microarquitectura con mineralización conservada.',[['mineralización del osteoide','mineraliz','osteoide'],['adulto','adulto'],['niños / placa de crecimiento','niño','nino','placa','crecimiento'],['masa ósea baja','masa'],['microarquitectura','microarquitect'],['mineralización conservada','conservad']]],
+['P','¿Qué laboratorio esperas en osteomalacia por déficit de vitamina D y por qué no se dan bisfosfonatos?','↓ 25(OH)D, ↑ PTH (secundaria), ↑ fosfatasa alcalina, con calcio y fósforo normales o bajos. Los bisfosfonatos están contraindicados porque no se debe frenar el recambio sin mineralizar primero el osteoide; hay que corregir el déficit con vitamina D y calcio.',[['25(OH)D baja','25','vitamina d baja'],['PTH alta','pth alta','pth elevada','pth aument'],['fosfatasa alcalina alta','fosfatasa'],['calcio/fósforo normal o bajo','normal','bajo'],['contraindicados','contraindic'],['corregir con vitamina D y calcio','suplement','corregir','calcio']]],
+['P','Interpreta los puntajes T y Z de la densitometría.','T-score compara con adulto joven y se usa en posmenopáusicas y hombres ≥50: T ≥ −1.0 normal, entre −1.0 y −2.5 masa ósea baja (osteopenia), T ≤ −2.5 osteoporosis. Z-score compara con la misma edad y sexo, se usa en premenopáusicas, hombres <50 y niños: Z ≤ −2.0 está por debajo de lo esperado y no diagnostica osteoporosis por sí solo.',[['T ≤ −2.5 osteoporosis','2.5','2,5'],['osteopenia / masa ósea baja','osteopenia','masa osea baja','masa ósea baja'],['T ≥ −1 normal','-1','−1','1.0'],['Z ≤ −2','-2','−2','2.0'],['adulto joven','joven'],['misma edad y sexo','edad']]],
+['P','Describe el tratamiento de la osteoporosis según el riesgo.','Base: ejercicio de fuerza y equilibrio, prevenir caídas, calcio y vitamina D. Alto riesgo: bisfosfonatos de primera línea; denosumab alternativa. Riesgo muy alto: anabólicos (teriparatida, romosozumab) seguidos obligatoriamente de antirresortivos. Romosozumab requiere evaluación cardiovascular; no suspender denosumab sin tratamiento secuencial por rebote.',[['ejercicio / caídas','ejercicio','caida','caída'],['calcio y vitamina D','calcio','vitamina'],['bisfosfonatos primera línea','bisfosfonato'],['denosumab','denosumab'],['anabólicos','teriparatida','romosozumab','anabol'],['antirresortivo después','antirresort','secuencial'],['rebote','rebote']]],
+
+['D','Explica la fisiopatología de la diabetes tipo 1 y sus consecuencias metabólicas.','Predisposición HLA y factores ambientales activan linfocitos T que destruyen las células beta → déficit absoluto de insulina con predominio de contrarreguladoras. Consecuencias: hiperglucemia (glucosuria, diuresis osmótica, poliuria, polidipsia), cetogénesis (cetoacidosis) y catabolismo (pérdida de peso y fatiga).',[['autoinmune','autoinmun','linfocito'],['HLA','hla'],['células beta','beta'],['déficit absoluto','absolut','deficit','déficit'],['hiperglucemia / poliuria','poliuria','glucosuria','hiperglucemia'],['cetogénesis / cetoacidosis','ceto'],['catabolismo / pérdida de peso','catabol','peso']]],
+['D','¿Qué pruebas ayudan a clasificar la DM1 y qué precaución hay que tener?','Autoanticuerpos anti-GAD, IA-2, ZnT8 y antiinsulina (apoyan autoinmunidad; la antiinsulina se mide antes de tratar; negativos no excluyen). Péptido C para valorar secreción endógena, interpretado con glucosa y función renal. Si hay descompensación no se retrasa la insulina esperando marcadores.',[['anti-GAD','gad'],['IA-2','ia-2','ia2'],['ZnT8','znt8'],['antiinsulina','antiinsulina'],['péptido C','peptido c','péptido c'],['no retrasar insulina','retras','no esperar']]],
+['D','Explica la fisiopatología de la diabetes tipo 2.','Resistencia a la insulina en músculo (↓ captación), hígado (↑ producción de glucosa) y tejido adiposo (↑ lipólisis), con compensación inicial por más secreción, seguida de disfunción progresiva de las células beta. Otros: ↑ glucagón, ↓ efecto incretina, ↑ reabsorción renal de glucosa, glucotoxicidad y lipotoxicidad. La diabetes aparece cuando la secreción ya no compensa la resistencia.',[['resistencia a la insulina','resistencia'],['disfunción de células beta','beta','secre'],['hígado produce glucosa','higado','hígado','hepat'],['músculo capta menos','muscul','músculo'],['glucagón / incretina','glucag','incretin'],['gluco/lipotoxicidad','toxicidad']]],
+['D','Menciona los criterios diagnósticos de diabetes y prediabetes (ADA 2026).','Diabetes: glucosa en ayuno ≥126 mg/dL, PTOG 75 g a las 2 h ≥200 mg/dL, HbA1c ≥6.5 %, o glucosa al azar ≥200 con síntomas clásicos o crisis. Prediabetes: ayuno 100–125, PTOG 140–199, HbA1c 5.7–6.4 %. Sin hiperglucemia inequívoca se requieren dos resultados anormales.',[['ayuno ≥126','126'],['PTOG ≥200','200'],['HbA1c ≥6.5','6.5','6,5'],['prediabetes 100–125','100','125'],['prediabetes 140–199','140','199'],['HbA1c 5.7–6.4','5.7','5,7','6.4'],['dos resultados','dos','2 resultados']]],
+['D','¿Cómo eliges el antidiabético en DM2 según las comorbilidades?','Insuficiencia cardiaca: SGLT2 con beneficio demostrado. Enfermedad renal crónica: SGLT2 o GLP-1 según función renal. Aterosclerosis: GLP-1 y/o SGLT2. Obesidad: fármacos que reducen peso (GLP-1). La metformina es frecuente pero no todos deben iniciar con ella. Insulina si HbA1c >10 %, glucosa ≥300 o catabolismo.',[['SGLT2 en IC','sglt2','sglt-2','gliflozina'],['insuficiencia cardiaca','cardiac'],['ERC / renal','renal','erc'],['GLP-1','glp'],['obesidad / peso','obes','peso'],['metformina','metformina'],['insulina >10 %','10','300']]],
+['D','Explica el mecanismo de acción de los principales antidiabéticos.','Metformina ↓ producción hepática de glucosa; SGLT2 (dapagliflozina, empagliflozina) ↑ glucosuria; GLP-1 (semaglutida, liraglutida) ↑ señal incretina y saciedad; DPP-4 (sitagliptina) prolonga incretinas; sulfonilureas (glibenclamida) ↑ secreción de insulina; tiazolidinedionas (pioglitazona) ↑ sensibilidad; insulina reemplaza la hormona.',[['metformina: hígado','metformina'],['SGLT2: glucosuria','glucosuria'],['GLP-1: incretina/saciedad','saciedad','glp'],['DPP-4','dpp'],['sulfonilureas: secreción','sulfonil','glibenclamida'],['pioglitazona: sensibilidad','sensibilidad','pioglitazona']]],
+['D','Un adulto de 70 kg inicia insulina a 0.4 U/kg/día. Calcula la DDT y su distribución.','DDT = 70 × 0.4 = 28 U/día. Distribución orientativa 50 % basal (14 U) y 50 % prandial (14 U repartidas entre las comidas); después se individualiza.',[['DDT 28 U','28'],['basal 14 U','14'],['50 % basal / 50 % prandial','50','mitad'],['prandial repartida','prandial','comida']]],
+['D','Explica la regla de 500 y la regla de 1800 con un ejemplo.','Regla de 500: 500/DDT = gramos de carbohidrato que cubre 1 U de insulina rápida (DDT 50 → 1:10; comida de 60 g = 6 U). Regla de 1800: 1800/DDT = cuántos mg/dL baja 1 U (DDT 50 → 36). Corrección = (glucosa actual − objetivo)/factor: (228−120)/36 = 3 U; total 6 + 3 = 9 U si no hay insulina activa.',[['500 / DDT','500'],['gramos de carbohidrato','carbohidrat','gramos'],['1800 / DDT','1800'],['factor de sensibilidad','sensibilidad','baja'],['corrección (actual − objetivo)','correcc','objetivo'],['insulina activa','activa']]],
+['D','¿Qué es la diabetes gestacional y cómo afecta al feto?','Hiperglucemia diagnosticada en el 2.º o 3.er trimestre sin diabetes previa: las hormonas placentarias aumentan la resistencia y el páncreas materno no compensa. La glucosa cruza la placenta pero la insulina materna no; el feto produce más insulina (hiperinsulinemia fetal) → crecimiento excesivo (macrosomía) e hipoglucemia neonatal al nacer. La madre queda con mayor riesgo de DM2.',[['2.º o 3.er trimestre','trimestre'],['hormonas placentarias / resistencia','placent','resistencia'],['glucosa cruza la placenta','cruza','atraviesa'],['insulina materna no cruza','no cruza','insulina materna'],['hiperinsulinemia fetal','hiperinsulin'],['macrosomía / crecimiento','macrosom','crecimiento','grasa'],['hipoglucemia neonatal','neonatal']]],
+['D','Describe las estrategias de uno y dos pasos para diagnosticar diabetes gestacional.','Se hace a las 24–28 semanas. Un paso: PTOG 75 g en ayuno; ayuno ≥92, 1 h ≥180, 2 h ≥153 mg/dL; 1 valor alterado = diagnóstico. Dos pasos: tamiz de 50 g sin ayuno (positivo ≥130/135/140) y luego PTOG 100 g (Carpenter-Coustan): ayuno ≥95, 1 h ≥180, 2 h ≥155, 3 h ≥140; ≥2 valores alterados.',[['24–28 semanas','24','28'],['75 g','75'],['92 / 180 / 153','92','153'],['1 valor','un valor','1 valor','uno'],['50 g sin ayuno','50'],['100 g Carpenter-Coustan','100','carpenter'],['2 valores','dos valores','2 valores']]],
+
+['C','Explica la fisiopatología de la cetoacidosis diabética.','Déficit importante de insulina con aumento de glucagón y catecolaminas. Lipólisis → ácidos grasos → cetogénesis hepática (β-hidroxibutirato y acetoacetato) → consumo de bicarbonato y caída del pH → acidosis metabólica con anión gap elevado. A la vez, ↑ producción hepática de glucosa → hiperglucemia → glucosuria, diuresis osmótica, deshidratación y pérdida de electrolitos. Compensación respiratoria: Kussmaul.',[['déficit de insulina','insulina'],['contrarreguladoras','glucag','catecol','contrarregul'],['lipólisis','lipolisis','lipólisis'],['cetogénesis / cuerpos cetónicos','ceto','hidroxibutirato'],['acidosis / ↓ bicarbonato','acidosis','bicarbonato','ph'],['anión gap','gap'],['deshidratación / diuresis osmótica','deshidrat','diuresis'],['Kussmaul','kussmaul']]],
+['C','¿Cuáles son los criterios diagnósticos de CAD y de EHH según ADA 2026?','CAD (3): glucosa >200 o antecedente de diabetes; β-OHB >3.0 mmol/L o cetonuria >2+; pH <7.3 y/o HCO₃ <18. EHH (4): glucosa ≥600; osmolalidad efectiva >300 o total >320; β-OHB <3 o cetonuria <2+; pH ≥7.3 y HCO₃ ≥15.',[['glucosa >200','200'],['β-OHB >3','3.0','3,0','>3','hidroxibutirato'],['pH <7.3','7.3','7,3'],['HCO₃ <18','18'],['glucosa ≥600','600'],['osmolalidad >300/320','300','320'],['HCO₃ ≥15','15']]],
+['C','Explica el manejo del potasio en la CAD.','El potasio corporal total está disminuido aunque el sérico sea normal o alto. La insulina desplaza el K al interior de la célula, por lo que puede bajar bruscamente. Si K <3.5 mmol/L se repone y se retrasa la insulina hasta K >3.5. La reposición depende de la función renal y la diuresis; monitorización continua por riesgo de arritmias.',[['K corporal total bajo','total','corporal'],['insulina mete K a la célula','interior','celula','célula'],['K <3.5','3.5','3,5'],['retrasar insulina','retras'],['reponer','repon'],['arritmias / monitorizar','arritm','monitor']]],
+['C','¿Cuáles son los criterios de resolución de la CAD y qué hacer cuando la glucosa baja de 250?','Resolución: β-OHB <0.6 mmol/L y (pH >7.3 o HCO₃ >18). La glucosa normal no implica resolución. Al bajar de 250 mg/dL se añade dextrosa para continuar la insulina hasta resolver la cetosis. Se superpone insulina subcutánea 1–2 h antes de suspender la IV. Bicarbonato solo si pH <7.0.',[['β-OHB <0.6','0.6','0,6'],['pH >7.3 o HCO₃ >18','7.3','18'],['dextrosa al bajar de 250','dextrosa','glucosado','250'],['continuar insulina','continu'],['superponer subcutánea 1–2 h','subcut','superpon'],['bicarbonato pH <7.0','7.0','7,0','bicarbonato']]],
+['C','Explica el estado hiperglucémico hiperosmolar y en qué se diferencia de la CAD.','Déficit relativo de insulina: la insulina residual limita la lipólisis y la cetogénesis. La hiperglucemia causa glucosuria y pérdida de agua; al disminuir la perfusión renal se elimina menos glucosa y la hiperglucemia persiste (círculo vicioso) → deshidratación profunda e hiperosmolalidad con confusión o somnolencia. Instalación más lenta (días), glucosa ≥600, sin acidosis significativa y sin Kussmaul característica.',[['insulina residual','residual','relativo'],['sin cetosis importante','cetogen','cetosis','sin ceto'],['deshidratación profunda','deshidrat'],['hiperosmolalidad','osmol'],['círculo vicioso / perfusión renal','perfusion','perfusión','circulo','círculo'],['más lento (días)','lent','dias','días'],['alteración neurológica','confus','somnol','neurol']]],
+['C','Calcula la osmolalidad efectiva de un paciente con Na 145 mmol/L y glucosa 900 mg/dL e interpreta.','Osmolalidad efectiva = 2 × Na + glucosa/18 = 2 × 145 + 900/18 = 290 + 50 = 340 mOsm/kg. Es hiperosmolaridad (>300). Aun así deben revisarse cetonas, pH y bicarbonato para clasificar la crisis.',[['fórmula 2×Na + glucosa/18','2','18'],['290','290'],['50','50'],['340 mOsm/kg','340'],['hiperosmolaridad','hiperosmol'],['revisar cetonas/pH','ceton','ph','bicarbonato']]],
+['C','¿Qué es la CAD euglucémica y cómo se evalúan las cetonas?','Cetoacidosis con glucosa poco elevada; se asocia a iSGLT2 (más pérdida de glucosa por orina), ayuno, embarazo y enfermedad aguda. Se prefiere medir β-hidroxibutirato en sangre; la orina mide acetoacetato y puede subestimar al inicio. Las cetonas positivas solas no son CAD: confirmar acidosis con pH y bicarbonato.',[['glucosa poco elevada / normal','normal','poco elevad','euglucem'],['iSGLT2','sglt'],['ayuno / embarazo','ayuno','embaraz'],['β-hidroxibutirato en sangre','hidroxibutirato','sangre'],['orina mide acetoacetato','acetoacetato','orina'],['confirmar acidosis','acidosis','gasometr','ph']]],
+
+['H','Define hipoglucemia y su clasificación ADA.','Disminución de la glucosa que compromete el funcionamiento del organismo, sobre todo del cerebro; en diabetes, <70 mg/dL es valor de alerta. Nivel 1: ≥54 y <70 mg/dL (alerta). Nivel 2: <54 mg/dL (clínicamente significativa). Nivel 3: alteración mental o física que requiere ayuda, sin umbral de glucosa.',[['<70 mg/dL','70'],['nivel 1','nivel 1','54 y'],['<54 nivel 2','54'],['nivel 3: requiere ayuda','ayuda','asistencia','tercer'],['cerebro','cerebr']]],
+['H','Describe la regla de los 15 y qué fuentes de glucosa se prefieren o se evitan.','Dar 15 g de glucosa rápida, esperar 15 minutos y medir; repetir si sigue <70 mg/dL; pedir atención si persiste o empeora. Solo si está consciente y puede tragar. Preferir tabletas o gel; alternativa jugo o refresco regular (≈120–150 mL). Evitar al inicio chocolate, alimentos grasos y refrescos sin azúcar. Después dar comida o colación.',[['15 g','15 g','15 gramos'],['esperar 15 min','15 min'],['repetir si <70','repet','70'],['consciente y puede tragar','consciente','tragar','deglu'],['tabletas o gel / jugo','tableta','gel','jugo'],['evitar chocolate/grasa','chocolate','gras'],['colación después','colacion','colación','comida']]],
+['H','¿Cómo manejas una hipoglucemia grave en un paciente que no puede tragar?','Nada por boca. Pedir emergencias, proteger la vía aérea, posición lateral si está inconsciente y respira. En hospital: glucosa IV 20 g (200 mL al 10 % o 100 mL al 20 %) en ~15 min sin esperar laboratorio. Sin acceso IV: glucagón 1 mg IM (menos eficaz si se agotó el glucógeno). Reevaluar en 10–15 min con vigilancia continua.',[['nada por boca','nada por boca','no dar por boca','vía oral no'],['vía aérea / posición lateral','aerea','aérea','lateral'],['glucosa IV 20 g','iv','intraven','20 g'],['10 % / 20 %','10','20'],['glucagón 1 mg IM','glucag'],['reevaluar 10–15 min','reevalu','10']]],
+['H','¿Qué es la tríada de Whipple y qué muestra se toma en una hipoglucemia inexplicada?','Tríada de Whipple: síntomas compatibles, glucosa plasmática baja y mejoría tras corregirla. En la hipoglucemia inexplicada se toma una muestra crítica durante el episodio: glucosa, insulina, péptido C, proinsulina, β-hidroxibutirato y búsqueda de secretagogos, sin retrasar el rescate.',[['síntomas','sintoma','síntoma'],['glucosa baja','glucosa baja','glucosa plasm'],['mejoría al corregir','mejor'],['insulina','insulina'],['péptido C','peptido','péptido'],['proinsulina / secretagogos','proinsulina','secretagog']]],
+['H','Menciona las causas de hipoglucemia en personas con y sin diabetes.','Con diabetes: insulina, sulfonilureas y meglitinidas; comidas omitidas o ejercicio no previsto; alcohol; enfermedad renal que prolonga los fármacos. Sin diabetes: en ayuno (desnutrición, sepsis, insuficiencia hepática o renal, insuficiencia suprarrenal, insulinoma) o posprandial (cirugía gastrointestinal).',[['insulina / sulfonilureas','sulfonil','insulina','glibenclamida'],['comidas omitidas / ejercicio','omit','ejercicio'],['alcohol','alcohol'],['enfermedad renal','renal'],['insulinoma','insulinoma'],['suprarrenal / hepática','suprarrenal','hepat'],['posprandial / cirugía GI','posprandial','cirug']]],
+
+['X','Explica la fisiopatología y la clínica de la polineuropatía simétrica distal.','La hiperglucemia crónica daña los nervios por la vía de los polioles (sorbitol, depleción de NADPH, ↓ óxido nítrico y del flujo endoneural), estrés oxidativo y AGEs, e isquemia microvascular. Clínica: hormigueo en manos y pies; síntomas positivos (parestesias, ardor, dolor) y negativos (pérdida de sensibilidad vibratoria, térmica y posicional); motora: atrofia de músculos del pie, dedos en garra y pérdida del reflejo aquíleo.',[['vía de los polioles / sorbitol','poliol','sorbitol'],['estrés oxidativo / AGEs','oxidativ','age'],['isquemia','isquem','microcircul'],['guante y calcetín / manos y pies','manos','pies','guante'],['pérdida de sensibilidad','sensibilidad'],['reflejo aquíleo','aquile','aquíle'],['dedos en garra / atrofia','garra','atrofia']]],
+['X','¿Cómo se diagnostica y trata la neuropatía diabética?','Diagnóstico: monofilamento de Semmes-Weinstein de 10 g, diapasón de 128 Hz, reflejos osteotendinosos; velocidad de conducción y electromiografía en formas atípicas o focales. Tratamiento: control glucémico estricto (piedra angular), dolor con pregabalina o gabapentina, tricíclicos o IRSN, e inspección diaria de los pies.',[['monofilamento 10 g','monofilamento'],['diapasón 128 Hz','diapason','diapasón','128'],['conducción / electromiografía','conduccion','conducción','electromiograf'],['control glucémico','control'],['pregabalina / gabapentina','pregabalina','gabapentina'],['tricíclicos / IRSN','triciclic','tricíclic','irsn'],['revisar los pies','pies']]],
+['X','Diferencia la retinopatía no proliferativa de la proliferativa.','No proliferativa: daño vascular sin vasos nuevos; leve con microaneurismas, moderada con hemorragias y exudados duros y algodonosos, severa (regla 4-2-1). Proliferativa: la isquemia retiniana induce neovasos frágiles que sangran (hemorragia vítrea), producen fibrosis y desprendimiento traccional de retina y glaucoma neovascular.',[['microaneurismas','microaneurism'],['hemorragias / exudados','hemorrag','exudad'],['4-2-1','4-2-1','421'],['neovasos','neovas','vasos nuevos'],['isquemia','isquem'],['hemorragia vítrea','vitre','vítre'],['desprendimiento / glaucoma','desprend','glaucoma']]],
+['X','Explica la fisiopatología, clínica y tratamiento de la nefropatía diabética.','La hiperglucemia causa estrés oxidativo e inflamación glomerular; hay hiperfiltración inicial y activación del sistema renina-angiotensina-aldosterona con hipertensión intraglomerular. Clínica: albuminuria, HTA, edema y caída de la TFG hasta ERC. Tratamiento: control glucémico, iSGLT2, IECA o ARA-II con HTA y albuminuria, y nefrología si hay deterioro.',[['hiperfiltración','hiperfiltr'],['SRAA / angiotensina','angiotens','renina','aldosteron'],['albuminuria','albumin'],['hipertensión','hipertens','hta'],['TFG / ERC','filtracion','filtración','erc','tfg'],['iSGLT2','sglt'],['IECA / ARA-II','ieca','ara']]],
+['X','¿Cuáles son los factores del pie diabético y cómo se clasifica con Wagner?','Tres factores: neuropatía (>80 %: pérdida de sensibilidad protectora y deformidades), enfermedad arterial periférica (aterosclerosis, calcificación de Mönckeberg) e infección. Wagner: 0 pie de riesgo, 1 úlcera superficial, 2 úlcera profunda, 3 profunda con absceso u osteomielitis, 4 gangrena limitada, 5 gangrena extensa.',[['neuropatía','neuropat'],['enfermedad arterial periférica','arterial','eap','isquem'],['infección','infecc'],['Wagner 1 úlcera superficial','superficial'],['Wagner 3 osteomielitis','osteomiel','absceso'],['Wagner 4–5 gangrena','gangrena']]],
+['X','Describe la evaluación y el manejo del pie diabético.','Evaluación neurológica (monofilamento, diapasón), vascular (pulsos e índice tobillo-brazo: <0.9 EAP, >1.3 rigidez arterial), infección (probe-to-bone, Rx, RM, cultivo de tejido profundo). Manejo: descarga de presión, desbridamiento, antibiótico según gravedad y cultivo, revascularización si hay isquemia, control metabólico y dejar de fumar.',[['índice tobillo-brazo','tobillo','itb'],['<0.9 EAP','0.9','0,9'],['probe-to-bone','probe','contacto'],['descarga de presión','descarga','off'],['desbridamiento','desbrid'],['antibiótico','antibiot','antimicrob'],['revascularización','revascular']]],
+['X','¿Qué son las macroangiopatías diabéticas y cuáles son sus tres formas?','Complicaciones de vasos de mediano y gran calibre por aterosclerosis acelerada. Formas: enfermedad coronaria (angina, infarto, a veces con síntomas poco evidentes), cerebrovascular (EVC: debilidad de un lado, dificultad para hablar, pérdida súbita de visión) y arterial periférica (claudicación intermitente, pies fríos, gangrena, amputación). Prevención: control de glucosa, presión, lípidos y no fumar.',[['aterosclerosis','ateroscler'],['coronaria / infarto','coronari','infarto'],['cerebrovascular / EVC','cerebro','evc'],['arterial periférica','periferic','periféric'],['claudicación','claudica'],['control de factores','presion','presión','lipid','lípid','tabaco']]],
+];
+
+/* ---------- Cuestionario (preguntas cortas) ---------- */
+const FC = [
+['P','¿Qué detecta el CaSR?','El calcio ionizado en sangre; si baja, aumenta la PTH.'],
+['P','¿Qué hace la PTH en el riñón?','↑ reabsorción de calcio, ↑ eliminación de fosfato y ↑ 1α-hidroxilasa (calcitriol).'],
+['P','¿Diferencia entre 25(OH)D y calcitriol?','25(OH)D = reservas de vitamina D. Calcitriol 1,25(OH)₂D = forma hormonal activa.'],
+['P','Causa más frecuente de hiperparatiroidismo primario','Adenoma paratiroideo (≈80 %).'],
+['P','Clínica del hiperparatiroidismo','Pérdida ósea y fracturas, litiasis renal, poliuria/polidipsia, estreñimiento, náuseas, fatiga y confusión. Muchos asintomáticos.'],
+['P','¿La ecografía y el sestamibi confirman el hiperparatiroidismo?','No. Solo localizan la glándula antes de la cirugía; el diagnóstico es bioquímico.'],
+['P','Causa más frecuente de hipoparatiroidismo','Posquirúrgica (cirugía cervical).'],
+['P','¿Qué dice el resumen bioquímico del hipoparatiroidismo?','Calcio bajo + fósforo alto + PTH baja o inapropiadamente normal.'],
+['P','Chvostek y Trousseau','Chvostek: contracción facial al percutir el nervio facial. Trousseau: espasmo carpopedal con el manguito.'],
+['P','Pseudohipoparatiroidismo en una frase','Resistencia renal a la PTH (GNAS): calcio bajo + fósforo alto + PTH alta.'],
+['P','Pseudofracturas de Looser','Hallazgo característico de osteomalacia.'],
+['P','Signos de raquitismo','Muñecas ensanchadas, piernas arqueadas y rosario raquítico.'],
+['P','¿Bisfosfonatos en osteomalacia?','Contraindicados hasta corregir el defecto de mineralización.'],
+['P','T-score de osteoporosis','T ≤ −2.5. Osteopenia: entre −1.0 y −2.5.'],
+['P','¿Para qué sirve FRAX?','Estima el riesgo de fractura a 10 años.'],
+['P','Primera línea en osteoporosis de alto riesgo','Bisfosfonatos (denosumab como alternativa).'],
+['P','¿Qué pasa si se suspende el denosumab sin tratamiento secuencial?','Rebote con pérdida ósea rápida.'],
+['D','¿Qué es la DM1?','Destrucción autoinmune de células beta con déficit absoluto de insulina.'],
+['D','¿Qué es la DM2?','Resistencia a la insulina + deterioro progresivo de la secreción.'],
+['D','Síntomas clásicos de DM1','Poliuria, polidipsia, pérdida de peso y fatiga.'],
+['D','Autoanticuerpos de DM1','Anti-GAD, IA-2, ZnT8 y antiinsulina.'],
+['D','¿Qué mide el péptido C?','La secreción endógena de insulina.'],
+['D','Criterios de diabetes','Ayuno ≥126, PTOG 2 h ≥200, HbA1c ≥6.5 %, o al azar ≥200 con síntomas.'],
+['D','Criterios de prediabetes','Ayuno 100–125, PTOG 140–199, HbA1c 5.7–6.4 %.'],
+['D','Metas de control en adultos','HbA1c <7 %, preprandial 80–130, posprandial <180 mg/dL.'],
+['D','¿Cuándo dar insulina en DM2?','HbA1c >10 %, glucosa ≥300 o catabolismo / síntomas graves.'],
+['D','Fármaco de elección con insuficiencia cardiaca','Inhibidores SGLT2.'],
+['D','Mecanismo de la metformina','↓ producción hepática de glucosa.'],
+['D','Mecanismo de los SGLT2','↑ glucosuria.'],
+['D','Dosis inicial de insulina en adultos estables','0.2–0.5 U/kg/día, ≈50 % basal y 50 % prandial.'],
+['D','Regla de 500','500 / DDT = gramos de carbohidrato cubiertos por 1 U.'],
+['D','Regla de 1800','1800 / DDT = mg/dL que baja 1 U de insulina rápida.'],
+['D','¿Cuándo se hace el tamizaje de diabetes gestacional?','24–28 semanas.'],
+['D','Umbrales de la PTOG 75 g en embarazo','Ayuno ≥92, 1 h ≥180, 2 h ≥153 (1 valor basta).'],
+['D','¿Qué cruza la placenta?','La glucosa sí; la insulina materna no.'],
+['C','Precipitante más común de CAD','Infección.'],
+['C','Triada diagnóstica de la CAD','Glucosa >200 (o DM conocida) + β-OHB >3 mmol/L + pH <7.3 y/o HCO₃ <18.'],
+['C','Criterios del EHH','Glucosa ≥600, osmolalidad efectiva >300, cetonas bajas, pH ≥7.3 y HCO₃ ≥15.'],
+['C','Osmolalidad efectiva','2 × Na + glucosa/18.'],
+['C','Anión gap','Na − (Cl + HCO₃).'],
+['C','¿Qué hacer si el K es <3.5 en CAD?','Reponer potasio y retrasar la insulina hasta K >3.5.'],
+['C','¿Cuándo añadir dextrosa en la CAD?','Cuando la glucosa baja de 250 mg/dL, para seguir con la insulina.'],
+['C','Resolución de la CAD','β-OHB <0.6 y (pH >7.3 o HCO₃ >18).'],
+['C','¿Cuándo usar bicarbonato?','Solo si pH <7.0.'],
+['C','Descenso de osmolalidad meta en EHH','3–8 mOsm/kg/h.'],
+['C','CAD euglucémica: fármaco asociado','Inhibidores SGLT2.'],
+['H','Valor de alerta de hipoglucemia','<70 mg/dL.'],
+['H','Niveles ADA de hipoglucemia','1: 54–69; 2: <54; 3: requiere ayuda de otra persona.'],
+['H','Tríada de Whipple','Síntomas + glucosa baja + mejoría al corregirla.'],
+['H','Regla de los 15','15 g de glucosa, esperar 15 min, medir y repetir si <70.'],
+['H','Hipoglucemia grave sin vía IV','Glucagón 1 mg IM.'],
+['H','Glucosa IV en hipoglucemia grave','20 g: 200 mL al 10 % o 100 mL al 20 %.'],
+['H','¿Por qué vigilar más la hipoglucemia por sulfonilureas?','Porque puede reaparecer y prolongarse; en casos severos se usa octreótido.'],
+['H','Hipoglucemia inadvertida','Episodios repetidos que reducen los síntomas de alarma.'],
+['X','Herramientas para explorar neuropatía','Monofilamento 10 g y diapasón 128 Hz.'],
+['X','Tratamiento del dolor neuropático','Pregabalina, gabapentina, tricíclicos o IRSN.'],
+['X','Signo característico de retinopatía no proliferativa','Microaneurismas.'],
+['X','¿Qué define la retinopatía proliferativa?','Neovasos por isquemia retiniana.'],
+['X','Tratamiento del edema macular','Anti-VEGF intravítreo, láser o corticosteroides.'],
+['X','Primera manifestación de la nefropatía','Albuminuria (con hiperfiltración inicial).'],
+['X','Fármacos renoprotectores en diabetes','iSGLT2 e IECA o ARA-II.'],
+['X','Índice tobillo-brazo','<0.9 = EAP; >1.3 = rigidez arterial.'],
+['X','Wagner 4 y 5','4: gangrena limitada. 5: gangrena extensa.'],
+['X','Claudicación intermitente','Dolor al caminar que mejora con el reposo: enfermedad arterial periférica.'],
+];
+
+/* ---------- Utilidades ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[−–]/g, '-');
+const store = {
+  get(k) { try { return JSON.parse(localStorage.getItem('endo-' + k)); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem('endo-' + k, JSON.stringify(v)); } catch (e) {} }
+};
+function topicOptions(sel) {
+  sel.innerHTML = '<option value="all">Todos los temas</option>' + Object.entries(TOPICS).map(([k, v]) => `<option value="${k}">${v}</option>`).join('');
+}
+
+/* ---------- Pestañas ---------- */
+const VIEWS = ['resumen', 'cuestionario', 'examen', 'abierto', 'casos', 'calculos'];
+function show(view) {
+  if (!VIEWS.includes(view)) view = 'resumen';
+  VIEWS.forEach(v => {
+    $('#view-' + v).hidden = v !== view;
+    $('#tab-' + v).setAttribute('aria-selected', v === view ? 'true' : 'false');
+  });
+}
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+  const v = t.dataset.view;
+  if (location.hash !== '#' + v) location.hash = v; else show(v);
+  window.scrollTo({ top: 0 });
+}));
+window.addEventListener('hashchange', () => show(location.hash.slice(1)));
+show(location.hash.slice(1));
+
+/* ---------- Navegación del resumen ---------- */
+$('#sum-nav').innerHTML = Object.entries(TOPICS).map(([k, v]) => `<button class="chip" type="button" data-t="${k}">${v}</button>`).join('');
+$('#sum-nav').addEventListener('click', e => {
+  const b = e.target.closest('[data-t]'); if (!b) return;
+  const el = $('#sum-' + b.dataset.t);
+  const y = el.getBoundingClientRect().top + window.scrollY - $('header.top').offsetHeight - 12;
+  window.scrollTo({ top: y, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+});
+
+/* ---------- Cuestionario ---------- */
+let fcTopic = 'all', fcOrder = FC.map((_, i) => i), fcAll = false;
+$('#fc-topics').innerHTML = `<button class="chip" type="button" data-t="all" aria-pressed="true">Todos</button>` + Object.entries(TOPICS).map(([k, v]) => `<button class="chip" type="button" data-t="${k}" aria-pressed="false">${v}</button>`).join('');
+function renderFC() {
+  const items = fcOrder.filter(i => fcTopic === 'all' || FC[i][0] === fcTopic);
+  $('#fc-list').innerHTML = items.map((i, n) => {
+    const [t, q, a] = FC[i];
+    return `<div class="card flash"><div class="meta"><span>${TOPICS[t]}</span><span>${n + 1} / ${items.length}</span></div>
+      <div class="q">${esc(q)}</div>
+      <button class="linkbtn" type="button" data-fc="${i}" aria-expanded="${fcAll}">${fcAll ? 'Ocultar respuesta' : 'Mostrar respuesta'}</button>
+      <div class="ans" id="fc-a-${i}" ${fcAll ? '' : 'hidden'}>${esc(a)}</div></div>`;
+  }).join('');
+}
+$('#fc-topics').addEventListener('click', e => {
+  const b = e.target.closest('[data-t]'); if (!b) return;
+  fcTopic = b.dataset.t;
+  $('#fc-topics').querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c === b ? 'true' : 'false'));
+  renderFC();
+});
+$('#fc-shuffle').addEventListener('click', () => { fcOrder = shuffle(fcOrder); renderFC(); });
+$('#fc-toggle').addEventListener('click', () => { fcAll = !fcAll; $('#fc-toggle').textContent = fcAll ? 'Ocultar todas las respuestas' : 'Mostrar todas las respuestas'; renderFC(); });
+$('#fc-list').addEventListener('click', e => {
+  const b = e.target.closest('[data-fc]'); if (!b) return;
+  const a = $('#fc-a-' + b.dataset.fc); a.hidden = !a.hidden;
+  b.textContent = a.hidden ? 'Mostrar respuesta' : 'Ocultar respuesta';
+  b.setAttribute('aria-expanded', String(!a.hidden));
+});
+renderFC();
+
+/* ---------- Resultado y celebración ---------- */
+function resultHTML(pct, ok, total, pass, threshold, kind, wrongCount, retryText, newText) {
+  const icon = pass
+    ? `<svg class="check" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34"/><path d="M24 41 l11 11 l22 -24"/></svg>`
+    : `<svg class="xmark" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34"/><path d="M28 28 L52 52 M52 28 L28 52"/></svg>`;
+  const msg = pass
+    ? `<strong>¡Felicidades, aprobaste!</strong>Sacaste ${ok} de ${total}. Puedes intentar otro examen con preguntas nuevas para reforzar.`
+    : `<strong>Todavía no: necesitas ${threshold} %</strong>Sacaste ${ok} de ${total}. Revisa las que están en rojo y vuelve a intentarlo.`;
+  return `<div class="result ${pass ? 'pass' : 'fail'}" role="status">${icon}<div class="score">${pct}%</div>
+    <div class="txt">${msg}<div class="actions">
+      <button class="btn" type="button" data-act="new-${kind}">${newText || 'Nuevo intento (preguntas al azar)'}</button>
+      ${wrongCount ? `<button class="btn ghost" type="button" data-act="retry-${kind}">${retryText || `Repetir solo las ${wrongCount} que fallé`}</button>` : ''}
+    </div></div></div>`;
+}
+function confetti() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c = $('#confetti'); c.hidden = false;
+  const ctx = c.getContext('2d'); const W = c.width = innerWidth, H = c.height = innerHeight;
+  const cs = getComputedStyle(document.documentElement);
+  const colors = ['--accent', '--good', '--lab'].map(v => cs.getPropertyValue(v).trim());
+  const P = Array.from({ length: 140 }, () => ({ x: Math.random() * W, y: -20 - Math.random() * H * 0.5, r: 4 + Math.random() * 5, vy: 2 + Math.random() * 3, vx: -1.5 + Math.random() * 3, a: Math.random() * 6, c: colors[Math.floor(Math.random() * 3)] }));
+  let t = 0;
+  (function frame() {
+    ctx.clearRect(0, 0, W, H);
+    P.forEach(p => { p.y += p.vy; p.x += p.vx; p.a += 0.1; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a); ctx.fillStyle = p.c; ctx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); ctx.restore(); });
+    if (++t < 180) requestAnimationFrame(frame); else { ctx.clearRect(0, 0, W, H); c.hidden = true; }
+  })();
+}
+function bestText(key) {
+  const b = store.get(key);
+  return b ? `Tu mejor resultado: ${b.pct} % ${b.pass ? '✓ aprobado' : ''}` : '';
+}
+function saveBest(key, pct, pass) {
+  const b = store.get(key);
+  if (!b || pct > b.pct) store.set(key, { pct, pass });
+}
+function filterBar(scope, list) {
+  scope.addEventListener('click', e => {
+    const b = e.target.closest('[data-f]'); if (!b) return;
+    scope.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c === b ? 'true' : 'false'));
+    list.querySelectorAll('.card').forEach(card => { card.hidden = b.dataset.f === 'ko' && !card.classList.contains('ko'); });
+  });
+}
+function resetFilter(scope, list) {
+  scope.querySelectorAll('.chip').forEach((c, i) => c.setAttribute('aria-pressed', i === 0 ? 'true' : 'false'));
+  list.querySelectorAll('.card').forEach(c => { c.hidden = false; });
+}
+
+/* ---------- Examen opción múltiple ---------- */
+const mc = { qs: [], done: false };
+$('#mc-bank-size').textContent = MC.length + ' preguntas';
+topicOptions($('#mc-topic'));
+$('#mc-best').textContent = bestText('mc');
+function mcStart(pool) {
+  const topic = $('#mc-topic').value, n = +$('#mc-count').value;
+  const src = pool || shuffle(MC.map((_, i) => i).filter(i => topic === 'all' || MC[i][0] === topic)).slice(0, n);
+  mc.qs = shuffle(src).map(i => ({ i, opts: shuffle(MC[i][2].map((t, k) => ({ t, ok: k === 0 }))), pick: null }));
+  mc.done = false;
+  $('#mc-result').innerHTML = '';
+  $('#mc-filter').hidden = true; resetFilter($('#mc-filter'), $('#mc-list'));
+  $('#mc-status').hidden = false;
+  mcRender(); mcProgress();
+  $('#mc-list').scrollIntoView({ block: 'start' });
+  window.scrollBy(0, -$('header.top').offsetHeight - 70);
+}
+function mcRender() {
+  $('#mc-list').innerHTML = mc.qs.map((q, n) => {
+    const [t, text, , exp] = MC[q.i];
+    const right = q.opts.findIndex(o => o.ok);
+    const state = mc.done ? (q.pick === right ? 'ok' : 'ko') : '';
+    const verdict = mc.done ? (state === 'ok' ? '<span class="verdict ok">✓ Correcta</span>' : `<span class="verdict ko">✗ ${q.pick === null ? 'Sin contestar' : 'Incorrecta'}</span>`) : `<span>${n + 1} / ${mc.qs.length}</span>`;
+    return `<fieldset class="card ${mc.done ? 'done ' + state : ''}" style="margin:0">
+      <legend class="sr-only" style="position:absolute;left:-9999px">Pregunta ${n + 1}</legend>
+      <div class="meta"><span>${n + 1}. ${TOPICS[t]}</span>${verdict}</div>
+      <div class="q">${esc(text)}</div>
+      <div class="opts">${q.opts.map((o, k) => {
+        let cls = '';
+        if (mc.done) { if (o.ok) cls = 'is-right'; else if (q.pick === k) cls = 'is-wrong'; }
+        return `<label class="opt ${cls}"><input type="radio" name="mc-${n}" id="mc-${n}-${k}" value="${k}" ${q.pick === k ? 'checked' : ''} ${mc.done ? 'disabled' : ''}><span>${esc(o.t)}</span></label>`;
+      }).join('')}</div>
+      ${mc.done && state === 'ko' ? `<div class="explain"><b>Respuesta correcta:</b> ${esc(q.opts[right].t)}<br>${esc(exp)}</div>` : ''}
+      ${mc.done && state === 'ok' ? `<div class="explain">${esc(exp)}</div>` : ''}
+    </fieldset>`;
+  }).join('');
+}
+function mcProgress() {
+  const a = mc.qs.filter(q => q.pick !== null).length;
+  $('#mc-prog-txt').textContent = `Respondidas ${a} de ${mc.qs.length}`;
+  $('#mc-prog').style.width = (mc.qs.length ? a / mc.qs.length * 100 : 0) + '%';
+}
+$('#mc-list').addEventListener('change', e => {
+  if (mc.done || e.target.type !== 'radio') return;
+  const n = +e.target.name.split('-')[1];
+  mc.qs[n].pick = +e.target.value; mcProgress();
+});
+$('#mc-start').addEventListener('click', () => mcStart());
+$('#mc-submit').addEventListener('click', () => {
+  mc.done = true;
+  const ok = mc.qs.filter(q => q.pick !== null && q.opts[q.pick].ok).length;
+  const pct = Math.round(ok / mc.qs.length * 100), pass = pct >= 80;
+  const wrong = mc.qs.length - ok;
+  saveBest('mc', pct, pass); $('#mc-best').textContent = bestText('mc');
+  $('#mc-status').hidden = true;
+  $('#mc-result').innerHTML = resultHTML(pct, ok, mc.qs.length, pass, 80, 'mc', wrong);
+  $('#mc-filter').hidden = wrong === 0;
+  mcRender();
+  window.scrollTo({ top: 0 });
+  if (pass) confetti();
+});
+filterBar($('#mc-filter'), $('#mc-list'));
+
+/* ---------- Examen preguntas abiertas ---------- */
+const op = { qs: [], done: false };
+topicOptions($('#op-topic'));
+$('#op-best').textContent = bestText('op');
+function grade(text, concepts) {
+  const t = norm(text);
+  return concepts.map(([name, ...alts]) => ({ name, hit: alts.some(a => t.includes(norm(a))) }));
+}
+function opStart(pool) {
+  const topic = $('#op-topic').value, n = +$('#op-count').value;
+  const src = pool || shuffle(OP.map((_, i) => i).filter(i => topic === 'all' || OP[i][0] === topic)).slice(0, n);
+  op.qs = shuffle(src).map(i => ({ i, text: '', hits: [], ok: null }));
+  op.done = false;
+  $('#op-result').innerHTML = '';
+  $('#op-filter').hidden = true; resetFilter($('#op-filter'), $('#op-list'));
+  $('#op-status').hidden = false;
+  opRender(); opProgress();
+  $('#op-list').scrollIntoView({ block: 'start' });
+  window.scrollBy(0, -$('header.top').offsetHeight - 70);
+}
+function opRender() {
+  $('#op-list').innerHTML = op.qs.map((q, n) => {
+    const [t, text, model] = OP[q.i];
+    const state = op.done ? (q.ok ? 'ok' : 'ko') : '';
+    const verdict = op.done ? (q.ok ? '<span class="verdict ok">✓ Correcta</span>' : '<span class="verdict ko">✗ Incompleta</span>') : `<span>${n + 1} / ${op.qs.length}</span>`;
+    const found = q.hits.filter(h => h.hit).length;
+    return `<div class="card ${op.done ? 'done ' + state : ''}" data-n="${n}">
+      <div class="meta"><span>${n + 1}. ${TOPICS[t]}</span>${verdict}</div>
+      <label class="q" for="op-${n}" style="display:block">${esc(text)}</label>
+      <textarea id="op-${n}" data-n="${n}" ${op.done ? 'readonly' : ''} placeholder="Escribe tu respuesta…">${esc(q.text)}</textarea>
+      ${op.done ? `<div class="concepts" aria-label="Conceptos clave">${q.hits.map(h => `<span class="concept ${h.hit ? 'hit' : 'miss'}">${h.hit ? '✓' : '✗'} ${esc(h.name)}</span>`).join('')}</div>
+        <div class="explain"><b>Respuesta modelo:</b> ${esc(model)}</div>
+        <div class="selfgrade">Mencionaste ${found} de ${q.hits.length} conceptos. ¿Tu respuesta fue correcta?
+          <button class="chip" type="button" data-self="1" aria-pressed="${q.ok === true}">Sí, la tuve bien</button>
+          <button class="chip" type="button" data-self="0" aria-pressed="${q.ok === false}">No, me faltó</button></div>` : ''}
+    </div>`;
+  }).join('');
+}
+function opProgress() {
+  const a = op.qs.filter(q => q.text.trim().length > 0).length;
+  $('#op-prog-txt').textContent = `Contestadas ${a} de ${op.qs.length}`;
+  $('#op-prog').style.width = (op.qs.length ? a / op.qs.length * 100 : 0) + '%';
+}
+function opScore(first) {
+  const ok = op.qs.filter(q => q.ok).length;
+  const pct = Math.round(ok / op.qs.length * 100), pass = pct >= 70;
+  const wasPass = $('#op-result .result.pass') !== null;
+  saveBest('op', pct, pass); $('#op-best').textContent = bestText('op');
+  $('#op-result').innerHTML = resultHTML(pct, ok, op.qs.length, pass, 70, 'op', op.qs.length - ok);
+  $('#op-filter').hidden = ok === op.qs.length;
+  if (pass && (first || !wasPass)) confetti();
+}
+$('#op-list').addEventListener('input', e => {
+  if (e.target.tagName !== 'TEXTAREA' || op.done) return;
+  op.qs[+e.target.dataset.n].text = e.target.value; opProgress();
+});
+$('#op-list').addEventListener('click', e => {
+  const b = e.target.closest('[data-self]'); if (!b || !op.done) return;
+  const n = +b.closest('.card').dataset.n;
+  op.qs[n].ok = b.dataset.self === '1';
+  const card = b.closest('.card');
+  card.classList.toggle('ok', op.qs[n].ok); card.classList.toggle('ko', !op.qs[n].ok);
+  card.querySelector('.verdict').outerHTML = op.qs[n].ok ? '<span class="verdict ok">✓ Correcta</span>' : '<span class="verdict ko">✗ Incompleta</span>';
+  card.querySelectorAll('[data-self]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  opScore(false);
+});
+$('#op-start').addEventListener('click', () => opStart());
+$('#op-submit').addEventListener('click', () => {
+  op.done = true;
+  op.qs.forEach(q => {
+    q.hits = grade(q.text, OP[q.i][3]);
+    const ratio = q.hits.filter(h => h.hit).length / q.hits.length;
+    q.ok = q.text.trim().length > 0 && ratio >= 0.5;
+  });
+  $('#op-status').hidden = true;
+  opRender(); opScore(true);
+  window.scrollTo({ top: 0 });
+});
+filterBar($('#op-filter'), $('#op-list'));
+
+/* =========================================================
+   CASOS CLÍNICOS: pasos = [pregunta, [correcta, incorrecta...], explicación]
+   ========================================================= */
+const CASES = [
+{ t:'C', title:'Joven con vómito y respiración profunda', text:'Mujer de 19 años con DM1 que dejó de aplicarse la insulina hace 3 días. Llega con vómito, dolor abdominal, respiración profunda y rápida y aliento afrutado.',
+  labs:[['Glucosa','420 mg/dL'],['pH','7.12'],['HCO₃','10 mmol/L'],['β-OHB','5.2 mmol/L'],['Na','134'],['Cl','98'],['K','3.1 mmol/L']],
+  steps:[
+   ['¿Cuál es el diagnóstico?',['Cetoacidosis diabética','Estado hiperglucémico hiperosmolar','Hipoglucemia grave','Gastroenteritis aguda'],'Cumple los 3 dominios de CAD: glucosa >200 (o DM conocida), β-OHB >3 y pH <7.3 / HCO₃ <18.'],
+   ['¿Cuál es su anión gap?',['26: elevado','12: normal','36: elevado','8: bajo'],'Na − (Cl + HCO₃) = 134 − (98 + 10) = 26. Elevado por los cetoácidos.'],
+   ['Con K de 3.1 mmol/L, ¿qué haces primero?',['Reponer potasio y retrasar la insulina hasta K >3.5','Iniciar insulina en infusión de inmediato','Dar bicarbonato','Restringir líquidos'],'La insulina mete el potasio a la célula; con K <3.5 podría provocar arritmias.'],
+   ['¿Cuándo consideras resuelta la CAD?',['β-OHB <0.6 y (pH >7.3 o HCO₃ >18)','Cuando la glucosa baja de 200','Cuando la cetonuria es negativa','Cuando deja de vomitar'],'La glucosa normal no significa resolución: lo que manda es la cetosis y la acidosis.'],
+  ]},
+{ t:'C', title:'Adulto mayor confuso y deshidratado', text:'Hombre de 74 años con DM2, 5 días con poca ingesta de agua, infección urinaria y confusión progresiva. Mucosas muy secas. Respiración normal.',
+  labs:[['Glucosa','920 mg/dL'],['Na','148'],['pH','7.36'],['HCO₃','22 mmol/L'],['β-OHB','0.8 mmol/L'],['BUN','56 mg/dL']],
+  steps:[
+   ['¿Cuál es su osmolalidad efectiva aproximada?',['≈347 mOsm/kg','≈296 mOsm/kg','≈367 mOsm/kg','≈320 mOsm/kg'],'2 × 148 + 920/18 = 296 + 51 = 347 mOsm/kg (efectiva, sin BUN).'],
+   ['¿Cuál es el diagnóstico?',['Estado hiperglucémico hiperosmolar','Cetoacidosis diabética','Cuadro mixto CAD + EHH','Hiperglucemia sin crisis'],'Glucosa ≥600, osmolalidad efectiva >300, β-OHB <3, pH ≥7.3 y HCO₃ ≥15: cumple los 4 criterios de EHH.'],
+   ['¿Qué ritmo de descenso de la osmolalidad buscas?',['3–8 mOsm/kg/h','15–20 mOsm/kg/h','Normalizarla en 1 hora','No importa el ritmo'],'La corrección debe ser gradual para evitar complicaciones neurológicas.'],
+   ['¿Por qué no hay cetoacidosis importante?',['La insulina residual limita la lipólisis y la cetogénesis','Porque no tiene diabetes','Porque la glucosa es muy alta','Porque tiene infección'],'En el EHH hay déficit relativo, no absoluto, de insulina.'],
+  ]},
+{ t:'C', title:'Posoperado con glucosa casi normal', text:'Hombre de 55 años con DM2 en tratamiento con empagliflozina. Tras una cirugía lleva 2 días en ayuno; tiene náuseas, dolor abdominal y taquipnea.',
+  labs:[['Glucosa','190 mg/dL'],['pH','7.18'],['HCO₃','11 mmol/L'],['β-OHB','4.6 mmol/L']],
+  steps:[
+   ['¿Qué tiene?',['Cetoacidosis diabética euglucémica','EHH','Acidosis láctica por metformina','Hipoglucemia'],'Hay cetosis y acidosis con glucosa poco elevada; una glucosa <250 no descarta CAD.'],
+   ['¿Por qué la glucosa no está tan alta?',['El iSGLT2 aumenta la pérdida de glucosa por la orina','Porque la insulina está alta','Porque comió mucho','Por la cirugía en sí'],'Además el ayuno reduce la ingesta de carbohidratos.'],
+   ['¿Cuál es la mejor forma de medir las cetonas?',['β-hidroxibutirato en sangre','Tira de orina para acetoacetato','Acetona en aliento','No hace falta medirlas'],'La orina mide acetoacetato, puede subestimar al inicio y seguir positiva en la recuperación.'],
+  ]},
+{ t:'H', title:'Abuela encontrada sudorosa y confundida', text:'Mujer de 78 años con DM2 y enfermedad renal crónica, tratada con glibenclamida. Su familia la encuentra sudorosa y confundida; no puede tragar con seguridad.',
+  labs:[['Glucosa capilar','41 mg/dL'],['Creatinina','2.4 mg/dL']],
+  steps:[
+   ['¿Qué nivel de hipoglucemia es?',['Nivel 3','Nivel 1','Nivel 2','No es hipoglucemia'],'El nivel 3 se define por alteración mental o física que requiere ayuda de otra persona, sin importar el valor exacto.'],
+   ['En el hospital, ¿qué haces?',['Nada por boca y glucosa IV 20 g (200 mL al 10 %)','Darle jugo','Aplicar insulina','Esperar a que despierte'],'Si la deglución es insegura no se da nada por boca. Sin vía IV: glucagón 1 mg IM.'],
+   ['Ya recuperada, ¿qué debes vigilar?',['Que la hipoglucemia reaparezca y se prolongue','Hiperglucemia de rebote solamente','Hipercalcemia','Nada, ya se resolvió'],'Las sulfonilureas dan hipoglucemia recurrente; en casos severos se usa octreótido.'],
+   ['¿Qué factor favoreció el episodio?',['La enfermedad renal prolonga la acción del fármaco','La edad joven','El ejercicio intenso','La metformina'],'Por eso hay que revisar dosis y función renal.'],
+  ]},
+{ t:'H', title:'Estudiante con temblor después de entrenar', text:'Hombre de 21 años con DM1 que se aplicó su insulina y luego jugó fútbol sin comer. Está consciente, con temblor, sudoración y hambre.',
+  labs:[['Glucosa capilar','62 mg/dL']],
+  steps:[
+   ['¿Qué nivel de hipoglucemia es?',['Nivel 1','Nivel 2','Nivel 3','Normal'],'≥54 y <70 mg/dL: alerta, actuar antes de que progrese.'],
+   ['¿Qué le das?',['15 g de glucosa rápida (tabletas, gel o jugo)','Un chocolate','Un refresco sin azúcar','Glucagón IM'],'Está consciente y traga bien: regla de los 15.'],
+   ['A los 15 minutos su glucosa es 66 mg/dL. ¿Qué haces?',['Repetir 15 g y volver a medir en 15 min','Dar el alta','Aplicar insulina','Esperar una hora'],'Se repite mientras siga <70; después se da una comida o colación.'],
+  ]},
+{ t:'P', title:'Señora con cálculos renales de repetición', text:'Mujer de 58 años con litiasis renal recurrente, estreñimiento y cansancio.',
+  labs:[['Calcio','11.6 mg/dL (alto)'],['PTH','98 pg/mL (alta)'],['Fósforo','2.2 mg/dL (bajo)']],
+  steps:[
+   ['¿Cuál es el diagnóstico más probable?',['Hiperparatiroidismo primario','Hiperparatiroidismo secundario','Hipoparatiroidismo','Pseudohipoparatiroidismo'],'Calcio alto + PTH elevada + fósforo bajo.'],
+   ['¿Cuál es la causa más frecuente?',['Adenoma paratiroideo','Carcinoma','Déficit de vitamina D','Enfermedad renal crónica'],'El adenoma explica ≈80 % de los casos.'],
+   ['¿Para qué pedirías un sestamibi?',['Para localizar la glándula antes de operar','Para confirmar el diagnóstico','Para medir la densidad ósea','Para medir el calcio urinario'],'El diagnóstico ya es bioquímico; la imagen solo localiza.'],
+   ['¿Cuál es el tratamiento indicado?',['Paratiroidectomía','Solo hidratación de por vida','Calcitriol','Calcio oral'],'Tiene criterio quirúrgico: litiasis renal.'],
+  ]},
+{ t:'P', title:'Hormigueo después de la tiroidectomía', text:'Mujer de 42 años, 2 días después de una tiroidectomía total. Refiere hormigueo alrededor de la boca y en las manos. Al percutir el nervio facial se contrae la comisura labial.',
+  labs:[['Calcio','7.1 mg/dL (bajo)'],['Fósforo','5.8 mg/dL (alto)'],['PTH','6 pg/mL (baja)']],
+  steps:[
+   ['¿Cuál es el diagnóstico?',['Hipoparatiroidismo posquirúrgico','Pseudohipoparatiroidismo','Hiperparatiroidismo','Déficit de vitamina D'],'Hipocalcemia + hiperfosfatemia + PTH baja tras cirugía cervical.'],
+   ['¿Cómo se llama el signo que se describe?',['Chvostek','Trousseau','Babinski','Kussmaul'],'Trousseau es el espasmo carpopedal al inflar el manguito.'],
+   ['Al día siguiente presenta laringoespasmo. ¿Qué haces?',['Calcio IV y monitorización cardiaca','Calcio oral y alta','Bisfosfonatos','Cinacalcet'],'Hipocalcemia grave: puede dar convulsiones y QT prolongado.'],
+   ['¿Qué otro electrolito debes revisar?',['Magnesio','Sodio','Cloro','Potasio solamente'],'La hipomagnesemia bloquea la secreción y la acción de la PTH.'],
+  ]},
+{ t:'P', title:'Adolescente bajo de estatura con calambres', text:'Varón de 14 años con talla baja, dedos cortos (braquidactilia) y calambres. Función renal y vitamina D normales.',
+  labs:[['Calcio','bajo'],['Fósforo','alto'],['PTH','muy elevada']],
+  steps:[
+   ['¿Cuál es el diagnóstico más probable?',['Pseudohipoparatiroidismo','Hipoparatiroidismo','Hiperparatiroidismo primario','Raquitismo'],'Calcio bajo + fósforo alto + PTH alta, con riñón y vitamina D normales.'],
+   ['¿Cuál es el mecanismo?',['Resistencia renal a la PTH por alteración de GNAS','Falta de PTH','Exceso de vitamina D','Adenoma paratiroideo'],'La PTH se une a su receptor pero la señal intracelular no se transmite.'],
+   ['¿Cuál es el tratamiento?',['Calcitriol ± calcio oral','Paratiroidectomía','Bisfosfonatos','Cinacalcet'],'Se vigilan calcio, fósforo y PTH, y otras hormonas (p. ej., TSH).'],
+  ]},
+{ t:'P', title:'Dolor óseo después de una cirugía bariátrica', text:'Mujer de 45 años con bypass gástrico hace 6 años. Tiene dolor óseo difuso, le cuesta levantarse de la silla y la radiografía muestra pseudofracturas de Looser.',
+  labs:[['25(OH)D','baja'],['PTH','alta'],['Fosfatasa alcalina','alta'],['Calcio','bajo-normal']],
+  steps:[
+   ['¿Cuál es el diagnóstico?',['Osteomalacia por déficit de vitamina D','Osteoporosis','Hiperparatiroidismo primario','Raquitismo'],'Defecto de mineralización en el adulto, aquí por malabsorción.'],
+   ['¿Qué NO debes indicar todavía?',['Bisfosfonatos','Vitamina D','Calcio','Tratar la malabsorción'],'Los bisfosfonatos están contraindicados hasta corregir la mineralización.'],
+   ['¿Por qué la PTH está alta?',['Hiperparatiroidismo secundario para compensar el calcio','Por un adenoma','Por resistencia a la PTH','Por exceso de calcio'],'La PTH sube porque baja la absorción intestinal de calcio.'],
+  ]},
+{ t:'P', title:'Mujer posmenopáusica con densitometría', text:'Mujer de 67 años, posmenopáusica, sin fracturas previas. DXA de cadera con T-score de −2.8.',
+  labs:[['T-score cadera','−2.8'],['Calcio','normal'],['25(OH)D','normal']],
+  steps:[
+   ['¿Cómo interpretas la DXA?',['Osteoporosis densitométrica','Osteopenia','Normal','Por debajo de lo esperado para la edad'],'T ≤ −2.5 = osteoporosis.'],
+   ['¿Cuál es el tratamiento farmacológico de primera línea?',['Bisfosfonato, con calcio, vitamina D y ejercicio','Romosozumab sin evaluación','Solo calcio','Calcitriol'],'Denosumab es la alternativa según el perfil.'],
+   ['Si recibe denosumab y quiere dejarlo, ¿qué le dices?',['No suspenderlo sin un tratamiento secuencial','Puede suspenderlo cuando quiera','Debe cambiarlo por calcio solo','Debe duplicar la dosis'],'Al suspenderlo hay rebote con pérdida ósea rápida.'],
+   ['¿Qué herramienta estima su riesgo de fractura a 10 años?',['FRAX','Z-score','HOMA-IR','Wagner'],'FRAX complementa a la DXA.'],
+  ]},
+{ t:'D', title:'Hallazgo en un chequeo de rutina', text:'Hombre de 48 años con obesidad abdominal y manchas oscuras aterciopeladas en el cuello. No tiene síntomas. Tiene insuficiencia cardiaca.',
+  labs:[['Glucosa en ayuno','132 mg/dL'],['HbA1c','6.8 %']],
+  steps:[
+   ['¿Cuál es el diagnóstico?',['Diabetes tipo 2 (dos resultados anormales)','Prediabetes','Normal','Hay que repetir 3 veces más'],'Ayuno ≥126 y HbA1c ≥6.5: dos resultados anormales confirman.'],
+   ['¿Qué indican las manchas del cuello?',['Acantosis nigricans: resistencia a la insulina','Diagnóstico de diabetes por sí solas','Diabetes tipo 1','Insuficiencia suprarrenal'],'Sugiere resistencia a la insulina pero no diagnostica.'],
+   ['Por su insuficiencia cardiaca, ¿qué fármaco prefieres?',['Inhibidor SGLT2','Pioglitazona','Glibenclamida','Ninguno'],'Los SGLT2 tienen beneficio demostrado en IC; la pioglitazona retiene líquido.'],
+   ['¿Cuál es su meta habitual de HbA1c?',['<7 %','<5.7 %','<9 %','<6 %'],'Individualizar para evitar hipoglucemia.'],
+  ]},
+{ t:'D', title:'Embarazada en la semana 26', text:'Mujer de 30 años, 26 semanas de gestación, sin diabetes previa. Se hace la PTOG con 75 g.',
+  labs:[['Ayuno','88 mg/dL'],['1 hora','186 mg/dL'],['2 horas','140 mg/dL']],
+  steps:[
+   ['¿Tiene diabetes gestacional?',['Sí: la glucosa de 1 h es ≥180','No: el ayuno es normal','No: necesita 2 valores alterados','Hay que medir la HbA1c'],'En la estrategia de un paso basta 1 valor alterado (≥92 / ≥180 / ≥153).'],
+   ['¿Qué riesgo tiene el bebé al nacer?',['Hipoglucemia neonatal','Hiperglucemia neonatal','Cetoacidosis','Hipocalcemia materna'],'La hiperinsulinemia fetal persiste cuando se corta el aporte de glucosa materna.'],
+   ['¿Por qué el bebé produce más insulina?',['La glucosa cruza la placenta pero la insulina materna no','Porque la insulina materna cruza','Por herencia','Por las hormonas tiroideas'],'Glucosa fetal alta → páncreas fetal secreta más insulina → macrosomía.'],
+   ['¿Qué le explicas para después del parto?',['Tiene mayor riesgo futuro de DM2','Ya no tendrá ningún riesgo','Tendrá DM1','Debe usar insulina de por vida'],'Baja la resistencia tras el parto, pero persiste el riesgo de DM2.'],
+  ]},
+{ t:'D', title:'Niño que orina mucho y bajó de peso', text:'Niño de 9 años con 3 semanas de poliuria, mucha sed y pérdida de 4 kg. Sin vómito ni respiración profunda.',
+  labs:[['Glucosa','310 mg/dL'],['pH','7.38'],['Cetonas','negativas']],
+  steps:[
+   ['¿Qué tipo de diabetes es más probable?',['Tipo 1','Tipo 2','Gestacional','Prediabetes'],'Inicio con catabolismo (pérdida de peso) en un niño sugiere déficit absoluto de insulina, aunque edad y peso no bastan para clasificar.'],
+   ['¿Qué pruebas apoyan la clasificación?',['Anti-GAD, IA-2, ZnT8 y péptido C','TSH y T4','HOMA-IR','Calcio y PTH'],'Los autoanticuerpos apoyan autoinmunidad; el péptido C mide la secreción endógena.'],
+   ['¿Cuál es el esquema de tratamiento?',['Insulina basal-bolo (o bomba)','Metformina sola','Dieta sola','Glibenclamida'],'Basal para entre comidas y noche; prandial para los carbohidratos.'],
+   ['¿Cuál es la meta de HbA1c para su edad (6–12 años)?',['<8 %','<7.5 %','<8.5 %','<6.5 %'],'Según la tabla de la exposición: 6–12 años <8 %.'],
+  ]},
+{ t:'X', title:'Úlcera en la planta del pie', text:'Hombre de 63 años con DM2 de 20 años y tabaquismo. Úlcera plantar profunda con secreción. Con un estilete estéril se toca hueso en el fondo de la úlcera.',
+  labs:[['Índice tobillo-brazo','0.7'],['Monofilamento','no lo siente']],
+  steps:[
+   ['¿Qué sugiere tocar hueso con el estilete?',['Osteomielitis (probe-to-bone positivo)','Que la úlcera es superficial','Enfermedad arterial','Nada importante'],'La prueba de contacto óseo tiene alto valor predictivo.'],
+   ['¿Qué indica el ITB de 0.7?',['Enfermedad arterial periférica','Normal','Rigidez arterial','Neuropatía'],'<0.9 = EAP; >1.3 = rigidez por calcificación.'],
+   ['¿Qué grado de Wagner es?',['3','1','2','5'],'Úlcera profunda con osteomielitis o absceso = grado 3.'],
+   ['¿Qué muestra mandas a cultivo?',['Biopsia de tejido profundo o curetaje','Hisopo superficial','Orina','Saliva'],'El hisopo superficial no refleja los patógenos reales.'],
+  ]},
+{ t:'X', title:'Ardor en los pies y visión borrosa', text:'Mujer de 60 años con DM2 de 15 años e hipertensión. Tiene ardor en los pies que empeora en la noche y visión borrosa. El fondo de ojo muestra vasos nuevos y tiene albuminuria.',
+  labs:[['HbA1c','8.9 %'],['Albuminuria','positiva'],['TA','150/95 mmHg']],
+  steps:[
+   ['¿Qué tipo de neuropatía describe el ardor en los pies?',['Polineuropatía simétrica distal','Amiotrofia diabética','Mononeuropatía del III par','Neuropatía autonómica'],'Es la forma clásica, en guante y calcetín.'],
+   ['¿Con qué tratas el dolor neuropático?',['Pregabalina, gabapentina, tricíclicos o IRSN','Antiinflamatorios de por vida','Insulina','Bisfosfonatos'],'El control glucémico es la piedra angular.'],
+   ['Los vasos nuevos en la retina indican:',['Retinopatía proliferativa','Retinopatía no proliferativa leve','Edema macular siempre','Retina normal'],'La isquemia induce neovasos frágiles.'],
+   ['Para la albuminuria e hipertensión, ¿qué indicas?',['IECA o ARA-II y un iSGLT2','Sulfonilurea','AINE','Nada'],'Protegen el riñón y reducen la presión intraglomerular.'],
+  ]},
+];
+
+const cs = { list: [], done: false };
+$('#cs-bank-size').textContent = CASES.length;
+topicOptions($('#cs-topic'));
+$('#cs-best').textContent = bestText('cs');
+function csStart(pool) {
+  const topic = $('#cs-topic').value, n = +$('#cs-count').value;
+  const src = pool || shuffle(CASES.map((_, i) => i).filter(i => topic === 'all' || CASES[i].t === topic)).slice(0, n);
+  cs.list = shuffle(src).map(i => ({ i, steps: CASES[i].steps.map(s => ({ opts: shuffle(s[1].map((t, k) => ({ t, ok: k === 0 }))), pick: null })) }));
+  cs.done = false;
+  $('#cs-result').innerHTML = '';
+  $('#cs-filter').hidden = true; resetFilter($('#cs-filter'), $('#cs-list'));
+  $('#cs-status').hidden = false;
+  $('#cs-list').innerHTML = cs.list.map((_, n) => csCard(n)).join('');
+  csProgress();
+}
+function csCaseState(c) {
+  if (c.steps.some(s => s.pick === null)) return '';
+  return c.steps.every(s => s.opts[s.pick].ok) ? 'ok' : 'ko';
+}
+function csCard(n) {
+  const c = cs.list[n], C = CASES[c.i], st = csCaseState(c);
+  const okSteps = c.steps.filter(s => s.pick !== null && s.opts[s.pick].ok).length;
+  const verdict = st ? `<span class="verdict ${st}">${st === 'ok' ? '✓ Caso completo' : `✗ ${okSteps} de ${c.steps.length} pasos`}</span>` : `<span>Caso ${n + 1} de ${cs.list.length}</span>`;
+  let html = `<div class="card ${st ? 'done ' + st : ''}" data-c="${n}">
+    <div class="meta"><span>${TOPICS[C.t]}</span>${verdict}</div>
+    <h3 class="case-title">${esc(C.title)}</h3>
+    <p class="case-text">${esc(C.text)}</p>
+    <div class="labs">${C.labs.map(([k, v]) => `<span><b>${esc(k)}</b>${esc(v)}</span>`).join('')}</div>`;
+  for (let k = 0; k < c.steps.length; k++) {
+    if (k > 0 && c.steps[k - 1].pick === null) { html += `<p class="locked">Contesta la pregunta anterior para ver la siguiente (${c.steps.length - k} restantes).</p>`; break; }
+    const s = c.steps[k], [q, , exp] = C.steps[k], answered = s.pick !== null;
+    const right = s.opts.findIndex(o => o.ok);
+    html += `<div class="step"><div class="q">${k + 1}. ${esc(q)}</div><div class="opts">${s.opts.map((o, j) => {
+      let cls = ''; if (answered) { if (o.ok) cls = 'is-right'; else if (s.pick === j) cls = 'is-wrong'; }
+      return `<label class="opt ${cls}"><input type="radio" name="cs-${n}-${k}" id="cs-${n}-${k}-${j}" value="${j}" data-c="${n}" data-k="${k}" ${s.pick === j ? 'checked' : ''} ${answered ? 'disabled' : ''}><span>${esc(o.t)}</span></label>`;
+    }).join('')}</div>
+    ${answered ? `<div class="explain">${s.pick === right ? '<b>✓ Correcto.</b> ' : `<b>✗ La respuesta era:</b> ${esc(s.opts[right].t)}. `}${esc(exp)}</div>` : ''}</div>`;
+  }
+  return html + '</div>';
+}
+function csProgress() {
+  const all = cs.list.flatMap(c => c.steps), a = all.filter(s => s.pick !== null).length;
+  $('#cs-prog-txt').textContent = `Pasos contestados ${a} de ${all.length}`;
+  $('#cs-prog').style.width = (all.length ? a / all.length * 100 : 0) + '%';
+  if (a === all.length && all.length && !cs.done) {
+    cs.done = true;
+    const ok = all.filter(s => s.opts[s.pick].ok).length;
+    const pct = Math.round(ok / all.length * 100), pass = pct >= 80;
+    const badCases = cs.list.filter(c => csCaseState(c) === 'ko').length;
+    saveBest('cs', pct, pass); $('#cs-best').textContent = bestText('cs');
+    $('#cs-status').hidden = true;
+    $('#cs-result').innerHTML = resultHTML(pct, ok, all.length, pass, 80, 'cs', badCases, `Repetir los ${badCases} casos con errores`, 'Nuevos casos al azar');
+    $('#cs-filter').hidden = badCases === 0;
+    window.scrollTo({ top: 0 });
+    if (pass) confetti();
+  }
+}
+$('#cs-list').addEventListener('change', e => {
+  const r = e.target; if (r.type !== 'radio') return;
+  const n = +r.dataset.c, k = +r.dataset.k, step = cs.list[n].steps[k];
+  if (step.pick !== null) return;
+  step.pick = +r.value;
+  const card = $(`#cs-list .card[data-c="${n}"]`);
+  card.outerHTML = csCard(n);
+  csProgress();
+});
+$('#cs-start').addEventListener('click', () => csStart());
+filterBar($('#cs-filter'), $('#cs-list'));
+
+/* =========================================================
+   CÁLCULOS: generadores con números al azar
+   ========================================================= */
+const R = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
+const Rf = (a, b, d = 1) => +(a + Math.random() * (b - a)).toFixed(d);
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const f1 = n => (Math.round(n * 10) / 10).toString();
+const GENS = {
+  osmEf: { t: 'C', name: 'Osmolalidad efectiva', make() {
+    const na = R(132, 152), g = R(400, 1150), ans = 2 * na + g / 18;
+    return { kind: 'num', ans, tol: 2, unit: 'mOsm/kg', q: `Paciente con Na <span class="lab">${na} mmol/L</span> y glucosa <span class="lab">${g} mg/dL</span>. Calcula la <b>osmolalidad efectiva</b>.`,
+      sol: `2 × Na + glucosa/18 = 2 × ${na} + ${g}/18 = ${2 * na} + ${f1(g / 18)} = <b>${f1(ans)} mOsm/kg</b>. ${ans > 300 ? 'Es mayor de 300: hiperosmolaridad.' : 'No supera 300 mOsm/kg.'}` }; } },
+  osmTot: { t: 'C', name: 'Osmolalidad total', make() {
+    const na = R(135, 152), g = R(500, 1100), bun = R(20, 70), ans = 2 * na + g / 18 + bun / 2.8;
+    return { kind: 'num', ans, tol: 3, unit: 'mOsm/kg', q: `Na <span class="lab">${na} mmol/L</span>, glucosa <span class="lab">${g} mg/dL</span> y BUN <span class="lab">${bun} mg/dL</span>. Calcula la <b>osmolalidad total</b>.`,
+      sol: `2 × Na + glucosa/18 + BUN/2.8 = ${2 * na} + ${f1(g / 18)} + ${f1(bun / 2.8)} = <b>${f1(ans)} mOsm/kg</b>. El criterio de EHH para la total es >320.` }; } },
+  gap: { t: 'C', name: 'Anión gap', make() {
+    const na = R(128, 145), cl = R(94, 108), hco = R(6, 24), ans = na - (cl + hco);
+    return { kind: 'num', ans, tol: 0.5, unit: 'mEq/L', q: `Na <span class="lab">${na}</span>, Cl <span class="lab">${cl}</span> y HCO₃ <span class="lab">${hco} mmol/L</span>. Calcula el <b>anión gap</b>.`,
+      sol: `Na − (Cl + HCO₃) = ${na} − (${cl} + ${hco}) = <b>${ans}</b>. ${ans > 12 ? 'Está elevado, como en la CAD (cetoácidos).' : 'Está en rango normal.'}` }; } },
+  ddt: { t: 'D', name: 'Dosis diaria total de insulina', make() {
+    const w = R(50, 95), fct = pick([0.2, 0.3, 0.4, 0.5]), ans = w * fct;
+    return { kind: 'num', ans, tol: 0.5, unit: 'U/día', q: `Adulto estable de <span class="lab">${w} kg</span>; se elige <span class="lab">${fct} U/kg/día</span>. ¿Cuál es la <b>dosis diaria total</b>?`,
+      sol: `DDT = peso × factor = ${w} × ${fct} = <b>${f1(ans)} U/día</b>.` }; } },
+  basal: { t: 'D', name: 'Insulina basal', make() {
+    const w = R(50, 95), fct = pick([0.3, 0.4, 0.5]), ddt = w * fct, ans = ddt / 2;
+    return { kind: 'num', ans, tol: 0.5, unit: 'U/día', q: `Adulto de <span class="lab">${w} kg</span> a <span class="lab">${fct} U/kg/día</span>, con distribución 50 % basal / 50 % prandial. ¿Cuántas unidades de <b>insulina basal</b>?`,
+      sol: `DDT = ${w} × ${fct} = ${f1(ddt)} U. Basal = 50 % = <b>${f1(ans)} U/día</b>; el otro ${f1(ans)} U se reparte entre las comidas.` }; } },
+  r500: { t: 'D', name: 'Bolo para comida (regla de 500)', make() {
+    const ddt = pick([20, 25, 40, 50, 100]), ratio = 500 / ddt, carbs = R(6, 20) * 5, ans = carbs / ratio;
+    return { kind: 'num', ans, tol: 0.5, unit: 'U', q: `DDT de <span class="lab">${ddt} U</span>. Va a comer <span class="lab">${carbs} g</span> de carbohidratos. ¿Cuántas unidades de insulina rápida para la comida?`,
+      sol: `Regla de 500: 500 / ${ddt} = ${f1(ratio)} g por unidad (1:${f1(ratio)}). Bolo = ${carbs} / ${f1(ratio)} = <b>${f1(ans)} U</b>.` }; } },
+  r1800: { t: 'D', name: 'Dosis de corrección (regla de 1800)', make() {
+    const ddt = pick([30, 36, 40, 45, 50, 60]), fs = 1800 / ddt, target = pick([100, 120, 140]), k = R(1, 5), glu = target + fs * k;
+    return { kind: 'num', ans: k, tol: 0.5, unit: 'U', q: `DDT de <span class="lab">${ddt} U</span>, glucosa actual <span class="lab">${glu} mg/dL</span> y objetivo <span class="lab">${target} mg/dL</span>. ¿Cuántas unidades de corrección?`,
+      sol: `Factor de sensibilidad = 1800 / ${ddt} = ${fs} mg/dL por unidad. Corrección = (${glu} − ${target}) / ${fs} = <b>${k} U</b>.` }; } },
+  bolo: { t: 'D', name: 'Bolo total (comida + corrección)', make() {
+    const ddt = pick([25, 50, 100]), ratio = 500 / ddt, fs = 1800 / ddt, carbs = R(6, 16) * 5, target = 120, k = R(1, 4), glu = target + fs * k, meal = carbs / ratio, ans = meal + k;
+    return { kind: 'num', ans, tol: 0.5, unit: 'U', q: `DDT <span class="lab">${ddt} U</span>, comida de <span class="lab">${carbs} g</span>, glucosa actual <span class="lab">${glu} mg/dL</span>, objetivo <span class="lab">120 mg/dL</span>, sin insulina activa. ¿Cuál es el <b>bolo total</b>?`,
+      sol: `Comida: 500/${ddt} = ${f1(ratio)} g/U → ${carbs}/${f1(ratio)} = ${f1(meal)} U. Corrección: 1800/${ddt} = ${fs} → (${glu} − 120)/${fs} = ${k} U. Total = <b>${f1(ans)} U</b>.` }; } },
+  ivGlu: { t: 'H', name: 'Volumen de glucosa IV', make() {
+    const g = pick([10, 15, 20, 25]), conc = pick([10, 20, 50]), ans = g * 100 / conc;
+    return { kind: 'num', ans, tol: 0.5, unit: 'mL', q: `Quieres administrar <span class="lab">${g} g</span> de glucosa con solución al <span class="lab">${conc} %</span>. ¿Cuántos mL necesitas?`,
+      sol: `Al ${conc} % hay ${conc} g por cada 100 mL. ${g} g × 100 / ${conc} = <b>${f1(ans)} mL</b>. (En adultos se recomiendan 20 g: 200 mL al 10 % o 100 mL al 20 %.)` }; } },
+  crisis: { t: 'C', name: 'Clasificar la crisis (CAD / EHH)', make() {
+    const ty = pick(['CAD', 'EHH', 'MIX', 'NO']); let g, ph, hco, b, na;
+    if (ty === 'CAD') { g = R(260, 480); ph = Rf(6.95, 7.25, 2); hco = R(6, 16); b = Rf(3.5, 7); na = R(128, 136); }
+    if (ty === 'EHH') { g = R(650, 1100); ph = Rf(7.31, 7.42, 2); hco = R(17, 26); b = Rf(0.2, 2.4); na = R(140, 155); }
+    if (ty === 'MIX') { g = R(650, 1000); ph = Rf(7.0, 7.24, 2); hco = R(8, 14); b = Rf(3.6, 6.5); na = R(140, 150); }
+    if (ty === 'NO') { g = R(250, 450); ph = Rf(7.36, 7.44, 2); hco = R(22, 27); b = Rf(0.1, 0.5); na = R(134, 142); }
+    const osm = 2 * na + g / 18;
+    const labels = { CAD: 'Cetoacidosis diabética (CAD)', EHH: 'Estado hiperglucémico hiperosmolar (EHH)', MIX: 'Cuadro mixto CAD + EHH', NO: 'Hiperglucemia sin crisis' };
+    const why = { CAD: 'Hay cetosis (β-OHB >3) y acidosis (pH <7.3 / HCO₃ <18) con glucosa >200; no llega a 600.', EHH: 'Glucosa ≥600, osmolalidad efectiva >300, β-OHB <3, pH ≥7.3 y HCO₃ ≥15.', MIX: 'Cumple criterios de CAD (cetosis + acidosis) y además glucosa ≥600 con osmolalidad >300.', NO: 'No hay cetosis ni acidosis y la glucosa no llega a 600.' };
+    return { kind: 'choice', ans: labels[ty], opts: shuffle(Object.values(labels)), q: `Glucosa <span class="lab">${g} mg/dL</span>, Na <span class="lab">${na}</span>, pH <span class="lab">${ph}</span>, HCO₃ <span class="lab">${hco} mmol/L</span>, β-OHB <span class="lab">${b} mmol/L</span>. ¿Cómo clasificas el cuadro?`,
+      sol: `Osmolalidad efectiva = 2 × ${na} + ${g}/18 = ${f1(osm)}. ${why[ty]} → <b>${labels[ty]}</b>.` }; } },
+  hipo: { t: 'H', name: 'Nivel de hipoglucemia', make() {
+    const ty = pick([1, 2, 3]); let g, ctx;
+    if (ty === 1) { g = R(55, 69); ctx = 'Está alerta y puede comer solo.'; }
+    if (ty === 2) { g = R(38, 53); ctx = 'Está alerta y puede tragar.'; }
+    if (ty === 3) { g = R(30, 60); ctx = 'Está confundido y su familia tiene que ayudarlo.'; }
+    const labels = ['Nivel 1', 'Nivel 2', 'Nivel 3', 'No es hipoglucemia'];
+    const why = { 1: '≥54 y <70 mg/dL = nivel 1 (alerta).', 2: '<54 mg/dL = nivel 2 (clínicamente significativa).', 3: 'Requiere ayuda de otra persona = nivel 3, sin importar el valor.' };
+    return { kind: 'choice', ans: 'Nivel ' + ty, opts: labels, q: `Persona con diabetes y glucosa capilar de <span class="lab">${g} mg/dL</span>. ${ctx} ¿Qué nivel de hipoglucemia es?`, sol: `${why[ty]} → <b>Nivel ${ty}</b>.` }; } },
+  tscore: { t: 'P', name: 'Interpretar T-score', make() {
+    const T = Rf(-3.6, 0.6, 1); const ans = T >= -1 ? 'Normal' : T > -2.5 ? 'Masa ósea baja (osteopenia)' : 'Osteoporosis densitométrica';
+    return { kind: 'choice', ans, opts: ['Normal', 'Masa ósea baja (osteopenia)', 'Osteoporosis densitométrica'], q: `Mujer posmenopáusica de ${R(55, 80)} años con T-score de <span class="lab">${T.toFixed(1)}</span> en cuello femoral. ¿Cómo lo interpretas?`,
+      sol: `T ≥ −1.0 normal; entre −1.0 y −2.5 osteopenia; ≤ −2.5 osteoporosis. ${T.toFixed(1)} → <b>${ans}</b>.` }; } },
+  dmdx: { t: 'D', name: 'Clasificar glucosa / HbA1c', make() {
+    const test = pick(['ayuno', 'ptog', 'a1c']); let v, ans, txt, rng;
+    if (test === 'ayuno') { v = R(80, 160); ans = v >= 126 ? 'Rango de diabetes' : v >= 100 ? 'Prediabetes' : 'Normal'; txt = `glucosa en ayuno de <span class="lab">${v} mg/dL</span>`; rng = 'Ayuno: <100 normal, 100–125 prediabetes, ≥126 diabetes.'; }
+    if (test === 'ptog') { v = R(110, 260); ans = v >= 200 ? 'Rango de diabetes' : v >= 140 ? 'Prediabetes' : 'Normal'; txt = `glucosa a las 2 h de la PTOG con 75 g de <span class="lab">${v} mg/dL</span>`; rng = 'PTOG 2 h: <140 normal, 140–199 prediabetes, ≥200 diabetes.'; }
+    if (test === 'a1c') { v = Rf(5.0, 8.0, 1); ans = v >= 6.5 ? 'Rango de diabetes' : v >= 5.7 ? 'Prediabetes' : 'Normal'; txt = `HbA1c de <span class="lab">${v.toFixed(1)} %</span>`; rng = 'HbA1c: <5.7 normal, 5.7–6.4 prediabetes, ≥6.5 diabetes.'; }
+    return { kind: 'choice', ans, opts: ['Normal', 'Prediabetes', 'Rango de diabetes'], q: `Adulto no embarazado con ${txt}. ¿En qué rango está?`, sol: `${rng} → <b>${ans}</b>. Sin hiperglucemia inequívoca, el diagnóstico de diabetes se confirma con un segundo resultado anormal.` }; } },
+  dg: { t: 'D', name: 'Diabetes gestacional (PTOG 75 g)', make() {
+    const pos = Math.random() < 0.5;
+    let a = R(75, 91), h1 = R(130, 179), h2 = R(110, 152);
+    if (pos) { const w = pick([0, 1, 2]); if (w === 0) a = R(92, 105); if (w === 1) h1 = R(180, 215); if (w === 2) h2 = R(153, 185); }
+    const alt = [a >= 92 ? `ayuno ${a} ≥92` : '', h1 >= 180 ? `1 h ${h1} ≥180` : '', h2 >= 153 ? `2 h ${h2} ≥153` : ''].filter(Boolean);
+    const ans = alt.length ? 'Sí, es diabetes gestacional' : 'No, la prueba es normal';
+    return { kind: 'choice', ans, opts: ['Sí, es diabetes gestacional', 'No, la prueba es normal'], q: `Embarazada de ${R(24, 28)} semanas, PTOG 75 g: ayuno <span class="lab">${a}</span>, 1 h <span class="lab">${h1}</span>, 2 h <span class="lab">${h2} mg/dL</span>. ¿Tiene diabetes gestacional?`,
+      sol: `Umbrales: ayuno ≥92, 1 h ≥180, 2 h ≥153; basta 1 valor. ${alt.length ? 'Alterado: ' + alt.join(', ') + '.' : 'Ningún valor alcanza el umbral.'} → <b>${ans}</b>.` }; } },
+};
+const ca = { list: [], done: false };
+$('#ca-type').innerHTML = '<option value="all">Todos mezclados</option>' + Object.entries(GENS).map(([k, g]) => `<option value="${k}">${g.name}</option>`).join('');
+$('#ca-best').textContent = bestText('ca');
+function caStart(ids) {
+  const type = $('#ca-type').value, n = +$('#ca-count').value;
+  let seq = ids;
+  if (!seq) {
+    if (type !== 'all') seq = Array(n).fill(type);
+    else { seq = []; while (seq.length < n) seq = seq.concat(shuffle(Object.keys(GENS))); seq = seq.slice(0, n); }
+  }
+  ca.list = seq.map(id => ({ id, p: GENS[id].make(), val: '', ok: null }));
+  ca.done = false;
+  $('#ca-result').innerHTML = '';
+  $('#ca-filter').hidden = true; resetFilter($('#ca-filter'), $('#ca-list'));
+  $('#ca-status').hidden = false;
+  caRender(); caProgress();
+}
+function caRender() {
+  $('#ca-list').innerHTML = ca.list.map((x, n) => {
+    const g = GENS[x.id], p = x.p, st = ca.done ? (x.ok ? 'ok' : 'ko') : '';
+    const verdict = ca.done ? (x.ok ? '<span class="verdict ok">✓ Correcto</span>' : `<span class="verdict ko">✗ ${x.val === '' ? 'Sin contestar' : 'Incorrecto'}</span>`) : `<span>${n + 1} / ${ca.list.length}</span>`;
+    let input;
+    if (p.kind === 'num') {
+      input = `<div class="num-row"><input type="text" inputmode="decimal" id="ca-${n}" data-n="${n}" value="${esc(x.val)}" ${ca.done ? 'readonly' : ''} aria-label="Tu resultado" autocomplete="off"><span class="unit">${p.unit}</span></div>`;
+    } else {
+      input = `<div class="opts">${p.opts.map((o, j) => {
+        let cls = ''; if (ca.done) { if (o === p.ans) cls = 'is-right'; else if (x.val === o) cls = 'is-wrong'; }
+        return `<label class="opt ${cls}"><input type="radio" name="ca-${n}" id="ca-${n}-${j}" value="${esc(o)}" data-n="${n}" ${x.val === o ? 'checked' : ''} ${ca.done ? 'disabled' : ''}><span>${esc(o)}</span></label>`;
+      }).join('')}</div>`;
+    }
+    const answer = p.kind === 'num' ? `${f1(p.ans)} ${p.unit}` : p.ans;
+    return `<div class="card ${ca.done ? 'done ' + st : ''}">
+      <div class="meta"><span>${n + 1}. ${g.name}</span>${verdict}</div>
+      <div class="q" style="font-weight:500">${p.q}</div>${input}
+      ${ca.done ? `<div class="explain sol">${x.ok ? '' : `<b>Respuesta correcta:</b> ${esc(answer)}<br>`}<b>Procedimiento:</b> ${p.sol}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+function caProgress() {
+  const a = ca.list.filter(x => String(x.val).trim() !== '').length;
+  $('#ca-prog-txt').textContent = `Contestados ${a} de ${ca.list.length}`;
+  $('#ca-prog').style.width = (ca.list.length ? a / ca.list.length * 100 : 0) + '%';
+}
+function caHandle(e) {
+  const el = e.target; if (ca.done || el.dataset.n === undefined) return;
+  ca.list[+el.dataset.n].val = el.value; caProgress();
+}
+$('#ca-list').addEventListener('input', caHandle);
+$('#ca-list').addEventListener('change', caHandle);
+$('#ca-start').addEventListener('click', () => caStart());
+$('#ca-submit').addEventListener('click', () => {
+  ca.done = true;
+  ca.list.forEach(x => {
+    if (x.p.kind === 'num') { const v = parseFloat(String(x.val).replace(',', '.').replace(/[^\d.\-]/g, '')); x.ok = !isNaN(v) && Math.abs(v - x.p.ans) <= x.p.tol; }
+    else x.ok = x.val === x.p.ans;
+  });
+  const ok = ca.list.filter(x => x.ok).length, pct = Math.round(ok / ca.list.length * 100), pass = pct >= 80;
+  const wrong = ca.list.length - ok;
+  saveBest('ca', pct, pass); $('#ca-best').textContent = bestText('ca');
+  $('#ca-status').hidden = true;
+  $('#ca-result').innerHTML = resultHTML(pct, ok, ca.list.length, pass, 80, 'ca', wrong, `Repetir los ${wrong} tipos que fallé (números nuevos)`, 'Nuevos ejercicios');
+  $('#ca-filter').hidden = wrong === 0;
+  caRender();
+  window.scrollTo({ top: 0 });
+  if (pass) confetti();
+});
+filterBar($('#ca-filter'), $('#ca-list'));
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const act = b.dataset.act;
+  if (act === 'new-cs') csStart();
+  if (act === 'retry-cs') csStart(cs.list.filter(c => csCaseState(c) === 'ko').map(c => c.i));
+  if (act === 'new-ca') caStart();
+  if (act === 'retry-ca') caStart(ca.list.filter(x => !x.ok).map(x => x.id));
+});
+
+/* Botones del resultado (nuevo intento / repetir falladas) */
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const act = b.dataset.act;
+  if (act === 'new-mc') mcStart();
+  if (act === 'retry-mc') mcStart(mc.qs.filter(q => !(q.pick !== null && q.opts[q.pick].ok)).map(q => q.i));
+  if (act === 'new-op') opStart();
+  if (act === 'retry-op') opStart(op.qs.filter(q => !q.ok).map(q => q.i));
+});
+
+/* Abrir con un examen listo para contestar */
+mcStart(); opStart(); csStart(); caStart();
+window.scrollTo({ top: 0 });
+</script>
+
+</body>
+</html>
