@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Repaso de Reumatología</title>
+<title>Repaso Reuma y Farma</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,6 +73,14 @@ ul.pts { margin: 0 0 10px; padding-left: 20px; }
 ul.pts li { margin: 3px 0; max-width: 72ch; }
 .lab { font-family: var(--font-mono); font-size: .86em; background: var(--lab-soft); color: var(--lab); padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
 .key { background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; max-width: 72ch; }
+
+/* Selector de materia */
+.subjects { display: inline-flex; background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; padding: 3px; gap: 2px; margin-left: auto; }
+.subj-btn { appearance: none; border: 0; background: transparent; color: var(--muted); font: 600 .88rem var(--font-body); padding: 7px 14px; border-radius: 999px; cursor: pointer; white-space: nowrap; }
+.subj-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.subj-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.brand span b { color: var(--accent); font-weight: 600; }
+@media (max-width: 520px) { .subjects { margin-left: 0; width: 100%; } .subj-btn { flex: 1; } }
 
 /* Controles */
 .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0 20px; }
@@ -175,7 +183,8 @@ textarea { width: 100%; min-height: 96px; resize: vertical; font: .95rem/1.5 var
 
 <header class="top">
   <div class="wrap top-inner">
-    <div class="brand"><h1>Repaso de Reumatología</h1><span>Grupo 5-4 · Reuma</span></div>
+    <div class="brand"><h1>Repaso de medicina</h1><span>Grupo 5-4 · <b id="subj-label">Reumatología</b></span></div>
+    <div class="subjects" role="group" aria-label="Materia"><button class="subj-btn" type="button" data-subj="reuma" aria-pressed="true">Reumatología</button><button class="subj-btn" type="button" data-subj="farma" aria-pressed="false">Farmacología</button></div>
     <nav class="tabs" role="tablist" aria-label="Secciones">
       <button class="tab" role="tab" id="tab-resumen" data-view="resumen">Resumen</button>
       <button class="tab" role="tab" id="tab-cuestionario" data-view="cuestionario">Cuestionario</button>
@@ -192,8 +201,9 @@ textarea { width: 100%; min-height: 96px; resize: vertical; font: .95rem/1.5 var
 <!-- ======================= RESUMEN ======================= -->
 <section class="view" id="view-resumen" role="tabpanel" aria-labelledby="tab-resumen">
   <h2>Resumen por tema</h2>
+  <div class="subj-sum" data-subj="reuma">
   <p class="lede">Lo más importante de las 4 presentaciones de Reumatología: Artritis reumatoide, Artritis séptica y reactiva, Espondilitis anquilosante y Tumores óseos. Los valores clave vienen <span class="lab">resaltados así</span>.</p>
-  <div class="controls chips" id="sum-nav"></div>
+  <div class="controls chips" data-nav="reuma"></div>
 
   <article class="topic" id="sum-A">
     <h3>1. Artritis reumatoide (AR)</h3>
@@ -365,6 +375,161 @@ textarea { width: 100%; min-height: 96px; resize: vertical; font: .95rem/1.5 var
       <li><b>Metastásicos:</b> paliativo: radioterapia para el dolor, estabilización quirúrgica, terapia sistémica, <b>bisfosfonatos o denosumab</b>. Soporte: analgesia, rehabilitación y cuidados paliativos.</li>
     </ul>
   </article>
+</div>
+<div class="subj-sum" data-subj="farma" hidden>
+  <p class="lede">Lo más importante de las 8 presentaciones de Farmacología (Dr. Jonkani Espinoza López): alcoholemia e interacciones, cinética y parámetros farmacocinéticos, farmacometría, biotransformación y excreción. Las fórmulas vienen <span class="lab">resaltadas así</span>.</p>
+  <div class="controls chips" data-nav="farma"></div>
+
+  <article class="topic" id="sum-AI">
+    <h3>1. Alcoholemia, esteroides, clofibrato e interacciones</h3>
+    <div class="src">Equipo 4 · temas 2.3.5 a 2.3.7</div>
+    <h4>Cálculo de alcoholemia (fórmula de Widmark)</h4>
+    <ul class="pts">
+      <li><b>Alcoholemia:</b> concentración de etanol en sangre, en <b>g/L</b>.</li>
+      <li><b>Gramos de alcohol:</b> <span class="lab">A = V (mL) × %alcohol/100 × 0.789</span> (0.789 g/mL = densidad del etanol). Ej.: 500 mL de cerveza al 5 % = 500 × 0.05 × 0.789 = <b>19.7 g</b>.</li>
+      <li><b>Widmark:</b> <span class="lab">BAC = A / (P × r) − β × t</span>. P = peso (kg); r = factor de distribución (<b>hombre ≈ 0.68, mujer ≈ 0.55</b>, depende de la composición corporal); β = velocidad de eliminación (<span class="lab">≈ 0.15 g/L/h</span>); t = horas desde la ingesta.</li>
+      <li>Ejemplo de clase: hombre de 70 kg con 19.7 g → 19.7 / (0.68 × 70) = <b>0.41 g/L</b>; a las 2 h: 0.41 − 0.15 × 2 = <b>0.11 g/L</b>.</li>
+      <li>Más alcohol → mayor alcoholemia; más peso → menor concentración; el tiempo la reduce.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Alcoholemia</th><th>Valor</th><th>Efectos</th></tr>
+      <tr><td>Baja</td><td><span class="lab">0.20–0.50 g/L</span></td><td>Desinhibición, relajación, alteraciones leves de atención</td></tr>
+      <tr><td>Moderada</td><td><span class="lab">0.50–1.00 g/L</span></td><td>↓ coordinación, reflejos lentos, alteración del juicio</td></tr>
+      <tr><td>Alta</td><td><span class="lab">1.00–2.00 g/L</span></td><td>Dificultad para hablar/caminar, confusión, somnolencia</td></tr>
+      <tr><td>Muy alta / peligrosa</td><td><span class="lab">&gt;2.00 g/L</span></td><td>Depresión del SNC, coma, riesgo de muerte</td></tr>
+    </table></div>
+    <h4>Esteroides y clofibrato</h4>
+    <ul class="pts">
+      <li><b>Esteroides:</b> derivados del colesterol con 4 anillos. Glucocorticoides (cortisol, prednisona, dexametasona), mineralocorticoides (aldosterona), hormonas sexuales.</li>
+      <li>Se metabolizan en hígado, intestino y riñón. <b>Fase I</b> (oxidación, reducción, hidroxilación por <b>CYP450</b>) y <b>fase II</b> (conjugación con glucurónido o sulfato) → eliminación por orina o bilis/heces. El metabolismo modifica biodisponibilidad, concentración, vida media, duración, aclaramiento e interacciones (primer paso hepático).</li>
+      <li><b>Inhibición enzimática:</b> inhibidor → ↓ CYP → ↓ metabolismo → ↑ concentración → ↑ efecto/toxicidad (ej.: antifúngicos azólicos aumentan la exposición a corticosteroides).</li>
+      <li><b>Clofibrato:</b> fibrato hipolipemiante antiguo, ↓ triglicéridos. Se transforma en <b>ácido clofíbrico</b> (metabolito activo). Activa <b>PPAR-α</b> → <b>inducción</b> de enzimas hepáticas. Efectos adversos: litiasis biliar, alteraciones GI, hepáticas y musculares; casi en desuso.</li>
+    </ul>
+    <h4>Interacciones e inhibición del metabolismo</h4>
+    <ul class="pts">
+      <li><b>Interacción:</b> un fármaco modifica el efecto de otro. <b>Farmacodinámica</b> (mismo receptor) o <b>farmacocinética</b> (altera absorción, distribución, metabolismo o excreción). Puede aumentar toxicidad o disminuir eficacia.</li>
+      <li><b>Inhibición:</b> el inhibidor se une al CYP → el fármaco "víctima" no se metaboliza y se acumula: ↑ t½, ↑ concentración, ↑ AUC, ↑ toxicidad; si es <b>profármaco</b>, ↓ eficacia.</li>
+      <li><b>Ketoconazol</b> = inhibidor clásico (el más potente): bloquea <b>CYP3A4 y P-gp</b> (doble bloqueo: intestino e hígado). Víctimas: ciclosporina/tacrolimus (insuficiencia renal), midazolam/fentanilo (depresión respiratoria), warfarina (sangrado), estatinas (rabdomiólisis). Otros muy potentes: ritonavir, claritromicina; moderados: eritromicina, jugo de toronja.</li>
+      <li><b>Caso:</b> trasplantado con ciclosporina + ketoconazol → ciclosporina se duplica o triplica → nefrotoxicidad e HTA. Reducir la dosis de ciclosporina <span class="lab">50–80 %</span> y monitorear niveles.</li>
+    </ul>
+    <h4>IV vs oral (dosis única)</h4>
+    <div class="tbl-wrap"><table>
+      <tr><th>Parámetro</th><th>Intravenosa</th><th>Oral</th></tr>
+      <tr><td>Inicio de acción</td><td>Inmediato</td><td>Más lento (requiere absorción)</td></tr>
+      <tr><td>Cmax</td><td>Mayor</td><td>Menor</td></tr>
+      <tr><td>Tmax</td><td>No aplica (t = 0)</td><td>Mayor</td></tr>
+      <tr><td>AUC</td><td>Referencia</td><td>Menor si la absorción es incompleta</td></tr>
+      <tr><td>Biodisponibilidad (F)</td><td>1 (100 %)</td><td>&lt;1 (variable). <span class="lab">F = AUC oral / AUC IV × 100</span></td></tr>
+    </table></div>
+  </article>
+
+  <article class="topic" id="sum-FK">
+    <h3>2. Tipos de cinética y parámetros farmacocinéticos</h3>
+    <div class="src">Temas 2.4.8 y 2.4.9</div>
+    <ul class="pts">
+      <li><b>Farmacocinética:</b> lo que el organismo hace con el fármaco: absorción, distribución, metabolismo (sobre todo hígado) y excreción (sobre todo riñón).</li>
+      <li><b>Primer orden:</b> la velocidad de eliminación es <b>proporcional a la concentración</b>; se elimina un <b>porcentaje constante</b> por unidad de tiempo; la vida media es constante; caída exponencial. Es lo habitual.</li>
+      <li><b>Orden cero:</b> se elimina una <b>cantidad constante</b> por hora porque los mecanismos están <b>saturados</b>; caída lineal; riesgo de acumulación y toxicidad. Ejemplos: <b>etanol</b> y <b>fenitoína</b> (al saturarse sus enzimas).</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Parámetro</th><th>Definición / fórmula</th></tr>
+      <tr><td>Biodisponibilidad (F)</td><td>Fracción de la dosis que llega a la circulación sistémica sin modificar. <span class="lab">F = cantidad disponible / dosis × 100</span>. IV = 100 %; oral menor por absorción incompleta y primer paso. Depende de vía, forma farmacéutica, motilidad GI y primer paso.</td></tr>
+      <tr><td>Cmax</td><td>Concentración más alta en sangre tras la dosis</td></tr>
+      <tr><td>Tmax</td><td>Tiempo en llegar a la Cmax (compara velocidad de absorción, no indica cuándo empieza el efecto)</td></tr>
+      <tr><td>ABC / AUC</td><td>Exposición total. Proporcional a la cantidad absorbida y a F. Liberación sostenida: ↑ Tmax, ↓ Cmax, misma AUC</td></tr>
+      <tr><td>Estado estable</td><td>Con dosis repetidas, entrada = salida; oscila entre Css máx y mín. Se alcanza en <span class="lab">4–5 vidas medias</span> (93–97 %), sin depender de la dosis</td></tr>
+      <tr><td>Volumen de distribución</td><td><span class="lab">Vd = dosis / C0</span>. Ej.: 500 mg / 10 mg/L = 50 L. Bajo: fármaco en plasma (heparina, warfarina, aminoglucósidos). Alto: en tejidos (amiodarona, diazepam, digoxina)</td></tr>
+      <tr><td>Vida media</td><td><span class="lab">t½ = 0.693 / ke</span> o <span class="lab">t½ = 0.693 × Vd / CL</span>. Tras 1, 2, 3, 4 y 5 vidas medias queda 50, 25, 12.5, 6.25 y 3.125 %</td></tr>
+      <tr><td>Dosis de carga</td><td><span class="lab">Dosis de carga = Cobj × Vd / F</span>; se usa cuando la t½ es larga y se necesita efecto rápido</td></tr>
+    </table></div>
+    <ul class="pts">
+      <li>Ventana terapéutica: en mantenimiento, las concentraciones deben quedar entre la concentración mínima eficaz y la mínima tóxica.</li>
+      <li>↑ Vd → ↑ t½; ↑ CL → ↓ t½ (inductores, más excreción renal); ↓ CL → ↑ t½ (insuficiencia hepática o renal, inhibidores). Ej.: Vd 40 L y CL 5 L/h → t½ = 0.693 × 40 / 5 = <b>5.54 h</b>.</li>
+    </ul>
+  </article>
+
+  <article class="topic" id="sum-FM">
+    <h3>3. Farmacología cuantitativa (farmacometría)</h3>
+    <div class="src">Equipo 3 · tema 3.1</div>
+    <ul class="pts">
+      <li><b>Curva dosis-respuesta cuantal:</b> relaciona la dosis (escala logarítmica) con el <b>% de individuos</b> que presentan un efecto definido; forma sigmoidea. Mide cuántos responden, no la intensidad (eso es la curva gradual, con EC50).</li>
+      <li><b>Variabilidad:</b> interindividual (entre personas) e intraindividual (la misma persona en distintos momentos). Causas: factores farmacocinéticos, farmacodinámicos (receptores), genéticos (ej.: <b>CYP2C19</b> y activación del clopidogrel) y fisiológicos/clínicos (edad, embarazo, peso, función hepática y renal, apego).</li>
+      <li><b>Hiposusceptibilidad:</b> responde menos; requiere dosis mayores (tolerancia a opioides, resistencia bacteriana, metabolizador rápido). Solución: aumentar dosis, cambiar o combinar.</li>
+      <li><b>Hipersusceptibilidad:</b> respuesta exagerada a dosis estándar o baja. Farmacológica (metabolismo lento: sedante que duerme 24 h) o inmunológica (alergia a penicilina, anafilaxia). Solución: reducir dosis, suspender o cambiar.</li>
+      <li><b>DE50:</b> dosis eficaz en el 50 %. <b>DT50:</b> dosis tóxica en el 50 %. <b>DL50:</b> dosis letal en el 50 %.</li>
+      <li><b>Índice terapéutico:</b> <span class="lab">IT = DT50 / DE50</span> (también con DL50 en toxicología). Ej.: 100 / 10 = 10 → la dosis tóxica es 10 veces la eficaz. Mide margen de seguridad, no eficacia.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th></th><th>IT amplio</th><th>IT estrecho</th></tr>
+      <tr><td>Margen de seguridad</td><td>Amplio</td><td>Reducido</td></tr>
+      <tr><td>Manejo</td><td>Tolera variaciones de dosis</td><td>Vigilancia estrecha y monitorización de niveles</td></tr>
+      <tr><td>Ejemplos</td><td>Paracetamol, ibuprofeno, amoxicilina</td><td>Digoxina, warfarina, litio</td></tr>
+    </table></div>
+  </article>
+
+  <article class="topic" id="sum-BT">
+    <h3>4. Biotransformación</h3>
+    <div class="src">Equipo 1</div>
+    <ul class="pts">
+      <li>Modificación química del fármaco, sobre todo en el <b>hígado</b> (también intestino, riñón, pulmón, sangre). Generalmente inactiva, pero puede formar metabolitos activos. <b>Profármaco:</b> inactivo que se activa al metabolizarse.</li>
+      <li><b>Fase I (no sintética):</b> oxidación, reducción e hidrólisis; aumentan ionización e hidrosolubilidad. Oxidaciones: hidroxilación, desalquilación (N, O, S), desaminación (anfetamina), N-oxidación, sulfoxidación, desulfuración (tiobarbitúricos → oxibarbitúricos), epoxidación (epóxidos tóxicos que se conjugan con glutatión), deshalogenación.</li>
+      <li><b>Fase II (sintética):</b> <b>conjugación</b> con una molécula endógena mediante transferasas → más hidrosoluble, menos activo, se elimina por orina o bilis.</li>
+      <li><b>Microsomal:</b> retículo endoplásmico liso del hepatocito; usa O₂ (un átomo al fármaco y otro forma H₂O). Enzima principal: <b>citocromo P-450</b> (hemoproteína; la lipofilia favorece la unión).</li>
+      <li><b>CYP450:</b> 16 familias, 29 subfamilias, ~50 genes; nomenclatura CYP + número (familia) + letra (subfamilia) + número (gen). <b>CYP3A4 = la más importante</b> (participa en ~50 % del metabolismo oxidativo). CYP1A2 inducido por tabaco; CYP2E1 inducido por alcohol; deficiencia de CYP2D6 ↑ toxicidad.</li>
+      <li><b>Inductores</b> de casi todas las enzimas: <b>rifampicina, carbamazepina, fenitoína</b>. <b>Inhibidores</b> fuertes de CYP3A4: <b>jugo de toronja y azoles</b>.</li>
+      <li>Factores: cantidad e isoformas de CYP, CYP-reductasa, competencia de sustratos, inducción o inhibición; la variabilidad genética, fisiopatológica, ambiental y dietética puede cambiar más de 6 veces la velocidad.</li>
+      <li><b>Bioactivación:</b> metabolitos reactivos, radicales y epóxidos que forman aductos con proteínas y ADN (toxicidad: paracetamol, isoniazida, furosemida, metildopa). El <b>glutatión</b> los detoxifica; algunos causan hipersensibilidad.</li>
+      <li><b>FMO</b> (monooxigenasas de flavina): usan FAD, NADPH y O₂. <b>Hidrolasas:</b> rompen enlaces con agua; las esterasas plasmáticas hidrolizan rápido algunos fármacos.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Conjugación (fase II)</th><th>Dato clave</th></tr>
+      <tr><td>Glucuronidación</td><td>UDP-glucuronosiltransferasa; la más importante para la excreción biliar. Excepción: <b>morfina-6-glucurónido</b> es más potente que la morfina</td></tr>
+      <tr><td>Acetilación</td><td>Acetiltransferasas, acetil-CoA; variabilidad genética en la velocidad</td></tr>
+      <tr><td>Glicina</td><td>Ácidos carboxílicos; ácido benzoico → ácido hipúrico</td></tr>
+      <tr><td>Glutatión</td><td>Glutatión-S-transferasas; detoxifica electrófilos y carcinógenos</td></tr>
+      <tr><td>Sulfoconjugación</td><td>Sulfotransferasas, donador PAPS; fenoles y hormonas sexuales</td></tr>
+      <tr><td>Metilación</td><td>Metiltransferasas, donador SAM; catecolaminas, histamina</td></tr>
+    </table></div>
+  </article>
+
+  <article class="topic" id="sum-ER">
+    <h3>5. Excreción renal y factores que la modifican</h3>
+    <div class="src">Equipos 1 y 5</div>
+    <ul class="pts">
+      <li>Tres procesos: <b>filtración glomerular</b> (fármaco libre, en el corpúsculo renal, por presión hidrostática), <b>secreción tubular</b> (sangre → célula tubular → luz; sobre todo en el túbulo proximal) y <b>reabsorción tubular</b> (de la luz a la sangre).</li>
+      <li><b>Fuerzas de Starling:</b> <span class="lab">PNF = PGC − PBS − πGC + πBS</span>; ejemplo 60 − 18 − 32 + 0 = <b>10 mmHg</b>. Pasan agua, electrolitos, glucosa, aminoácidos, urea y creatinina; no pasan células.</li>
+      <li><b>Secreción activa:</b> la más importante, con transportadores de <b>aniones orgánicos</b> (ácido úrico, salicilatos, penicilinas, glucurónidos) y <b>cationes orgánicos</b> (colina, histamina). Capacidad limitada, saturable y con <b>competencia</b> (probenecid compite con penicilina y prolonga su permanencia). Solo se transporta la fracción libre, pero el fármaco unido se disocia.</li>
+      <li><b>Reabsorción pasiva:</b> difusión de la forma <b>liposoluble no ionizada</b>; más reabsorción = menos excreción.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>pH urinario</th><th>Ácido débil (salicilatos)</th><th>Base débil (anfetaminas)</th></tr>
+      <tr><td>Orina ácida</td><td>No ionizado → más reabsorción, menos excreción</td><td>Ionizada → más excreción</td></tr>
+      <tr><td>Orina alcalina</td><td>Ionizado → más excreción</td><td>No ionizada → más reabsorción</td></tr>
+    </table></div>
+    <ul class="pts">
+      <li><b>Edad:</b> recién nacidos con filtración y secreción inmaduras; adultos mayores con ↓ flujo renal y filtración → acumulación.</li>
+      <li><b>Género:</b> diferencias de masa y composición corporal; ajustar por función renal, no solo por sexo.</li>
+      <li><b>Embarazo:</b> ↑ flujo renal y <b>↑ filtración glomerular 40–50 %</b> → algunos fármacos bajan su concentración.</li>
+      <li><b>Enfermedad renal:</b> ↓ filtración y aclaramiento → ↑ vida media y toxicidad. Ajustar: amoxicilina, <b>gentamicina</b> (toxicidad renal y auditiva), <b>digoxina</b>, <b>metformina</b> (acidosis láctica).</li>
+      <li><b>Hígado:</b> <b>cirrosis</b> (la que más altera: menos hepatocitos, cortocircuitos portosistémicos que evitan el primer paso, hipoalbuminemia con más fracción libre; propranolol, morfina, fenitoína, warfarina, benzodiacepinas); hepatitis aguda (↓ CYP, prolonga fase I: paracetamol, teofilina, diazepam); <b>colestasis</b> (↓ excreción biliar: rifampicina); hígado graso (CYP alterado).</li>
+      <li><b>Interacciones:</b> competencia o inhibición de transportadores → ↓ secreción, ↑ concentración y vida media; cambios de reabsorción o pH.</li>
+    </ul>
+  </article>
+
+  <article class="topic" id="sum-EO">
+    <h3>6. Otras vías, depuración y excreción hepatobiliar</h3>
+    <div class="src">Equipos 6 y 7</div>
+    <ul class="pts">
+      <li><b>Leche materna</b> (87 % agua): calostro días 2–5, transición días 5–14, madura desde ~2 semanas. Paso por <b>difusión pasiva</b> de la fracción libre; influyen liposolubilidad, peso molecular, pH (leche ≈7.2 vs plasma ≈7.4: las bases débiles quedan atrapadas) y unión a proteínas. Permitido: <b>paracetamol</b>; no permitido: <b>codeína</b>.</li>
+      <li><b>Sudor y saliva:</b> vías secundarias por difusión pasiva; útiles para detección toxicológica y monitorización (parótida serosa, submandibular mixta, sublingual mucosa).</li>
+      <li><b>Pulmonar:</b> sustancias volátiles pasan del capilar al alvéolo y salen con la espiración: <b>sevoflurano, desflurano, isoflurano</b>. Más ventilación y menor solubilidad en sangre aceleran la eliminación; exposición prolongada la retrasa.</li>
+      <li><b>Depuración (CL):</b> volumen de plasma que queda libre de fármaco por unidad de tiempo (mL/min o L/h). <span class="lab">CL = Q × E</span>. Ej.: 1,000 mL/min × 0.5 = 500 mL/min; 1,500 × 0.80 = 1,200 mL/min.</li>
+      <li><b>Fracción de extracción:</b> <span class="lab">E = (Ci − Ce) / Ci</span>. Ej.: (100 − 20)/100 = 0.80. Clasificación: <b>&lt;0.3 baja, 0.3–0.7 intermedia, &gt;0.7 alta</b>. Alta extracción hepática = mucho primer paso y baja biodisponibilidad oral. Depende de flujo hepático, CYP y fracción libre.</li>
+      <li><b>Excreción hepatobiliar:</b> de la sangre a la bilis por <b>transporte activo</b>; preferida por compuestos de <b>alto peso molecular (&gt;300–500)</b>, liposolubles y conjugados (glucurónidos). Pasos: captación por el hepatocito → metabolismo → secreción canalicular por <b>P-gp, MRP2 y BCRP</b> → bilis → heces.</li>
+      <li><b>Circulación enterohepática:</b> el fármaco o su conjugado pasa a la bilis, las bacterias (β-glucuronidasa) lo liberan, se reabsorbe y regresa por la vena porta → prolonga su permanencia. Ejemplos: <b>anticonceptivos orales</b> (los antibióticos pueden reducirla), digoxina, atovacuona, sulfasalazina. La <b>colestiramina</b> la interrumpe.</li>
+    </ul>
+  </article>
+</div>
 </section>
 
 <!-- ======================= CUESTIONARIO ======================= -->
@@ -443,8 +608,8 @@ textarea { width: 100%; min-height: 96px; resize: vertical; font: .95rem/1.5 var
 
 <!-- ======================= CÁLCULOS ======================= -->
 <section class="view" id="view-calculos" role="tabpanel" aria-labelledby="tab-calculos" hidden>
-  <h2>Ejercicios de interpretación</h2>
-  <p class="lede">Ejercicios con datos nuevos en cada intento: puntaje ACR/EULAR 2010, líquido sinovial, PCR, antibiótico y duración según el germen, prednisona puente, dolor lumbar inflamatorio e identificación de tumores. Usa punto o coma para decimales. Al calificar verás el procedimiento. Se aprueba con <b>80 %</b>.</p>
+  <h2>Ejercicios</h2>
+  <p class="lede" id="ca-lede"></p>
   <div class="controls">
     <label class="sel" for="ca-type">Tipo <select id="ca-type"></select></label>
     <label class="sel" for="ca-count">Ejercicios <select id="ca-count"><option value="6">6</option><option value="10" selected>10</option><option value="15">15</option></select></label>
@@ -465,6 +630,9 @@ textarea { width: 100%; min-height: 96px; resize: vertical; font: .95rem/1.5 var
 <canvas id="confetti" hidden></canvas>
 
 <script>
+/* ---------- Materias: cada una carga sus propios bancos ---------- */
+const SUBJECTS = {
+  reuma: { name: 'Reumatología', calcLede: "Ejercicios con datos nuevos en cada intento: puntaje ACR/EULAR 2010, líquido sinovial, PCR, antibiótico y duración según el germen, prednisona puente, dolor lumbar inflamatorio e identificación de tumores. Usa punto o coma para decimales. Al calificar verás el procedimiento. Se aprueba con <b>80 %</b>.", load() {
 const TOPICS = { A: 'Artritis reumatoide', S: 'Artritis séptica', R: 'Artritis reactiva', E: 'Espondilitis anquilosante', T: 'Tumores óseos' };
 
 /* ---------- Banco de opción múltiple: [tema, pregunta, [correcta, incorrecta, incorrecta, incorrecta], explicación] ---------- */
@@ -704,268 +872,7 @@ const FC = [
 ];
 
 
-/* ---------- Utilidades ---------- */
-const $ = (s, r = document) => r.querySelector(s);
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
-const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[−–]/g, '-');
-const store = {
-  get(k) { try { return JSON.parse(localStorage.getItem('reuma-' + k)); } catch (e) { return null; } },
-  set(k, v) { try { localStorage.setItem('reuma-' + k, JSON.stringify(v)); } catch (e) {} }
-};
-function topicOptions(sel) {
-  sel.innerHTML = '<option value="all">Todos los temas</option>' + Object.entries(TOPICS).map(([k, v]) => `<option value="${k}">${v}</option>`).join('');
-}
 
-/* ---------- Pestañas ---------- */
-const VIEWS = ['resumen', 'cuestionario', 'examen', 'abierto', 'casos', 'calculos'];
-function show(view) {
-  if (!VIEWS.includes(view)) view = 'resumen';
-  VIEWS.forEach(v => {
-    $('#view-' + v).hidden = v !== view;
-    $('#tab-' + v).setAttribute('aria-selected', v === view ? 'true' : 'false');
-  });
-}
-document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
-  const v = t.dataset.view;
-  if (location.hash !== '#' + v) location.hash = v; else show(v);
-  window.scrollTo({ top: 0 });
-}));
-window.addEventListener('hashchange', () => show(location.hash.slice(1)));
-show(location.hash.slice(1));
-
-/* ---------- Navegación del resumen ---------- */
-$('#sum-nav').innerHTML = Object.entries(TOPICS).map(([k, v]) => `<button class="chip" type="button" data-t="${k}">${v}</button>`).join('');
-$('#sum-nav').addEventListener('click', e => {
-  const b = e.target.closest('[data-t]'); if (!b) return;
-  const el = $('#sum-' + b.dataset.t);
-  const y = el.getBoundingClientRect().top + window.scrollY - $('header.top').offsetHeight - 12;
-  window.scrollTo({ top: y, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-});
-
-/* ---------- Cuestionario ---------- */
-let fcTopic = 'all', fcOrder = FC.map((_, i) => i), fcAll = false;
-$('#fc-topics').innerHTML = `<button class="chip" type="button" data-t="all" aria-pressed="true">Todos</button>` + Object.entries(TOPICS).map(([k, v]) => `<button class="chip" type="button" data-t="${k}" aria-pressed="false">${v}</button>`).join('');
-function renderFC() {
-  const items = fcOrder.filter(i => fcTopic === 'all' || FC[i][0] === fcTopic);
-  $('#fc-list').innerHTML = items.map((i, n) => {
-    const [t, q, a] = FC[i];
-    return `<div class="card flash"><div class="meta"><span>${TOPICS[t]}</span><span>${n + 1} / ${items.length}</span></div>
-      <div class="q">${esc(q)}</div>
-      <button class="linkbtn" type="button" data-fc="${i}" aria-expanded="${fcAll}">${fcAll ? 'Ocultar respuesta' : 'Mostrar respuesta'}</button>
-      <div class="ans" id="fc-a-${i}" ${fcAll ? '' : 'hidden'}>${esc(a)}</div></div>`;
-  }).join('');
-}
-$('#fc-topics').addEventListener('click', e => {
-  const b = e.target.closest('[data-t]'); if (!b) return;
-  fcTopic = b.dataset.t;
-  $('#fc-topics').querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c === b ? 'true' : 'false'));
-  renderFC();
-});
-$('#fc-shuffle').addEventListener('click', () => { fcOrder = shuffle(fcOrder); renderFC(); });
-$('#fc-toggle').addEventListener('click', () => { fcAll = !fcAll; $('#fc-toggle').textContent = fcAll ? 'Ocultar todas las respuestas' : 'Mostrar todas las respuestas'; renderFC(); });
-$('#fc-list').addEventListener('click', e => {
-  const b = e.target.closest('[data-fc]'); if (!b) return;
-  const a = $('#fc-a-' + b.dataset.fc); a.hidden = !a.hidden;
-  b.textContent = a.hidden ? 'Mostrar respuesta' : 'Ocultar respuesta';
-  b.setAttribute('aria-expanded', String(!a.hidden));
-});
-renderFC();
-
-/* ---------- Resultado y celebración ---------- */
-function resultHTML(pct, ok, total, pass, threshold, kind, wrongCount, retryText, newText) {
-  const icon = pass
-    ? `<svg class="check" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34"/><path d="M24 41 l11 11 l22 -24"/></svg>`
-    : `<svg class="xmark" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34"/><path d="M28 28 L52 52 M52 28 L28 52"/></svg>`;
-  const msg = pass
-    ? `<strong>¡Felicidades, aprobaste!</strong>Sacaste ${ok} de ${total}. Puedes intentar otro examen con preguntas nuevas para reforzar.`
-    : `<strong>Todavía no: necesitas ${threshold} %</strong>Sacaste ${ok} de ${total}. Revisa las que están en rojo y vuelve a intentarlo.`;
-  return `<div class="result ${pass ? 'pass' : 'fail'}" role="status">${icon}<div class="score">${pct}%</div>
-    <div class="txt">${msg}<div class="actions">
-      <button class="btn" type="button" data-act="new-${kind}">${newText || 'Nuevo intento (preguntas al azar)'}</button>
-      ${wrongCount ? `<button class="btn ghost" type="button" data-act="retry-${kind}">${retryText || `Repetir solo las ${wrongCount} que fallé`}</button>` : ''}
-    </div></div></div>`;
-}
-function confetti() {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const c = $('#confetti'); c.hidden = false;
-  const ctx = c.getContext('2d'); const W = c.width = innerWidth, H = c.height = innerHeight;
-  const cs = getComputedStyle(document.documentElement);
-  const colors = ['--accent', '--good', '--lab'].map(v => cs.getPropertyValue(v).trim());
-  const P = Array.from({ length: 140 }, () => ({ x: Math.random() * W, y: -20 - Math.random() * H * 0.5, r: 4 + Math.random() * 5, vy: 2 + Math.random() * 3, vx: -1.5 + Math.random() * 3, a: Math.random() * 6, c: colors[Math.floor(Math.random() * 3)] }));
-  let t = 0;
-  (function frame() {
-    ctx.clearRect(0, 0, W, H);
-    P.forEach(p => { p.y += p.vy; p.x += p.vx; p.a += 0.1; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a); ctx.fillStyle = p.c; ctx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); ctx.restore(); });
-    if (++t < 180) requestAnimationFrame(frame); else { ctx.clearRect(0, 0, W, H); c.hidden = true; }
-  })();
-}
-function bestText(key) {
-  const b = store.get(key);
-  return b ? `Tu mejor resultado: ${b.pct} % ${b.pass ? '✓ aprobado' : ''}` : '';
-}
-function saveBest(key, pct, pass) {
-  const b = store.get(key);
-  if (!b || pct > b.pct) store.set(key, { pct, pass });
-}
-function filterBar(scope, list) {
-  scope.addEventListener('click', e => {
-    const b = e.target.closest('[data-f]'); if (!b) return;
-    scope.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c === b ? 'true' : 'false'));
-    list.querySelectorAll('.card').forEach(card => { card.hidden = b.dataset.f === 'ko' && !card.classList.contains('ko'); });
-  });
-}
-function resetFilter(scope, list) {
-  scope.querySelectorAll('.chip').forEach((c, i) => c.setAttribute('aria-pressed', i === 0 ? 'true' : 'false'));
-  list.querySelectorAll('.card').forEach(c => { c.hidden = false; });
-}
-
-/* ---------- Examen opción múltiple ---------- */
-const mc = { qs: [], done: false };
-$('#mc-bank-size').textContent = MC.length + ' preguntas';
-topicOptions($('#mc-topic'));
-$('#mc-best').textContent = bestText('mc');
-function mcStart(pool) {
-  const topic = $('#mc-topic').value, n = +$('#mc-count').value;
-  const src = pool || shuffle(MC.map((_, i) => i).filter(i => topic === 'all' || MC[i][0] === topic)).slice(0, n);
-  mc.qs = shuffle(src).map(i => ({ i, opts: shuffle(MC[i][2].map((t, k) => ({ t, ok: k === 0 }))), pick: null }));
-  mc.done = false;
-  $('#mc-result').innerHTML = '';
-  $('#mc-filter').hidden = true; resetFilter($('#mc-filter'), $('#mc-list'));
-  $('#mc-status').hidden = false;
-  mcRender(); mcProgress();
-  $('#mc-list').scrollIntoView({ block: 'start' });
-  window.scrollBy(0, -$('header.top').offsetHeight - 70);
-}
-function mcRender() {
-  $('#mc-list').innerHTML = mc.qs.map((q, n) => {
-    const [t, text, , exp] = MC[q.i];
-    const right = q.opts.findIndex(o => o.ok);
-    const state = mc.done ? (q.pick === right ? 'ok' : 'ko') : '';
-    const verdict = mc.done ? (state === 'ok' ? '<span class="verdict ok">✓ Correcta</span>' : `<span class="verdict ko">✗ ${q.pick === null ? 'Sin contestar' : 'Incorrecta'}</span>`) : `<span>${n + 1} / ${mc.qs.length}</span>`;
-    return `<fieldset class="card ${mc.done ? 'done ' + state : ''}" style="margin:0">
-      <legend class="sr-only" style="position:absolute;left:-9999px">Pregunta ${n + 1}</legend>
-      <div class="meta"><span>${n + 1}. ${TOPICS[t]}</span>${verdict}</div>
-      <div class="q">${esc(text)}</div>
-      <div class="opts">${q.opts.map((o, k) => {
-        let cls = '';
-        if (mc.done) { if (o.ok) cls = 'is-right'; else if (q.pick === k) cls = 'is-wrong'; }
-        return `<label class="opt ${cls}"><input type="radio" name="mc-${n}" id="mc-${n}-${k}" value="${k}" ${q.pick === k ? 'checked' : ''} ${mc.done ? 'disabled' : ''}><span>${esc(o.t)}</span></label>`;
-      }).join('')}</div>
-      ${mc.done && state === 'ko' ? `<div class="explain"><b>Respuesta correcta:</b> ${esc(q.opts[right].t)}<br>${esc(exp)}</div>` : ''}
-      ${mc.done && state === 'ok' ? `<div class="explain">${esc(exp)}</div>` : ''}
-    </fieldset>`;
-  }).join('');
-}
-function mcProgress() {
-  const a = mc.qs.filter(q => q.pick !== null).length;
-  $('#mc-prog-txt').textContent = `Respondidas ${a} de ${mc.qs.length}`;
-  $('#mc-prog').style.width = (mc.qs.length ? a / mc.qs.length * 100 : 0) + '%';
-}
-$('#mc-list').addEventListener('change', e => {
-  if (mc.done || e.target.type !== 'radio') return;
-  const n = +e.target.name.split('-')[1];
-  mc.qs[n].pick = +e.target.value; mcProgress();
-});
-$('#mc-start').addEventListener('click', () => mcStart());
-$('#mc-submit').addEventListener('click', () => {
-  mc.done = true;
-  const ok = mc.qs.filter(q => q.pick !== null && q.opts[q.pick].ok).length;
-  const pct = Math.round(ok / mc.qs.length * 100), pass = pct >= 80;
-  const wrong = mc.qs.length - ok;
-  saveBest('mc', pct, pass); $('#mc-best').textContent = bestText('mc');
-  $('#mc-status').hidden = true;
-  $('#mc-result').innerHTML = resultHTML(pct, ok, mc.qs.length, pass, 80, 'mc', wrong);
-  $('#mc-filter').hidden = wrong === 0;
-  mcRender();
-  window.scrollTo({ top: 0 });
-  if (pass) confetti();
-});
-filterBar($('#mc-filter'), $('#mc-list'));
-
-/* ---------- Examen preguntas abiertas ---------- */
-const op = { qs: [], done: false };
-topicOptions($('#op-topic'));
-$('#op-best').textContent = bestText('op');
-function grade(text, concepts) {
-  const t = norm(text);
-  return concepts.map(([name, ...alts]) => ({ name, hit: alts.some(a => t.includes(norm(a))) }));
-}
-function opStart(pool) {
-  const topic = $('#op-topic').value, n = +$('#op-count').value;
-  const src = pool || shuffle(OP.map((_, i) => i).filter(i => topic === 'all' || OP[i][0] === topic)).slice(0, n);
-  op.qs = shuffle(src).map(i => ({ i, text: '', hits: [], ok: null }));
-  op.done = false;
-  $('#op-result').innerHTML = '';
-  $('#op-filter').hidden = true; resetFilter($('#op-filter'), $('#op-list'));
-  $('#op-status').hidden = false;
-  opRender(); opProgress();
-  $('#op-list').scrollIntoView({ block: 'start' });
-  window.scrollBy(0, -$('header.top').offsetHeight - 70);
-}
-function opRender() {
-  $('#op-list').innerHTML = op.qs.map((q, n) => {
-    const [t, text, model] = OP[q.i];
-    const state = op.done ? (q.ok ? 'ok' : 'ko') : '';
-    const verdict = op.done ? (q.ok ? '<span class="verdict ok">✓ Correcta</span>' : '<span class="verdict ko">✗ Incompleta</span>') : `<span>${n + 1} / ${op.qs.length}</span>`;
-    const found = q.hits.filter(h => h.hit).length;
-    return `<div class="card ${op.done ? 'done ' + state : ''}" data-n="${n}">
-      <div class="meta"><span>${n + 1}. ${TOPICS[t]}</span>${verdict}</div>
-      <label class="q" for="op-${n}" style="display:block">${esc(text)}</label>
-      <textarea id="op-${n}" data-n="${n}" ${op.done ? 'readonly' : ''} placeholder="Escribe tu respuesta…">${esc(q.text)}</textarea>
-      ${op.done ? `<div class="concepts" aria-label="Conceptos clave">${q.hits.map(h => `<span class="concept ${h.hit ? 'hit' : 'miss'}">${h.hit ? '✓' : '✗'} ${esc(h.name)}</span>`).join('')}</div>
-        <div class="explain"><b>Respuesta modelo:</b> ${esc(model)}</div>
-        <div class="selfgrade">Mencionaste ${found} de ${q.hits.length} conceptos. ¿Tu respuesta fue correcta?
-          <button class="chip" type="button" data-self="1" aria-pressed="${q.ok === true}">Sí, la tuve bien</button>
-          <button class="chip" type="button" data-self="0" aria-pressed="${q.ok === false}">No, me faltó</button></div>` : ''}
-    </div>`;
-  }).join('');
-}
-function opProgress() {
-  const a = op.qs.filter(q => q.text.trim().length > 0).length;
-  $('#op-prog-txt').textContent = `Contestadas ${a} de ${op.qs.length}`;
-  $('#op-prog').style.width = (op.qs.length ? a / op.qs.length * 100 : 0) + '%';
-}
-function opScore(first) {
-  const ok = op.qs.filter(q => q.ok).length;
-  const pct = Math.round(ok / op.qs.length * 100), pass = pct >= 70;
-  const wasPass = $('#op-result .result.pass') !== null;
-  saveBest('op', pct, pass); $('#op-best').textContent = bestText('op');
-  $('#op-result').innerHTML = resultHTML(pct, ok, op.qs.length, pass, 70, 'op', op.qs.length - ok);
-  $('#op-filter').hidden = ok === op.qs.length;
-  if (pass && (first || !wasPass)) confetti();
-}
-$('#op-list').addEventListener('input', e => {
-  if (e.target.tagName !== 'TEXTAREA' || op.done) return;
-  op.qs[+e.target.dataset.n].text = e.target.value; opProgress();
-});
-$('#op-list').addEventListener('click', e => {
-  const b = e.target.closest('[data-self]'); if (!b || !op.done) return;
-  const n = +b.closest('.card').dataset.n;
-  op.qs[n].ok = b.dataset.self === '1';
-  const card = b.closest('.card');
-  card.classList.toggle('ok', op.qs[n].ok); card.classList.toggle('ko', !op.qs[n].ok);
-  card.querySelector('.verdict').outerHTML = op.qs[n].ok ? '<span class="verdict ok">✓ Correcta</span>' : '<span class="verdict ko">✗ Incompleta</span>';
-  card.querySelectorAll('[data-self]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-  opScore(false);
-});
-$('#op-start').addEventListener('click', () => opStart());
-$('#op-submit').addEventListener('click', () => {
-  op.done = true;
-  op.qs.forEach(q => {
-    q.hits = grade(q.text, OP[q.i][3]);
-    const ratio = q.hits.filter(h => h.hit).length / q.hits.length;
-    q.ok = q.text.trim().length > 0 && ratio >= 0.5;
-  });
-  $('#op-status').hidden = true;
-  opRender(); opScore(true);
-  window.scrollTo({ top: 0 });
-});
-filterBar($('#op-filter'), $('#op-list'));
-
-/* =========================================================
-   CASOS CLÍNICOS: pasos = [pregunta, [correcta, incorrecta...], explicación]
-   ========================================================= */
 const CASES = [
 { t:'A', title:'Manos hinchadas cada mañana', text:'Mujer de 38 años, fumadora, con 10 semanas de dolor e hinchazón en ambas muñecas y en varias articulaciones de la base de los dedos. Por la mañana tarda más de una hora en poder mover las manos. Mejora un poco al moverse durante el día.',
   labs:[['Factor reumatoide','positivo alto'],['Anti-CCP','positivo alto'],['VSG','42 mm/h'],['PCR','elevada'],['Articulaciones','8 pequeñas']],
@@ -1067,10 +974,737 @@ const CASES = [
   ]},
 ];
 
+const GENS = {
+  acr: { t: 'A', name: 'Puntaje ACR/EULAR 2010', make() {
+    const J = pick([['1 articulación grande (una rodilla)', 0], ['3 articulaciones grandes (hombros y una rodilla)', 1], ['2 articulaciones pequeñas (dos MCF)', 2], ['6 articulaciones pequeñas (MCF y muñecas)', 3], ['14 articulaciones, incluidas varias MCF', 5]]);
+    const S = pick([['FR y anti-CCP negativos', 0], ['FR positivo bajo (≤3 veces el límite)', 2], ['anti-CCP positivo alto (>3 veces el límite)', 3]]);
+    const P = pick([['PCR y VSG normales', 0], ['VSG elevada', 1]]);
+    const w = R(2, 16), D = w >= 6 ? 1 : 0, ans = J[1] + S[1] + P[1] + D;
+    return { kind: 'num', ans, tol: 0, unit: 'puntos', q: `Paciente con <b>${J[0]}</b>, ${S[0]}, ${P[0]} y síntomas desde hace <span class="lab">${w} semanas</span>. ¿Cuántos puntos suma en ACR/EULAR 2010?`,
+      sol: `Articulaciones ${J[1]} + serología ${S[1]} + reactantes ${P[1]} + duración ${D} (${w >= 6 ? '≥6 semanas' : '<6 semanas'}) = <b>${ans} puntos</b>. ${ans >= 6 ? '≥6: AR definida.' : '<6: no alcanza para AR definida.'}` }; } },
+  sinovial: { t: 'S', name: 'Interpretar líquido sinovial', make() {
+    const ty = pick(['SEP', 'INF', 'NO']); let leu, pmn, ratio;
+    if (ty === 'SEP') { leu = R(55, 150) * 1000; pmn = R(91, 98); ratio = Rf(0.15, 0.45, 2); }
+    if (ty === 'INF') { leu = R(5, 40) * 1000; pmn = R(55, 85); ratio = Rf(0.6, 0.9, 2); }
+    if (ty === 'NO') { leu = R(2, 18) * 100; pmn = R(10, 24); ratio = Rf(0.9, 1, 2); }
+    const plas = R(85, 110), sin = Math.round(plas * ratio);
+    const labels = { SEP: 'Séptico (infeccioso)', INF: 'Inflamatorio no séptico (como AR o reactiva)', NO: 'No inflamatorio' };
+    const why = { SEP: 'Cumple los 3 criterios de la presentación: >50,000 células, >90 % PMN y glucosa <50 % de la plasmática.', INF: 'Hay inflamación (miles de células, PMN moderados) pero no llega a 50,000 ni a 90 % PMN y la glucosa está conservada.', NO: 'Menos de 2,000 células con pocos PMN y glucosa igual a la plasmática (valores de referencia habituales).' };
+    return { kind: 'choice', ans: labels[ty], opts: shuffle(Object.values(labels)), q: `Líquido sinovial: leucocitos <span class="lab">${leu.toLocaleString('es-MX')}/mm³</span>, PMN <span class="lab">${pmn} %</span>, glucosa sinovial <span class="lab">${sin} mg/dL</span> con glucosa plasmática <span class="lab">${plas} mg/dL</span>. ¿Cómo lo clasificas?`,
+      sol: `Glucosa sinovial/plasmática = ${sin}/${plas} = ${Math.round(sin / plas * 100)} %. ${why[ty]} → <b>${labels[ty]}</b>.` }; } },
+  gluRatio: { t: 'S', name: 'Glucosa sinovial / plasmática', make() {
+    const plas = R(80, 120), sin = R(15, 110), ans = sin / plas * 100;
+    return { kind: 'num', ans, tol: 1.5, unit: '%', q: `Glucosa sinovial <span class="lab">${sin} mg/dL</span> y plasmática <span class="lab">${plas} mg/dL</span>. ¿Qué porcentaje de la plasmática representa la sinovial?`,
+      sol: `${sin} / ${plas} × 100 = <b>${f1(ans)} %</b>. ${ans < 50 ? 'Es menor de 50 %: apoya artritis séptica.' : 'No es menor de 50 %: no cumple ese criterio de infección.'}` }; } },
+  pcr: { t: 'S', name: 'Proteína C reactiva', make() {
+    const v = R(4, 90), ty = pick(['corte', 'doble']);
+    if (ty === 'doble') { const ans = v * 2; return { kind: 'num', ans, tol: 0.5, unit: 'mg/L', q: `Un niño con artritis séptica tiene PCR de <span class="lab">${v} mg/L</span> al ingreso. Si la PCR se duplica en 6 horas como dice la presentación, ¿qué valor esperas a las 6 h?`, sol: `La PCR se duplica en 6 h: ${v} × 2 = <b>${ans} mg/L</b>. Por subir y bajar rápido es la mejor para vigilar la evolución.` }; }
+    const ans = v >= 20 ? 'Por arriba del corte: apoya osteomielitis / artritis séptica' : 'Por debajo del corte de 20 mg/L';
+    return { kind: 'choice', ans, opts: ['Por arriba del corte: apoya osteomielitis / artritis séptica', 'Por debajo del corte de 20 mg/L'], q: `PCR de <span class="lab">${v} mg/L</span> en un niño con fiebre y dolor articular. ¿Cómo la interpretas?`, sol: `El valor de corte para OmA y artritis séptica es 20 mg/L. ${v} ${v >= 20 ? '≥' : '<'} 20 → <b>${ans}</b>. Siempre se integra con la clínica y el líquido sinovial.` }; } },
+  agente: { t: 'S', name: 'Agente según la edad', make() {
+    const ty = pick(['RN', 'NI', 'NI', 'GO']); let txt, ans;
+    if (ty === 'RN') { txt = `Recién nacido de ${R(5, 28)} días`; ans = 'E. coli o Streptococcus agalactiae'; }
+    if (ty === 'NI') { txt = `Niño de ${R(2, 14)} años sin factores especiales`; ans = 'Staphylococcus aureus'; }
+    if (ty === 'GO') { txt = `Adolescente de ${R(16, 19)} años con vida sexual activa y diplococos gramnegativos en el Gram`; ans = 'Neisseria gonorrhoeae'; }
+    return { kind: 'choice', ans, opts: ['Staphylococcus aureus', 'E. coli o Streptococcus agalactiae', 'Neisseria gonorrhoeae', 'Mycobacterium tuberculosis'], q: `${txt} con artritis séptica. ¿Cuál es el agente más probable?`, sol: `S. aureus es el más común desde los 2 años; en recién nacidos y lactantes predominan E. coli y S. agalactiae; el gonococo se trata con ceftriaxona 7 días. → <b>${ans}</b>.` }; } },
+  atb: { t: 'S', name: 'Antibiótico empírico', make() {
+    const S = pick([['Niño con infección adquirida en la comunidad y cocos grampositivos en racimos (S. aureus)', 'Dicloxacilina + aminoglucósido'], ['Paciente hospitalizado con S. aureus resistente a meticilina', 'Vancomicina'], ['Lactante con bacilos gramnegativos en el Gram', 'Ceftriaxona o cefotaxima + aminoglucósido'], ['Adolescente con artritis por gonococo', 'Ceftriaxona por 7 días'], ['Paciente con riesgo de MRSA y germen aún desconocido', 'Vancomicina + cefalosporina de 2.ª o 3.ª']]);
+    return { kind: 'choice', ans: S[1], opts: shuffle(['Dicloxacilina + aminoglucósido', 'Vancomicina', 'Ceftriaxona o cefotaxima + aminoglucósido', 'Ceftriaxona por 7 días', 'Vancomicina + cefalosporina de 2.ª o 3.ª']), q: `${S[0]}. ¿Qué antibiótico empírico indicas?`, sol: `Según la tabla de tratamiento empírico de la presentación → <b>${S[1]}</b>.` }; } },
+  duracion: { t: 'S', name: 'Duración del antibiótico', make() {
+    const S = pick([['Haemophilus influenzae', '2 semanas'], ['Streptococcus pneumoniae', '2 semanas'], ['Staphylococcus aureus', '3–4 semanas'], ['Pseudomonas aeruginosa', '3–4 semanas'], ['infección asociada a prótesis', '3–4 semanas'], ['gonococo', '7 días']]);
+    return { kind: 'choice', ans: S[1], opts: ['7 días', '2 semanas', '3–4 semanas'], q: `Artritis séptica por <b>${S[0]}</b>. ¿Cuánto dura el antibiótico?`, sol: `H. influenzae o S. pneumoniae: 2 semanas. S. aureus, P. aeruginosa o prótesis: 3–4 semanas. Gonococo: ceftriaxona 7 días. → <b>${S[1]}</b>.` }; } },
+  prednisona: { t: 'A', name: 'Prednisona como puente', make() {
+    const d = pick([5, 7.5, 10, 15, 20, 30]), m = pick([1, 2, 3, 6, 12]), ok = d <= 10 && m < 3;
+    const ans = ok ? 'Adecuada como terapia puente' : 'No es adecuada';
+    return { kind: 'choice', ans, opts: ['Adecuada como terapia puente', 'No es adecuada'], q: `Paciente con AR que inicia metotrexato. Le indican prednisona <span class="lab">${d} mg/día</span> durante <span class="lab">${m} ${m === 1 ? 'mes' : 'meses'}</span>. ¿Es adecuada como terapia puente?`, sol: `La presentación indica dosis baja (≤10 mg/día) por menos de 3 meses. ${d <= 10 ? 'La dosis cumple' : 'La dosis es alta'}; ${m < 3 ? 'la duración cumple' : 'la duración es excesiva'} → <b>${ans}</b>.` }; } },
+  erosiones: { t: 'A', name: 'Erosiones en la AR', make() {
+    const S = pick([['6 meses', '40 %'], ['1 año', '60 %'], ['2 años', '75 %']]);
+    return { kind: 'choice', ans: S[1], opts: ['40 %', '60 %', '75 %', '10 %'], q: `Según la presentación, ¿qué porcentaje de pacientes con AR ya tiene erosiones a los <b>${S[0]}</b>?`, sol: `40 % a los 6 meses, 60 % al año y hasta 75 % a los 2 años → <b>${S[1]}</b>. Por eso hay una ventana de oportunidad para tratar.` }; } },
+  lumbar: { t: 'E', name: 'Dolor lumbar: inflamatorio o mecánico', make() {
+    const inf = Math.random() < 0.5;
+    const txt = inf ? `Hombre de ${R(19, 38)} años con ${R(4, 14)} meses de dolor lumbar que lo despierta en la madrugada, con rigidez matutina, y que mejora al hacer ejercicio.` : `Hombre de ${R(45, 68)} años con ${R(1, 3)} semanas de dolor lumbar después de cargar cajas, que empeora con la actividad y mejora con el reposo.`;
+    const ans = inf ? 'Inflamatorio: sugiere espondilitis anquilosante' : 'Mecánico';
+    return { kind: 'choice', ans, opts: ['Inflamatorio: sugiere espondilitis anquilosante', 'Mecánico'], q: `${txt} ¿Qué tipo de dolor lumbar es?`, sol: `Dolor inflamatorio: >3 meses, inicio antes de los 40 años, mejora con el movimiento y empeora con el reposo. → <b>${ans}</b>.` }; } },
+  tumor: { t: 'T', name: 'Identificar el tumor óseo', make() {
+    const S = pick([
+      [`Adolescente de ${R(13, 19)} años con dolor y masa cerca de la rodilla; puede dar metástasis a pulmón.`, 'Osteosarcoma'],
+      [`Adulto de ${R(50, 75)} años con tumor de crecimiento lento en la pelvis, formado por células productoras de cartílago.`, 'Condrosarcoma'],
+      [`Niño de ${R(6, 15)} años con dolor en fémur, fiebre, cansancio y pérdida de peso.`, 'Sarcoma de Ewing'],
+      [`Joven de ${R(14, 24)} años con dolor nocturno intenso que mejora con antiinflamatorios; lesión <2 cm con nidus.`, 'Osteoma osteoide'],
+      [`Adolescente con una prominencia dura, indolora, cerca de la placa de crecimiento del fémur, formada por hueso y cartílago.`, 'Osteocondroma'],
+      [`Adulto con lesión de cartílago dentro de la médula de una falange, descubierta por casualidad en una radiografía.`, 'Encondroma']]);
+    return { kind: 'choice', ans: S[1], opts: shuffle(['Osteosarcoma', 'Condrosarcoma', 'Sarcoma de Ewing', 'Osteoma osteoide', 'Osteocondroma', 'Encondroma']), q: `${S[0]} ¿Qué tumor es más probable?`, sol: `Edad, localización y dato clave apuntan a <b>${S[1]}</b>. Recuerda: la biopsia da el diagnóstico definitivo.` }; } },
+};
+
+    return { TOPICS, MC, OP, FC, CASES, GENS };
+  } },
+  farma: { name: 'Farmacología', calcLede: "Ejercicios con números nuevos en cada intento: gramos de alcohol y alcoholemia (Widmark), biodisponibilidad, volumen de distribución, vida media, concentración tras vidas medias, estado estable, orden cero, dosis de carga, índice terapéutico, presión neta de filtración, pH urinario, fracción de extracción y depuración. Usa punto o coma para decimales. Al calificar verás el procedimiento. Se aprueba con <b>80 %</b>.", load() {
+const TOPICS = { AI: 'Alcoholemia e interacciones', FK: 'Cinética y parámetros', FM: 'Farmacometría', BT: 'Biotransformación', ER: 'Excreción renal', EO: 'Otras vías y hepatobiliar' };
+
+const MC = [
+['AI','La alcoholemia se expresa en:',['g/L de sangre','mg/dL de orina','mL/min','mmHg'],'Es la concentración de etanol en la sangre.'],
+['AI','Fórmula para convertir una bebida a gramos de alcohol:',['A = V × %alcohol/100 × 0.789','A = V × 0.15','A = P × r','A = V / 0.789'],'0.789 g/mL es la densidad aproximada del etanol.'],
+['AI','¿Cuántos gramos de alcohol hay en 500 mL de cerveza al 5 %?',['19.7 g','25 g','5 g','39.5 g'],'500 × 0.05 × 0.789 = 19.7 g.'],
+['AI','En la fórmula de Widmark, "r" significa:',['Factor de distribución del alcohol','Velocidad de eliminación','Tiempo transcurrido','Gramos de alcohol'],'Depende de la composición corporal.'],
+['AI','Factor de distribución (r) que se usa para hombre y para mujer:',['Hombre ≈ 0.68; mujer ≈ 0.55','Hombre 0.55; mujer 0.68','Ambos 1.0','Hombre 0.15; mujer 0.10'],'Aproximación académica de la presentación.'],
+['AI','Velocidad de eliminación del alcohol (β) usada en la clase:',['≈ 0.15 g/L por hora','1.5 g/L por hora','0.693 por hora','15 g por hora'],'Se resta β × tiempo.'],
+['AI','Hombre de 70 kg ingiere 19.7 g de alcohol. Alcoholemia inmediata:',['0.41 g/L','0.11 g/L','1.4 g/L','0.28 g/L'],'19.7 / (0.68 × 70) = 0.41 g/L.'],
+['AI','Con alcoholemia inicial de 0.41 g/L, ¿cuánto queda a las 2 horas?',['0.11 g/L','0.26 g/L','0.30 g/L','0 g/L'],'0.41 − 0.15 × 2 = 0.11 g/L.'],
+['AI','A mayor peso corporal, con la misma cantidad de alcohol:',['Generalmente menor concentración','Mayor concentración','No cambia','Siempre coma'],'El alcohol se distribuye en más volumen.'],
+['AI','Alcoholemia de 1.2 g/L se clasifica como:',['Alta (1.00–2.00 g/L)','Baja','Moderada','Muy alta'],'Da dificultad para hablar o caminar, confusión y somnolencia.'],
+['AI','Alcoholemia mayor de 2.00 g/L:',['Muy alta: depresión del SNC, coma, riesgo de muerte','Desinhibición leve','Sin efectos','Solo relajación'],'Es la categoría peligrosa.'],
+['AI','Los esteroides derivan de:',['El colesterol (estructura de 4 anillos)','Los aminoácidos','La glucosa','El ácido úrico'],'Incluyen glucocorticoides, mineralocorticoides y hormonas sexuales.'],
+['AI','Enzimas principales en la fase I del metabolismo de esteroides:',['Citocromo P450 (CYP)','Amilasa','Lipasa pancreática','Anhidrasa carbónica'],'Realizan oxidación, reducción e hidroxilación.'],
+['AI','En la fase II de los esteroides se conjugan con:',['Glucurónido o sulfato','Hierro','Sodio','Colesterol'],'Aumenta la solubilidad para eliminarlos por orina o bilis.'],
+['AI','El metabolito activo del clofibrato es:',['Ácido clofíbrico','Clofibrato glucurónido inactivo','Ácido úrico','Cortisol'],'El clofibrato se transforma en ácido clofíbrico.'],
+['AI','Principal efecto del clofibrato:',['Disminuir triglicéridos','Bajar la glucosa','Bajar la presión','Antibiótico'],'Es un fibrato hipolipemiante antiguo.'],
+['AI','Efecto adverso importante del clofibrato:',['Litiasis biliar','Hipoglucemia','Ototoxicidad','Alopecia'],'También alteraciones GI, hepáticas y musculares.'],
+['AI','El clofibrato es ejemplo de:',['Inducción enzimática hepática (vía PPAR-α)','Inhibición enzimática por CYP3A4','Excreción pulmonar','Profármaco de esteroide'],'Activa PPAR-α y aumenta enzimas hepáticas.'],
+['AI','Una interacción farmacodinámica ocurre:',['En el mismo receptor o efecto (ej. dos depresores)','Cuando un fármaco altera la absorción de otro','Solo en el riñón','Solo con alimentos'],'La farmacocinética altera absorción, distribución, metabolismo o excreción.'],
+['AI','Mecanismo de la inhibición del metabolismo:',['El inhibidor se une al CYP y el fármaco víctima se acumula','El inhibidor aumenta las enzimas','El fármaco se excreta más rápido','Se reduce la absorción'],'Aumentan t½, concentración, AUC y toxicidad.'],
+['AI','Si se inhibe el metabolismo de un profármaco:',['Disminuye su eficacia','Aumenta su eficacia siempre','No cambia','Se vuelve tóxico siempre'],'Necesita metabolizarse para activarse.'],
+['AI','El ketoconazol es inhibidor potente de:',['CYP3A4 y glicoproteína P','CYP1A2 solamente','Transportadores de glucosa','La filtración glomerular'],'Doble bloqueo: intestino e hígado.'],
+['AI','Paciente con ciclosporina al que se agrega ketoconazol:',['Sube la ciclosporina 2–3 veces: nefrotoxicidad e HTA','Baja la ciclosporina','No pasa nada','Se cura la micosis más rápido sin riesgos'],'Hay que bajar la ciclosporina 50–80 % y monitorear niveles.'],
+['AI','¿Cuánto se reduce la dosis de ciclosporina si se debe dar con ketoconazol?',['50–80 %','5 %','100 %','No se ajusta'],'Además de monitorear niveles plasmáticos.'],
+['AI','Estatinas + ketoconazol pueden causar:',['Rabdomiólisis','Hipoglucemia','Alopecia','Hipercalcemia'],'Por acumulación de la estatina.'],
+['AI','Warfarina + ketoconazol puede causar:',['Sangrado','Trombosis','Hipertensión','Bradicardia'],'La warfarina se acumula.'],
+['AI','Inhibidores moderados de CYP3A4 mencionados:',['Eritromicina y jugo de toronja','Rifampicina y fenitoína','Paracetamol','Metformina'],'Muy potentes: ketoconazol, ritonavir y claritromicina.'],
+['AI','Biodisponibilidad por vía intravenosa:',['100 % (F = 1)','50 %','0 %','Variable siempre menor de 1'],'Entra directo a la circulación.'],
+['AI','Comparada con la IV, la vía oral tiene:',['Tmax mayor y Cmax menor','Tmax 0','Cmax siempre mayor','F siempre 100 %'],'Por la fase de absorción.'],
+['AI','Biodisponibilidad oral con AUC oral 40 y AUC IV 80:',['50 %','200 %','40 %','2 %'],'F = 40/80 × 100 = 50 %.'],
+
+['FK','La farmacocinética estudia:',['Lo que el organismo hace con el fármaco (ADME)','Lo que el fármaco hace al organismo','Solo la toxicidad','Solo los receptores'],'Absorción, distribución, metabolismo y excreción.'],
+['FK','En la cinética de primer orden:',['Se elimina un porcentaje constante por unidad de tiempo','Se elimina una cantidad fija por hora','La vida media cambia con la dosis','No hay eliminación'],'La velocidad es proporcional a la concentración.'],
+['FK','En la cinética de orden cero:',['Se elimina una cantidad constante porque las enzimas están saturadas','Se elimina un porcentaje constante','La concentración cae exponencialmente','Nunca hay acumulación'],'La concentración baja de forma lineal.'],
+['FK','Fármacos con cinética de orden cero mencionados:',['Etanol y fenitoína','Amoxicilina y paracetamol','Heparina y warfarina','Digoxina y litio'],'La fenitoína al saturarse sus enzimas.'],
+['FK','Riesgo principal de la cinética de orden cero:',['Acumulación y toxicidad','Eliminación demasiado rápida','Falta de absorción','Ninguno'],'Pequeños aumentos de dosis suben mucho la concentración.'],
+['FK','En primer orden, la vida media:',['Es constante si no cambian las condiciones','Cambia con cada dosis','No existe','Depende solo de la dosis'],'Es característica del fármaco.'],
+['FK','Biodisponibilidad es:',['Fracción de la dosis que llega sin modificar a la circulación sistémica','Velocidad de eliminación','Volumen de plasma depurado','Tiempo a la concentración máxima'],'F = cantidad disponible / dosis × 100.'],
+['FK','Factor que disminuye la biodisponibilidad oral:',['Metabolismo de primer paso','Administración IV','Mayor dosis','Unión a receptores'],'Parte del fármaco se transforma en intestino o hígado antes de llegar.'],
+['FK','La Cmax es:',['La concentración más alta que alcanza el fármaco en sangre','El tiempo para llegar al máximo','La exposición total','La dosis letal'],'Ej.: si alcanza 15 mg/L, esa es su Cmax.'],
+['FK','El Tmax es:',['El tiempo que tarda en alcanzar la Cmax','La concentración máxima','El área bajo la curva','La vida media'],'Compara la velocidad de absorción entre formulaciones.'],
+['FK','Fármaco tomado a las 8:00 que alcanza su máximo a las 10:00. Tmax:',['2 horas','10 horas','8 horas','18 horas'],'Ejemplo de la presentación.'],
+['FK','El área bajo la curva (ABC) representa:',['La exposición total del organismo al fármaco','La concentración máxima','La velocidad de absorción','El volumen de distribución'],'A mayor ABC, mayor exposición.'],
+['FK','Al pasar de liberación inmediata a liberación sostenida:',['↑ Tmax, ↓ Cmax y AUC igual','↓ Tmax, ↑ Cmax','AUC se duplica','F se vuelve 0'],'Evita picos tóxicos con la misma cantidad absorbida.'],
+['FK','El estado estable se alcanza en aproximadamente:',['4–5 vidas medias','1 vida media','10 dosis','24 horas siempre'],'Se logra 93–97 % del estado estable.'],
+['FK','El tiempo para llegar al estado estable depende de:',['La vida media únicamente','La dosis','El intervalo','La vía'],'No depende de la dosis ni del intervalo.'],
+['FK','Fármaco con vida media de 6 h. ¿En cuánto tiempo alcanza el estado estable?',['24–30 horas','6 horas','12 horas','3 días'],'4–5 × 6 h.'],
+['FK','La dosis de carga se usa cuando:',['La vida media es larga y se necesita efecto urgente','La vida media es muy corta','El fármaco es tóxico','Nunca se usa'],'Satura rápido el volumen de distribución.'],
+['FK','Fórmula de la dosis de carga:',['Cobj × Vd / F','Dosis / C0','0.693 / k','Q × E'],'Cobj = concentración objetivo.'],
+['FK','Fórmula del volumen aparente de distribución:',['Vd = dosis / C0','Vd = C0 / dosis','Vd = 0.693 / k','Vd = CL × E'],'C0 = concentración plasmática inicial.'],
+['FK','Dosis IV de 500 mg con C0 de 10 mg/L. ¿Vd?',['50 L','5,000 L','5 L','0.02 L'],'500 / 10 = 50 L.'],
+['FK','Un Vd alto indica:',['Distribución extensa a tejidos','Que el fármaco se queda en plasma','Alta unión a proteínas plasmáticas','Que no se absorbe'],'Ej.: amiodarona, diazepam, digoxina.'],
+['FK','Fármacos con Vd bajo (se quedan en plasma):',['Heparina, warfarina y aminoglucósidos','Amiodarona y diazepam','Digoxina','Anestésicos volátiles'],'Por alta unión a proteínas o ser polares.'],
+['FK','Mayor unión a proteínas plasmáticas produce:',['Menor Vd','Mayor Vd','Mayor vida media siempre','Ninguna diferencia'],'El fármaco queda en el plasma.'],
+['FK','Fórmula de vida media con la constante de eliminación:',['t½ = 0.693 / ke','t½ = ke / 0.693','t½ = dosis / C0','t½ = Q × E'],'0.693 ≈ ln 2.'],
+['FK','Fórmula de vida media con Vd y CL:',['t½ = 0.693 × Vd / CL','t½ = CL / Vd','t½ = Vd × CL','t½ = 0.693 × CL / Vd'],'Ej.: Vd 40 L y CL 5 L/h → 5.54 h.'],
+['FK','Fármaco con Vd de 40 L y CL de 5 L/h. Vida media:',['≈ 5.54 h','≈ 8 h','≈ 0.087 h','≈ 200 h'],'0.693 × 40 / 5 = 5.54 h.'],
+['FK','Concentración inicial 80 mg/L y t½ de 4 h. ¿Concentración a las 12 h?',['10 mg/L','20 mg/L','40 mg/L','5 mg/L'],'Son 3 vidas medias: 80 → 40 → 20 → 10.'],
+['FK','Después de 3 vidas medias queda:',['12.5 %','25 %','50 %','3.125 %'],'1: 50 %, 2: 25 %, 3: 12.5 %.'],
+['FK','Un fármaco se considera prácticamente eliminado tras:',['4–5 vidas medias','1 vida media','2 vidas medias','20 vidas medias'],'Queda 6.25–3.125 %.'],
+['FK','Si la depuración disminuye (insuficiencia renal o hepática):',['Aumenta la vida media','Disminuye la vida media','No cambia nada','Desaparece el Vd'],'Puede requerir reducir dosis o alargar intervalo.'],
+['FK','Los inductores enzimáticos:',['Aumentan CL y disminuyen la vida media','Disminuyen CL','Aumentan Vd','Aumentan la vida media'],'Ej.: rifampicina.'],
+
+['FM','La curva dosis-respuesta cuantal mide:',['El % de individuos que presentan un efecto definido','La intensidad del efecto en un individuo','La concentración plasmática','La vida media'],'La gradual mide intensidad (EC50).'],
+['FM','En la curva cuantal, el eje X es:',['La dosis en escala logarítmica','El porcentaje de respuesta','El tiempo','La concentración plasmática'],'El eje Y es el % de individuos que responden.'],
+['FM','Forma de la curva dosis-respuesta cuantal:',['Sigmoidea','Recta','Exponencial decreciente','Circular'],'Refleja la variabilidad individual.'],
+['FM','La DE50 es:',['La dosis que produce el efecto en el 50 % de los individuos','La dosis letal en el 50 %','La dosis tóxica en el 50 %','La dosis máxima'],'Dosis eficaz mediana.'],
+['FM','La DT50 es:',['La dosis que produce toxicidad en el 50 %','La dosis eficaz en el 50 %','La dosis letal en el 50 %','La dosis de carga'],'Dosis tóxica mediana.'],
+['FM','La DL50 es:',['La dosis que mata al 50 % de los sujetos','La dosis eficaz','La dosis tóxica','La dosis terapéutica'],'Se usa en estudios toxicológicos.'],
+['FM','Fórmula del índice terapéutico:',['IT = DT50 / DE50','IT = DE50 / DT50','IT = DL50 × DE50','IT = 0.693 / k'],'También DL50/DE50 en toxicología.'],
+['FM','Si la DE50 es 10 mg y la DT50 es 100 mg, el IT es:',['10','0.1','110','1,000'],'La dosis tóxica es 10 veces la eficaz.'],
+['FM','Un IT amplio significa:',['Gran distancia entre dosis eficaz y tóxica: mayor margen de seguridad','Que el fármaco es más eficaz','Que es muy tóxico','Que no tiene efectos adversos nunca'],'No mide eficacia.'],
+['FM','Fármacos con IT estrecho que requieren monitorización:',['Digoxina, warfarina y litio','Paracetamol e ibuprofeno','Amoxicilina','Agua'],'Pequeños cambios causan ineficacia o toxicidad.'],
+['FM','Fármacos con IT amplio mencionados:',['Paracetamol, ibuprofeno y amoxicilina','Digoxina y warfarina','Litio','Ciclosporina'],'Aun así, la sobredosis puede ser tóxica.'],
+['FM','La variabilidad interindividual es:',['Diferencias de respuesta entre personas','Cambios en la misma persona a lo largo del tiempo','La dosis letal','La vida media'],'La intraindividual es en la misma persona.'],
+['FM','Ejemplo de factor genético de variabilidad:',['Variantes de CYP2C19 que modifican la activación del clopidogrel','La edad','El embarazo','El apego'],'Afecta su efecto antiagregante.'],
+['FM','Hiposusceptibilidad significa:',['Responde menos de lo esperado; requiere dosis mayores','Responde de forma exagerada','Alergia','Toxicidad con dosis bajas'],'Ej.: tolerancia a opioides, resistencia bacteriana.'],
+['FM','Hipersusceptibilidad significa:',['Respuesta exagerada a dosis estándar o baja','Requiere dosis mayores','Tolerancia','Resistencia bacteriana'],'Puede ser farmacológica o inmunológica (alergia).'],
+['FM','Ejemplo de hipersusceptibilidad inmunológica:',['Alergia a la penicilina con anafilaxia','Tolerancia a morfina','Resistencia a antibióticos','Metabolizador rápido'],'El sistema inmune reacciona de forma exagerada.'],
+['FM','Manejo de la hiposusceptibilidad:',['Aumentar la dosis, cambiar o combinar fármacos','Reducir drásticamente la dosis','Suspender todo siempre','No hacer nada'],'En la hipersusceptibilidad se reduce o suspende.'],
+
+['BT','La biotransformación ocurre principalmente en:',['El hígado','El pulmón','La piel','El músculo'],'También en intestino, riñón, pulmón y sangre.'],
+['BT','Un profármaco es:',['Un fármaco inactivo que se activa al metabolizarse','Un fármaco que no se metaboliza','Un metabolito tóxico','Un fármaco IV'],'Por eso los inhibidores reducen su eficacia.'],
+['BT','Reacciones de la fase I:',['Oxidación, reducción e hidrólisis','Glucuronidación y sulfatación','Acetilación y metilación','Filtración y secreción'],'Son no sintéticas.'],
+['BT','La fase II consiste en:',['Conjugación con una molécula endógena por transferasas','Oxidación por CYP','Filtración glomerular','Hidrólisis por agua'],'Produce compuestos más hidrosolubles y menos activos.'],
+['BT','Enzima principal de la biotransformación microsomal:',['Citocromo P-450','Acetilcolinesterasa','Lipasa','Amilasa'],'Es una hemoproteína del retículo endoplásmico liso.'],
+['BT','La biotransformación microsomal se localiza en:',['Retículo endoplásmico liso del hepatocito','Núcleo','Mitocondria del músculo','Membrana del eritrocito'],'Los fármacos liposolubles acceden fácilmente.'],
+['BT','Isoenzima más importante por volumen de fármacos:',['CYP3A4','CYP2E1','CYP1A2','CYP2D6'],'Participa en ~50 % del metabolismo oxidativo.'],
+['BT','Inductores de casi todas las enzimas CYP:',['Rifampicina, carbamazepina y fenitoína','Ketoconazol y toronja','Paracetamol','Metformina'],'Aceleran el metabolismo de otros fármacos.'],
+['BT','Inhibidores fuertes de CYP3A4:',['Jugo de toronja y antifúngicos azoles','Rifampicina','Carbamazepina','Tabaco'],'Aumentan la concentración de los sustratos.'],
+['BT','CYP inducido por el tabaquismo:',['CYP1A2','CYP3A4','CYP2D6','CYP2C19'],'Participa en activar carcinógenos.'],
+['BT','CYP inducido por el alcohol:',['CYP2E1','CYP1A2','CYP3A5','CYP2C9'],'Puede activar sustancias tóxicas.'],
+['BT','Nomenclatura CYP3A4: el "3" indica',['La familia','La subfamilia','El gen individual','La dosis'],'CYP + familia (número) + subfamilia (letra) + gen (número).'],
+['BT','La variabilidad en la velocidad de biotransformación puede ser:',['Más de 6 veces entre individuos','Siempre igual','De 1 %','Nula en gemelos'],'Por factores genéticos, fisiopatológicos, ambientales y alimentarios.'],
+['BT','Fármacos que pueden formar metabolitos tóxicos (bioactivación):',['Paracetamol, isoniazida, furosemida y metildopa','Agua y glucosa','Insulina','Heparina'],'Forman aductos con proteínas y ADN.'],
+['BT','Molécula que detoxifica metabolitos reactivos:',['Glutatión','Colesterol','Glucosa','Urea'],'Conjuga sustancias electrofílicas.'],
+['BT','Ejemplo de desaminación oxidativa:',['Anfetamina','Morfina','Clorpromazina','Barbitúricos'],'Sustituye NH2 por O y forma NH3.'],
+['BT','La desulfuración transforma:',['Tiobarbitúricos en oxibarbitúricos','Morfina en codeína','Glucosa en glucógeno','Etanol en acetato'],'Sustituye S por O.'],
+['BT','El epóxido formado por epoxidación:',['Puede ser tóxico y se conjuga con glutatión','Es siempre inocuo','Se elimina por pulmón','Es un profármaco'],'Se convierte en fenol o dihidrodiol.'],
+['BT','Las monooxigenasas de flavina (FMO) utilizan:',['FAD, NADPH y O₂','ATP solamente','Glucurónido','Acetil-CoA'],'Un átomo de O va al fármaco y el otro forma agua.'],
+['BT','Las esterasas plasmáticas:',['Hidrolizan rápidamente algunos fármacos en la sangre','Conjugan con glucurónido','Filtran en el glomérulo','Inducen CYP'],'Las hidrolasas rompen enlaces usando agua.'],
+['BT','Conjugación de fase II más importante para la excreción biliar:',['Glucuronidación','Metilación','Acetilación','Conjugación con glicina'],'Por UDP-glucuronosiltransferasa.'],
+['BT','Excepción: un glucurónido más potente que el fármaco original:',['Morfina-6-glucurónido','Paracetamol glucurónido','Bilirrubina','Ácido hipúrico'],'Mayor potencia analgésica y cruza la barrera hematoencefálica.'],
+['BT','La acetilación requiere:',['Acetil-CoA y acetiltransferasas','PAPS','SAM','Glutatión'],'Su velocidad tiene variabilidad genética.'],
+['BT','Donador de sulfato en la sulfoconjugación:',['PAPS','SAM','Acetil-CoA','UDP-glucurónido'],'Principal mecanismo para fenoles y hormonas sexuales.'],
+['BT','Donador de metilo en la metilación:',['S-adenosilmetionina (SAM)','PAPS','Glicina','Glutatión'],'Metiltransferasas: catecolaminas, histamina.'],
+['BT','Conjugación con glicina: ejemplo',['Ácido benzoico → ácido hipúrico','Morfina → M6G','Etanol → acetaldehído','Anfetamina → cetona'],'Ocurre en hígado y riñón.'],
+
+['ER','Los tres procesos de la excreción renal son:',['Filtración glomerular, secreción tubular y reabsorción tubular','Absorción, distribución y metabolismo','Oxidación, reducción e hidrólisis','Captación, conjugación y bilis'],'Su eficiencia depende de la función renal.'],
+['ER','En la filtración glomerular pasa:',['El fármaco libre (no unido a proteínas)','Solo el unido a albúmina','Eritrocitos','Plaquetas'],'Por presión hidrostática hacia la cápsula de Bowman.'],
+['ER','Con PGC 60, PBS 18 y πGC 32 mmHg, la presión neta de filtración es:',['10 mmHg','110 mmHg','46 mmHg','−10 mmHg'],'60 − 18 − 32 + 0 = 10.'],
+['ER','La secreción tubular ocurre principalmente en:',['El túbulo proximal','El asa de Henle','La cápsula de Bowman','La vejiga'],'Pasa de la sangre a la luz tubular.'],
+['ER','Característica de la secreción tubular activa:',['Capacidad limitada, saturable y con competencia','Ilimitada','Solo pasiva','Solo para glucosa'],'Usa transportadores de aniones y cationes orgánicos.'],
+['ER','Ejemplo de competencia en secreción tubular:',['Probenecid compite con penicilina y prolonga su permanencia','Etanol con fenitoína','Glucosa con insulina','Codeína con paracetamol'],'Ambos usan el transportador de aniones.'],
+['ER','Sustancias que usan el transportador de aniones orgánicos:',['Ácido úrico, salicilatos, penicilinas y glucurónidos','Colina e histamina','Eritrocitos','Anestésicos volátiles'],'Colina e histamina usan el de cationes.'],
+['ER','La reabsorción tubular pasiva favorece al fármaco:',['Liposoluble y no ionizado','Ionizado','Unido a proteínas','De alto peso molecular'],'Más reabsorción = menos excreción renal.'],
+['ER','Ácido débil (salicilato) en orina alcalina:',['Se ioniza y se excreta más','Se reabsorbe más','No cambia','Se metaboliza'],'Por eso alcalinizar la orina ayuda en la intoxicación por salicilatos.'],
+['ER','Ácido débil en orina ácida:',['Predomina la forma no ionizada: más reabsorción, menos excreción','Se excreta más','Se ioniza más','Se filtra menos'],'La forma no ionizada cruza membranas.'],
+['ER','Base débil (anfetamina) en orina ácida:',['Se ioniza y se excreta más','Se reabsorbe más','No cambia','Se acumula siempre'],'En orina alcalina se reabsorbe más.'],
+['ER','En el recién nacido la excreción renal es:',['Más lenta por inmadurez de filtración y secreción','Más rápida que en el adulto','Igual que en el adulto','Inexistente'],'Algunos fármacos se acumulan.'],
+['ER','En el adulto mayor:',['↓ flujo renal y filtración: riesgo de acumulación','↑ filtración','No cambia','↑ secreción tubular'],'Ajustar dosis o intervalos.'],
+['ER','Durante el embarazo la filtración glomerular aumenta:',['40–50 %','5 %','200 %','No cambia'],'Algunos fármacos bajan su concentración.'],
+['ER','El ajuste de dosis por sexo debe basarse en:',['La función renal y el paciente, no solo en el sexo','Solo en el sexo','La estatura','El color de piel'],'Las diferencias son por masa y composición corporal.'],
+['ER','En la enfermedad renal la vida media de los fármacos de eliminación renal:',['Aumenta','Disminuye','No cambia','Se vuelve cero'],'Por menor aclaramiento: mayor toxicidad.'],
+['ER','Fármaco que en insuficiencia renal causa toxicidad renal y auditiva:',['Gentamicina','Paracetamol','Omeprazol','Insulina'],'Por acumulación.'],
+['ER','La metformina en insuficiencia renal se limita por riesgo de:',['Acidosis láctica','Hipoglucemia','Hipertensión','Alopecia'],'Su uso depende de la función renal.'],
+['ER','Enfermedad hepática que más altera la farmacocinética:',['Cirrosis','Hígado graso leve','Colecistitis','Hepatitis A curada'],'Menos hepatocitos, cortocircuitos e hipoalbuminemia.'],
+['ER','En la cirrosis, la hipoalbuminemia produce:',['Más fracción libre del fármaco','Menos fracción libre','Más biotransformación','Más primer paso'],'Aumenta el efecto de fármacos unidos a albúmina.'],
+['ER','Los cortocircuitos portosistémicos de la cirrosis hacen que:',['Algunos fármacos eviten el primer paso hepático','Aumente el primer paso','Se filtre más en el riñón','Disminuya la biodisponibilidad'],'Aumenta la biodisponibilidad oral de algunos.'],
+['ER','La colestasis disminuye la eliminación de:',['Fármacos excretados por bilis, como rifampicina','Fármacos volátiles','Gentamicina','Litio'],'Se acumulan y aumenta su toxicidad.'],
+['ER','En la hepatitis aguda grave se ralentiza sobre todo:',['La fase I (CYP450)','La filtración glomerular','La excreción pulmonar','La absorción oral'],'Paracetamol, teofilina y diazepam.'],
+
+['EO','El paso de fármacos a la leche materna ocurre principalmente por:',['Difusión pasiva','Transporte activo exclusivo','Filtración glomerular','Exocitosis de eritrocitos'],'Solo la fracción libre atraviesa membranas.'],
+['EO','Medicamento permitido y no permitido en la lactancia según la presentación:',['Permitido paracetamol; no permitido codeína','Permitido codeína; no permitido paracetamol','Ambos permitidos','Ambos prohibidos'],'La codeína puede causar toxicidad en el lactante.'],
+['EO','Las bases débiles se acumulan en la leche porque:',['La leche es más ácida (pH ≈7.2) que el plasma: atrapamiento iónico','La leche es más alcalina','Tienen alto peso molecular','Se unen a eritrocitos'],'Se ionizan en la leche y no regresan.'],
+['EO','El calostro se produce:',['Los primeros 2–5 días','Desde las 2 semanas','Del día 5 al 14','Solo en el embarazo'],'Es rico en proteínas e inmunoglobulinas.'],
+['EO','La excreción por sudor y saliva es:',['Una vía secundaria útil en detección toxicológica','La vía principal','Inexistente','Solo para anestésicos'],'Ocurre por difusión pasiva.'],
+['EO','Fármacos que se eliminan principalmente por vía pulmonar:',['Sevoflurano, desflurano e isoflurano','Gentamicina','Rifampicina','Metformina'],'Anestésicos inhalados volátiles.'],
+['EO','Acelera la eliminación pulmonar de un anestésico:',['Mayor ventilación alveolar y menor solubilidad en sangre','Mayor solubilidad en sangre','Exposición prolongada','Hipoventilación'],'La exposición prolongada la retrasa.'],
+['EO','La depuración (clearance) es:',['El volumen de plasma que queda libre de fármaco por unidad de tiempo','La cantidad de fármaco en el cuerpo','La dosis tóxica','El tiempo a la Cmax'],'Se expresa en mL/min o L/h.'],
+['EO','Fórmula de la depuración de un órgano:',['CL = Q × E','CL = 0.693 / k','CL = dosis / C0','CL = Ci − Ce'],'Q = flujo sanguíneo; E = fracción de extracción.'],
+['EO','Flujo hepático 1,500 mL/min y E = 0.80. Depuración:',['1,200 mL/min','1,875 mL/min','300 mL/min','80 mL/min'],'1,500 × 0.80.'],
+['EO','Fórmula de la fracción de extracción:',['E = (Ci − Ce) / Ci','E = Ce / Ci','E = Ci × Ce','E = Q / CL'],'Ci = entrada; Ce = salida.'],
+['EO','Ci = 100 µg/mL y Ce = 20 µg/mL. Fracción de extracción:',['0.80 (80 %)','0.20','1.25','0.08'],'(100 − 20)/100.'],
+['EO','Una fracción de extracción de 0.85 se clasifica como:',['Alta (>0.7)','Baja','Intermedia','Nula'],'<0.3 baja; 0.3–0.7 intermedia.'],
+['EO','Fármacos de alta extracción hepática tienen:',['Mucho primer paso y baja biodisponibilidad oral','Biodisponibilidad oral de 100 %','Nula depuración','Eliminación pulmonar'],'Su depuración depende sobre todo del flujo.'],
+['EO','La excreción hepatobiliar prefiere compuestos:',['De alto peso molecular (>300–500), liposolubles y conjugados','De bajo peso molecular','Volátiles','Muy pequeños e ionizados'],'Los pequeños suelen ir por el riñón.'],
+['EO','Transportadores que secretan fármacos del hepatocito a la bilis:',['P-gp, MRP2 y BCRP','GLUT4','SGLT2','Canales de sodio'],'En la membrana canalicular.'],
+['EO','La circulación enterohepática:',['Reabsorbe del intestino y regresa al hígado por la vena porta, prolongando el efecto','Elimina el fármaco más rápido siempre','Ocurre en el riñón','Es exclusiva de la orina'],'Las bacterias liberan el fármaco de sus conjugados.'],
+['EO','Enzima bacteriana que libera fármacos de sus glucurónidos en el intestino:',['β-glucuronidasa','Amilasa','CYP3A4','Acetiltransferasa'],'Permite la reabsorción.'],
+['EO','Ejemplo clásico de circulación enterohepática afectada por antibióticos:',['Anticonceptivos orales (estrógenos)','Gentamicina','Sevoflurano','Insulina'],'Los antibióticos reducen las bacterias y la reabsorción.'],
+['EO','Fármaco que interrumpe la circulación enterohepática al unir ácidos biliares:',['Colestiramina','Rifampicina','Ketoconazol','Codeína'],'Se elimina por heces.'],
+];
+
+const OP = [
+['AI','Explica cómo se calcula la alcoholemia con la fórmula de Widmark y resuelve el ejemplo de la clase.','Primero se convierten los mL a gramos: A = V × %alcohol/100 × 0.789 (densidad del etanol). Luego BAC = A / (P × r) − β × t, donde P es el peso en kg, r el factor de distribución (≈0.68 hombre, ≈0.55 mujer), β la eliminación (≈0.15 g/L/h) y t las horas. Ejemplo: 500 mL de cerveza al 5 % = 19.7 g; hombre de 70 kg → 19.7/(0.68 × 70) = 0.41 g/L; a las 2 h: 0.41 − 0.30 = 0.11 g/L.',[['0.789 densidad','0.789'],['peso × r','peso','0.68'],['mujer 0.55','0.55'],['β 0.15','0.15'],['19.7 g','19.7'],['0.41 g/L','0.41'],['0.11 g/L','0.11']]],
+['AI','Explica la inhibición del metabolismo y el caso de ciclosporina con ketoconazol.','El inhibidor se une a la enzima CYP y la inactiva; el fármaco víctima no se metaboliza y se acumula: aumenta su vida media, su concentración, su AUC y su toxicidad (o baja la eficacia si es profármaco). El ketoconazol bloquea CYP3A4 y P-gp; la ciclosporina se duplica o triplica, causando nefrotoxicidad aguda e hipertensión. Si se deben dar juntos se reduce la ciclosporina 50–80 % y se monitorean niveles.',[['CYP3A4','3a4','cyp'],['acumulación','acumul'],['vida media / AUC aumentan','vida media','auc'],['ketoconazol','ketoconazol'],['nefrotoxicidad','nefrotox','renal'],['reducir 50–80 %','50','80'],['monitorear niveles','monitor','nivel']]],
+['AI','Describe el metabolismo de los esteroides y del clofibrato.','Esteroides: derivados del colesterol con 4 anillos; se metabolizan en hígado, intestino y riñón. Fase I: oxidación, reducción e hidroxilación por CYP450; fase II: conjugación con glucurónido o sulfato para eliminarse por orina o bilis. Clofibrato: fibrato que baja triglicéridos; se transforma en ácido clofíbrico (activo), activa PPAR-α e induce enzimas hepáticas; efectos adversos litiasis biliar, alteraciones GI, hepáticas y musculares.',[['colesterol','colesterol'],['CYP450','cyp','p450'],['glucurónido / sulfato','glucuron','sulfato'],['ácido clofíbrico','clofibrico','clofíbrico'],['triglicéridos','triglicer'],['PPAR-α / inducción','ppar','induc'],['litiasis biliar','litiasis']]],
+['AI','Compara la administración intravenosa y oral única.','IV: entra directo a la circulación, inicio inmediato, Cmax mayor, Tmax no aplica (t = 0) y biodisponibilidad 1 (100 %). Oral: debe disolverse y absorberse, inicio más lento, Tmax mayor, Cmax menor, AUC menor si la absorción es incompleta y F < 1. La biodisponibilidad oral se calcula F = AUC oral / AUC IV × 100.',[['IV inmediato','inmediat'],['F 100 %','100'],['Tmax mayor oral','tmax'],['Cmax menor oral','cmax'],['absorción','absor'],['F = AUC oral/AUC IV','auc']]],
+
+['FK','Diferencia la cinética de primer orden de la de orden cero.','Primer orden: la velocidad de eliminación es proporcional a la concentración, se elimina un porcentaje constante por unidad de tiempo, la caída es exponencial y la vida media es constante. Orden cero: los mecanismos están saturados y se elimina una cantidad fija por hora, la caída es lineal y hay riesgo de acumulación y toxicidad; ejemplos etanol y fenitoína.',[['proporcional','proporcional'],['porcentaje constante','porcentaje','fraccion','fracción'],['cantidad constante','cantidad'],['saturación','satur'],['etanol','etanol','alcohol'],['fenitoína','fenitoin'],['acumulación','acumul','toxic']]],
+['FK','Define biodisponibilidad, Cmax, Tmax y ABC, y su relación.','Biodisponibilidad: fracción de la dosis que llega sin modificar a la circulación (IV 100 %, oral menor por absorción incompleta y primer paso). Cmax: concentración más alta en sangre. Tmax: tiempo para llegar a la Cmax. ABC: exposición total. El ABC es proporcional a la cantidad absorbida y a F; la liberación sostenida aumenta el Tmax y baja la Cmax con la misma ABC.',[['fracción que llega','fraccion','fracción','circulac'],['primer paso','primer paso'],['concentración máxima','maxim','máxim'],['tiempo a la Cmax','tiempo'],['exposición total','exposic'],['liberación sostenida','sostenida']]],
+['FK','¿Qué es el estado estable, cuándo se alcanza y para qué sirve la dosis de carga?','Con dosis repetidas, la entrada iguala a la salida y las concentraciones oscilan entre un máximo y un mínimo. Se alcanza en 4–5 vidas medias (93–97 %), sin depender de la dosis ni del intervalo. Debe quedar en la ventana terapéutica. Si la vida media es larga y se necesita efecto urgente se usa una dosis de carga: Cobj × Vd / F, seguida de mantenimiento.',[['entrada = salida','entrada','igual'],['4–5 vidas medias','4-5','4–5','4 a 5','cuatro'],['no depende de la dosis','dosis'],['ventana terapéutica','ventana'],['dosis de carga','carga'],['Cobj × Vd / F','vd']]],
+['FK','Explica el volumen de distribución con su fórmula, ejemplo e interpretación.','Es un volumen teórico que relaciona la cantidad de fármaco en el organismo con su concentración plasmática: Vd = dosis / C0. Ejemplo: 500 mg / 10 mg/L = 50 L. Vd bajo: el fármaco queda en plasma (heparina, warfarina, aminoglucósidos; alta unión a proteínas). Vd alto: se distribuye a tejidos (amiodarona, diazepam, digoxina; liposolubles) y requiere dosis mayores.',[['dosis / C0','c0','dosis'],['50 L','50'],['teórico','teoric','teóric','aparente'],['Vd bajo: plasma','plasma'],['Vd alto: tejidos','tejido'],['unión a proteínas','proteina','proteína'],['ejemplos','heparina','amiodarona','diazepam','digoxina']]],
+['FK','Explica la vida media, sus fórmulas y cuánto fármaco queda tras varias vidas medias.','Es el tiempo para que la concentración baje al 50 %. t½ = 0.693/ke o t½ = 0.693 × Vd / CL. Tras 1, 2, 3, 4 y 5 vidas medias queda 50, 25, 12.5, 6.25 y 3.125 %; tras 4–5 se considera eliminado. Aumenta si sube el Vd o baja la depuración (insuficiencia renal o hepática, inhibidores) y disminuye con inductores.',[['50 %','50'],['0.693','0.693'],['Vd / CL','vd / cl','vd/cl','× vd','x vd'],['25 % / 12.5 %','25','12.5'],['4–5 eliminado','eliminad'],['insuficiencia / inhibidores','insuficien','inhibid'],['inductores','induct']]],
+
+['FM','Explica la curva dosis-respuesta cuantal y los índices DE50, DT50 y DL50.','Relaciona la dosis (escala logarítmica) con el porcentaje de individuos que presentan un efecto definido; tiene forma sigmoidea y refleja la variabilidad individual. DE50: dosis que produce el efecto terapéutico en el 50 %; DT50: dosis tóxica en el 50 %; DL50: dosis letal en el 50 %. A mayor dosis aumenta la probabilidad de efectos tóxicos y letales.',[['% de individuos','individuo','porcentaje'],['escala logarítmica','logarit','logarít'],['sigmoidea','sigmoid'],['DE50','de50','eficaz'],['DT50','dt50','toxic','tóxic'],['DL50','dl50','letal']]],
+['FM','Define el índice terapéutico y compara IT amplio y estrecho con ejemplos.','IT = DT50 / DE50; mide el margen de seguridad, no la eficacia. Ej.: 100/10 = 10. IT amplio: gran distancia entre dosis eficaz y tóxica, tolera variaciones (paracetamol, ibuprofeno, amoxicilina). IT estrecho: dosis cercanas, cualquier variación causa ineficacia o toxicidad; requiere vigilancia y monitorización de niveles (digoxina, warfarina, litio).',[['DT50 / DE50','dt50','de50'],['margen de seguridad','seguridad'],['amplio','amplio'],['estrecho','estrecho'],['monitorización','monitor'],['digoxina / warfarina / litio','digoxina','warfarina','litio'],['paracetamol / ibuprofeno','paracetamol','ibuprofeno','amoxicilina']]],
+['FM','Diferencia hiposusceptibilidad e hipersusceptibilidad.','Hiposusceptibilidad: el organismo responde menos de lo esperado a dosis estándar; requiere dosis mayores; causas tolerancia (opioides), resistencia bacteriana o metabolismo rápido; se aumenta dosis, cambia o combina. Hipersusceptibilidad: respuesta exagerada con dosis estándar o baja; farmacológica (metabolismo lento) o inmunológica (alergia a penicilina, anafilaxia); se reduce dosis, suspende o cambia.',[['responde menos','menos'],['dosis mayores','mayor','aumentar'],['tolerancia / resistencia','toleran','resisten'],['respuesta exagerada','exagerad','excesiv'],['alergia','alergi','anafila'],['reducir / suspender','reduc','suspend']]],
+['FM','¿Qué factores explican la variabilidad en la respuesta a los fármacos?','Variabilidad interindividual (entre personas) e intraindividual (misma persona en distintos momentos). Factores farmacocinéticos (absorción, distribución, metabolismo, excreción), farmacodinámicos (receptores y respuesta celular), genéticos (enzimas, transportadores, receptores; ej. CYP2C19 y clopidogrel) y fisiológicos/clínicos (edad, embarazo, peso, función hepática y renal, enfermedades, apego).',[['interindividual','interindividual','entre personas'],['intraindividual','intraindividual','misma persona'],['farmacocinéticos','farmacocinet'],['farmacodinámicos / receptores','farmacodinam','receptor'],['genéticos / CYP2C19','genet','2c19'],['edad / embarazo / función renal','edad','embaraz','renal']]],
+
+['BT','Describe las fases I y II de la biotransformación.','Fase I (no sintética): modifica la estructura por oxidación, reducción e hidrólisis; aumenta ionización e hidrosolubilidad y puede activar, cambiar o inactivar el fármaco. Fase II (sintética): conjugación del fármaco o su metabolito con una molécula endógena mediante transferasas (glucuronidación, acetilación, glicina, glutatión, sulfatación, metilación); aumenta la hidrosolubilidad, disminuye la actividad y facilita la eliminación por orina o bilis.',[['oxidación','oxidac'],['reducción / hidrólisis','reducc','hidrolisis','hidrólisis'],['conjugación','conjug'],['transferasas','transferasa'],['glucuronidación','glucuron'],['hidrosolubilidad','hidrosolub','soluble'],['orina o bilis','orina','bilis']]],
+['BT','Explica el sistema del citocromo P-450 y sus inductores e inhibidores.','Hemoproteína del retículo endoplásmico liso, sobre todo en hígado; usa O2 para oxidar fármacos liposolubles. Familias CYP1, 2 y 3; CYP3A4 es la más importante (~50 % del metabolismo oxidativo). CYP1A2 inducido por tabaco, CYP2E1 por alcohol; deficiencia de CYP2D6 aumenta toxicidad. Inductores: rifampicina, carbamazepina, fenitoína. Inhibidores de CYP3A4: jugo de toronja y azoles.',[['retículo endoplásmico','reticul','retícul'],['CYP3A4','3a4'],['rifampicina','rifampicina'],['carbamazepina / fenitoína','carbamazepina','fenitoin'],['toronja','toronja','pomelo'],['azoles / ketoconazol','azol','ketoconazol'],['CYP1A2 tabaco','tabaco','1a2']]],
+['BT','¿Qué es la bioactivación y cómo se detoxifican los metabolitos reactivos?','Durante el metabolismo se forman metabolitos reactivos, radicales libres y epóxidos que se unen covalentemente a proteínas y ácidos nucleicos (aductos), causando toxicidad (paracetamol, isoniazida, furosemida, metildopa) o hipersensibilidad. La conjugación con glutatión mediante glutatión-S-transferasas los neutraliza y facilita su eliminación.',[['metabolitos reactivos','reactiv'],['epóxidos / radicales','epoxid','epóxid','radical'],['aductos','aducto'],['paracetamol','paracetamol'],['glutatión','glutation','glutatión'],['hipersensibilidad','hipersens']]],
+
+['ER','Describe los procesos de la excreción renal de fármacos.','Filtración glomerular: el fármaco libre pasa del plasma al ultrafiltrado en el corpúsculo renal por presión hidrostática (PNF = PGC − PBS − πGC; ej. 10 mmHg). Secreción tubular: de la sangre a la luz, sobre todo en el túbulo proximal, con transportadores de aniones y cationes orgánicos, saturables y con competencia (probenecid–penicilina). Reabsorción tubular pasiva: regresa la forma liposoluble no ionizada; más reabsorción, menos excreción.',[['filtración glomerular','filtrac'],['fármaco libre','libre'],['secreción tubular','secrec'],['túbulo proximal','proximal'],['aniones / cationes','anion','anión','cation','catión'],['competencia probenecid','competen','probenecid'],['reabsorción no ionizada','reabsor','ionizad']]],
+['ER','Explica cómo el pH urinario modifica la excreción de ácidos y bases débiles.','La forma no ionizada se reabsorbe y la ionizada queda en la orina. Un ácido débil (salicilato) en orina ácida está no ionizado y se reabsorbe más; en orina alcalina se ioniza y se excreta más. Una base débil (anfetamina) en orina ácida se ioniza y se excreta más; en orina alcalina se reabsorbe más.',[['no ionizado se reabsorbe','no ioniz','reabsor'],['ionizado se excreta','ioniz','excret'],['ácido débil','acido','ácido'],['salicilatos','salicil'],['base débil','base'],['anfetaminas','anfetamin'],['orina alcalina','alcalin']]],
+['ER','¿Cómo modifican la edad, el embarazo y la enfermedad renal la excreción?','Recién nacidos: filtración y secreción inmaduras, eliminan más lento. Adultos mayores: menos flujo renal y filtración, se acumulan. Embarazo: más flujo renal y filtración glomerular (40–50 %), algunos fármacos bajan su concentración. Enfermedad renal: menor filtración y aclaramiento, aumenta la vida media y la toxicidad; ajustar dosis o intervalo (amoxicilina, gentamicina, digoxina, metformina).',[['recién nacidos inmaduros','recien','recién','inmadur'],['adultos mayores','mayor'],['embarazo 40–50 %','embaraz','40'],['vida media aumenta','vida media'],['ajustar dosis','ajust'],['gentamicina / digoxina','gentamicina','digoxina'],['metformina','metformina']]],
+['ER','¿Cómo alteran la cirrosis, la hepatitis y la colestasis la farmacocinética?','Cirrosis (la que más altera): menos hepatocitos y biotransformación, cortocircuitos portosistémicos que evitan el primer paso, hipoalbuminemia con más fracción libre; afecta propranolol, morfina, fenitoína, warfarina y benzodiacepinas. Hepatitis aguda: necrosis que baja el CYP450 y prolonga la fase I (paracetamol, teofilina, diazepam). Colestasis: menos flujo biliar y excreción biliar, acumulación (rifampicina).',[['cirrosis','cirrosis'],['cortocircuitos / primer paso','cortocircuito','primer paso','portosist'],['hipoalbuminemia / fracción libre','albumin','libre'],['hepatitis CYP450','hepatitis','cyp'],['colestasis','colestasis'],['rifampicina','rifampicina']]],
+
+['EO','Explica cómo pasan los fármacos a la leche materna y qué factores influyen.','Absorción por la madre → circulación en plasma (solo la fracción libre) → paso por las células mamarias principalmente por difusión pasiva → distribución en la leche → ingestión por el lactante. Influyen liposolubilidad, peso molecular (pequeños pasan más), pH (leche ≈7.2 vs plasma ≈7.4: atrapamiento de bases débiles) y unión a proteínas. Paracetamol permitido; codeína no.',[['difusión pasiva','difusion','difusión'],['fracción libre','libre'],['liposolubilidad','liposol'],['peso molecular','peso molecular'],['pH / atrapamiento','ph','atrapamiento'],['paracetamol permitido','paracetamol'],['codeína no','codein']]],
+['EO','Define depuración y fracción de extracción con sus fórmulas y clasificación.','Depuración: volumen de plasma que queda libre de fármaco por unidad de tiempo, en mL/min o L/h; CL = Q × E (ej. 1,500 × 0.8 = 1,200 mL/min). Fracción de extracción: E = (Ci − Ce)/Ci (ej. (100 − 20)/100 = 0.80). Clasificación: menor de 0.3 baja, 0.3–0.7 intermedia, mayor de 0.7 alta; alta extracción hepática implica mucho primer paso y baja biodisponibilidad oral.',[['volumen depurado','volumen'],['CL = Q × E','q ×','q x','flujo'],['E = (Ci − Ce)/Ci','ci -','ci −','ci–','entrada'],['<0.3 baja','0.3','0,3'],['>0.7 alta','0.7'],['primer paso','primer paso','biodisponib']]],
+['EO','Describe la excreción hepatobiliar y la circulación enterohepática.','Los hepatocitos captan el fármaco de la sangre, lo metabolizan (fase I/II, glucuronidación) y lo secretan a la bilis por transporte activo con P-gp, MRP2 y BCRP; se prefiere para compuestos de alto peso molecular (>300–500) y conjugados. La bilis llega al intestino y se elimina por heces. En la circulación enterohepática las bacterias (β-glucuronidasa) liberan el fármaco, se reabsorbe y vuelve al hígado por la vena porta, prolongando su efecto (anticonceptivos, digoxina); la colestiramina la interrumpe.',[['transporte activo','transporte activo','activo'],['P-gp / MRP2','p-gp','mrp2','gp'],['alto peso molecular','peso molecular'],['glucurónidos','glucuron'],['vena porta','porta'],['reabsorción / prolonga','reabsor','prolong'],['anticonceptivos','anticoncep']]],
+['EO','Explica la excreción pulmonar y los factores que la modifican.','Las sustancias volátiles pasan de los capilares pulmonares al aire alveolar por difusión y salen con la espiración. Ejemplos: sevoflurano, desflurano e isoflurano, que se eliminan en gran parte sin metabolizarse. Aceleran la eliminación una mayor ventilación alveolar y una menor solubilidad en sangre; una exposición prolongada aumenta la acumulación en tejidos y la retrasa. Influye en el tiempo de recuperación de la anestesia.',[['volátiles','volatil','volátil'],['alvéolo / espiración','alveol','alvéol','espirac'],['sevoflurano','sevoflurano'],['desflurano / isoflurano','desflurano','isoflurano'],['ventilación','ventilac'],['solubilidad en sangre','solub'],['exposición prolongada','prolongad']]],
+];
+
+const FC = [
+['AI','¿Qué es la alcoholemia?','Concentración de etanol en sangre, en g/L.'],
+['AI','Fórmula de gramos de alcohol','A = V × %/100 × 0.789.'],
+['AI','Fórmula de Widmark','BAC = A / (P × r) − β × t.'],
+['AI','Valores de r','Hombre ≈ 0.68; mujer ≈ 0.55.'],
+['AI','Velocidad de eliminación del alcohol','β ≈ 0.15 g/L por hora.'],
+['AI','Alcoholemia alta','1.00–2.00 g/L: dificultad para hablar, confusión, somnolencia.'],
+['AI','Metabolito activo del clofibrato','Ácido clofíbrico.'],
+['AI','Mecanismo del clofibrato sobre enzimas','Activa PPAR-α → inducción de enzimas hepáticas.'],
+['AI','Inhibidor clásico más potente','Ketoconazol (CYP3A4 + P-gp).'],
+['AI','Ciclosporina + ketoconazol','Ciclosporina 2–3 veces más alta: nefrotoxicidad; bajar dosis 50–80 %.'],
+['AI','Biodisponibilidad IV vs oral','IV 100 %; oral <100 %, F = AUC oral / AUC IV × 100.'],
+['FK','Cinética de primer orden','Se elimina un porcentaje constante; t½ constante.'],
+['FK','Cinética de orden cero','Se elimina una cantidad fija por saturación: etanol, fenitoína.'],
+['FK','Biodisponibilidad','Fracción de la dosis que llega sin modificar a la circulación.'],
+['FK','Cmax y Tmax','Concentración máxima y el tiempo en alcanzarla.'],
+['FK','ABC','Exposición total al fármaco.'],
+['FK','Estado estable','Se alcanza en 4–5 vidas medias; depende solo de la t½.'],
+['FK','Fórmula del Vd','Vd = dosis / C0.'],
+['FK','Vd alto vs bajo','Alto: tejidos (amiodarona, diazepam, digoxina). Bajo: plasma (heparina, warfarina).'],
+['FK','Fórmulas de vida media','0.693 / ke o 0.693 × Vd / CL.'],
+['FK','Lo que queda tras vidas medias','1: 50 %, 2: 25 %, 3: 12.5 %, 4: 6.25 %, 5: 3.125 %.'],
+['FK','Dosis de carga','Cobj × Vd / F.'],
+['FM','Curva cuantal','Dosis (log) vs % de individuos que responden; sigmoidea.'],
+['FM','DE50, DT50, DL50','Dosis eficaz, tóxica y letal en el 50 %.'],
+['FM','Índice terapéutico','DT50 / DE50.'],
+['FM','IT estrecho','Digoxina, warfarina, litio: requieren monitorización.'],
+['FM','IT amplio','Paracetamol, ibuprofeno, amoxicilina.'],
+['FM','Hiposusceptibilidad','Responde menos: tolerancia, resistencia; se aumenta dosis.'],
+['FM','Hipersusceptibilidad','Responde exagerado: metabolismo lento o alergia; se reduce o suspende.'],
+['FM','Ejemplo genético de variabilidad','CYP2C19 y activación del clopidogrel.'],
+['BT','Fase I','Oxidación, reducción e hidrólisis.'],
+['BT','Fase II','Conjugación con transferasas: más hidrosoluble, menos activo.'],
+['BT','Profármaco','Inactivo que se activa al metabolizarse.'],
+['BT','Enzima principal microsomal','Citocromo P-450 (retículo endoplásmico liso).'],
+['BT','Isoenzima más importante','CYP3A4 (~50 % del metabolismo oxidativo).'],
+['BT','Inductores enzimáticos','Rifampicina, carbamazepina, fenitoína.'],
+['BT','Inhibidores de CYP3A4','Jugo de toronja y azoles.'],
+['BT','CYP1A2 y CYP2E1','1A2 inducido por tabaco; 2E1 inducido por alcohol.'],
+['BT','Detoxificación de metabolitos reactivos','Conjugación con glutatión.'],
+['BT','Glucurónido más potente que el original','Morfina-6-glucurónido.'],
+['BT','Donadores de fase II','Acetil-CoA (acetilación), PAPS (sulfatación), SAM (metilación).'],
+['ER','Procesos de excreción renal','Filtración, secreción tubular y reabsorción tubular.'],
+['ER','Presión neta de filtración','PGC − PBS − πGC: 60 − 18 − 32 = 10 mmHg.'],
+['ER','Secreción tubular activa','Túbulo proximal; aniones y cationes; saturable y con competencia.'],
+['ER','Probenecid y penicilina','Compiten por el transportador de aniones: la penicilina dura más.'],
+['ER','Ácido débil en orina alcalina','Se ioniza y se excreta más (salicilatos).'],
+['ER','Base débil en orina ácida','Se ioniza y se excreta más (anfetaminas).'],
+['ER','Embarazo y excreción','Filtración glomerular ↑ 40–50 %.'],
+['ER','Fármacos a ajustar en falla renal','Amoxicilina, gentamicina, digoxina, metformina.'],
+['ER','Cirrosis','Menos hepatocitos, cortocircuitos, hipoalbuminemia: la que más altera.'],
+['ER','Colestasis','Menos excreción biliar: rifampicina se acumula.'],
+['EO','Paso a leche materna','Difusión pasiva de la fracción libre.'],
+['EO','Lactancia: permitido y no permitido','Paracetamol sí; codeína no.'],
+['EO','Excreción pulmonar','Anestésicos volátiles: sevoflurano, desflurano, isoflurano.'],
+['EO','Depuración','CL = Q × E; volumen libre de fármaco por unidad de tiempo.'],
+['EO','Fracción de extracción','E = (Ci − Ce)/Ci; <0.3 baja, 0.3–0.7 intermedia, >0.7 alta.'],
+['EO','Excreción biliar','Transporte activo (P-gp, MRP2, BCRP); alto peso molecular y glucurónidos.'],
+['EO','Circulación enterohepática','Bilis → intestino → reabsorción → vena porta; prolonga el efecto.'],
+['EO','Qué interrumpe la circulación enterohepática','Antibióticos (menos bacterias) y colestiramina.'],
+];
+
+const CASES = [
+{ t:'AI', title:'Conductor después de una fiesta', text:'Hombre de 80 kg que tomó 3 cervezas de 355 mL al 5 % y fue detenido 2 horas después.',
+  labs:[['Volumen total','1,065 mL'],['Graduación','5 %'],['Peso','80 kg'],['r','0.68'],['β','0.15 g/L/h']],
+  steps:[
+   ['¿Cuántos gramos de alcohol ingirió?',['≈ 42 g','≈ 53 g','≈ 21 g','≈ 106 g'],'1,065 × 0.05 × 0.789 = 42 g.'],
+   ['¿Cuál fue su alcoholemia inicial?',['≈ 0.77 g/L','≈ 0.42 g/L','≈ 1.5 g/L','≈ 0.15 g/L'],'42 / (0.68 × 80) = 0.77 g/L.'],
+   ['¿Cuál es su alcoholemia a las 2 horas?',['≈ 0.47 g/L','≈ 0.77 g/L','≈ 0.62 g/L','0 g/L'],'0.77 − 0.15 × 2 = 0.47 g/L.'],
+   ['¿Cómo se clasifica ese valor?',['Baja (0.20–0.50 g/L)','Moderada','Alta','Muy alta'],'Puede dar desinhibición y alteraciones leves de atención.'],
+  ]},
+{ t:'AI', title:'Trasplantado con micosis', text:'Hombre de 45 años con trasplante renal en tratamiento con ciclosporina. Le indican ketoconazol para una micosis y a la semana tiene hipertensión y elevación de creatinina.',
+  labs:[['Creatinina','elevada'],['Nivel de ciclosporina','triplicado']],
+  steps:[
+   ['¿Qué mecanismo explica el cuadro?',['El ketoconazol inhibe CYP3A4 y P-gp y la ciclosporina se acumula','El ketoconazol induce CYP3A4','La ciclosporina inhibe al ketoconazol','Es un rechazo del trasplante'],'Doble bloqueo intestinal y hepático.'],
+   ['¿Qué tipo de interacción es?',['Farmacocinética (metabolismo)','Farmacodinámica en el mismo receptor','No es interacción','Alérgica'],'Altera el metabolismo del otro fármaco.'],
+   ['¿Qué consecuencia clínica produce la ciclosporina elevada?',['Nefrotoxicidad aguda e hipertensión','Hipoglucemia','Alopecia','Rabdomiólisis siempre'],'Es un inmunosupresor de margen estrecho.'],
+   ['Si deben usarse juntos, ¿qué haces?',['Reducir la ciclosporina 50–80 % y monitorear niveles','Duplicar la ciclosporina','Suspender el trasplante','Nada'],'Recomendación de la presentación.'],
+  ]},
+{ t:'FK', title:'Antibiótico IV en bolo', text:'Paciente que recibe 500 mg IV de un fármaco. La concentración plasmática inicial extrapolada (C0) es de 10 mg/L. Su depuración es de 5 L/h.',
+  labs:[['Dosis IV','500 mg'],['C0','10 mg/L'],['CL','5 L/h']],
+  steps:[
+   ['¿Cuál es su volumen de distribución?',['50 L','5 L','5,000 L','0.02 L'],'Vd = 500 / 10 = 50 L.'],
+   ['¿Cuál es su vida media?',['≈ 6.9 h','≈ 0.69 h','≈ 69 h','≈ 10 h'],'t½ = 0.693 × 50 / 5 = 6.93 h.'],
+   ['¿En cuánto tiempo alcanzaría el estado estable con dosis repetidas?',['≈ 28–35 h (4–5 vidas medias)','≈ 7 h','≈ 3 días exactos','Nunca'],'4–5 × 6.93 h.'],
+   ['¿Qué pasa con la vida media si el paciente desarrolla insuficiencia renal?',['Aumenta porque baja la depuración','Disminuye','No cambia','Desaparece'],'Habría que reducir la dosis o alargar el intervalo.'],
+  ]},
+{ t:'FK', title:'Intoxicación por fenitoína', text:'Mujer de 30 años con epilepsia; le aumentaron la dosis de fenitoína un poco y ahora tiene ataxia y nistagmo. El nivel plasmático subió de forma desproporcionada.',
+  labs:[['Nivel de fenitoína','muy elevado']],
+  steps:[
+   ['¿Qué tipo de cinética explica la subida desproporcionada?',['Orden cero por saturación de enzimas','Primer orden','Cinética lineal normal','No hay metabolismo'],'Se elimina una cantidad fija.'],
+   ['En orden cero, el organismo elimina:',['Una cantidad constante por hora','Un porcentaje constante','Todo en una vida media','Nada'],'La concentración baja de forma lineal.'],
+   ['¿Qué otro ejemplo de orden cero dio la presentación?',['Etanol','Amoxicilina','Heparina','Paracetamol'],'Aproximadamente en concentraciones habituales.'],
+  ]},
+{ t:'FM', title:'Paciente con digoxina', text:'Hombre de 78 años con insuficiencia cardiaca que toma digoxina. Empieza con náuseas y alteraciones visuales; su función renal empeoró.',
+  labs:[['Digoxina sérica','alta'],['Creatinina','elevada']],
+  steps:[
+   ['¿Qué tipo de índice terapéutico tiene la digoxina?',['Estrecho','Amplio','No tiene','Igual al paracetamol'],'La dosis eficaz y la tóxica están muy cerca.'],
+   ['¿Qué implica clínicamente?',['Requiere monitorización de niveles y vigilancia estrecha','Se puede duplicar la dosis sin riesgo','No necesita vigilancia','Es imposible intoxicarse'],'También la warfarina y el litio.'],
+   ['¿Por qué se intoxicó al empeorar su riñón?',['Disminuyó su eliminación renal y se acumuló','Aumentó su absorción','Se volvió alérgico','Por hiposusceptibilidad'],'La digoxina requiere ajuste en insuficiencia renal.'],
+  ]},
+{ t:'FM', title:'Nuevo fármaco en estudio', text:'En un estudio, un fármaco produce el efecto deseado en la mitad de los sujetos con 20 mg y toxicidad en la mitad con 600 mg.',
+  labs:[['DE50','20 mg'],['DT50','600 mg']],
+  steps:[
+   ['¿Cuál es su índice terapéutico?',['30','0.03','620','12,000'],'IT = 600 / 20 = 30.'],
+   ['¿Cómo lo interpretas?',['Margen de seguridad amplio: la dosis tóxica es 30 veces la eficaz','Es muy eficaz','Es muy tóxico','No se puede interpretar'],'El IT mide seguridad, no eficacia.'],
+   ['¿Qué curva se usó para obtener esos valores?',['Curva dosis-respuesta cuantal','Curva concentración-tiempo','Curva gradual','Curva de Starling'],'Mide el % de individuos que responden.'],
+  ]},
+{ t:'BT', title:'Paciente con tuberculosis y anticonceptivos', text:'Mujer de 25 años que toma anticonceptivos orales; inicia tratamiento para tuberculosis con rifampicina.',
+  labs:[['Fármaco nuevo','rifampicina']],
+  steps:[
+   ['¿Qué efecto tiene la rifampicina sobre el CYP450?',['Es inductor de casi todas las enzimas','Es inhibidor potente','No tiene efecto','Es profármaco'],'Igual que carbamazepina y fenitoína.'],
+   ['¿Qué pasará con los anticonceptivos?',['Se metabolizan más rápido y puede bajar su eficacia','Se acumulan y son tóxicos','No cambian','Se excretan por pulmón'],'Los inductores aumentan la depuración.'],
+   ['¿Qué isoenzima metaboliza la mayor parte de los fármacos?',['CYP3A4','CYP2E1','CYP1A2','CYP2D6'],'~50 % del metabolismo oxidativo.'],
+  ]},
+{ t:'BT', title:'Sobredosis de paracetamol', text:'Joven de 19 años que ingirió una gran cantidad de paracetamol. Llega con náuseas y elevación de transaminasas.',
+  labs:[['Transaminasas','elevadas']],
+  steps:[
+   ['¿Cómo se llama la formación de metabolitos tóxicos durante el metabolismo?',['Bioactivación','Detoxificación','Conjugación','Excreción'],'Forma metabolitos reactivos y aductos.'],
+   ['¿Qué sustancia neutraliza esos metabolitos reactivos?',['Glutatión','Colesterol','Glucosa','Urea'],'Por medio de glutatión-S-transferasas.'],
+   ['¿En qué fase ocurre la conjugación con glutatión?',['Fase II','Fase I','Fase cero','Excreción pulmonar'],'Es una reacción de conjugación.'],
+  ]},
+{ t:'ER', title:'Intoxicación por ácido acetilsalicílico', text:'Niño de 4 años que ingirió varias tabletas de ácido acetilsalicílico (salicilato, ácido débil).',
+  labs:[['Salicilatos','elevados']],
+  steps:[
+   ['¿Cómo conviene modificar el pH urinario para eliminarlo?',['Alcalinizar la orina','Acidificar la orina','No modificarlo','Dar más ácido'],'El ácido débil se ioniza en orina alcalina.'],
+   ['¿Por qué funciona?',['La forma ionizada no se reabsorbe y queda en la orina','La forma no ionizada se excreta más','Aumenta la filtración','Se metaboliza en el riñón'],'Más ionización, menos reabsorción.'],
+   ['¿Por qué transportador se secretan los salicilatos?',['Aniones orgánicos','Cationes orgánicos','GLUT4','Ninguno'],'Junto con penicilinas y ácido úrico.'],
+  ]},
+{ t:'ER', title:'Adulto mayor con gentamicina', text:'Mujer de 82 años con pielonefritis tratada con gentamicina a dosis de adulto joven. A los días refiere zumbido de oídos y sube su creatinina.',
+  labs:[['Creatinina','en aumento'],['Edad','82 años']],
+  steps:[
+   ['¿Por qué se acumuló la gentamicina?',['En el adulto mayor bajan el flujo renal y la filtración','Por inducción enzimática','Por circulación enterohepática','Por excreción pulmonar'],'Se elimina más lento.'],
+   ['¿Qué toxicidades produce su acumulación?',['Renal y auditiva','Hepática y pulmonar','Cutánea','Ninguna'],'Ototoxicidad y nefrotoxicidad.'],
+   ['¿Qué debiste hacer?',['Evaluar la función renal y ajustar dosis o intervalo','Duplicar la dosis','Dar con probenecid','Nada'],'Y vigilar niveles cuando corresponda.'],
+  ]},
+{ t:'EO', title:'Mamá lactando con dolor', text:'Mujer de 28 años que amamanta a su bebé de 3 semanas y tiene dolor después de una extracción dental.',
+  labs:[['Tipo de leche','madura']],
+  steps:[
+   ['¿Qué analgésico es permitido según la presentación?',['Paracetamol','Codeína','Cualquiera','Ninguno'],'La codeína no está permitida.'],
+   ['¿Cómo pasan los fármacos a la leche?',['Principalmente por difusión pasiva de la fracción libre','Por filtración glomerular','Solo por transporte activo','No pasan'],'Influyen liposolubilidad, peso molecular, pH y unión a proteínas.'],
+   ['¿Por qué las bases débiles se concentran en la leche?',['La leche es más ácida que el plasma: atrapamiento iónico','La leche es más alcalina','Por su alto peso molecular','Por la oxitocina'],'pH de la leche ≈7.2 vs plasma ≈7.4.'],
+  ]},
+{ t:'EO', title:'Anticonceptivos y antibiótico', text:'Mujer que toma anticonceptivos orales recibe un antibiótico de amplio espectro por 10 días.',
+  labs:[['Antibiótico','amplio espectro']],
+  steps:[
+   ['¿Qué proceso puede alterarse?',['La circulación enterohepática de los estrógenos','La filtración glomerular','La excreción pulmonar','La sulfatación'],'Las bacterias liberan los estrógenos conjugados para su reabsorción.'],
+   ['¿Qué enzima bacteriana participa?',['β-glucuronidasa','CYP3A4','Amilasa','Acetiltransferasa'],'Hidroliza los glucurónidos.'],
+   ['Al disminuir la reabsorción, ¿qué puede pasar?',['Disminuir la concentración del estrógeno','Aumentar la toxicidad','Aumentar la vida media','Nada'],'El ciclo se interrumpe.'],
+  ]},
+{ t:'EO', title:'Fármaco con alta extracción hepática', text:'Un fármaco entra al hígado con 150 mg/L y sale con 15 mg/L. El flujo sanguíneo hepático es de 1,500 mL/min.',
+  labs:[['Ci','150 mg/L'],['Ce','15 mg/L'],['Q','1,500 mL/min']],
+  steps:[
+   ['¿Cuál es su fracción de extracción?',['0.90','0.10','0.50','1.10'],'(150 − 15) / 150 = 0.90.'],
+   ['¿Cómo se clasifica?',['Alta (>0.7)','Intermedia','Baja','Nula'],'El hígado extrae casi todo.'],
+   ['¿Cuál es su depuración hepática?',['1,350 mL/min','150 mL/min','1,500 mL/min','135 mL/min'],'CL = 1,500 × 0.90.'],
+   ['¿Qué esperas de su biodisponibilidad oral?',['Baja, por gran efecto de primer paso','100 %','Mayor que la IV','No cambia'],'Por eso algunos se dan IV.'],
+  ]},
+];
+
+const GENS = {
+  gramos: { t: 'AI', name: 'Gramos de alcohol', make() {
+    const B = pick([['cerveza', 355, 5], ['cerveza', 500, 5], ['vino', 150, 12], ['vino', 250, 13], ['tequila', 45, 38], ['tequila', 90, 40], ['ron', 60, 40]]);
+    const n = R(1, 4), V = B[1] * n, ans = V * B[2] / 100 * 0.789;
+    return { kind: 'num', ans, tol: 0.6, unit: 'g', q: `Una persona toma <b>${n}</b> ${B[0]}${n > 1 ? 's' : ''} de <span class="lab">${B[1]} mL</span> al <span class="lab">${B[2]} %</span>. ¿Cuántos gramos de alcohol ingirió?`,
+      sol: `A = V × %/100 × 0.789 = ${V} × ${B[2] / 100} × 0.789 = <b>${f1(ans)} g</b>.` }; } },
+  widmark: { t: 'AI', name: 'Alcoholemia (Widmark)', make() {
+    const sexo = pick(['hombre', 'mujer']), r = sexo === 'hombre' ? 0.68 : 0.55, P = R(50, 95), A = R(15, 80), t = R(0, 3);
+    const ini = A / (P * r), ans = Math.max(0, ini - 0.15 * t);
+    return { kind: 'num', ans, tol: 0.02, unit: 'g/L', q: `Un${sexo === 'mujer' ? 'a' : ''} ${sexo} de <span class="lab">${P} kg</span> ingirió <span class="lab">${A} g</span> de alcohol hace <span class="lab">${t} h</span>. Usa r = ${r} y β = 0.15 g/L/h. ¿Alcoholemia estimada?`,
+      sol: `Inicial = ${A} / (${P} × ${r}) = ${ini.toFixed(2)} g/L. Menos eliminación: ${ini.toFixed(2)} − 0.15 × ${t} = <b>${ans.toFixed(2)} g/L</b>.` }; } },
+  nivelAlc: { t: 'AI', name: 'Clasificar alcoholemia', make() {
+    const v = pick([Rf(0.2, 0.49, 2), Rf(0.51, 0.99, 2), Rf(1.01, 1.99, 2), Rf(2.05, 3.2, 2)]);
+    const ans = v < 0.5 ? 'Baja' : v < 1 ? 'Moderada' : v <= 2 ? 'Alta' : 'Muy alta / peligrosa';
+    return { kind: 'choice', ans, opts: ['Baja', 'Moderada', 'Alta', 'Muy alta / peligrosa'], q: `Alcoholemia de <span class="lab">${v.toFixed(2)} g/L</span>. ¿Cómo se clasifica?`, sol: `Baja 0.20–0.50, moderada 0.50–1.00, alta 1.00–2.00, muy alta >2.00 g/L → <b>${ans}</b>.` }; } },
+  biodisp: { t: 'FK', name: 'Biodisponibilidad', make() {
+    const iv = R(40, 120), F = R(15, 95), oral = Math.round(iv * F / 100), ans = oral / iv * 100;
+    return { kind: 'num', ans, tol: 1, unit: '%', q: `Con la misma dosis, el AUC oral es <span class="lab">${oral} mg·h/L</span> y el AUC IV es <span class="lab">${iv} mg·h/L</span>. ¿Cuál es la biodisponibilidad oral?`, sol: `F = AUC oral / AUC IV × 100 = ${oral} / ${iv} × 100 = <b>${f1(ans)} %</b>.` }; } },
+  vd: { t: 'FK', name: 'Volumen de distribución', make() {
+    const d = pick([100, 200, 250, 300, 500, 600, 1000]), c0 = pick([2, 4, 5, 8, 10, 20, 25]), ans = d / c0;
+    return { kind: 'num', ans, tol: 0.5, unit: 'L', q: `Se administran <span class="lab">${d} mg</span> IV y la concentración inicial (C0) es <span class="lab">${c0} mg/L</span>. ¿Cuál es el Vd?`, sol: `Vd = dosis / C0 = ${d} / ${c0} = <b>${f1(ans)} L</b>. ${ans > 42 ? 'Es alto: se distribuye a tejidos.' : 'Es bajo/moderado: queda más en plasma.'}` }; } },
+  vidaMedia: { t: 'FK', name: 'Vida media', make() {
+    if (Math.random() < 0.5) { const k = pick([0.05, 0.1, 0.0693, 0.2, 0.3465, 0.1386]), ans = 0.693 / k; return { kind: 'num', ans, tol: 0.2, unit: 'h', q: `La constante de eliminación (ke) es <span class="lab">${k} h⁻¹</span>. ¿Cuál es la vida media?`, sol: `t½ = 0.693 / ${k} = <b>${f1(ans)} h</b>.` }; }
+    const vd = pick([20, 30, 40, 50, 70, 100]), cl = pick([2, 4, 5, 7, 10]), ans = 0.693 * vd / cl;
+    return { kind: 'num', ans, tol: 0.2, unit: 'h', q: `Fármaco con Vd de <span class="lab">${vd} L</span> y depuración de <span class="lab">${cl} L/h</span>. ¿Cuál es su vida media?`, sol: `t½ = 0.693 × Vd / CL = 0.693 × ${vd} / ${cl} = <b>${f1(ans)} h</b>.` }; } },
+  restante: { t: 'FK', name: 'Concentración tras vidas medias', make() {
+    const c0 = pick([40, 64, 80, 100, 160, 200]), th = pick([2, 3, 4, 6, 8]), n = R(1, 5), t = th * n, ans = c0 / Math.pow(2, n);
+    return { kind: 'num', ans, tol: 0.1, unit: 'mg/L', q: `Concentración inicial <span class="lab">${c0} mg/L</span> y vida media de <span class="lab">${th} h</span> (primer orden). ¿Qué concentración queda a las <span class="lab">${t} h</span>?`, sol: `${t} h / ${th} h = ${n} vidas medias. ${c0} / 2^${n} = <b>${f1(ans)} mg/L</b> (queda el ${f1(100 / Math.pow(2, n))} %).` }; } },
+  estable: { t: 'FK', name: 'Tiempo al estado estable', make() {
+    const th = pick([2, 4, 6, 8, 12, 24]), ans = `${th * 4}–${th * 5} horas`;
+    const opts = shuffle([ans, `${th} horas`, `${th * 2} horas`, `${th * 10}–${th * 12} horas`]);
+    return { kind: 'choice', ans, opts, q: `Un fármaco con vida media de <span class="lab">${th} h</span> se administra de forma repetida. ¿En cuánto tiempo alcanza el estado estable?`, sol: `Se alcanza en 4–5 vidas medias: ${th} × 4 a ${th} × 5 = <b>${ans}</b>. No depende de la dosis.` }; } },
+  ordenCero: { t: 'FK', name: 'Eliminación de orden cero', make() {
+    const c0 = R(5, 12) * 10, k = pick([5, 10, 15, 20]), h = R(1, Math.floor(c0 / k) - 1), ans = c0 - k * h;
+    return { kind: 'num', ans, tol: 0.1, unit: 'mg', q: `Un fármaco con cinética de orden cero se elimina a <span class="lab">${k} mg/h</span>. Si hay <span class="lab">${c0} mg</span> en el cuerpo, ¿cuánto queda después de <span class="lab">${h} h</span>?`, sol: `En orden cero se elimina una cantidad fija: ${c0} − ${k} × ${h} = <b>${ans} mg</b>.` }; } },
+  carga: { t: 'FK', name: 'Dosis de carga', make() {
+    const c = pick([2, 5, 10, 15, 20]), vd = pick([20, 40, 50, 100]), F = pick([1, 0.5, 0.8]), ans = c * vd / F;
+    return { kind: 'num', ans, tol: 0.5, unit: 'mg', q: `Concentración objetivo <span class="lab">${c} mg/L</span>, Vd <span class="lab">${vd} L</span> y biodisponibilidad <span class="lab">${F}</span>. ¿Dosis de carga?`, sol: `Dosis de carga = Cobj × Vd / F = ${c} × ${vd} / ${F} = <b>${f1(ans)} mg</b>.` }; } },
+  it: { t: 'FM', name: 'Índice terapéutico', make() {
+    const de = pick([2, 5, 10, 20, 50]), mult = pick([1.5, 2, 3, 10, 20, 50]), dt = de * mult, ans = dt / de;
+    return { kind: 'num', ans, tol: 0.05, unit: '', q: `DE50 de <span class="lab">${de} mg</span> y DT50 de <span class="lab">${dt} mg</span>. ¿Cuál es el índice terapéutico?`, sol: `IT = DT50 / DE50 = ${dt} / ${de} = <b>${f1(ans)}</b>. ${ans <= 3 ? 'Es estrecho: requiere vigilancia y monitorización (como digoxina, warfarina o litio).' : 'Es amplio: mayor margen de seguridad.'}` }; } },
+  extraccion: { t: 'EO', name: 'Fracción de extracción', make() {
+    const ci = pick([50, 100, 120, 150, 200]), E = pick([0.1, 0.2, 0.4, 0.5, 0.6, 0.8, 0.9]), ce = Math.round(ci * (1 - E)), ans = (ci - ce) / ci;
+    const cls = ans < 0.3 ? 'baja' : ans <= 0.7 ? 'intermedia' : 'alta';
+    return { kind: 'num', ans, tol: 0.02, unit: '(0 a 1)', q: `El fármaco entra al hígado con <span class="lab">${ci} mg/L</span> y sale con <span class="lab">${ce} mg/L</span>. ¿Cuál es la fracción de extracción?`, sol: `E = (Ci − Ce) / Ci = (${ci} − ${ce}) / ${ci} = <b>${ans.toFixed(2)}</b> → extracción <b>${cls}</b> (&lt;0.3 baja, 0.3–0.7 intermedia, &gt;0.7 alta).` }; } },
+  depuracion: { t: 'EO', name: 'Depuración (CL = Q × E)', make() {
+    const Q = pick([600, 1000, 1200, 1500]), E = pick([0.2, 0.3, 0.5, 0.7, 0.8, 0.9]), ans = Q * E;
+    return { kind: 'num', ans, tol: 1, unit: 'mL/min', q: `Flujo sanguíneo hepático <span class="lab">${Q} mL/min</span> y fracción de extracción <span class="lab">${E}</span>. ¿Cuál es la depuración hepática?`, sol: `CL = Q × E = ${Q} × ${E} = <b>${f1(ans)} mL/min</b>.` }; } },
+  pnf: { t: 'ER', name: 'Presión neta de filtración', make() {
+    const pgc = R(50, 65), pbs = R(12, 20), pgo = R(25, 34), ans = pgc - pbs - pgo;
+    return { kind: 'num', ans, tol: 0.1, unit: 'mmHg', q: `Presión hidrostática glomerular <span class="lab">${pgc}</span>, presión de Bowman <span class="lab">${pbs}</span> y presión oncótica glomerular <span class="lab">${pgo} mmHg</span> (oncótica de Bowman ≈ 0). ¿Presión neta de filtración?`, sol: `PNF = PGC − PBS − πGC + πBS = ${pgc} − ${pbs} − ${pgo} + 0 = <b>${ans} mmHg</b>.` }; } },
+  phOrina: { t: 'ER', name: 'pH urinario y excreción', make() {
+    const S = pick([['ácido débil (salicilato)', 'alcalina', 'Se excreta más'], ['ácido débil (salicilato)', 'ácida', 'Se reabsorbe más'], ['base débil (anfetamina)', 'ácida', 'Se excreta más'], ['base débil (anfetamina)', 'alcalina', 'Se reabsorbe más']]);
+    return { kind: 'choice', ans: S[2], opts: ['Se excreta más', 'Se reabsorbe más'], q: `Un <b>${S[0]}</b> en orina <b>${S[1]}</b>. ¿Qué pasa con su eliminación?`, sol: `La forma ionizada queda en la orina y la no ionizada se reabsorbe. ${S[0].startsWith('ácido') ? 'Un ácido se ioniza en medio alcalino.' : 'Una base se ioniza en medio ácido.'} → <b>${S[2]}</b>.` }; } },
+};
+
+    return { TOPICS, MC, OP, FC, CASES, GENS };
+  } },
+};
+let TOPICS, MC, OP, FC, CASES, GENS, SUBJ = 'reuma';
+
+/* ---------- Utilidades ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[−–]/g, '-');
+const store = {
+  get(k) { try { return JSON.parse(localStorage.getItem('med-' + SUBJ + '-' + k)); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem('med-' + SUBJ + '-' + k, JSON.stringify(v)); } catch (e) {} }
+};
+function topicOptions(sel) {
+  sel.innerHTML = '<option value="all">Todos los temas</option>' + Object.entries(TOPICS).map(([k, v]) => `<option value="${k}">${v}</option>`).join('');
+}
+
+/* ---------- Pestañas ---------- */
+const VIEWS = ['resumen', 'cuestionario', 'examen', 'abierto', 'casos', 'calculos'];
+function show(view) {
+  if (!VIEWS.includes(view)) view = 'resumen';
+  VIEWS.forEach(v => {
+    $('#view-' + v).hidden = v !== view;
+    $('#tab-' + v).setAttribute('aria-selected', v === view ? 'true' : 'false');
+  });
+}
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+  const v = t.dataset.view;
+  if (location.hash !== '#' + v) location.hash = v; else show(v);
+  window.scrollTo({ top: 0 });
+}));
+window.addEventListener('hashchange', () => show(location.hash.slice(1)));
+show(location.hash.slice(1));
+
+/* ---------- Navegación del resumen ---------- */
+$('#view-resumen').addEventListener('click', e => {
+  const b = e.target.closest('[data-t]'); if (!b) return;
+  const el = $('#sum-' + b.dataset.t);
+  const y = el.getBoundingClientRect().top + window.scrollY - $('header.top').offsetHeight - 12;
+  window.scrollTo({ top: y, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+});
+
+/* ---------- Cuestionario ---------- */
+let fcTopic = 'all', fcOrder = [], fcAll = false;
+function renderFC() {
+  const items = fcOrder.filter(i => fcTopic === 'all' || FC[i][0] === fcTopic);
+  $('#fc-list').innerHTML = items.map((i, n) => {
+    const [t, q, a] = FC[i];
+    return `<div class="card flash"><div class="meta"><span>${TOPICS[t]}</span><span>${n + 1} / ${items.length}</span></div>
+      <div class="q">${esc(q)}</div>
+      <button class="linkbtn" type="button" data-fc="${i}" aria-expanded="${fcAll}">${fcAll ? 'Ocultar respuesta' : 'Mostrar respuesta'}</button>
+      <div class="ans" id="fc-a-${i}" ${fcAll ? '' : 'hidden'}>${esc(a)}</div></div>`;
+  }).join('');
+}
+$('#fc-topics').addEventListener('click', e => {
+  const b = e.target.closest('[data-t]'); if (!b) return;
+  fcTopic = b.dataset.t;
+  $('#fc-topics').querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c === b ? 'true' : 'false'));
+  renderFC();
+});
+$('#fc-shuffle').addEventListener('click', () => { fcOrder = shuffle(fcOrder); renderFC(); });
+$('#fc-toggle').addEventListener('click', () => { fcAll = !fcAll; $('#fc-toggle').textContent = fcAll ? 'Ocultar todas las respuestas' : 'Mostrar todas las respuestas'; renderFC(); });
+$('#fc-list').addEventListener('click', e => {
+  const b = e.target.closest('[data-fc]'); if (!b) return;
+  const a = $('#fc-a-' + b.dataset.fc); a.hidden = !a.hidden;
+  b.textContent = a.hidden ? 'Mostrar respuesta' : 'Ocultar respuesta';
+  b.setAttribute('aria-expanded', String(!a.hidden));
+});
+
+/* ---------- Resultado y celebración ---------- */
+function resultHTML(pct, ok, total, pass, threshold, kind, wrongCount, retryText, newText) {
+  const icon = pass
+    ? `<svg class="check" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34"/><path d="M24 41 l11 11 l22 -24"/></svg>`
+    : `<svg class="xmark" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34"/><path d="M28 28 L52 52 M52 28 L28 52"/></svg>`;
+  const msg = pass
+    ? `<strong>¡Felicidades, aprobaste!</strong>Sacaste ${ok} de ${total}. Puedes intentar otro examen con preguntas nuevas para reforzar.`
+    : `<strong>Todavía no: necesitas ${threshold} %</strong>Sacaste ${ok} de ${total}. Revisa las que están en rojo y vuelve a intentarlo.`;
+  return `<div class="result ${pass ? 'pass' : 'fail'}" role="status">${icon}<div class="score">${pct}%</div>
+    <div class="txt">${msg}<div class="actions">
+      <button class="btn" type="button" data-act="new-${kind}">${newText || 'Nuevo intento (preguntas al azar)'}</button>
+      ${wrongCount ? `<button class="btn ghost" type="button" data-act="retry-${kind}">${retryText || `Repetir solo las ${wrongCount} que fallé`}</button>` : ''}
+    </div></div></div>`;
+}
+function confetti() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c = $('#confetti'); c.hidden = false;
+  const ctx = c.getContext('2d'); const W = c.width = innerWidth, H = c.height = innerHeight;
+  const cs = getComputedStyle(document.documentElement);
+  const colors = ['--accent', '--good', '--lab'].map(v => cs.getPropertyValue(v).trim());
+  const P = Array.from({ length: 140 }, () => ({ x: Math.random() * W, y: -20 - Math.random() * H * 0.5, r: 4 + Math.random() * 5, vy: 2 + Math.random() * 3, vx: -1.5 + Math.random() * 3, a: Math.random() * 6, c: colors[Math.floor(Math.random() * 3)] }));
+  let t = 0;
+  (function frame() {
+    ctx.clearRect(0, 0, W, H);
+    P.forEach(p => { p.y += p.vy; p.x += p.vx; p.a += 0.1; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a); ctx.fillStyle = p.c; ctx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); ctx.restore(); });
+    if (++t < 180) requestAnimationFrame(frame); else { ctx.clearRect(0, 0, W, H); c.hidden = true; }
+  })();
+}
+function bestText(key) {
+  const b = store.get(key);
+  return b ? `Tu mejor resultado: ${b.pct} % ${b.pass ? '✓ aprobado' : ''}` : '';
+}
+function saveBest(key, pct, pass) {
+  const b = store.get(key);
+  if (!b || pct > b.pct) store.set(key, { pct, pass });
+}
+function filterBar(scope, list) {
+  scope.addEventListener('click', e => {
+    const b = e.target.closest('[data-f]'); if (!b) return;
+    scope.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c === b ? 'true' : 'false'));
+    list.querySelectorAll('.card').forEach(card => { card.hidden = b.dataset.f === 'ko' && !card.classList.contains('ko'); });
+  });
+}
+function resetFilter(scope, list) {
+  scope.querySelectorAll('.chip').forEach((c, i) => c.setAttribute('aria-pressed', i === 0 ? 'true' : 'false'));
+  list.querySelectorAll('.card').forEach(c => { c.hidden = false; });
+}
+
+/* ---------- Examen opción múltiple ---------- */
+const mc = { qs: [], done: false };
+function mcStart(pool) {
+  const topic = $('#mc-topic').value, n = +$('#mc-count').value;
+  const src = pool || shuffle(MC.map((_, i) => i).filter(i => topic === 'all' || MC[i][0] === topic)).slice(0, n);
+  mc.qs = shuffle(src).map(i => ({ i, opts: shuffle(MC[i][2].map((t, k) => ({ t, ok: k === 0 }))), pick: null }));
+  mc.done = false;
+  $('#mc-result').innerHTML = '';
+  $('#mc-filter').hidden = true; resetFilter($('#mc-filter'), $('#mc-list'));
+  $('#mc-status').hidden = false;
+  mcRender(); mcProgress();
+  $('#mc-list').scrollIntoView({ block: 'start' });
+  window.scrollBy(0, -$('header.top').offsetHeight - 70);
+}
+function mcRender() {
+  $('#mc-list').innerHTML = mc.qs.map((q, n) => {
+    const [t, text, , exp] = MC[q.i];
+    const right = q.opts.findIndex(o => o.ok);
+    const state = mc.done ? (q.pick === right ? 'ok' : 'ko') : '';
+    const verdict = mc.done ? (state === 'ok' ? '<span class="verdict ok">✓ Correcta</span>' : `<span class="verdict ko">✗ ${q.pick === null ? 'Sin contestar' : 'Incorrecta'}</span>`) : `<span>${n + 1} / ${mc.qs.length}</span>`;
+    return `<fieldset class="card ${mc.done ? 'done ' + state : ''}" style="margin:0">
+      <legend class="sr-only" style="position:absolute;left:-9999px">Pregunta ${n + 1}</legend>
+      <div class="meta"><span>${n + 1}. ${TOPICS[t]}</span>${verdict}</div>
+      <div class="q">${esc(text)}</div>
+      <div class="opts">${q.opts.map((o, k) => {
+        let cls = '';
+        if (mc.done) { if (o.ok) cls = 'is-right'; else if (q.pick === k) cls = 'is-wrong'; }
+        return `<label class="opt ${cls}"><input type="radio" name="mc-${n}" id="mc-${n}-${k}" value="${k}" ${q.pick === k ? 'checked' : ''} ${mc.done ? 'disabled' : ''}><span>${esc(o.t)}</span></label>`;
+      }).join('')}</div>
+      ${mc.done && state === 'ko' ? `<div class="explain"><b>Respuesta correcta:</b> ${esc(q.opts[right].t)}<br>${esc(exp)}</div>` : ''}
+      ${mc.done && state === 'ok' ? `<div class="explain">${esc(exp)}</div>` : ''}
+    </fieldset>`;
+  }).join('');
+}
+function mcProgress() {
+  const a = mc.qs.filter(q => q.pick !== null).length;
+  $('#mc-prog-txt').textContent = `Respondidas ${a} de ${mc.qs.length}`;
+  $('#mc-prog').style.width = (mc.qs.length ? a / mc.qs.length * 100 : 0) + '%';
+}
+$('#mc-list').addEventListener('change', e => {
+  if (mc.done || e.target.type !== 'radio') return;
+  const n = +e.target.name.split('-')[1];
+  mc.qs[n].pick = +e.target.value; mcProgress();
+});
+$('#mc-start').addEventListener('click', () => mcStart());
+$('#mc-submit').addEventListener('click', () => {
+  mc.done = true;
+  const ok = mc.qs.filter(q => q.pick !== null && q.opts[q.pick].ok).length;
+  const pct = Math.round(ok / mc.qs.length * 100), pass = pct >= 80;
+  const wrong = mc.qs.length - ok;
+  saveBest('mc', pct, pass); $('#mc-best').textContent = bestText('mc');
+  $('#mc-status').hidden = true;
+  $('#mc-result').innerHTML = resultHTML(pct, ok, mc.qs.length, pass, 80, 'mc', wrong);
+  $('#mc-filter').hidden = wrong === 0;
+  mcRender();
+  window.scrollTo({ top: 0 });
+  if (pass) confetti();
+});
+filterBar($('#mc-filter'), $('#mc-list'));
+
+/* ---------- Examen preguntas abiertas ---------- */
+const op = { qs: [], done: false };
+function grade(text, concepts) {
+  const t = norm(text);
+  return concepts.map(([name, ...alts]) => ({ name, hit: alts.some(a => t.includes(norm(a))) }));
+}
+function opStart(pool) {
+  const topic = $('#op-topic').value, n = +$('#op-count').value;
+  const src = pool || shuffle(OP.map((_, i) => i).filter(i => topic === 'all' || OP[i][0] === topic)).slice(0, n);
+  op.qs = shuffle(src).map(i => ({ i, text: '', hits: [], ok: null }));
+  op.done = false;
+  $('#op-result').innerHTML = '';
+  $('#op-filter').hidden = true; resetFilter($('#op-filter'), $('#op-list'));
+  $('#op-status').hidden = false;
+  opRender(); opProgress();
+  $('#op-list').scrollIntoView({ block: 'start' });
+  window.scrollBy(0, -$('header.top').offsetHeight - 70);
+}
+function opRender() {
+  $('#op-list').innerHTML = op.qs.map((q, n) => {
+    const [t, text, model] = OP[q.i];
+    const state = op.done ? (q.ok ? 'ok' : 'ko') : '';
+    const verdict = op.done ? (q.ok ? '<span class="verdict ok">✓ Correcta</span>' : '<span class="verdict ko">✗ Incompleta</span>') : `<span>${n + 1} / ${op.qs.length}</span>`;
+    const found = q.hits.filter(h => h.hit).length;
+    return `<div class="card ${op.done ? 'done ' + state : ''}" data-n="${n}">
+      <div class="meta"><span>${n + 1}. ${TOPICS[t]}</span>${verdict}</div>
+      <label class="q" for="op-${n}" style="display:block">${esc(text)}</label>
+      <textarea id="op-${n}" data-n="${n}" ${op.done ? 'readonly' : ''} placeholder="Escribe tu respuesta…">${esc(q.text)}</textarea>
+      ${op.done ? `<div class="concepts" aria-label="Conceptos clave">${q.hits.map(h => `<span class="concept ${h.hit ? 'hit' : 'miss'}">${h.hit ? '✓' : '✗'} ${esc(h.name)}</span>`).join('')}</div>
+        <div class="explain"><b>Respuesta modelo:</b> ${esc(model)}</div>
+        <div class="selfgrade">Mencionaste ${found} de ${q.hits.length} conceptos. ¿Tu respuesta fue correcta?
+          <button class="chip" type="button" data-self="1" aria-pressed="${q.ok === true}">Sí, la tuve bien</button>
+          <button class="chip" type="button" data-self="0" aria-pressed="${q.ok === false}">No, me faltó</button></div>` : ''}
+    </div>`;
+  }).join('');
+}
+function opProgress() {
+  const a = op.qs.filter(q => q.text.trim().length > 0).length;
+  $('#op-prog-txt').textContent = `Contestadas ${a} de ${op.qs.length}`;
+  $('#op-prog').style.width = (op.qs.length ? a / op.qs.length * 100 : 0) + '%';
+}
+function opScore(first) {
+  const ok = op.qs.filter(q => q.ok).length;
+  const pct = Math.round(ok / op.qs.length * 100), pass = pct >= 70;
+  const wasPass = $('#op-result .result.pass') !== null;
+  saveBest('op', pct, pass); $('#op-best').textContent = bestText('op');
+  $('#op-result').innerHTML = resultHTML(pct, ok, op.qs.length, pass, 70, 'op', op.qs.length - ok);
+  $('#op-filter').hidden = ok === op.qs.length;
+  if (pass && (first || !wasPass)) confetti();
+}
+$('#op-list').addEventListener('input', e => {
+  if (e.target.tagName !== 'TEXTAREA' || op.done) return;
+  op.qs[+e.target.dataset.n].text = e.target.value; opProgress();
+});
+$('#op-list').addEventListener('click', e => {
+  const b = e.target.closest('[data-self]'); if (!b || !op.done) return;
+  const n = +b.closest('.card').dataset.n;
+  op.qs[n].ok = b.dataset.self === '1';
+  const card = b.closest('.card');
+  card.classList.toggle('ok', op.qs[n].ok); card.classList.toggle('ko', !op.qs[n].ok);
+  card.querySelector('.verdict').outerHTML = op.qs[n].ok ? '<span class="verdict ok">✓ Correcta</span>' : '<span class="verdict ko">✗ Incompleta</span>';
+  card.querySelectorAll('[data-self]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  opScore(false);
+});
+$('#op-start').addEventListener('click', () => opStart());
+$('#op-submit').addEventListener('click', () => {
+  op.done = true;
+  op.qs.forEach(q => {
+    q.hits = grade(q.text, OP[q.i][3]);
+    const ratio = q.hits.filter(h => h.hit).length / q.hits.length;
+    q.ok = q.text.trim().length > 0 && ratio >= 0.5;
+  });
+  $('#op-status').hidden = true;
+  opRender(); opScore(true);
+  window.scrollTo({ top: 0 });
+});
+filterBar($('#op-filter'), $('#op-list'));
+
+/* =========================================================
+   CASOS CLÍNICOS: pasos = [pregunta, [correcta, incorrecta...], explicación]
+   ========================================================= */
+
 const cs = { list: [], done: false };
-$('#cs-bank-size').textContent = CASES.length;
-topicOptions($('#cs-topic'));
-$('#cs-best').textContent = bestText('cs');
 function csStart(pool) {
   const topic = $('#cs-topic').value, n = +$('#cs-count').value;
   const src = pool || shuffle(CASES.map((_, i) => i).filter(i => topic === 'all' || CASES[i].t === topic)).slice(0, n);
@@ -1143,70 +1777,7 @@ const R = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
 const Rf = (a, b, d = 1) => +(a + Math.random() * (b - a)).toFixed(d);
 const pick = a => a[Math.floor(Math.random() * a.length)];
 const f1 = n => (Math.round(n * 10) / 10).toString();
-const GENS = {
-  acr: { t: 'A', name: 'Puntaje ACR/EULAR 2010', make() {
-    const J = pick([['1 articulación grande (una rodilla)', 0], ['3 articulaciones grandes (hombros y una rodilla)', 1], ['2 articulaciones pequeñas (dos MCF)', 2], ['6 articulaciones pequeñas (MCF y muñecas)', 3], ['14 articulaciones, incluidas varias MCF', 5]]);
-    const S = pick([['FR y anti-CCP negativos', 0], ['FR positivo bajo (≤3 veces el límite)', 2], ['anti-CCP positivo alto (>3 veces el límite)', 3]]);
-    const P = pick([['PCR y VSG normales', 0], ['VSG elevada', 1]]);
-    const w = R(2, 16), D = w >= 6 ? 1 : 0, ans = J[1] + S[1] + P[1] + D;
-    return { kind: 'num', ans, tol: 0, unit: 'puntos', q: `Paciente con <b>${J[0]}</b>, ${S[0]}, ${P[0]} y síntomas desde hace <span class="lab">${w} semanas</span>. ¿Cuántos puntos suma en ACR/EULAR 2010?`,
-      sol: `Articulaciones ${J[1]} + serología ${S[1]} + reactantes ${P[1]} + duración ${D} (${w >= 6 ? '≥6 semanas' : '<6 semanas'}) = <b>${ans} puntos</b>. ${ans >= 6 ? '≥6: AR definida.' : '<6: no alcanza para AR definida.'}` }; } },
-  sinovial: { t: 'S', name: 'Interpretar líquido sinovial', make() {
-    const ty = pick(['SEP', 'INF', 'NO']); let leu, pmn, ratio;
-    if (ty === 'SEP') { leu = R(55, 150) * 1000; pmn = R(91, 98); ratio = Rf(0.15, 0.45, 2); }
-    if (ty === 'INF') { leu = R(5, 40) * 1000; pmn = R(55, 85); ratio = Rf(0.6, 0.9, 2); }
-    if (ty === 'NO') { leu = R(2, 18) * 100; pmn = R(10, 24); ratio = Rf(0.9, 1, 2); }
-    const plas = R(85, 110), sin = Math.round(plas * ratio);
-    const labels = { SEP: 'Séptico (infeccioso)', INF: 'Inflamatorio no séptico (como AR o reactiva)', NO: 'No inflamatorio' };
-    const why = { SEP: 'Cumple los 3 criterios de la presentación: >50,000 células, >90 % PMN y glucosa <50 % de la plasmática.', INF: 'Hay inflamación (miles de células, PMN moderados) pero no llega a 50,000 ni a 90 % PMN y la glucosa está conservada.', NO: 'Menos de 2,000 células con pocos PMN y glucosa igual a la plasmática (valores de referencia habituales).' };
-    return { kind: 'choice', ans: labels[ty], opts: shuffle(Object.values(labels)), q: `Líquido sinovial: leucocitos <span class="lab">${leu.toLocaleString('es-MX')}/mm³</span>, PMN <span class="lab">${pmn} %</span>, glucosa sinovial <span class="lab">${sin} mg/dL</span> con glucosa plasmática <span class="lab">${plas} mg/dL</span>. ¿Cómo lo clasificas?`,
-      sol: `Glucosa sinovial/plasmática = ${sin}/${plas} = ${Math.round(sin / plas * 100)} %. ${why[ty]} → <b>${labels[ty]}</b>.` }; } },
-  gluRatio: { t: 'S', name: 'Glucosa sinovial / plasmática', make() {
-    const plas = R(80, 120), sin = R(15, 110), ans = sin / plas * 100;
-    return { kind: 'num', ans, tol: 1.5, unit: '%', q: `Glucosa sinovial <span class="lab">${sin} mg/dL</span> y plasmática <span class="lab">${plas} mg/dL</span>. ¿Qué porcentaje de la plasmática representa la sinovial?`,
-      sol: `${sin} / ${plas} × 100 = <b>${f1(ans)} %</b>. ${ans < 50 ? 'Es menor de 50 %: apoya artritis séptica.' : 'No es menor de 50 %: no cumple ese criterio de infección.'}` }; } },
-  pcr: { t: 'S', name: 'Proteína C reactiva', make() {
-    const v = R(4, 90), ty = pick(['corte', 'doble']);
-    if (ty === 'doble') { const ans = v * 2; return { kind: 'num', ans, tol: 0.5, unit: 'mg/L', q: `Un niño con artritis séptica tiene PCR de <span class="lab">${v} mg/L</span> al ingreso. Si la PCR se duplica en 6 horas como dice la presentación, ¿qué valor esperas a las 6 h?`, sol: `La PCR se duplica en 6 h: ${v} × 2 = <b>${ans} mg/L</b>. Por subir y bajar rápido es la mejor para vigilar la evolución.` }; }
-    const ans = v >= 20 ? 'Por arriba del corte: apoya osteomielitis / artritis séptica' : 'Por debajo del corte de 20 mg/L';
-    return { kind: 'choice', ans, opts: ['Por arriba del corte: apoya osteomielitis / artritis séptica', 'Por debajo del corte de 20 mg/L'], q: `PCR de <span class="lab">${v} mg/L</span> en un niño con fiebre y dolor articular. ¿Cómo la interpretas?`, sol: `El valor de corte para OmA y artritis séptica es 20 mg/L. ${v} ${v >= 20 ? '≥' : '<'} 20 → <b>${ans}</b>. Siempre se integra con la clínica y el líquido sinovial.` }; } },
-  agente: { t: 'S', name: 'Agente según la edad', make() {
-    const ty = pick(['RN', 'NI', 'NI', 'GO']); let txt, ans;
-    if (ty === 'RN') { txt = `Recién nacido de ${R(5, 28)} días`; ans = 'E. coli o Streptococcus agalactiae'; }
-    if (ty === 'NI') { txt = `Niño de ${R(2, 14)} años sin factores especiales`; ans = 'Staphylococcus aureus'; }
-    if (ty === 'GO') { txt = `Adolescente de ${R(16, 19)} años con vida sexual activa y diplococos gramnegativos en el Gram`; ans = 'Neisseria gonorrhoeae'; }
-    return { kind: 'choice', ans, opts: ['Staphylococcus aureus', 'E. coli o Streptococcus agalactiae', 'Neisseria gonorrhoeae', 'Mycobacterium tuberculosis'], q: `${txt} con artritis séptica. ¿Cuál es el agente más probable?`, sol: `S. aureus es el más común desde los 2 años; en recién nacidos y lactantes predominan E. coli y S. agalactiae; el gonococo se trata con ceftriaxona 7 días. → <b>${ans}</b>.` }; } },
-  atb: { t: 'S', name: 'Antibiótico empírico', make() {
-    const S = pick([['Niño con infección adquirida en la comunidad y cocos grampositivos en racimos (S. aureus)', 'Dicloxacilina + aminoglucósido'], ['Paciente hospitalizado con S. aureus resistente a meticilina', 'Vancomicina'], ['Lactante con bacilos gramnegativos en el Gram', 'Ceftriaxona o cefotaxima + aminoglucósido'], ['Adolescente con artritis por gonococo', 'Ceftriaxona por 7 días'], ['Paciente con riesgo de MRSA y germen aún desconocido', 'Vancomicina + cefalosporina de 2.ª o 3.ª']]);
-    return { kind: 'choice', ans: S[1], opts: shuffle(['Dicloxacilina + aminoglucósido', 'Vancomicina', 'Ceftriaxona o cefotaxima + aminoglucósido', 'Ceftriaxona por 7 días', 'Vancomicina + cefalosporina de 2.ª o 3.ª']), q: `${S[0]}. ¿Qué antibiótico empírico indicas?`, sol: `Según la tabla de tratamiento empírico de la presentación → <b>${S[1]}</b>.` }; } },
-  duracion: { t: 'S', name: 'Duración del antibiótico', make() {
-    const S = pick([['Haemophilus influenzae', '2 semanas'], ['Streptococcus pneumoniae', '2 semanas'], ['Staphylococcus aureus', '3–4 semanas'], ['Pseudomonas aeruginosa', '3–4 semanas'], ['infección asociada a prótesis', '3–4 semanas'], ['gonococo', '7 días']]);
-    return { kind: 'choice', ans: S[1], opts: ['7 días', '2 semanas', '3–4 semanas'], q: `Artritis séptica por <b>${S[0]}</b>. ¿Cuánto dura el antibiótico?`, sol: `H. influenzae o S. pneumoniae: 2 semanas. S. aureus, P. aeruginosa o prótesis: 3–4 semanas. Gonococo: ceftriaxona 7 días. → <b>${S[1]}</b>.` }; } },
-  prednisona: { t: 'A', name: 'Prednisona como puente', make() {
-    const d = pick([5, 7.5, 10, 15, 20, 30]), m = pick([1, 2, 3, 6, 12]), ok = d <= 10 && m < 3;
-    const ans = ok ? 'Adecuada como terapia puente' : 'No es adecuada';
-    return { kind: 'choice', ans, opts: ['Adecuada como terapia puente', 'No es adecuada'], q: `Paciente con AR que inicia metotrexato. Le indican prednisona <span class="lab">${d} mg/día</span> durante <span class="lab">${m} ${m === 1 ? 'mes' : 'meses'}</span>. ¿Es adecuada como terapia puente?`, sol: `La presentación indica dosis baja (≤10 mg/día) por menos de 3 meses. ${d <= 10 ? 'La dosis cumple' : 'La dosis es alta'}; ${m < 3 ? 'la duración cumple' : 'la duración es excesiva'} → <b>${ans}</b>.` }; } },
-  erosiones: { t: 'A', name: 'Erosiones en la AR', make() {
-    const S = pick([['6 meses', '40 %'], ['1 año', '60 %'], ['2 años', '75 %']]);
-    return { kind: 'choice', ans: S[1], opts: ['40 %', '60 %', '75 %', '10 %'], q: `Según la presentación, ¿qué porcentaje de pacientes con AR ya tiene erosiones a los <b>${S[0]}</b>?`, sol: `40 % a los 6 meses, 60 % al año y hasta 75 % a los 2 años → <b>${S[1]}</b>. Por eso hay una ventana de oportunidad para tratar.` }; } },
-  lumbar: { t: 'E', name: 'Dolor lumbar: inflamatorio o mecánico', make() {
-    const inf = Math.random() < 0.5;
-    const txt = inf ? `Hombre de ${R(19, 38)} años con ${R(4, 14)} meses de dolor lumbar que lo despierta en la madrugada, con rigidez matutina, y que mejora al hacer ejercicio.` : `Hombre de ${R(45, 68)} años con ${R(1, 3)} semanas de dolor lumbar después de cargar cajas, que empeora con la actividad y mejora con el reposo.`;
-    const ans = inf ? 'Inflamatorio: sugiere espondilitis anquilosante' : 'Mecánico';
-    return { kind: 'choice', ans, opts: ['Inflamatorio: sugiere espondilitis anquilosante', 'Mecánico'], q: `${txt} ¿Qué tipo de dolor lumbar es?`, sol: `Dolor inflamatorio: >3 meses, inicio antes de los 40 años, mejora con el movimiento y empeora con el reposo. → <b>${ans}</b>.` }; } },
-  tumor: { t: 'T', name: 'Identificar el tumor óseo', make() {
-    const S = pick([
-      [`Adolescente de ${R(13, 19)} años con dolor y masa cerca de la rodilla; puede dar metástasis a pulmón.`, 'Osteosarcoma'],
-      [`Adulto de ${R(50, 75)} años con tumor de crecimiento lento en la pelvis, formado por células productoras de cartílago.`, 'Condrosarcoma'],
-      [`Niño de ${R(6, 15)} años con dolor en fémur, fiebre, cansancio y pérdida de peso.`, 'Sarcoma de Ewing'],
-      [`Joven de ${R(14, 24)} años con dolor nocturno intenso que mejora con antiinflamatorios; lesión <2 cm con nidus.`, 'Osteoma osteoide'],
-      [`Adolescente con una prominencia dura, indolora, cerca de la placa de crecimiento del fémur, formada por hueso y cartílago.`, 'Osteocondroma'],
-      [`Adulto con lesión de cartílago dentro de la médula de una falange, descubierta por casualidad en una radiografía.`, 'Encondroma']]);
-    return { kind: 'choice', ans: S[1], opts: shuffle(['Osteosarcoma', 'Condrosarcoma', 'Sarcoma de Ewing', 'Osteoma osteoide', 'Osteocondroma', 'Encondroma']), q: `${S[0]} ¿Qué tumor es más probable?`, sol: `Edad, localización y dato clave apuntan a <b>${S[1]}</b>. Recuerda: la biopsia da el diagnóstico definitivo.` }; } },
-};
 const ca = { list: [], done: false };
-$('#ca-type').innerHTML = '<option value="all">Todos mezclados</option>' + Object.entries(GENS).map(([k, g]) => `<option value="${k}">${g.name}</option>`).join('');
-$('#ca-best').textContent = bestText('ca');
 function caStart(ids) {
   const type = $('#ca-type').value, n = +$('#ca-count').value;
   let seq = ids;
@@ -1292,8 +1863,38 @@ document.addEventListener('click', e => {
 });
 
 /* Abrir con un examen listo para contestar */
-mcStart(); opStart(); csStart(); caStart();
-window.scrollTo({ top: 0 });
+/* ---------- Cambio de materia ---------- */
+function applySubject(key) {
+  if (!SUBJECTS[key]) key = 'reuma';
+  SUBJ = key;
+  const S = SUBJECTS[key];
+  if (!S.data) S.data = S.load();
+  ({ TOPICS, MC, OP, FC, CASES, GENS } = S.data);
+  document.querySelectorAll('.subj-btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.subj === key)));
+  document.querySelectorAll('.subj-sum').forEach(el => { el.hidden = el.dataset.subj !== key; });
+  const nav = document.querySelector('.subj-sum[data-subj="' + key + '"] [data-nav]');
+  if (nav) nav.innerHTML = Object.entries(TOPICS).map(([k, v]) => `<button class="chip" type="button" data-t="${k}">${v}</button>`).join('');
+  fcTopic = 'all'; fcOrder = FC.map((_, i) => i); fcAll = false;
+  $('#fc-toggle').textContent = 'Mostrar todas las respuestas';
+  $('#fc-topics').innerHTML = `<button class="chip" type="button" data-t="all" aria-pressed="true">Todos</button>` + Object.entries(TOPICS).map(([k, v]) => `<button class="chip" type="button" data-t="${k}" aria-pressed="false">${v}</button>`).join('');
+  renderFC();
+  $('#mc-bank-size').textContent = MC.length + ' preguntas';
+  topicOptions($('#mc-topic')); topicOptions($('#op-topic')); topicOptions($('#cs-topic'));
+  $('#cs-bank-size').textContent = CASES.length;
+  $('#ca-type').innerHTML = '<option value="all">Todos mezclados</option>' + Object.entries(GENS).map(([k, g]) => `<option value="${k}">${g.name}</option>`).join('');
+  $('#ca-lede').innerHTML = S.calcLede;
+  $('#subj-label').textContent = S.name;
+  ['mc', 'op', 'cs', 'ca'].forEach(k => { $('#' + k + '-best').textContent = bestText(k); });
+  mcStart(); opStart(); csStart(); caStart();
+  window.scrollTo({ top: 0 });
+  try { localStorage.setItem('med-subject', key); } catch (e) {}
+}
+document.querySelectorAll('.subj-btn').forEach(b => b.addEventListener('click', () => { if (b.dataset.subj !== SUBJ) applySubject(b.dataset.subj); }));
+window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (SUBJECTS[h] && h !== SUBJ) applySubject(h); });
+let startSubject = location.hash.slice(1);
+if (!SUBJECTS[startSubject]) { try { startSubject = localStorage.getItem('med-subject'); } catch (e) { startSubject = 'reuma'; } }
+applySubject(startSubject);
+
 </script>
 
 </body>
