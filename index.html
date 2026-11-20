@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Repaso Reuma y Farma</title>
+<title>Repaso Medicina 5-4</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,7 +80,7 @@ ul.pts li { margin: 3px 0; max-width: 72ch; }
 .subj-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
 .subj-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .brand span b { color: var(--accent); font-weight: 600; }
-@media (max-width: 520px) { .subjects { margin-left: 0; width: 100%; } .subj-btn { flex: 1; } }
+@media (max-width: 520px) { .subjects { margin-left: 0; width: 100%; } .subj-btn { flex: 1; padding: 7px 4px; font-size: .8rem; } }
 
 /* Controles */
 .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0 20px; }
@@ -184,7 +184,7 @@ textarea { width: 100%; min-height: 96px; resize: vertical; font: .95rem/1.5 var
 <header class="top">
   <div class="wrap top-inner">
     <div class="brand"><h1>Repaso de medicina</h1><span>Grupo 5-4 · <b id="subj-label">Reumatología</b></span></div>
-    <div class="subjects" role="group" aria-label="Materia"><button class="subj-btn" type="button" data-subj="reuma" aria-pressed="true">Reumatología</button><button class="subj-btn" type="button" data-subj="farma" aria-pressed="false">Farmacología</button></div>
+    <div class="subjects" role="group" aria-label="Materia"><button class="subj-btn" type="button" data-subj="reuma" aria-pressed="true">Reumatología</button><button class="subj-btn" type="button" data-subj="farma" aria-pressed="false">Farmacología</button><button class="subj-btn" type="button" data-subj="ciru" aria-pressed="false">Cirugía</button></div>
     <nav class="tabs" role="tablist" aria-label="Secciones">
       <button class="tab" role="tab" id="tab-resumen" data-view="resumen">Resumen</button>
       <button class="tab" role="tab" id="tab-cuestionario" data-view="cuestionario">Cuestionario</button>
@@ -527,6 +527,186 @@ textarea { width: 100%; min-height: 96px; resize: vertical; font: .95rem/1.5 var
       <li><b>Fracción de extracción:</b> <span class="lab">E = (Ci − Ce) / Ci</span>. Ej.: (100 − 20)/100 = 0.80. Clasificación: <b>&lt;0.3 baja, 0.3–0.7 intermedia, &gt;0.7 alta</b>. Alta extracción hepática = mucho primer paso y baja biodisponibilidad oral. Depende de flujo hepático, CYP y fracción libre.</li>
       <li><b>Excreción hepatobiliar:</b> de la sangre a la bilis por <b>transporte activo</b>; preferida por compuestos de <b>alto peso molecular (&gt;300–500)</b>, liposolubles y conjugados (glucurónidos). Pasos: captación por el hepatocito → metabolismo → secreción canalicular por <b>P-gp, MRP2 y BCRP</b> → bilis → heces.</li>
       <li><b>Circulación enterohepática:</b> el fármaco o su conjugado pasa a la bilis, las bacterias (β-glucuronidasa) lo liberan, se reabsorbe y regresa por la vena porta → prolonga su permanencia. Ejemplos: <b>anticonceptivos orales</b> (los antibióticos pueden reducirla), digoxina, atovacuona, sulfasalazina. La <b>colestiramina</b> la interrumpe.</li>
+    </ul>
+  </article>
+</div>
+<div class="subj-sum" data-subj="ciru" hidden>
+  <p class="lede">Lo más importante de las 4 presentaciones de Técnicas quirúrgicas: preoperatorio, abordaje e incisiones, instrumental de corte, posiciones quirúrgicas, postoperatorio y sus complicaciones. Los datos clave vienen <span class="lab">resaltados así</span>.</p>
+  <div class="controls chips" data-nav="ciru"></div>
+
+  <article class="topic" id="sum-PR">
+    <h3>1. Preoperatorio</h3>
+    <div class="src">Equipo 7</div>
+    <h4>Fase diagnóstica</h4>
+    <ul class="pts">
+      <li><b>El diagnóstico es la parte primaria y más importante de la cirugía.</b> Inicia con la historia clínica (interrogatorio y exploración física) → sospecha clínica → hipótesis diagnóstica → diagnóstico definitivo.</li>
+      <li><b>Exámenes de rutina</b> (doble fin: descartar padecimientos comunes que pasan desapercibidos y valorar mínimamente la función de órganos): grupo sanguíneo, Rh y pruebas cruzadas; BH, QS, EGO; VDRL; <b>TP y TTPa</b>; estudios de imagen y ECG.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Coagulación</th><th>Evalúa</th><th>Valor normal</th></tr>
+      <tr><td>TP</td><td>Vía extrínseca y común</td><td><span class="lab">11–14 s</span></td></tr>
+      <tr><td>INR</td><td>Estandarización del TP</td><td><span class="lab">0.8–1.2</span></td></tr>
+      <tr><td>TTPa</td><td>Vía intrínseca y común</td><td><span class="lab">25–35 s</span></td></tr>
+      <tr><td>Fibrinógeno</td><td>Formación del coágulo</td><td><span class="lab">200–400 mg/dL</span></td></tr>
+      <tr><td>Dímero D</td><td>Degradación de fibrina</td><td><span class="lab">&lt;500 ng/mL</span></td></tr>
+      <tr><td>Tiempo de trombina</td><td>Fibrinógeno → fibrina</td><td><span class="lab">14–21 s</span></td></tr>
+    </table></div>
+    <h4>Diagnóstico integral y planteamiento quirúrgico</h4>
+    <div class="tbl-wrap"><table>
+      <tr><th>Cirugía</th><th>Definición</th></tr>
+      <tr><td>Urgente</td><td>De la rapidez con que se haga depende la función de un órgano o la vida</td></tr>
+      <tr><td>No urgente</td><td>El paso de horas o días no es determinante para la vida o la función</td></tr>
+      <tr><td>Necesaria</td><td>De ella depende la función o la vida, sin importar la oportunidad de su ejecución</td></tr>
+      <tr><td>Electiva</td><td>Hay indicación, pero el paciente decide; no hay riesgo inminente</td></tr>
+    </table></div>
+    <ul class="pts">
+      <li><b>Riesgo quirúrgico:</b> <b>habitual o mínimo</b> (sin efecto sistémico, buenas condiciones); <b>superior al habitual o intermedio</b> (uno o varios factores de riesgo que requieren más manejo); <b>máximo o elevado</b> (deterioro sistémico pronunciado o daño multiorgánico, requiere medidas adicionales en el transoperatorio).</li>
+      <li><b>Autorización legal:</b> el paciente o responsable debe estar informado de la naturaleza, riesgos y resultados; firma del <b>consentimiento informado</b> (Art. 81 de la Ley General de Salud). Cirugías que afectan funciones sexuales o reproductivas requieren la firma de la <b>pareja</b>.</li>
+      <li><b>Urgencias:</b> no hay regla fija; si el procedimiento es indispensable para salvar la vida, el cirujano puede actuar <b>aun sin autorización firmada</b> (Art. 320 del Reglamento de la LGS).</li>
+    </ul>
+    <h4>Preparación del paciente</h4>
+    <ul class="pts">
+      <li><b>Ayuno:</b> estómago vacío para prevenir <b>broncoaspiración</b>; suspender alimentos y líquidos desde la <b>medianoche</b> previa (<span class="lab">8–12 h</span>); si necesita líquidos, solo por vía IV (ASA 2017).</li>
+      <li><b>Aseo:</b> programado: baño diario <b>5 días</b> con jabón de hexaclorofeno; rápido: baño general o lavado de ombligo, periné, ingles y axilas. Reduce la flora y la infección del sitio quirúrgico.</li>
+      <li><b>Rasurado:</b> <b>inmediatamente antes</b> de ir al quirófano; hacerlo horas antes causa microlesiones donde se multiplican bacterias. Después se lava y se aplica antiséptico (OMS 2016).</li>
+      <li><b>Vestido:</b> sin ropa interior, bata de algodón, gorro y botas; retirar <b>prótesis dentales</b> (obstrucción de vía aérea), cosméticos, esmalte, joyas.</li>
+      <li><b>Venoclisis:</b> en venas del antebrazo, lejos de sitios de flexión, para fármacos y soluciones. Utensilios: aguja, mariposa, punzocat, endocat, tubo de venodisección.</li>
+    </ul>
+    <h4>Preparaciones especiales</h4>
+    <ul class="pts">
+      <li><b>Vaciado de estómago</b> en urgencia: sonda de <b>Levin</b> por una narina, fijada en la mejilla, a succión y lavado con solución salina. Si el contenido es espeso: tubo de <b>Ewald</b> (mayor calibre). Complicación más común: <b>broncoaspiración</b>, a menudo fatal.</li>
+      <li><b>Sonda nasogástrica permanente</b> (Levin): cirugía de abdomen superior o para evacuar líquidos del tubo digestivo.</li>
+      <li><b>Sonda vesical</b> (Foley): cirugía de la mitad inferior del abdomen o para medir el volumen urinario.</li>
+      <li><b>Enema evacuante:</b> cirugía abdominal con colon vacío; no es de rutina y está <b>contraindicado con irritación peritoneal</b>.</li>
+      <li><b>Preparación de colon</b> (varios días): dieta líquida y de escasos residuos 3 días, laxantes suaves y enemas la noche previa; antibióticos para disminuir la flora.</li>
+      <li><b>Corregir antes de operar:</b> shock, anemia, hipovolemia, desequilibrio ácido-base, insuficiencia cardiaca, insuficiencia o infección respiratoria, acidosis diabética.</li>
+    </ul>
+  </article>
+
+  <article class="topic" id="sum-AB">
+    <h3>2. Abordaje quirúrgico e incisiones</h3>
+    <div class="src">Equipo 5</div>
+    <ul class="pts">
+      <li><b>Incisión:</b> sección intencional y controlada de los tejidos con instrumento cortante para crear una vía de acceso al campo operatorio. Fines: acceso, exposición, seguridad, conservación tisular y recuperación. Meta: <b>exposición suficiente con el menor daño tisular</b>.</li>
+      <li><b>Clasificación:</b> por orientación (longitudinal, transversal, oblicua), configuración (rectilínea, curvilínea, elíptica o fusiforme para extirpar lesiones de piel) y región (cervical, torácica, abdominal, pélvica, perineal).</li>
+      <li><b>Criterios para elegirla:</b> objetivo quirúrgico, anatomía, características del paciente, exposición y recuperación.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Incisión</th><th>Forma / orientación</th><th>Referencia y medida</th></tr>
+      <tr><td>Craneotomía</td><td>Semicircular, concavidad inferior</td><td>Sitio de trepanación; ventana 4×5 a 6×7 cm</td></tr>
+      <tr><td>Facial</td><td>Variable, siguiendo las arrugas</td><td>Pliegues naturales</td></tr>
+      <tr><td>Tiroidectomía</td><td>Semicircular, transversal</td><td>Encima de la horquilla esternal; 3–6 cm (6–12 en complejos)</td></tr>
+      <tr><td>Tórax (esternotomía)</td><td>Longitudinal</td><td>Línea media del tórax; 15–20 cm</td></tr>
+      <tr><td>Mastectomía</td><td>Fusiforme, transversal u oblicua</td><td>Complejo areola-pezón; 6–10 cm</td></tr>
+      <tr><td>Media (laparotomía)</td><td>Longitudinal (supra, infra o supra-infraumbilical)</td><td>Línea media abdominal</td></tr>
+      <tr><td>Paramedia de <b>Jalaguier</b></td><td>Longitudinal, paralela a la línea media</td><td>Sobre los rectos; 2.5–4 cm de la línea alba, 10–15 cm</td></tr>
+      <tr><td><b>Pfannenstiel</b></td><td>Arciforme, concavidad superior, transversa</td><td>Suprapúbica; 10–12 cm, 2–3 cm sobre el pubis</td></tr>
+      <tr><td><b>McBurney</b></td><td>Recta, oblicua</td><td>Espina ilíaca anterosuperior; 10 cm (apendicectomía)</td></tr>
+      <tr><td><b>Kocher</b></td><td>Recta/diagonal, oblicua</td><td>Hipocondrio derecho; 10 cm, 3–5 cm del reborde costal (vesícula)</td></tr>
+      <tr><td>Lumbotomía</td><td>Recta, oblicua</td><td>Flanco; 15–25 cm (riñón)</td></tr>
+      <tr><td>Hernioplastia inguinal (Lichtenstein)</td><td>Recta, oblicua</td><td>Entre espina ilíaca y pubis; ~5 cm, 2 dedos sobre el ligamento inguinal</td></tr>
+    </table></div>
+  </article>
+
+  <article class="topic" id="sum-IN">
+    <h3>3. Instrumental y técnica de corte (diéresis)</h3>
+    <div class="src">Equipo 5</div>
+    <div class="tbl-wrap"><table>
+      <tr><th>Bisturí</th><th>Uso</th></tr>
+      <tr><td>Mango n.º 3 y 3L</td><td>Hojas <b>10 a 15</b>: cortes finos y precisos</td></tr>
+      <tr><td>Mango n.º 4 y 4L</td><td>Hojas <b>20 a 25</b>: cortes grandes</td></tr>
+      <tr><td>Mango n.º 7</td><td>Largo y estrecho, espacios profundos; hojas pequeñas</td></tr>
+      <tr><td>Hoja 10</td><td>Borde curvo, cortes amplios</td></tr>
+      <tr><td>Hoja 11</td><td>Triangular con punta aguda: cortes <b>puntiformes</b></td></tr>
+      <tr><td>Hoja 12</td><td>Curva en forma de gancho</td></tr>
+      <tr><td>Hoja 15</td><td>Pequeña de borde curvo: cortes <b>delicados</b></td></tr>
+      <tr><td>Hojas 20–25</td><td>Grandes: cortes extensos de piel</td></tr>
+    </table></div>
+    <div class="tbl-wrap"><table>
+      <tr><th>Tijera</th><th>Uso</th></tr>
+      <tr><td>Mayo recta</td><td>Cortar <b>suturas</b> y materiales (nunca tejidos)</td></tr>
+      <tr><td>Mayo curva</td><td>Tejidos firmes, <b>fascias</b>; disección roma profunda</td></tr>
+      <tr><td>Metzenbaum</td><td>Fina y ligera: tejidos <b>blandos y delicados</b></td></tr>
+      <tr><td>Iris</td><td>Pequeña: cortes finos de gran precisión</td></tr>
+      <tr><td>Lister</td><td>Angulada con punta abotonada: <b>vendajes</b></td></tr>
+      <tr><td>Littauer</td><td>Muesca en la punta: <b>retirar puntos</b></td></tr>
+    </table></div>
+    <ul class="pts">
+      <li><b>Corte óseo:</b> sierra de <b>Gigli</b> (alambres entrelazados flexibles), sierra de Charrière (amputaciones), costótomo (costillas), gubias y gubia de Stille-Luer, legras (raspar periostio) y <b>trépano</b> (perforaciones circulares en cráneo o biopsia ósea).</li>
+      <li><b>Montar la hoja</b> siempre con una pinza (portaagujas), nunca con los dedos: se desliza hasta el "clic"; para retirarla se levanta la base y se empuja hacia adelante.</li>
+      <li>El bisturí pierde filo y se contamina con la flora de la piel: muchas escuelas usan un <b>segundo bisturí</b> para planos profundos.</li>
+      <li><b>Técnica:</b> fijar la piel con índice y pulgar a ambos lados; usar el <b>vientre de la hoja</b>; bisturí <b>perpendicular</b> (inclinarlo genera un corte en bisel que cicatriza mal); en el primer golpe cortar la piel en toda su longitud.</li>
+      <li><b>Formas de tomar el bisturí:</b> como <b>cuchillo de mesa</b> (incisiones largas y firmes), <b>arco de violín</b> (cortes largos y superficiales), <b>lápiz</b> (cortes pequeños, curvos y precisos, con la punta) y <b>grafio</b> (presión firme sobre tejidos resistentes).</li>
+      <li><b>Tijeras:</b> pulgar y anular en los anillos, índice apoyado en la articulación.</li>
+    </ul>
+  </article>
+
+  <article class="topic" id="sum-PQ">
+    <h3>4. Posiciones quirúrgicas</h3>
+    <div class="src">Equipo 6 · Dra. Luisa Angélica Camacho Duarte</div>
+    <p>Facilitan el acceso y la exposición manteniendo la seguridad: proteger prominencias óseas y evitar compresión de nervios y vasos.</p>
+    <div class="tbl-wrap"><table>
+      <tr><th>Posición</th><th>Cómo</th><th>Uso</th></tr>
+      <tr><td>Decúbito dorsal (supino)</td><td>Boca arriba</td><td>Acceso general; manejo por anestesia</td></tr>
+      <tr><td><b>Trendelenburg</b></td><td>Boca arriba, <b>cabeza más baja</b> que los pies</td><td>Abdomen inferior y pelvis (vísceras hacia arriba)</td></tr>
+      <tr><td><b>Trendelenburg invertida</b></td><td>Boca arriba, <b>cabeza más alta</b></td><td>Abdomen superior, cabeza y cuello</td></tr>
+      <tr><td>Posición de vesícula</td><td>Dorsal con hiperextensión dorsolumbar (riñonera)</td><td>Vesícula y vías biliares</td></tr>
+      <tr><td>Extremidades</td><td>Dorsal con el brazo en mesa auxiliar; lateral para cadera</td><td>Brazos, piernas, cadera</td></tr>
+      <tr><td>Decúbito ventral (prono)</td><td>Boca abajo, soportes en tórax y pelvis</td><td>Columna, región lumbar, espalda</td></tr>
+      <tr><td><b>Laminectomía</b></td><td>Prono con piernas descendidas (flexión del raquis); rollos bajo hombros; <b>almohada bajo los tobillos</b></td><td>Columna cervical o lumbar</td></tr>
+      <tr><td><b>Navaja o Kraske</b></td><td>Prono doblado ~90° en la cadera, pelvis elevada</td><td><b>Hemorroides y quiste pilonidal</b></td></tr>
+      <tr><td>Decúbito lateral</td><td>De lado; pierna de abajo flexionada y la de arriba extendida, cojín entre rodillas</td><td>Toracotomía y riñón</td></tr>
+      <tr><td><b>Lumbotomía</b></td><td>Lateral con la mesa flexionada a nivel lumbar</td><td>Nefrectomía, retroperitoneo</td></tr>
+      <tr><td><b>Litotomía</b></td><td>Supino, caderas y rodillas flexionadas, piernas en estribos</td><td>Ginecología, parto, urología, periné y recto</td></tr>
+      <tr><td>Lateral para raquídea</td><td>De lado, espalda flexionada, rodillas al abdomen</td><td>Separar espacios lumbares para la punción</td></tr>
+    </table></div>
+  </article>
+
+  <article class="topic" id="sum-PO">
+    <h3>5. Postoperatorio: cuidados</h3>
+    <div class="src">Antonio, Lizárraga y López · 5-4</div>
+    <ul class="pts">
+      <li><b>Postoperatorio:</b> desde la cirugía hasta la rehabilitación, habitualmente <span class="lab">30 días</span>. <b>Inmediato:</b> primeras <span class="lab">72 h</span>. Las perturbaciones se llaman <b>complicaciones</b>.</li>
+      <li><b>Traslado</b> a recuperación: momento crítico; vigilar venoclisis, electrodos, catéteres y sondas pleurales. Las <b>órdenes postoperatorias</b> van por escrito y la enfermera las corrobora.</li>
+      <li><b>Posiciones:</b> <b>Fowler</b> (cabecera elevada ~50 cm: buena movilidad diafragmática y drenaje declive peritoneal en peritonitis); <b>Sims o inglesa</b> (decúbito lateral con el muslo flexionado: drena secreciones y evita broncoaspiración si vomita); <b>elevación de piernas</b> (favorece el retorno venoso).</li>
+      <li><b>Movilización:</b> tras anestesia general, cambiar de lado cada <span class="lab">30–60 min</span>, respiraciones profundas y tos cada hora, mover las piernas cada 1–3 h. Con anestesia regional puede deambular.</li>
+      <li><b>Ingesta y excreta:</b> registro de líquidos al menos 24 h; ayuno en cirugía abdominal y mayor.</li>
+      <li><b>Drenajes:</b> por gravedad a un colector o a succión intermitente irrigada cada 1–2 h con 30 mL de solución salina. <b>Sonda pleural:</b> circuito hermético con <b>sello de agua</b> o válvula de Heimlich.</li>
+    </ul>
+  </article>
+
+  <article class="topic" id="sum-CP">
+    <h3>6. Complicaciones postoperatorias</h3>
+    <div class="src">Antonio, Lizárraga y López · 5-4</div>
+    <h4>Shock</h4>
+    <ul class="pts">
+      <li>Falla circulatoria con <b>perfusión baja</b> de los tejidos. Un hombre de 70 kg tiene <span class="lab">4.5–5 L</span> de sangre; las venas compensan pérdidas de hasta <span class="lab">1,000 mL (~30 %)</span>; cuando aparecen signos ya perdió cerca de un tercio. Una fractura de fémur puede ocultar 1,000–1,500 mL.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Shock</th><th>Causa</th><th>Dato clave</th><th>Tratamiento</th></tr>
+      <tr><td>Hipovolémico (hemorrágico)</td><td>Pérdida de sangre o plasma</td><td><b>PVC baja</b>, piel fría y húmeda, taquicardia, hipotensión, oliguria, acidosis (pH ~7.20), SvO₂ &lt;70 %</td><td>Reposición de volumen</td></tr>
+      <tr><td>Neurogénico</td><td>Vasodilatación: anestesia espinal, histamina, alcohol, anafilaxia</td><td>PVC baja <b>sin pérdida real</b> de volumen ("contenedor más grande que el contenido"); transitorio</td><td>500 mL de glucosada 5 % rápida; si no responde, vasoconstrictores</td></tr>
+      <tr><td>Cardiogénico</td><td>Falla de bomba: isquemia, infarto, arritmias</td><td><b>PVC elevada</b>; la carga de volumen lo empeora; mortalidad muy alta</td><td>Semisentado, monitoreo, restringir líquidos, digitalización IV, balón de contrapulsación</td></tr>
+      <tr><td>Séptico (endotóxico)</td><td>Bacteriemia por gramnegativos</td><td>Gasto cardiaco al inicio normal o alto; acidosis láctica y CID</td><td>Medidas de shock + infección; prevenir sepsis</td></tr>
+    </table></div>
+    <h4>Pulmonares</h4>
+    <ul class="pts">
+      <li>Se originan en la cirugía o el postoperatorio inmediato y se manifiestan después de <span class="lab">48 h</span>: dolor, anestésicos y reflejos reducen la respiración y la tos; empeoran con tabaquismo y EPOC.</li>
+      <li><b>Atelectasia = la complicación pulmonar más común e importante.</b> Tratamiento sobre todo <b>preventivo</b>; si ya existe: puño-percusión y cambios de posición con tos, inhaloterapia con presión positiva, aspiración endotraqueal, broncoscopia, traqueostomía en casos graves.</li>
+    </ul>
+    <h4>Gastrointestinales</h4>
+    <ul class="pts">
+      <li>Por estrés quirúrgico; factores: anestesia prolongada, manipulación de vísceras, peritonitis, shock, deshidratación, <b>hipopotasemia</b>, desnutrición.</li>
+      <li><b>Vómito:</b> suele ceder solo; si persiste, sonda a succión gástrica continua; si no mejora, buscar causa (metabólica, uremia, peritonitis, obstrucción, SNC).</li>
+      <li><b>Obstrucción intestinal:</b> por angulaciones, pinzamientos, edema, adherencias, inflamación o colecciones. Dolor cólico, borborigmos, <b>peristalsis de lucha</b>; Rx con asas de delgado distendidas. Descompresión con sondas largas de <b>Cantor o Miller-Abbott</b>.</li>
+      <li><b>Sangrado digestivo alto</b> (esófago, estómago, duodeno): hematemesis en <b>"posos de café"</b>, melena; masivo si se pierden ≥<span class="lab">1,000 mL</span> rápido. <b>Bajo</b>: distal al <b>ligamento de Treitz</b>, sangre roja rutilante, menos veces masivo. Recursos: catéter de Swan-Ganz, sonda Levin, sonda Ewald (lavado), balón de <b>Sengstaken-Blakemore</b> (várices).</li>
+    </ul>
+    <h4>Urinarias</h4>
+    <ul class="pts">
+      <li><b>Retención aguda de orina:</b> común en las primeras horas. Primero calmar el dolor, deambular o compresas tibias en hipogastrio; si no, sonda de <b>Nélaton fina (10–14)</b> estéril o Foley temporal. <b>No dar antibióticos de rutina</b> sin infección confirmada.</li>
+      <li><b>Insuficiencia renal aguda:</b> por shock prolongado, hipoperfusión, transfusión incompatible u obstrucción; oliguria o anuria, uremia, HTA, edema, desequilibrio ácido-base. Clasificar en <b>prerrenal</b> (hidratar, corregir hipotensión), <b>renal</b> (manejo del shock) o <b>posrenal</b> (quitar la obstrucción, p. ej. ligadura de ureteros).</li>
+      <li><b>Fases:</b> oliguria/anuria (días 1–3, 0–400 mL/día; anuria 3–10 días o más) → regeneración tubular (2–3 semanas) → <b>poliúrica</b> (4–5 L/día) → recuperación.</li>
+      <li><b>Diálisis</b> si fallan las medidas conservadoras y la urea llega a ~<span class="lab">100 mg</span>, la creatinina a ~<span class="lab">5 mg</span>, el potasio se acerca a <span class="lab">6 mEq/L</span> o hay alteraciones en el ECG.</li>
     </ul>
   </article>
 </div>
@@ -1442,6 +1622,446 @@ const GENS = {
   phOrina: { t: 'ER', name: 'pH urinario y excreción', make() {
     const S = pick([['ácido débil (salicilato)', 'alcalina', 'Se excreta más'], ['ácido débil (salicilato)', 'ácida', 'Se reabsorbe más'], ['base débil (anfetamina)', 'ácida', 'Se excreta más'], ['base débil (anfetamina)', 'alcalina', 'Se reabsorbe más']]);
     return { kind: 'choice', ans: S[2], opts: ['Se excreta más', 'Se reabsorbe más'], q: `Un <b>${S[0]}</b> en orina <b>${S[1]}</b>. ¿Qué pasa con su eliminación?`, sol: `La forma ionizada queda en la orina y la no ionizada se reabsorbe. ${S[0].startsWith('ácido') ? 'Un ácido se ioniza en medio alcalino.' : 'Una base se ioniza en medio ácido.'} → <b>${S[2]}</b>.` }; } },
+};
+
+    return { TOPICS, MC, OP, FC, CASES, GENS };
+  } },
+  ciru: { name: "Cirugía", calcLede: "Ejercicios con datos nuevos en cada intento: tipo de shock, volemia, tipo de cirugía, riesgo quirúrgico, pruebas de coagulación, horas de ayuno, incisión, posición, hoja de bisturí, tijeras e instrumental, sondas, fases de la IRA y diálisis, sangrado digestivo alto o bajo y posiciones postoperatorias. Al calificar verás la explicación. Se aprueba con <b>80 %</b>.", load() {
+const TOPICS = { PR: 'Preoperatorio', AB: 'Abordaje e incisiones', IN: 'Instrumental de corte', PQ: 'Posiciones quirúrgicas', PO: 'Postoperatorio', CP: 'Complicaciones postoperatorias' };
+
+const MC = [
+['PR','Según la presentación, la parte primaria y más importante de la cirugía es:',['El diagnóstico','La anestesia','El cierre de la herida','El instrumental'],'Todo inicia con la historia clínica.'],
+['PR','El estudio clínico del enfermo inicia con:',['La historia clínica: interrogatorio y exploración física','Una tomografía','La cirugía exploradora','El consentimiento'],'Con eso se forma la hipótesis diagnóstica.'],
+['PR','Doble finalidad de los exámenes preoperatorios de rutina:',['Descartar padecimientos comunes inadvertidos y valorar la función de órganos','Cobrar más al paciente','Sustituir la exploración','Elegir la incisión'],'Por eso se piden de forma rutinaria.'],
+['PR','¿Cuál prueba evalúa la vía extrínseca de la coagulación?',['Tiempo de protrombina (TP)','TTPa','Dímero D','Tiempo de trombina'],'TP: vía extrínseca y común.'],
+['PR','Valor normal del TP:',['11–14 segundos','25–35 segundos','200–400 segundos','1–2 minutos'],'El TTPa normal es 25–35 s.'],
+['PR','El TTPa evalúa:',['La vía intrínseca y común','La vía extrínseca','La función renal','La degradación de fibrina'],'Su valor normal es 25–35 s.'],
+['PR','Valor normal del INR:',['0.8–1.2','2–3','11–14','25–35'],'Estandariza el TP.'],
+['PR','Valor normal del fibrinógeno:',['200–400 mg/dL','<500 ng/mL','14–21 s','11–14 s'],'Participa en la formación del coágulo.'],
+['PR','Cirugía urgente es aquella en la que:',['De la rapidez con que se haga depende la vida o la función de un órgano','El paciente decide cuándo operarse','Puede esperar días','No tiene indicación'],'Ej.: apendicitis aguda.'],
+['PR','Cirugía electiva es:',['La que tiene indicación pero el paciente decide realizarla, sin riesgo inminente','La que debe hacerse en minutos','La que no tiene indicación','La de urgencia vital'],'Ej.: hernia inguinal no complicada.'],
+['PR','Cirugía necesaria es:',['Aquella de la que depende la vida o función, independientemente de cuándo se realice','La que el paciente elige por estética','La que puede no hacerse','Solo la de urgencia'],'Puede programarse, pero hay que hacerla.'],
+['PR','Paciente con un deterioro sistémico pronunciado o daño de múltiples órganos tiene riesgo:',['Máximo o elevado','Habitual o mínimo','Intermedio','Nulo'],'Requiere medidas adicionales en el transoperatorio.'],
+['PR','Paciente sano, sin efecto sistémico, en buenas condiciones, tiene riesgo:',['Habitual o mínimo','Intermedio','Elevado','Máximo'],'El intermedio tiene uno o varios factores de riesgo.'],
+['PR','Artículo que respalda la autorización legal (consentimiento) en México:',['Art. 81 de la Ley General de Salud','Art. 4 constitucional','Art. 320 del Código Penal','Ninguno'],'El Art. 320 del Reglamento habla de urgencias.'],
+['PR','Cirugía que afecta funciones sexuales o reproductivas requiere:',['La autorización firmada de la pareja','Solo la firma del médico','No requiere autorización','Autorización de un juez'],'Según la presentación.'],
+['PR','En una urgencia que pone en peligro la vida:',['El cirujano puede actuar aun sin autorización firmada','Siempre debe esperar la firma','No se puede operar','Solo el juez decide'],'Art. 320 del Reglamento de la LGS.'],
+['PR','Objetivo principal del ayuno preoperatorio:',['Prevenir la broncoaspiración','Bajar de peso','Reducir el sangrado','Evitar la infección urinaria'],'El estómago debe estar vacío.'],
+['PR','Duración habitual del ayuno según la presentación:',['Desde la medianoche, 8–12 horas','2 horas','24 horas','No se requiere'],'Si necesita líquidos se dan por vía IV.'],
+['PR','Preparación programada de la piel:',['Baño diario 5 días con jabón de hexaclorofeno','Rasurar el día anterior','Nada','Alcohol una vez'],'Su efecto acumulativo reduce la flora transitoria.'],
+['PR','¿Cuándo debe hacerse el rasurado?',['Inmediatamente antes de ir al quirófano','La noche anterior','Una semana antes','No se rasura nunca'],'Rasurar horas antes deja microlesiones donde crecen bacterias.'],
+['PR','Antes de entrar al quirófano es obligatorio retirar:',['Prótesis dentales, joyas, cosméticos y esmalte','Solo el reloj','Nada','La bata'],'Las prótesis pueden obstruir la vía aérea.'],
+['PR','Dónde se instala de preferencia una venoclisis:',['En venas del antebrazo, lejos de sitios de flexión','En el pliegue del codo siempre','En el pie','En el cuello'],'Para administrar fármacos y soluciones.'],
+['PR','Sonda para vaciar el estómago en una urgencia, introducida por una narina:',['Sonda de Levin','Sonda de Foley','Sonda de Nélaton','Sonda pleural'],'Se conecta a succión y se lava con solución salina.'],
+['PR','Si el contenido gástrico es demasiado espeso para la sonda delgada se usa:',['Tubo de Ewald (mayor calibre)','Sonda de Foley','Catéter de Swan-Ganz','Mariposa'],'Después del lavado se retira.'],
+['PR','Complicación más común del vaciado gástrico:',['Broncoaspiración','Hematuria','Fractura','Infección urinaria'],'A menudo es fatal.'],
+['PR','Indicación de sonda nasogástrica permanente:',['Cirugía de la porción superior del abdomen','Cirugía de mano','Parto','Cirugía de rodilla'],'También para evacuar líquidos del tubo digestivo.'],
+['PR','Indicación de sonda vesical (Foley):',['Cirugía de la mitad inferior del abdomen o medir volumen urinario','Cirugía de tórax solamente','Fractura de brazo','Cirugía de cráneo siempre'],'Asegura el flujo de orina.'],
+['PR','El enema evacuante está contraindicado en:',['Irritación peritoneal','Hernia inguinal','Cirugía de mama','Cirugía de tiroides'],'Además no es preparación de rutina.'],
+['PR','Preparación mecánica del colon:',['Dieta líquida y de escasos residuos 3 días, laxantes y enemas la noche previa','Ayuno de 1 hora','Solo antibiótico','Nada'],'Busca llegar con el intestino vacío y con pocos gérmenes.'],
+['PR','¿Cuál NO es un estado que deba corregirse antes de la cirugía?',['Grupo sanguíneo O positivo','Shock','Anemia','Acidosis diabética'],'También hipovolemia, insuficiencia cardiaca y respiratoria.'],
+
+['AB','La incisión quirúrgica se define como:',['Sección intencional y controlada de los tejidos para crear una vía de acceso','Cualquier herida accidental','La sutura de una herida','La anestesia local'],'Es parte fundamental del abordaje en cirugía abierta.'],
+['AB','Objetivo general de una incisión:',['Exposición suficiente con el menor daño tisular posible','La herida más grande posible','Que no cicatrice','Evitar la anestesia'],'Equilibra acceso, seguridad y preservación de tejidos.'],
+['AB','La incisión elíptica o fusiforme se usa para:',['Extirpar una lesión de piel y facilitar el cierre directo','Abrir el cráneo','Drenar la pleura','Colocar un catéter'],'Delimita un área alargada de extremos estrechos.'],
+['AB','¿Cuál NO es un criterio para seleccionar una incisión?',['El color de la ropa del paciente','Objetivo quirúrgico','Anatomía del paciente','Exposición y recuperación'],'También las características del paciente.'],
+['AB','Incisión de la tiroidectomía:',['Semicircular transversal por encima de la horquilla esternal','Longitudinal en la línea media del tórax','Oblicua en la fosa ilíaca','Fusiforme en la mama'],'Mide 3–6 cm (6–12 en casos complejos).'],
+['AB','Las incisiones faciales se orientan:',['Siguiendo las arrugas y pliegues naturales','Siempre verticales','Contra las arrugas','En zigzag obligatorio'],'Mejoran el resultado estético.'],
+['AB','Medida de la ventana promedio de una craneotomía:',['Entre 4×5 y 6×7 cm','20×20 cm','1×1 cm','15 cm lineales'],'Forma semicircular con concavidad inferior.'],
+['AB','Incisión típica de la mastectomía:',['Fusiforme, transversal u oblicua, alrededor del complejo areola-pezón','Pfannenstiel','McBurney','Kocher'],'Mide 6–10 cm.'],
+['AB','La incisión paramedia de Jalaguier se ubica:',['Paralela a la línea media, sobre los rectos, a 2.5–4 cm de la línea alba','En la línea media','En la región suprapúbica transversa','En el hipocondrio derecho oblicua'],'Mide 10–15 cm verticales.'],
+['AB','Incisión transversa suprapúbica arciforme de concavidad superior:',['Pfannenstiel','McBurney','Kocher','Jalaguier'],'10–12 cm, 2–3 cm por encima del pubis.'],
+['AB','Incisión oblicua referida a la espina ilíaca anterosuperior, usada para apendicectomía:',['McBurney','Kocher','Pfannenstiel','Lumbotomía'],'Mide unos 10 cm.'],
+['AB','Incisión oblicua en el hipocondrio derecho, paralela al reborde costal:',['Kocher','McBurney','Pfannenstiel','Media'],'Clásica para vesícula y vías biliares.'],
+['AB','Distancia de la incisión de Kocher al reborde costal:',['3–5 cm','10–15 cm','0.5 cm','20 cm'],'Longitud aproximada de 10 cm.'],
+['AB','Incisión para acceder al riñón por el flanco:',['Lumbotomía','Pfannenstiel','Kocher','Craneotomía'],'Mide 15–25 cm.'],
+['AB','Incisión de la hernioplastia inguinal tipo Lichtenstein:',['~5 cm, oblicua, dos dedos por encima del ligamento inguinal','Media supraumbilical de 20 cm','Kocher','Pfannenstiel de 12 cm'],'Entre la espina ilíaca anterosuperior y el pubis.'],
+['AB','La incisión media abdominal puede ser:',['Supraumbilical, infraumbilical o supra e infraumbilical','Solo transversa','Solo oblicua','Solo en el flanco'],'Su referencia es la línea media.'],
+['AB','La toracotomía media longitudinal mide aproximadamente:',['15–20 cm','2–3 cm','50 cm','5 cm'],'Su referencia es la línea media del tórax.'],
+
+['IN','Hojas de bisturí compatibles con el mango n.º 3:',['10 a 15','20 a 25','1 a 5','30 a 35'],'Son para cortes finos y precisos.'],
+['IN','Hojas compatibles con el mango n.º 4:',['20 a 25','10 a 15','11 y 12 solamente','Ninguna'],'Para cortes de mayor tamaño.'],
+['IN','Mango largo y estrecho para espacios profundos:',['Mango n.º 7','Mango n.º 4','Mango n.º 3L corto','Mango de Mayo'],'Usa hojas pequeñas.'],
+['IN','Hoja triangular con punta aguda para cortes puntiformes:',['N.º 11','N.º 10','N.º 15','N.º 22'],'Por ejemplo para drenar o puncionar.'],
+['IN','Hoja pequeña de borde curvo para cortes delicados:',['N.º 15','N.º 20','N.º 11','N.º 25'],'Muy usada en cirugía fina.'],
+['IN','Hoja curva en forma de gancho:',['N.º 12','N.º 10','N.º 15','N.º 21'],'Para cortes específicos.'],
+['IN','Tijera recta usada para cortar suturas y materiales:',['Mayo recta','Metzenbaum','Iris','Littauer'],'Nunca debe usarse para cortar tejidos.'],
+['IN','Tijera para cortar tejidos firmes como las fascias:',['Mayo curva','Mayo recta','Lister','Iris'],'También para disección roma profunda.'],
+['IN','Tijera fina y ligera para tejidos blandos y delicados:',['Metzenbaum','Mayo recta','Lister','Littauer'],'Es de disección.'],
+['IN','Tijera con punta abotonada para cortar vendajes:',['Lister','Littauer','Iris','Metzenbaum'],'No lesiona la piel del paciente.'],
+['IN','Tijera con una muesca en la punta para retirar puntos:',['Littauer','Lister','Mayo curva','Iris'],'Engancha el hilo de sutura.'],
+['IN','Sierra flexible de alambres entrelazados para cortar hueso:',['Sierra de Gigli','Sierra de Charrière','Costótomo','Trépano'],'Para osteotomías y amputaciones.'],
+['IN','Instrumento para hacer perforaciones circulares en el hueso:',['Trépano','Costótomo','Legra','Tijera de Mayo'],'Para cráneo o biopsias óseas.'],
+['IN','Instrumento para seccionar costillas:',['Costótomo','Trépano','Legra','Metzenbaum'],'Es robusto.'],
+['IN','Las legras de hueso sirven para:',['Raspar el periostio y limpiar superficies óseas','Cortar suturas','Perforar el cráneo','Retirar puntos'],'Instrumental óseo.'],
+['IN','¿Cómo se monta la hoja del bisturí?',['Con una pinza (portaagujas), deslizándola hasta el "clic"','Con los dedos','Con la boca','Con tijera de Mayo'],'Nunca con las manos, para evitar accidentes.'],
+['IN','Por qué se recomienda un segundo bisturí después de cortar la piel:',['El primero pierde filo y se contamina con la flora de la piel','Para cortar más rápido','Porque se rompe siempre','No se recomienda'],'Se usa para tejido adiposo y aponeurosis.'],
+['IN','Parte de la hoja que se usa principalmente para incidir la piel:',['El vientre','La punta','El talón','El mango'],'Con el bisturí perpendicular.'],
+['IN','Si el bisturí se inclina hacia un lado al cortar:',['Se forma un corte en bisel que dificulta la cicatrización','Cicatriza mejor','No pasa nada','Se corta menos sangre'],'Debe mantenerse perpendicular.'],
+['IN','Cómo se fija la piel antes de incidir:',['Con índice y pulgar a ambos lados del corte','Con una sola mano de un lado','No se fija','Con pinzas de Kocher'],'Evita que la piel se desplace.'],
+['IN','Forma de tomar el bisturí para incisiones largas y firmes de piel:',['Como cuchillo de mesa','Como lápiz','Como grafio','Como arco de violín siempre'],'Usa el vientre de la hoja.'],
+['IN','Forma de tomar el bisturí para cortes pequeños, curvos y precisos:',['Como lápiz','Como cuchillo de mesa','Como grafio','Como martillo'],'Usa la punta de la hoja.'],
+['IN','Forma de tomar el bisturí para cortes horizontales largos y superficiales con presión suave:',['Como arco de violín','Como lápiz','Como grafio','Como cuchillo de mesa'],'Permite un movimiento fluido.'],
+['IN','Para sujetar tijeras, ¿qué dedos van en los anillos?',['Pulgar y anular','Índice y medio','Pulgar e índice','Medio y meñique'],'El índice se apoya en la articulación.'],
+
+['PQ','Objetivo de las posiciones quirúrgicas:',['Facilitar el acceso y la exposición manteniendo la seguridad del paciente','Hacer más cómoda la cirugía al cirujano solamente','Evitar la anestesia','Reducir el costo'],'Evitan lesiones nerviosas, musculares y circulatorias.'],
+['PQ','Decúbito dorsal es lo mismo que:',['Decúbito supino (boca arriba)','Decúbito prono','Decúbito lateral','Litotomía'],'Es la posición más común.'],
+['PQ','En la posición de Trendelenburg la cabeza está:',['Más baja que los pies','Más alta que los pies','A la misma altura','De lado'],'Se usa en abdomen inferior y pelvis.'],
+['PQ','Indicación de la posición de Trendelenburg:',['Cirugía de abdomen inferior y pelvis','Cirugía de tiroides','Hemorroides','Laminectomía'],'Desplaza las vísceras hacia arriba.'],
+['PQ','Indicación de Trendelenburg invertida:',['Abdomen superior y cabeza y cuello','Pelvis','Recto','Riñón'],'La cabeza queda más alta que los pies.'],
+['PQ','La posición de vesícula consiste en:',['Decúbito dorsal con hiperextensión dorsolumbar (riñonera)','Prono doblado en navaja','Lateral con mesa flexionada','Litotomía'],'Expone vesícula y vías biliares.'],
+['PQ','Posición para cirugía de columna con las piernas descendidas para flexionar el raquis:',['Laminectomía','Litotomía','Trendelenburg','Fowler'],'Es un decúbito ventral modificado.'],
+['PQ','En la posición de laminectomía es fundamental:',['Una almohada bajo los tobillos para proteger los dedos de los pies','Estribos','Inclinar la cabeza hacia abajo','Flexionar la mesa a 90° en la cadera'],'Además rollos bajo los hombros para respirar.'],
+['PQ','Cómo se coloca al paciente para la posición de laminectomía:',['Se anestesia e intuba boca arriba y luego se voltea lentamente','Se voltea despierto','Se intuba boca abajo','Se coloca sentado'],'Cuidando no desconectar la venoclisis.'],
+['PQ','Posición de navaja o de Kraske se usa para:',['Hemorroides y quiste pilonidal','Tiroidectomía','Cesárea','Nefrectomía'],'Prono con flexión cercana a 90° en la cadera.'],
+['PQ','En el decúbito lateral, ¿qué pierna se flexiona?',['La de abajo (la que toca la mesa)','La de arriba','Ninguna','Ambas extendidas'],'Con un cojín entre las rodillas.'],
+['PQ','Usos del decúbito lateral:',['Toracotomía y cirugía de riñón','Parto','Hemorroides','Tiroides'],'Se nombra según el lado que reposa en la mesa.'],
+['PQ','La posición de lumbotomía se caracteriza por:',['Decúbito lateral con la mesa flexionada a nivel lumbar','Prono con piernas descendidas','Supino con estribos','Cabeza más baja'],'Amplía el espacio entre costillas y cresta ilíaca.'],
+['PQ','Indicación de la posición de lumbotomía:',['Nefrectomía y acceso al retroperitoneo','Laminectomía','Apendicectomía','Cesárea'],'El lado a operar queda hacia arriba.'],
+['PQ','Posición con caderas y rodillas flexionadas y piernas en estribos:',['Litotomía','Navaja','Trendelenburg','Laminectomía'],'Ginecología, parto, urología, periné y recto.'],
+['PQ','Objetivo de la posición lateral para anestesia raquídea:',['Separar los espacios intervertebrales lumbares para la punción','Exponer la vesícula','Drenar secreciones','Elevar la pelvis'],'Espalda flexionada y rodillas hacia el abdomen.'],
+['PQ','Cuidado común en todas las posiciones:',['Proteger prominencias óseas y evitar comprimir nervios y vasos','Atar al paciente con fuerza','No vigilar la respiración','Retirar todos los cojines'],'Una mala posición causa lesiones nerviosas y por presión.'],
+
+['PO','El postoperatorio termina:',['Con la rehabilitación, habitualmente en 30 días','Al salir del quirófano','A las 72 horas','Al retirar la sonda'],'Las perturbaciones se llaman complicaciones.'],
+['PO','El postoperatorio inmediato abarca:',['Las primeras 72 horas','Las primeras 6 horas','30 días','1 año'],'Es el periodo más vigilado.'],
+['PO','Las órdenes postoperatorias deben:',['Hacerse por escrito y la enfermera debe corroborarlas','Darse de palabra','Omitirse','Escribirse días después'],'Aclarando todas las dudas.'],
+['PO','Posición de Fowler:',['Dorsal inclinada elevando ~50 cm la cabecera','Decúbito lateral con muslo flexionado','Cabeza más baja','Boca abajo'],'Favorece la movilidad diafragmática y el drenaje peritoneal.'],
+['PO','Posición útil en pacientes con peritonitis para drenaje declive:',['Fowler','Trendelenburg','Prono','Litotomía'],'También mejora la movilidad de los hemidiafragmas.'],
+['PO','Posición inglesa o de Sims sirve para:',['Drenar secreciones de boca y garganta y evitar broncoaspiración si vomita','Exponer la vesícula','Parto','Elevar la pelvis'],'Decúbito lateral con el muslo infrayacente flexionado.'],
+['PO','Elevar las extremidades inferiores en el postoperatorio busca:',['Favorecer el retorno venoso sin afectar la respiración','Mejorar la digestión','Disminuir la orina','Mejorar la visión'],'Según la presentación.'],
+['PO','Tras anestesia general, cada cuánto se cambia de lado al paciente:',['Cada 30 a 60 minutos','Cada 8 horas','Cada 24 horas','No se mueve'],'Además respiraciones profundas y tos cada hora.'],
+['PO','Con anestesia regional el paciente:',['Puede deambular o levantarse al sanitario','Debe estar inmóvil 24 h','Debe estar en Trendelenburg','Necesita intubación'],'Es la diferencia con la anestesia general.'],
+['PO','El registro de ingesta y excreta se hace al menos durante:',['24 horas','1 hora','30 días','No se registra'],'En cirugía mayor hasta lograr el equilibrio.'],
+['PO','Irrigación de un tubo de drenaje conectado a succión intermitente:',['Cada 1–2 horas con 30 mL de solución salina','Cada 12 horas con 500 mL','Nunca','Con alcohol'],'La otra opción es drenaje por gravedad.'],
+['PO','La sonda pleural debe conectarse a:',['Un circuito hermético con sello de agua o válvula de Heimlich','Una bolsa abierta al aire','Succión gástrica','Nada'],'Evita que entre aire a la pleura.'],
+
+['CP','El shock se define como:',['Perfusión tisular insuficiente con deterioro de los tejidos','Presión arterial alta','Fiebre','Dolor intenso'],'Hay 4 tipos.'],
+['CP','Volumen sanguíneo de un hombre de 70 kg:',['4.5 a 5 litros','2 litros','10 litros','1 litro'],'La mitad está en las venas.'],
+['CP','Pérdida que pueden compensar las venas sin shock:',['Hasta ~1,000 mL (cerca del 30 %)','50 mL','3 litros','Nada'],'Cuando ya hay signos se perdió cerca de un tercio.'],
+['CP','Sangre que puede ocultarse en una fractura de fémur:',['1,000–1,500 mL','50 mL','5 litros','Nada'],'Es una pérdida oculta importante.'],
+['CP','Shock con PVC baja, piel fría y húmeda y taquicardia tras hemorragia:',['Hipovolémico','Cardiogénico','Neurogénico puro','Séptico hiperdinámico'],'Responde a la reposición de volumen.'],
+['CP','Hallazgos de acidosis en shock hipovolémico:',['pH cercano a 7.20 y saturación venosa <70 %','pH 7.60','Saturación venosa 99 %','Ninguno'],'Por metabolismo anaerobio.'],
+['CP','Shock por vasodilatación tras anestesia espinal o anafilaxia:',['Neurogénico','Hipovolémico','Cardiogénico','Hemorrágico'],'"El contenedor es más grande que el contenido".'],
+['CP','Tratamiento inicial del shock neurogénico:',['500 mL de solución glucosada al 5 % rápida; si no responde, vasoconstrictores','Restricción de líquidos','Digitalización','Antibiótico'],'Suele ser transitorio.'],
+['CP','Shock con PVC elevada en el que la carga de volumen empeora el cuadro:',['Cardiogénico','Hipovolémico','Neurogénico','Hemorrágico'],'Es falla de bomba.'],
+['CP','Causas comunes de shock cardiogénico postoperatorio:',['Isquemia miocárdica, infarto y arritmias','Hemorragia','Anestesia espinal','Alergia'],'Tiene mortalidad muy elevada.'],
+['CP','Manejo del shock cardiogénico:',['Semisentado, monitoreo, restricción de líquidos y digitalización IV','Carga de 2 litros de suero','Trendelenburg con volumen','Solo antibióticos'],'Puede usarse balón de contrapulsación aórtica.'],
+['CP','El shock séptico suele deberse a:',['Bacteriemia por gramnegativos','Hemorragia','Infarto','Anestesia espinal'],'También llamado endotóxico.'],
+['CP','Característica del shock séptico al inicio:',['El gasto cardiaco no baja e incluso puede aumentar','La PVC es muy alta siempre','No hay acidosis','Es leve'],'Cursa con acidosis láctica y CID.'],
+['CP','Las complicaciones pulmonares se manifiestan claramente después de:',['48 horas','5 minutos','30 días','1 año'],'Se originan en la cirugía o el postoperatorio inmediato.'],
+['CP','Complicación pulmonar postoperatoria más común e importante:',['Atelectasia','Neumotórax','Tromboembolia','Asma'],'Su tratamiento es esencialmente preventivo.'],
+['CP','Tratamiento de la atelectasia ya instalada:',['Puño-percusión, cambios de posición, tos, inhaloterapia y aspiración','Reposo absoluto sin moverse','Antibiótico solo','Cirugía inmediata siempre'],'En casos graves, broncoscopia o traqueostomía.'],
+['CP','Alteración electrolítica asociada a complicaciones gastrointestinales postoperatorias:',['Hipopotasemia','Hipercalcemia','Hipernatremia','Hipermagnesemia'],'También deshidratación y shock.'],
+['CP','Vómito postoperatorio persistente:',['Sonda a succión gástrica continua y buscar la causa','Ignorarlo','Dar comida sólida','Trendelenburg'],'Causas: metabólicas, uremia, peritonitis, obstrucción, SNC.'],
+['CP','Datos clínicos de obstrucción intestinal:',['Dolor cólico, borborigmos y peristalsis de lucha','Diarrea indolora','Fiebre sola','Ictericia'],'Rx con asas de delgado distendidas.'],
+['CP','Sondas largas para descompresión intestinal:',['Cantor o Miller-Abbott','Foley','Nélaton','Swan-Ganz'],'Llegan cerca de la obstrucción.'],
+['CP','Hematemesis en "asientos de café" y melena indican sangrado:',['Digestivo alto','Digestivo bajo','Urinario','Pulmonar'],'Esófago, estómago o duodeno.'],
+['CP','Sangrado de tubo digestivo masivo:',['Pérdida rápida de ≥1,000 mL','Pérdida de 50 mL','Una gota','Solo en niños'],'Riesgo de hipovolemia y shock.'],
+['CP','El sangrado de tubo digestivo bajo se origina:',['Distal al ligamento de Treitz, con sangre roja rutilante','Proximal al píloro','En el esófago','En los riñones'],'Con menos frecuencia es masivo.'],
+['CP','Dispositivo para controlar hemorragia por várices esofágicas:',['Balón de Sengstaken-Blakemore','Sonda de Foley','Tubo de Ewald','Tijera de Lister'],'Comprime con balones esofágico y gástrico.'],
+['CP','Retención aguda de orina postoperatoria, primer paso:',['Calmar el dolor, deambular o compresas tibias en hipogastrio','Antibiótico inmediato','Cirugía','Diálisis'],'Si no funciona se coloca sonda.'],
+['CP','Sonda para la retención urinaria según la presentación:',['Nélaton fina (10–14) estéril, o Foley temporal','Sonda de Levin','Sengstaken','Cantor'],'Con técnica estéril y lubricante.'],
+['CP','En la retención urinaria, los antibióticos:',['No se dan de rutina, solo si hay infección confirmada','Siempre se dan','Se dan antes de sondear siempre','Están prohibidos en cualquier caso'],'Nota importante de la presentación.'],
+['CP','Causas de insuficiencia renal aguda postoperatoria:',['Shock prolongado, hipoperfusión renal y transfusión incompatible','Ejercicio','Ayuno de 8 horas','Posición de Fowler'],'Se manifiesta con oliguria o anuria.'],
+['CP','IRA posrenal: tratamiento',['Quitar el obstáculo mecánico (p. ej. ligadura de uréteres)','Solo hidratar','Digitalización','Antibióticos'],'La prerrenal se trata hidratando y corrigiendo la hipotensión.'],
+['CP','Diuresis de la fase de oliguria/anuria de la IRA:',['0–400 mL/día','4–5 L/día','2 L/día normal','10 L/día'],'Dura los primeros días; la anuria 3–10 días o más.'],
+['CP','Fase de la IRA con aumento progresivo del gasto urinario de 4–5 L/día:',['Poliúrica','Oligúrica','Inicial','No existe'],'Hay desequilibrios hídricos.'],
+['CP','Indicación de diálisis en la IRA:',['Urea ~100 mg, creatinina ~5 mg, potasio cercano a 6 mEq/L o alteraciones del ECG','Creatinina de 1 mg','Diuresis normal','Fiebre'],'Cuando fallan las medidas conservadoras.'],
+];
+
+const OP = [
+['PR','Describe la fase diagnóstica del preoperatorio y los exámenes de rutina.','El diagnóstico es la parte primaria y más importante de la cirugía. Inicia con la historia clínica (interrogatorio y exploración física) para formar una sospecha, una hipótesis y el diagnóstico definitivo. Los exámenes de rutina sirven para descartar padecimientos comunes inadvertidos y valorar la función de los órganos: grupo sanguíneo, Rh y pruebas cruzadas, biometría hemática, química sanguínea, examen general de orina, VDRL, TP y TTPa, estudios de imagen y electrocardiograma.',[['diagnóstico más importante','diagnostico','diagnóstico'],['historia clínica','historia clinica','historia clínica','interrogatorio'],['exploración física','exploracion','exploración'],['grupo y Rh / pruebas cruzadas','grupo sanguineo','grupo sanguíneo','pruebas cruzadas',' rh'],['biometría / química / orina','biometr','quimica','química','orina'],['TP y TTPa','tiempo de protrombina','ttpa','tromboplastina'],['electrocardiograma','electrocardiograma','ecg']]],
+['PR','Explica la clasificación de la cirugía según la urgencia y la necesidad.','Cirugía urgente: de la rapidez con que se realice depende la función de un órgano o la vida. No urgente: el paso de horas o días no es determinante. Necesaria: de ella depende la función o la vida, independientemente del momento en que se haga. Electiva: tiene indicación, pero el paciente decide realizarla, sin riesgo inminente para la vida o la función.',[['urgente','urgente'],['no urgente','no urgente'],['necesaria','necesaria'],['electiva','electiva'],['depende la vida o función','vida','funcion','función'],['el paciente decide','decide']]],
+['PR','Explica la clasificación del riesgo quirúrgico.','Riesgo habitual o mínimo: pacientes sin efecto sistémico y en buenas condiciones generales. Riesgo superior al habitual o intermedio: uno o varios factores de riesgo que requieren mayor manejo y atención. Riesgo máximo o elevado: deterioro sistémico pronunciado o daño en múltiples órganos que requiere manejo mayor y medidas adicionales en el transoperatorio.',[['habitual o mínimo','habitual','minimo','mínimo'],['intermedio','intermedio','superior al habitual'],['máximo o elevado','maximo','máximo','elevado'],['factores de riesgo','factores'],['deterioro sistémico','sistemic','sistémic'],['múltiples órganos','multiples','múltiples','organos','órganos']]],
+['PR','Describe la preparación del paciente para cirugía: autorización, ayuno, aseo, rasurado y vestido.','Autorización: el paciente o su responsable debe estar informado y firmar el consentimiento (Art. 81 LGS); cirugías sexuales o reproductivas requieren la firma de la pareja; en urgencias vitales se puede operar sin firma (Art. 320). Ayuno desde la medianoche, 8–12 h, para evitar broncoaspiración; líquidos solo IV. Aseo con hexaclorofeno 5 días o lavado de zonas de difícil acceso. Rasurado inmediatamente antes de ir al quirófano. Bata de algodón, gorro, botas y retirar prótesis dentales, joyas y cosméticos.',[['consentimiento informado','consentimiento'],['ayuno 8–12 h','ayuno','8'],['broncoaspiración','broncoaspir'],['hexaclorofeno / aseo','hexaclorofeno','baño','bano','aseo'],['rasurado inmediato','rasur'],['retirar prótesis','protesis','prótesis','joyas'],['urgencia sin firma','urgencia','sin autoriz','sin firma']]],
+['PR','Describe las preparaciones especiales del preoperatorio con sondas, enemas y preparación de colon.','Vaciado de estómago en urgencia con sonda de Levin por una narina, a succión y lavado con solución salina; si el contenido es espeso, tubo de Ewald; la complicación más común es la broncoaspiración. Sonda nasogástrica permanente en cirugía de abdomen superior. Sonda vesical de Foley en cirugía de abdomen inferior o para medir la orina. Enema evacuante para colon vacío, no rutinario y contraindicado con irritación peritoneal. Preparación de colon: dieta líquida 3 días, laxantes, enemas y antibióticos.',[['sonda de Levin','levin'],['tubo de Ewald','ewald'],['broncoaspiración','broncoaspir'],['sonda de Foley','foley'],['enema','enema'],['irritación peritoneal contraindica','peritone'],['dieta líquida y laxantes','dieta','laxante']]],
+
+['AB','Define la incisión quirúrgica, su finalidad y cómo se clasifica.','Es la sección intencional y controlada de los tejidos con un instrumento cortante para crear una vía de acceso al campo operatorio. Finalidad: acceso, exposición, seguridad, conservación tisular y recuperación, con exposición suficiente y el menor daño posible. Se clasifica por orientación (longitudinal, transversal, oblicua), por configuración (rectilínea, curvilínea, elíptica o fusiforme) y por región anatómica (cervical, torácica, abdominal, pélvica y perineal).',[['sección intencional','intencional','controlada'],['vía de acceso','acceso'],['exposición','exposic'],['menor daño','daño','dano'],['longitudinal / transversal / oblicua','longitudinal','transvers','oblicu'],['fusiforme / elíptica','fusiforme','elipt','elípt'],['región anatómica','region','región']]],
+['AB','Describe las incisiones abdominales: media, Jalaguier, Pfannenstiel, McBurney, Kocher y lumbotomía.','Media: longitudinal en la línea media, supra, infra o supra-infraumbilical. Jalaguier: paramedia, paralela a la línea media sobre los rectos, a 2.5–4 cm de la línea alba y de 10–15 cm. Pfannenstiel: transversa suprapúbica arciforme de concavidad superior, 10–12 cm, 2–3 cm sobre el pubis. McBurney: oblicua referida a la espina ilíaca anterosuperior, 10 cm, para apéndice. Kocher: oblicua en hipocondrio derecho, 3–5 cm del reborde costal, para vesícula. Lumbotomía: oblicua en el flanco, 15–25 cm, para riñón.',[['media','linea media','línea media'],['Jalaguier paramedia','jalaguier','paramedia'],['Pfannenstiel suprapúbica','pfannenstiel','suprapub'],['McBurney espina ilíaca','mcburney','mc burney','espina iliaca','espina ilíaca'],['Kocher hipocondrio derecho','kocher','hipocondrio'],['lumbotomía flanco','lumbotom','flanco'],['reborde costal','reborde']]],
+
+['IN','Describe los mangos y hojas de bisturí y para qué sirve cada uno.','El bisturí tiene un mango y una hoja intercambiable. Mango 3 y 3L: hojas 10 a 15 para cortes finos. Mango 4 y 4L: hojas 20 a 25 para cortes grandes. Mango 7: largo y estrecho para espacios profundos. Hoja 10: borde curvo para cortes amplios; hoja 11: triangular para cortes puntiformes; hoja 12: en gancho; hoja 15: pequeña para cortes delicados; hojas 20–25: cortes extensos. La hoja se monta y desmonta con una pinza, nunca con los dedos.',[['mango 3 con 10–15','mango 3','10 a 15','10-15'],['mango 4 con 20–25','mango 4','20 a 25','20-25'],['mango 7 profundo','mango 7','profund'],['hoja 11 puntiforme','11','puntiform'],['hoja 15 delicada','15','delicad'],['montar con pinza','pinza','portaagujas']]],
+['IN','Describe los tipos de tijeras quirúrgicas y el instrumental de corte óseo.','Mayo recta: cortar suturas y materiales. Mayo curva: tejidos firmes y fascias. Metzenbaum: tejidos blandos y delicados. Iris: cortes finos de gran precisión. Lister: punta abotonada para vendajes. Littauer: muesca para retirar puntos. Las de materiales no deben usarse en tejidos. Óseo: sierra de Gigli (alambres flexibles), sierra de Charrière (amputaciones), costótomo (costillas), gubias y Stille-Luer, legras (periostio) y trépano (perforaciones circulares).',[['Mayo recta suturas','mayo recta','sutura'],['Mayo curva fascias','mayo curva','fascia'],['Metzenbaum','metzenbaum'],['Lister vendajes','lister','vendaje'],['Littauer puntos','littauer','puntos'],['sierra de Gigli','gigli'],['trépano','trepano','trépano']]],
+['IN','Explica la técnica correcta de incisión y las formas de tomar el bisturí.','Fijar y extender la piel con índice y pulgar a ambos lados del corte; usar el vientre de la hoja, no la punta; mantener el bisturí perpendicular para no tallar un bisel que cicatriza mal; en el primer golpe cortar la piel en toda la longitud planeada. Formas de tomarlo: cuchillo de mesa (incisiones largas y firmes), arco de violín (cortes largos y superficiales), lápiz (cortes pequeños, curvos y precisos con la punta) y grafio (presión firme sobre tejidos resistentes).',[['fijar la piel','fijar','tracc'],['vientre de la hoja','vientre'],['perpendicular','perpendicular'],['bisel','bisel'],['cuchillo de mesa','cuchillo'],['arco de violín','violin','violín'],['lápiz','lapiz','lápiz']]],
+
+['PQ','Describe las posiciones de Trendelenburg, Trendelenburg invertida y de vesícula.','Trendelenburg: decúbito dorsal con la cabeza más baja que los pies; para abdomen inferior y pelvis, desplaza las vísceras hacia arriba; vigilar respiración, circulación y deslizamiento. Trendelenburg invertida: cabeza más alta que los pies; para abdomen superior y cabeza y cuello. Posición de vesícula: decúbito dorsal con hiperextensión dorsolumbar (antes con riñonera) que eleva el abdomen superior y expone la vesícula y las vías biliares.',[['cabeza más baja','mas baja','más baja'],['abdomen inferior / pelvis','inferior','pelvi'],['invertida cabeza más alta','mas alta','más alta','invertida'],['abdomen superior','superior'],['hiperextensión dorsolumbar','hiperextens'],['vesícula / vías biliares','vesicula','vesícula','biliar']]],
+['PQ','Describe las posiciones de laminectomía, navaja de Kraske, lumbotomía y litotomía.','Laminectomía: decúbito ventral con las piernas descendidas para flexionar el raquis; se intuba boca arriba y se voltea lentamente, rollos bajo los hombros y almohada bajo los tobillos; para columna. Navaja o Kraske: prono con flexión cercana a 90° en la cadera, pelvis elevada; para hemorroides y quiste pilonidal. Lumbotomía: decúbito lateral con la mesa flexionada a nivel lumbar; para riñón y retroperitoneo. Litotomía: supino con caderas y rodillas flexionadas y piernas en estribos; para ginecología, parto, urología, periné y recto.',[['laminectomía columna','laminectom','columna'],['almohada bajo tobillos','tobillo'],['navaja / Kraske','navaja','kraske'],['hemorroides / pilonidal','hemorroid','pilonidal'],['lumbotomía riñón','lumbotom','riñon','riñón','renal'],['litotomía estribos','litotom','estribo'],['parto / ginecología','parto','ginecol']]],
+['PQ','¿Qué cuidados generales se deben tener al colocar al paciente en una posición quirúrgica?','La posición debe facilitar el acceso y la exposición manteniendo la seguridad: proteger las prominencias óseas, evitar la compresión de nervios y vasos, verificar la posición de las extremidades, usar soportes acolchados y cojines (entre rodillas en decúbito lateral), sujetar para evitar deslizamientos, vigilar la respiración y la circulación y cuidar las vías como la venoclisis al voltear al paciente. Una posición incorrecta causa lesiones nerviosas y por presión.',[['prominencias óseas','prominencia'],['nervios y vasos','nervio','vaso'],['soportes acolchados / cojines','acolchad','cojin','cojín','soporte'],['evitar deslizamiento','desliz'],['vigilar respiración','respirac'],['lesiones por presión','presion','presión','lesion','lesión']]],
+
+['PO','Describe los cuidados generales del postoperatorio inmediato.','El postoperatorio dura hasta la rehabilitación (unos 30 días); el inmediato son las primeras 72 h. El traslado a recuperación es crítico (venoclisis, electrodos, catéteres, sondas). Las órdenes van por escrito y se corroboran. Posiciones: Fowler, Sims y elevación de piernas. Tras anestesia general, cambiar de lado cada 30–60 min, respirar profundo y toser cada hora y mover las piernas cada 1–3 h. Registro de ingesta y excreta 24 h y ayuno en cirugía abdominal. Drenajes por gravedad o succión; sonda pleural con sello de agua.',[['72 horas','72'],['órdenes por escrito','escrito','ordenes','órdenes'],['cambio de posición 30–60 min','30','60'],['toser / respirar profundo','toser','tosa','respira'],['ingesta y excreta','ingesta','excreta','liquidos','líquidos'],['drenaje','drenaje'],['sello de agua','sello']]],
+['PO','Explica las posiciones de Fowler, Sims y elevación de piernas en el postoperatorio.','Fowler: posición dorsal inclinada elevando unos 50 cm la cabecera; se usa cuando se requiere buena movilización de los hemidiafragmas o en pacientes con peritonitis para drenaje declive peritoneal. Sims o inglesa: decúbito lateral con el muslo infrayacente flexionado; drena secreciones de boca y garganta y evita la broncoaspiración si el paciente vomita. Elevación de las extremidades inferiores: favorece el retorno venoso sin interferir con la respiración.',[['Fowler','fowler'],['cabecera elevada','cabecera','50'],['peritonitis / drenaje','peritoni','drenaje'],['Sims / inglesa','sims','inglesa'],['broncoaspiración','broncoaspir'],['retorno venoso','retorno venoso']]],
+
+['CP','Compara los cuatro tipos de shock postoperatorio.','Hipovolémico: pérdida de sangre o plasma; PVC y volumen bajos, piel fría y húmeda, taquicardia, hipotensión, oliguria, acidosis; responde a volumen. Neurogénico: vasodilatación por anestesia espinal, histamina, alcohol o anafilaxia; PVC baja sin pérdida real; 500 mL de glucosada rápida y vasoconstrictores. Cardiogénico: falla de bomba (isquemia, infarto, arritmias); PVC alta, el volumen lo empeora; restricción de líquidos y digitalización. Séptico: bacteriemia por gramnegativos; gasto inicial normal o alto, acidosis láctica y CID.',[['hipovolémico','hipovolem'],['neurogénico vasodilatación','neurogen','vasodilat'],['cardiogénico','cardiogen'],['séptico gramnegativos','septic','séptic','gram'],['PVC baja vs alta','pvc','presion venosa','presión venosa'],['volumen empeora cardiogénico','empeora'],['acidosis / CID','acidosis','coagulac','cid']]],
+['CP','Describe las complicaciones pulmonares postoperatorias y el manejo de la atelectasia.','Se originan en la cirugía o el postoperatorio inmediato y se manifiestan después de 48 h: el dolor, los anestésicos y los reflejos disminuyen la respiración y la tos no elimina secreciones; empeoran con tabaquismo y EPOC. La atelectasia es la más común e importante; su tratamiento es esencialmente preventivo. Si se instala: puño-percusión y cambios de posición estimulando la tos, inhaloterapia con presión positiva intermitente, aspiración endotraqueal, broncoscopia y, en casos graves, traqueostomía.',[['48 horas','48'],['atelectasia','atelectasia'],['preventivo','prevent'],['puño-percusión','percusion','percusión'],['cambios de posición / tos','toser','estimulando la tos','cambios de posic'],['inhaloterapia','inhaloterap','presion positiva','presión positiva'],['broncoscopía / traqueostomía','broncoscop','traqueostom']]],
+['CP','Describe las complicaciones gastrointestinales postoperatorias.','Son alteraciones funcionales por estrés quirúrgico; se asocian a anestesia prolongada, manipulación de vísceras, peritonitis, shock, deshidratación, hipopotasemia y desnutrición. Vómito: suele ceder; si persiste, sonda a succión gástrica continua y buscar la causa. Obstrucción intestinal: dolor cólico, borborigmos y peristalsis de lucha, asas distendidas; descompresión con sondas de Cantor o Miller-Abbott. Sangrado alto: hematemesis en posos de café y melena, masivo si ≥1,000 mL; sangrado bajo: distal a Treitz, sangre roja rutilante.',[['hipopotasemia','hipopotasem'],['vómito / succión gástrica','vomito','vómito','succion','succión'],['obstrucción intestinal','obstruc'],['peristalsis de lucha / borborigmos','peristalsis','borborigm'],['Cantor / Miller-Abbott','cantor','miller'],['hematemesis / melena','hematemesis','melena'],['Treitz','treitz']]],
+['CP','Describe la retención aguda de orina y la insuficiencia renal aguda postoperatorias.','Retención: incapacidad para vaciar la vejiga en las primeras horas; primero calmar el dolor, deambular o compresas tibias en el hipogastrio, luego sonda de Nélaton fina (10–14) estéril o Foley temporal; no dar antibióticos de rutina. IRA: por shock prolongado, hipoperfusión, transfusión incompatible u obstrucción; oliguria o anuria, uremia, HTA, edema. Se clasifica en prerrenal (hidratar), renal (manejar el shock) y posrenal (quitar la obstrucción). Fases: oliguria, regeneración, poliuria y recuperación. Diálisis si urea ~100, creatinina ~5, potasio ~6 o cambios en el ECG.',[['retención de orina','retencion','retención'],['sonda de Nélaton','nelaton','nélaton'],['sin antibióticos de rutina','antibiot'],['oliguria / anuria','oliguria','anuria'],['prerrenal / posrenal','prerrenal','pre-renal','posrenal','post-renal'],['fase poliúrica','poliur'],['diálisis potasio 6','dialisis','diálisis']]],
+];
+
+const FC = [
+['PR','Parte más importante de la cirugía','El diagnóstico.'],
+['PR','Exámenes preoperatorios de rutina','Grupo y Rh, pruebas cruzadas, BH, QS, EGO, VDRL, TP y TTPa, imagen y ECG.'],
+['PR','Valores normales de TP y TTPa','TP 11–14 s; TTPa 25–35 s.'],
+['PR','Cirugía urgente','De su rapidez depende la vida o la función de un órgano.'],
+['PR','Cirugía electiva','Hay indicación pero el paciente decide; sin riesgo inminente.'],
+['PR','Riesgo quirúrgico','Habitual (mínimo), superior al habitual (intermedio), máximo (elevado).'],
+['PR','Base legal del consentimiento','Art. 81 de la Ley General de Salud.'],
+['PR','Cirugía sexual o reproductiva','Requiere la firma de la pareja.'],
+['PR','Urgencia vital sin firma','Se puede operar (Art. 320 del Reglamento).'],
+['PR','Ayuno preoperatorio','Desde la medianoche, 8–12 h, para evitar broncoaspiración.'],
+['PR','Momento del rasurado','Inmediatamente antes de ir al quirófano.'],
+['PR','Sonda para vaciado gástrico urgente','Levin; si es espeso, tubo de Ewald.'],
+['PR','Complicación del vaciado gástrico','Broncoaspiración.'],
+['PR','Contraindicación del enema','Irritación peritoneal.'],
+['AB','¿Qué es una incisión?','Sección intencional y controlada de los tejidos para crear una vía de acceso.'],
+['AB','Incisión para extirpar una lesión de piel','Elíptica o fusiforme.'],
+['AB','Incisión de la tiroidectomía','Transversa semicircular sobre la horquilla esternal, 3–6 cm.'],
+['AB','Incisión de Jalaguier','Paramedia sobre los rectos, 2.5–4 cm de la línea alba.'],
+['AB','Incisión de Pfannenstiel','Transversa suprapúbica, 10–12 cm, 2–3 cm sobre el pubis.'],
+['AB','Incisión de McBurney','Oblicua, referida a la espina ilíaca anterosuperior, 10 cm.'],
+['AB','Incisión de Kocher','Oblicua en hipocondrio derecho, 3–5 cm del reborde costal.'],
+['AB','Lumbotomía','Oblicua en el flanco, 15–25 cm: riñón.'],
+['AB','Hernioplastia de Lichtenstein','~5 cm, dos dedos sobre el ligamento inguinal.'],
+['IN','Mango 3 y mango 4','Mango 3: hojas 10–15. Mango 4: hojas 20–25.'],
+['IN','Hoja 11','Triangular con punta: cortes puntiformes.'],
+['IN','Hoja 15','Pequeña curva: cortes delicados.'],
+['IN','Mayo recta vs Mayo curva','Recta: suturas. Curva: fascias y tejidos firmes.'],
+['IN','Metzenbaum','Tejidos blandos y delicados.'],
+['IN','Lister y Littauer','Lister: vendajes. Littauer: retirar puntos.'],
+['IN','Sierra de Gigli','Alambres flexibles para cortar hueso.'],
+['IN','Trépano','Perforaciones circulares en hueso.'],
+['IN','Cómo montar la hoja','Con pinza o portaagujas, nunca con los dedos.'],
+['IN','Técnica de incisión','Fijar la piel, vientre de la hoja, bisturí perpendicular, un solo golpe.'],
+['IN','Bisturí como lápiz','Cortes pequeños, curvos y precisos.'],
+['PQ','Trendelenburg','Cabeza más baja: abdomen inferior y pelvis.'],
+['PQ','Trendelenburg invertida','Cabeza más alta: abdomen superior, cabeza y cuello.'],
+['PQ','Posición de vesícula','Dorsal con hiperextensión dorsolumbar.'],
+['PQ','Laminectomía','Prono con piernas descendidas; almohada bajo los tobillos.'],
+['PQ','Navaja o Kraske','Prono doblado ~90°: hemorroides y quiste pilonidal.'],
+['PQ','Decúbito lateral','Pierna de abajo flexionada, de arriba extendida, cojín entre rodillas.'],
+['PQ','Lumbotomía','Lateral con mesa flexionada a nivel lumbar: riñón.'],
+['PQ','Litotomía','Piernas en estribos: ginecología, parto, urología, periné.'],
+['PQ','Lateral para raquídea','Espalda flexionada para separar las vértebras lumbares.'],
+['PO','Duración del postoperatorio','Hasta la rehabilitación, ~30 días; inmediato: 72 h.'],
+['PO','Fowler','Cabecera elevada ~50 cm: diafragma y drenaje peritoneal.'],
+['PO','Sims o inglesa','Lateral con muslo flexionado: evita broncoaspiración.'],
+['PO','Movilización tras anestesia general','Cambio de lado cada 30–60 min; tos y respiración cada hora.'],
+['PO','Sonda pleural','Circuito hermético con sello de agua o válvula de Heimlich.'],
+['CP','Volemia de un adulto de 70 kg','4.5–5 L.'],
+['CP','Shock hipovolémico','PVC baja, piel fría, taquicardia, hipotensión; responde a volumen.'],
+['CP','Shock neurogénico','Vasodilatación sin pérdida real; 500 mL glucosada y vasoconstrictores.'],
+['CP','Shock cardiogénico','PVC alta; el volumen lo empeora; restringir líquidos.'],
+['CP','Shock séptico','Gramnegativos; acidosis láctica y CID.'],
+['CP','Complicación pulmonar más común','Atelectasia; tratamiento preventivo.'],
+['CP','Sondas para obstrucción intestinal','Cantor o Miller-Abbott.'],
+['CP','Sangrado digestivo alto','Hematemesis en posos de café y melena.'],
+['CP','Sangrado digestivo bajo','Distal al ligamento de Treitz, sangre roja rutilante.'],
+['CP','Retención urinaria','Analgesia y compresas; sonda Nélaton 10–14; sin antibiótico de rutina.'],
+['CP','Clasificación de la IRA','Prerrenal, renal y posrenal.'],
+['CP','Indicación de diálisis','Urea ~100, creatinina ~5, K ~6 mEq/L o cambios en el ECG.'],
+];
+
+const CASES = [
+{ t:'PR', title:'Dolor en fosa ilíaca derecha', text:'Joven de 19 años con 12 horas de dolor que inició en el epigastrio y migró a la fosa ilíaca derecha, con fiebre y náuseas. Se diagnostica apendicitis aguda.',
+  labs:[['Leucocitos','15,800/mm³'],['TP','12 s'],['TTPa','30 s'],['Última comida','hace 4 horas']],
+  steps:[
+   ['¿Cómo clasificas esta cirugía?',['Urgente','Electiva','No urgente','Estética'],'De la rapidez depende la función del órgano y la vida.'],
+   ['¿Cómo están sus tiempos de coagulación?',['Normales (TP 11–14 s, TTPa 25–35 s)','Prolongados','Imposibles de interpretar','Muy cortos'],'Puede operarse sin corrección.'],
+   ['Comió hace 4 horas y la cirugía no puede esperar. ¿Qué preparación especial puede requerir?',['Vaciado gástrico con sonda de Levin para evitar broncoaspiración','Enema evacuante','Preparación de colon de 3 días','Ninguna'],'El ayuno ideal es de 8–12 h.'],
+   ['¿Qué incisión clásica se usa?',['McBurney','Kocher','Pfannenstiel','Lumbotomía'],'Oblicua, referida a la espina ilíaca anterosuperior.'],
+  ]},
+{ t:'PR', title:'Hernia inguinal programada', text:'Hombre de 45 años, sano, con hernia inguinal reductible de 1 año de evolución. Se programa hernioplastia.',
+  labs:[['Comorbilidades','ninguna'],['Laboratorios','normales']],
+  steps:[
+   ['¿Qué tipo de cirugía es?',['Electiva','Urgente','De urgencia vital','No tiene indicación'],'Tiene indicación, pero el paciente decide sin riesgo inminente.'],
+   ['¿Cuál es su riesgo quirúrgico?',['Habitual o mínimo','Elevado','Máximo','Intermedio'],'No tiene factores de riesgo.'],
+   ['¿Cuándo se debe rasurar la región?',['Inmediatamente antes de ir al quirófano','La noche anterior','Una semana antes','No se rasura nunca'],'Rasurar con anticipación causa microlesiones que se infectan.'],
+   ['¿Qué incisión corresponde a una hernioplastia de Lichtenstein?',['Oblicua de ~5 cm, dos dedos sobre el ligamento inguinal','Media supraumbilical','Kocher','Craneotomía'],'Entre la espina ilíaca anterosuperior y el pubis.'],
+  ]},
+{ t:'PR', title:'Paciente anciano con varias enfermedades', text:'Hombre de 78 años con insuficiencia cardiaca, EPOC y diabetes descontrolada en cetoacidosis, que requiere cirugía de colon.',
+  labs:[['pH','7.18'],['Hemoglobina','8.2 g/dL']],
+  steps:[
+   ['¿Cuál es su riesgo quirúrgico?',['Máximo o elevado','Habitual','Mínimo','No tiene riesgo'],'Deterioro sistémico pronunciado con daño de varios órganos.'],
+   ['¿Qué debe corregirse antes de operar?',['Acidosis diabética, anemia e insuficiencia cardiaca','Nada, operar de inmediato','Solo el color de la piel','Solo el ayuno'],'Son estados fisiológicos anormales a corregir.'],
+   ['¿Cómo se prepara el colon?',['Dieta líquida 3 días, laxantes, enemas la noche previa y antibióticos','Solo ayuno de 2 horas','Enema con irritación peritoneal','No se prepara'],'Para llegar con el intestino vacío y con pocos gérmenes.'],
+  ]},
+{ t:'AB', title:'Colecistectomía abierta', text:'Mujer de 50 años con colecistitis crónica litiásica. Se planea colecistectomía abierta.',
+  labs:[['Ultrasonido','vesícula con litos']],
+  steps:[
+   ['¿Qué incisión clásica se usa?',['Kocher (subcostal derecha)','McBurney','Pfannenstiel','Lumbotomía'],'Oblicua en hipocondrio derecho, 3–5 cm del reborde costal.'],
+   ['¿Qué posición mejora la exposición de la vesícula?',['Posición de vesícula (hiperextensión dorsolumbar)','Litotomía','Navaja','Laminectomía'],'También ayuda la Trendelenburg invertida.'],
+   ['Para incidir la piel en un corte largo y firme, ¿cómo tomas el bisturí?',['Como cuchillo de mesa','Como lápiz','Como grafio','Como arco de violín siempre'],'Usando el vientre de la hoja.'],
+   ['¿Qué hoja y mango usarías para la piel en una incisión extensa?',['Mango 4 con hoja 20–25','Mango 3 con hoja 11','Mango 7 con hoja 12','Tijera de Iris'],'Las hojas grandes son para cortes amplios de piel.'],
+  ]},
+{ t:'AB', title:'Cesárea programada', text:'Mujer de 32 años con embarazo de término y presentación pélvica. Se programa cesárea.',
+  labs:[['Semanas','39']],
+  steps:[
+   ['¿Qué incisión transversa suprapúbica se usa con frecuencia?',['Pfannenstiel','Kocher','McBurney','Jalaguier'],'Arciforme de concavidad superior, 2–3 cm sobre el pubis.'],
+   ['¿Cuánto mide aproximadamente?',['10–12 cm','2 cm','25 cm','40 cm'],'Según la presentación.'],
+   ['¿Qué sonda se coloca para la cirugía de la mitad inferior del abdomen?',['Sonda vesical de Foley','Sonda de Levin','Sengstaken-Blakemore','Cantor'],'Asegura el flujo de orina y permite medirlo.'],
+  ]},
+{ t:'IN', title:'Instrumentista novato', text:'Un estudiante prepara la mesa de instrumental para una laparotomía y tiene dudas.',
+  labs:[['Cirugía','laparotomía media']],
+  steps:[
+   ['¿Cómo debe montar la hoja en el mango?',['Con una pinza, deslizándola hasta el clic','Con los dedos','Con tijera de Mayo','No importa'],'Para evitar accidentes biológicos.'],
+   ['El cirujano pide tijera para cortar el hilo de sutura. ¿Cuál das?',['Mayo recta','Metzenbaum','Iris','Mayo curva'],'La de materiales nunca se usa en tejidos.'],
+   ['Luego pide tijera para disecar tejido blando delicado.',['Metzenbaum','Mayo recta','Lister','Littauer'],'Fina y ligera.'],
+   ['Al final, para cortar el vendaje sin lastimar la piel:',['Lister','Littauer','Gigli','Trépano'],'Tiene punta abotonada.'],
+  ]},
+{ t:'IN', title:'Drenaje de un absceso', text:'Paciente con absceso cutáneo pequeño que requiere un corte puntiforme para drenarlo.',
+  labs:[['Tamaño','2 cm']],
+  steps:[
+   ['¿Qué hoja de bisturí usarías?',['N.º 11','N.º 22','N.º 20','N.º 25'],'Triangular con punta aguda para cortes puntiformes.'],
+   ['¿Qué mango es compatible?',['Mango n.º 3','Mango n.º 4','Ninguno','Sierra de Gigli'],'El 3 lleva hojas 10 a 15.'],
+   ['¿Cómo tomas el bisturí para un corte pequeño y preciso?',['Como lápiz','Como cuchillo de mesa','Como arco de violín','Como grafio'],'Usa la punta de la hoja.'],
+  ]},
+{ t:'PQ', title:'Cirugía de hernia de disco lumbar', text:'Hombre de 50 años con hernia de disco L4-L5 que será operado de laminectomía.',
+  labs:[['Nivel','L4-L5']],
+  steps:[
+   ['¿En qué posición se opera?',['Laminectomía (decúbito ventral con piernas descendidas)','Litotomía','Trendelenburg','Fowler'],'Flexiona moderadamente el raquis.'],
+   ['¿Cómo se pone al paciente en esa posición?',['Se anestesia e intuba boca arriba y luego se voltea lentamente','Se voltea despierto','Se intuba boca abajo','Sentado'],'Cuidando que no se desconecte la venoclisis.'],
+   ['¿Qué detalle es fundamental para evitar lesiones?',['Almohada bajo los tobillos y rollos bajo los hombros','Estribos','Cabeza más baja','Sin soportes'],'Protege los dedos de los pies y facilita la respiración.'],
+  ]},
+{ t:'PQ', title:'Paciente con hemorroides', text:'Mujer de 40 años con hemorroides grado IV que será operada.',
+  labs:[['Diagnóstico','hemorroides grado IV']],
+  steps:[
+   ['¿Qué posición se utiliza?',['Navaja o Kraske','Trendelenburg invertida','Posición de vesícula','Lumbotomía'],'Prono con flexión de ~90° y pelvis elevada.'],
+   ['¿Qué parte de la mesa coincide con la cadera?',['La articulación central de la mesa','La cabecera','Los estribos','Ninguna'],'Para doblar al paciente como navaja.'],
+   ['¿Qué otra posición se usa para cirugía de periné y recto?',['Litotomía','Laminectomía','Decúbito lateral para riñón','Fowler'],'Con las piernas en estribos.'],
+  ]},
+{ t:'PO', title:'Recién operado de laparotomía', text:'Hombre de 60 años recién operado de laparotomía con anestesia general. Tiene drenaje abdominal y una sonda pleural por lesión diafragmática.',
+  labs:[['Horas de postoperatorio','2']],
+  steps:[
+   ['¿Cada cuánto se le debe cambiar de lado?',['Cada 30–60 minutos','Cada 12 horas','Nunca','Una vez al día'],'Además respirar profundo y toser cada hora.'],
+   ['¿A qué se conecta la sonda pleural?',['A un circuito hermético con sello de agua o válvula de Heimlich','A una bolsa abierta','A succión gástrica','A nada'],'Impide la entrada de aire a la pleura.'],
+   ['Si el drenaje abdominal va a succión intermitente, ¿cómo se irriga?',['Cada 1–2 h con 30 mL de solución salina','Cada 24 h con 1 L','No se irriga','Con alcohol'],'La otra opción es drenaje por gravedad cuantificado.'],
+   ['Comienza a vomitar. ¿Qué posición evita la broncoaspiración?',['Sims o inglesa (decúbito lateral)','Trendelenburg','Supino plano','Prono'],'Drena secreciones de boca y garganta.'],
+  ]},
+{ t:'CP', title:'Hipotensión después de una cirugía', text:'Mujer de 55 años operada hace 6 horas de histerectomía. Está pálida, fría, sudorosa, con pulso de 125 lpm y TA de 80/50. El drenaje tiene abundante sangre.',
+  labs:[['PVC','baja'],['pH','7.22'],['Diuresis','oliguria']],
+  steps:[
+   ['¿Qué tipo de shock tiene?',['Hipovolémico (hemorrágico)','Cardiogénico','Neurogénico','Séptico'],'Pérdida de sangre con PVC baja.'],
+   ['¿Cuánta sangre ha perdido probablemente si ya tiene signos de shock?',['Cerca de un tercio de su volumen','Menos de 100 mL','Nada','Toda'],'Las venas compensan hasta ~30 %.'],
+   ['¿Cuál es el tratamiento inicial?',['Reposición de volumen y controlar la hemorragia','Restringir líquidos','Digitalización','Vasoconstrictor solo'],'Responde a la reposición de volumen.'],
+   ['¿Qué complicación renal puede producir si se prolonga?',['Insuficiencia renal aguda','Retención urinaria por próstata','Litiasis','Ninguna'],'Por hipoperfusión renal.'],
+  ]},
+{ t:'CP', title:'Hipotensión tras anestesia raquídea', text:'Hombre de 35 años operado de rodilla con anestesia raquídea. Presenta hipotensión con piel caliente, sin sangrado y con PVC baja.',
+  labs:[['Sangrado','mínimo'],['PVC','baja']],
+  steps:[
+   ['¿Qué tipo de shock es?',['Neurogénico','Hipovolémico','Cardiogénico','Séptico'],'Vasodilatación sin pérdida real de volumen.'],
+   ['¿Qué haces primero?',['500 mL de solución glucosada al 5 % rápida','Restringir líquidos','Transfusión masiva','Antibiótico'],'Si no responde, vasoconstrictores.'],
+   ['¿Cómo se describe este shock en la presentación?',['El contenedor (vasos) es más grande que el contenido (sangre)','Falla de bomba','Bacteriemia','Pérdida de plasma'],'Suele ser transitorio.'],
+  ]},
+{ t:'CP', title:'Infarto en el postoperatorio', text:'Hombre de 68 años, 1 día después de una cirugía de cadera, con dolor torácico, hipotensión, estertores y PVC elevada.',
+  labs:[['ECG','elevación del ST'],['PVC','elevada']],
+  steps:[
+   ['¿Qué tipo de shock es?',['Cardiogénico','Hipovolémico','Neurogénico','Séptico'],'Falla de bomba con PVC alta.'],
+   ['¿Qué pasa si le das una carga de volumen?',['Empeora el cuadro','Mejora siempre','No cambia nada','Se cura'],'Por eso se restringen líquidos.'],
+   ['¿Qué posición y medidas indicas?',['Semisentado, monitoreo y restricción de líquidos','Trendelenburg y 2 L de suero','Prono','Litotomía'],'Además digitalización IV y estudio de la cardiopatía.'],
+  ]},
+{ t:'CP', title:'Fiebre y falta de aire al tercer día', text:'Mujer de 60 años, fumadora con EPOC, operada de abdomen superior. Al tercer día tiene fiebre, taquipnea y disminución de ruidos en la base pulmonar derecha. Casi no tose por dolor.',
+  labs:[['Rx de tórax','opacidad con pérdida de volumen en base derecha']],
+  steps:[
+   ['¿Cuál es la complicación más probable?',['Atelectasia','Shock séptico','Obstrucción intestinal','Retención urinaria'],'Es la complicación pulmonar más común.'],
+   ['¿Por qué apareció después de 48 h?',['El dolor y los anestésicos reducen la respiración y la tos no elimina secreciones','Por la anestesia raquídea','Por exceso de ejercicio','No tiene relación con la cirugía'],'El tabaquismo y la EPOC la empeoran.'],
+   ['¿Qué tratamiento inicial indicas?',['Puño-percusión, cambios de posición, estimular la tos e inhaloterapia','Traqueostomía inmediata','Reposo sin moverse','Enema'],'La broncoscopia y la traqueostomía son para casos graves.'],
+  ]},
+{ t:'CP', title:'No puede orinar después de la cirugía', text:'Hombre de 70 años operado de hernia hace 8 horas. Tiene dolor en el hipogastrio y no ha podido orinar; la vejiga es palpable.',
+  labs:[['Vejiga','distendida'],['EGO','sin datos de infección']],
+  steps:[
+   ['¿Qué complicación tiene?',['Retención aguda de orina','Insuficiencia renal aguda','Shock séptico','Obstrucción intestinal'],'Común en las primeras horas.'],
+   ['¿Qué haces primero?',['Calmar el dolor, deambular o compresas tibias en el hipogastrio','Diálisis','Antibiótico IV','Cirugía'],'Si no orina, se sondea.'],
+   ['¿Qué sonda usas si no orina?',['Nélaton fina (10–14) estéril o Foley temporal','Levin','Cantor','Sengstaken'],'Con técnica estéril y lubricante.'],
+   ['¿Indicas antibiótico?',['No, solo si hay infección confirmada','Sí, siempre','Sí, por 6 semanas','Solo vancomicina'],'No se dan de rutina.'],
+  ]},
+{ t:'CP', title:'Oliguria tras shock prolongado', text:'Paciente que estuvo en shock hipovolémico varias horas durante la cirugía. Desde entonces orina 200 mL al día. Al quinto día sus laboratorios empeoran.',
+  labs:[['Diuresis','200 mL/día'],['Urea','105 mg/dL'],['Creatinina','5.3 mg/dL'],['Potasio','6.1 mEq/L']],
+  steps:[
+   ['¿Qué complicación tiene?',['Insuficiencia renal aguda (fase oligúrica)','Retención urinaria','Shock neurogénico','Atelectasia'],'0–400 mL/día tras shock prolongado.'],
+   ['¿Qué tipo de IRA es por su causa?',['Renal (daño por shock prolongado)','Posrenal por obstrucción','No es IRA','Prerrenal pura sin daño'],'El shock prolongado daña el parénquima.'],
+   ['¿Qué tratamiento requiere ahora?',['Diálisis','Solo hidratación','Antibiótico','Sonda de Nélaton'],'Urea ~100, creatinina ~5 y potasio ~6 la indican.'],
+   ['Si se recupera, ¿qué fase sigue con 4–5 L de orina al día?',['Fase poliúrica','Fase oligúrica','Anuria','No hay más fases'],'Con riesgo de desequilibrios hídricos.'],
+  ]},
+];
+
+const GENS = {
+  shock: { t: 'CP', name: 'Tipo de shock', make() {
+    const S = pick([
+      ['Paciente con sangrado abundante por el drenaje, piel fría y húmeda, taquicardia y PVC baja.', 'Hipovolémico'],
+      ['Hipotensión tras anestesia espinal, sin sangrado, con PVC baja que responde a 500 mL de glucosada.', 'Neurogénico'],
+      ['Hipotensión con dolor torácico, cambios del ST y PVC elevada; empeora al dar volumen.', 'Cardiogénico'],
+      ['Fiebre alta por infección extensa con gramnegativos, acidosis láctica y datos de CID.', 'Séptico'],
+      ['Reacción anafiláctica a un antibiótico con vasodilatación y caída de la PVC sin pérdida de sangre.', 'Neurogénico'],
+      ['Fractura de fémur con 1,500 mL ocultos en el muslo, taquicardia y oliguria.', 'Hipovolémico']]);
+    const why = { Hipovolémico: 'pérdida de volumen con PVC baja; responde a reposición', Neurogénico: 'vasodilatación sin pérdida real; glucosada rápida y vasoconstrictores', Cardiogénico: 'falla de bomba con PVC alta; restringir líquidos', 'Séptico': 'gramnegativos, acidosis láctica y CID' };
+    return { kind: 'choice', ans: S[1], opts: ['Hipovolémico', 'Neurogénico', 'Cardiogénico', 'Séptico'], q: `${S[0]} ¿Qué tipo de shock es?`, sol: `Shock <b>${S[1].toLowerCase()}</b>: ${why[S[1]]}.` }; } },
+  volemia: { t: 'CP', name: 'Volemia y pérdida tolerada', make() {
+    const w = R(50, 100), vol = w * 70, ans = vol * 0.3;
+    return { kind: 'num', ans, tol: Math.max(30, ans * 0.03), unit: 'mL', q: `Adulto de <span class="lab">${w} kg</span>. Si la volemia es ≈ 70 mL/kg (70 kg ≈ 4.9 L), ¿cuántos mL representa el 30 % que las venas pueden compensar sin shock?`, sol: `Volemia = ${w} × 70 = ${vol} mL. 30 % = ${vol} × 0.3 = <b>${Math.round(ans)} mL</b>. En un hombre de 70 kg son ≈ 1,000 mL, como dice la presentación.` }; } },
+  cirugia: { t: 'PR', name: 'Tipo de cirugía', make() {
+    const S = pick([
+      ['Apendicitis aguda con dolor de 12 horas.', 'Urgente'],
+      ['Herida por arma de fuego con hemorragia abdominal activa.', 'Urgente'],
+      ['Hernia inguinal reductible de 2 años; el paciente elige la fecha.', 'Electiva'],
+      ['Lipoma pequeño en la espalda que el paciente quiere quitarse.', 'Electiva'],
+      ['Cáncer de colon que debe operarse, aunque puede programarse en las próximas semanas.', 'Necesaria'],
+      ['Colecistitis crónica sin complicación; esperar unos días no cambia el pronóstico.', 'No urgente']]);
+    const def = { Urgente: 'de la rapidez depende la vida o la función', Electiva: 'hay indicación pero el paciente decide, sin riesgo inminente', Necesaria: 'de ella depende la vida o la función, sin importar el momento en que se haga', 'No urgente': 'el paso de horas o días no es determinante' };
+    return { kind: 'choice', ans: S[1], opts: ['Urgente', 'No urgente', 'Necesaria', 'Electiva'], q: `${S[0]} ¿Qué tipo de cirugía es?`, sol: `<b>${S[1]}</b>: ${def[S[1]]}.` }; } },
+  riesgo: { t: 'PR', name: 'Riesgo quirúrgico', make() {
+    const S = pick([
+      ['Joven sano de 25 años para cirugía de hernia.', 'Habitual o mínimo'],
+      ['Mujer de 60 años con hipertensión controlada y obesidad.', 'Superior al habitual o intermedio'],
+      ['Paciente con peritonitis, choque séptico e insuficiencia renal.', 'Máximo o elevado'],
+      ['Hombre de 50 años con diabetes y tabaquismo para colecistectomía.', 'Superior al habitual o intermedio'],
+      ['Politraumatizado con falla respiratoria, renal y hepática.', 'Máximo o elevado']]);
+    return { kind: 'choice', ans: S[1], opts: ['Habitual o mínimo', 'Superior al habitual o intermedio', 'Máximo o elevado'], q: `${S[0]} ¿Qué riesgo quirúrgico tiene?`, sol: `Mínimo: sin efecto sistémico. Intermedio: uno o varios factores de riesgo. Elevado: deterioro sistémico o daño multiorgánico. → <b>${S[1]}</b>.` }; } },
+  coag: { t: 'PR', name: 'Pruebas de coagulación', make() {
+    const S = pick([['TP', 11, 14, 's'], ['TTPa', 25, 35, 's'], ['INR', 0.8, 1.2, ''], ['Fibrinógeno', 200, 400, 'mg/dL'], ['Tiempo de trombina', 14, 21, 's']]);
+    const span = S[2] - S[1], dec = S[0] === 'INR' ? 1 : 0;
+    const v = +(pick([S[1] + Math.random() * span, S[2] + span * Rf(0.2, 1.2, 2), S[1] - span * Rf(0.2, 0.6, 2)])).toFixed(dec);
+    const ans = v >= S[1] && v <= S[2] ? 'Normal' : 'Alterado';
+    return { kind: 'choice', ans, opts: ['Normal', 'Alterado'], q: `Preoperatorio: <b>${S[0]}</b> de <span class="lab">${v}${S[3] ? ' ' + S[3] : ''}</span>. ¿Es normal?`, sol: `Valor normal de ${S[0]}: ${S[1]}–${S[2]}${S[3] ? ' ' + S[3] : ''} → <b>${ans}</b>.` }; } },
+  ayuno: { t: 'PR', name: 'Horas de ayuno', make() {
+    const ult = pick([19, 20, 21, 22, 23, 24]), cir = pick([6, 7, 8, 9, 10, 11, 12]), ans = (24 - ult) + cir;
+    const ok = ans >= 8 && ans <= 12;
+    return { kind: 'num', ans, tol: 0, unit: 'h', q: `El paciente comió por última vez a las <span class="lab">${ult === 24 ? '00' : ult}:00</span> y la cirugía es a las <span class="lab">${String(cir).padStart(2, '0')}:00</span> del día siguiente. ¿Cuántas horas de ayuno lleva?`, sol: `De las ${ult === 24 ? '00' : ult}:00 a las ${cir}:00 = <b>${ans} h</b>. ${ok ? 'Está dentro del ayuno recomendado de 8–12 h.' : ans > 12 ? 'Supera las 12 h: si requiere líquidos se dan IV.' : 'Es menor de 8 h: no cumple el ayuno recomendado.'}` }; } },
+  incision: { t: 'AB', name: 'Elegir la incisión', make() {
+    const S = pick([['Apendicectomía abierta', 'McBurney'], ['Colecistectomía abierta', 'Kocher'], ['Cesárea o cirugía ginecológica', 'Pfannenstiel'], ['Nefrectomía por el flanco', 'Lumbotomía'], ['Hernioplastia inguinal', 'Lichtenstein (inguinal oblicua ~5 cm)'], ['Tiroidectomía', 'Transversa sobre la horquilla esternal'], ['Laparotomía exploradora', 'Media'], ['Acceso paramedio sobre los rectos', 'Jalaguier']]);
+    const all = ['McBurney', 'Kocher', 'Pfannenstiel', 'Lumbotomía', 'Lichtenstein (inguinal oblicua ~5 cm)', 'Transversa sobre la horquilla esternal', 'Media', 'Jalaguier'];
+    const opts = shuffle([S[1], ...shuffle(all.filter(x => x !== S[1])).slice(0, 3)]);
+    return { kind: 'choice', ans: S[1], opts, q: `¿Qué incisión corresponde a: <b>${S[0]}</b>?`, sol: `→ <b>${S[1]}</b>. Revisa la tabla de incisiones del resumen para la referencia y las medidas.` }; } },
+  posicion: { t: 'PQ', name: 'Elegir la posición', make() {
+    const S = pick([['Hemorroidectomía', 'Navaja o Kraske'], ['Quiste pilonidal', 'Navaja o Kraske'], ['Laminectomía lumbar', 'Laminectomía'], ['Nefrectomía', 'Lumbotomía'], ['Parto vaginal', 'Litotomía'], ['Histerectomía por vía abdominal baja', 'Trendelenburg'], ['Tiroidectomía', 'Trendelenburg invertida'], ['Cirugía de vesícula y vías biliares', 'Posición de vesícula'], ['Anestesia raquídea', 'Lateral para raquídea'], ['Toracotomía', 'Decúbito lateral']]);
+    const all = ['Navaja o Kraske', 'Laminectomía', 'Lumbotomía', 'Litotomía', 'Trendelenburg', 'Trendelenburg invertida', 'Posición de vesícula', 'Lateral para raquídea', 'Decúbito lateral'];
+    const opts = shuffle([S[1], ...shuffle(all.filter(x => x !== S[1])).slice(0, 3)]);
+    return { kind: 'choice', ans: S[1], opts, q: `¿Qué posición quirúrgica usas para: <b>${S[0]}</b>?`, sol: `→ <b>${S[1]}</b>.` }; } },
+  bisturi: { t: 'IN', name: 'Hoja y mango de bisturí', make() {
+    const S = pick([['un corte puntiforme para drenar un absceso', 'Hoja 11 en mango 3'], ['un corte delicado y fino en la cara', 'Hoja 15 en mango 3'], ['una incisión extensa en la piel del abdomen', 'Hoja 20–25 en mango 4'], ['un corte en un espacio profundo y estrecho', 'Hoja pequeña en mango 7'], ['un corte con hoja en forma de gancho', 'Hoja 12 en mango 3']]);
+    return { kind: 'choice', ans: S[1], opts: shuffle(['Hoja 11 en mango 3', 'Hoja 15 en mango 3', 'Hoja 20–25 en mango 4', 'Hoja pequeña en mango 7', 'Hoja 12 en mango 3']), q: `Necesitas hacer <b>${S[0]}</b>. ¿Qué eliges?`, sol: `Mango 3: hojas 10–15. Mango 4: hojas 20–25. Mango 7: profundo. → <b>${S[1]}</b>.` }; } },
+  tijera: { t: 'IN', name: 'Elegir la tijera', make() {
+    const S = pick([['cortar hilos de sutura', 'Mayo recta'], ['cortar una fascia', 'Mayo curva'], ['disecar tejido blando y delicado', 'Metzenbaum'], ['hacer un corte fino de gran precisión', 'Iris'], ['cortar un vendaje sin lastimar la piel', 'Lister'], ['retirar puntos de sutura', 'Littauer'], ['cortar hueso con alambre flexible', 'Sierra de Gigli'], ['perforar el cráneo', 'Trépano']]);
+    const all = ['Mayo recta', 'Mayo curva', 'Metzenbaum', 'Iris', 'Lister', 'Littauer', 'Sierra de Gigli', 'Trépano'];
+    const opts = shuffle([S[1], ...shuffle(all.filter(x => x !== S[1])).slice(0, 3)]);
+    return { kind: 'choice', ans: S[1], opts, q: `¿Qué instrumento usas para <b>${S[0]}</b>?`, sol: `→ <b>${S[1]}</b>.` }; } },
+  sonda: { t: 'PR', name: 'Elegir la sonda', make() {
+    const S = pick([['Vaciar el estómago en una urgencia por una narina', 'Levin'], ['Lavado gástrico con contenido espeso', 'Ewald'], ['Medir la diuresis en cirugía de abdomen inferior', 'Foley'], ['Retención urinaria postoperatoria (sonda fina 10–14)', 'Nélaton'], ['Descomprimir una obstrucción intestinal cerca del sitio obstruido', 'Cantor o Miller-Abbott'], ['Controlar hemorragia por várices esofágicas', 'Sengstaken-Blakemore']]);
+    const all = ['Levin', 'Ewald', 'Foley', 'Nélaton', 'Cantor o Miller-Abbott', 'Sengstaken-Blakemore'];
+    const opts = shuffle([S[1], ...shuffle(all.filter(x => x !== S[1])).slice(0, 3)]);
+    return { kind: 'choice', ans: S[1], opts, q: `${S[0]}. ¿Qué sonda usas?`, sol: `→ <b>${S[1]}</b>.` }; } },
+  ira: { t: 'CP', name: 'IRA: fase o diálisis', make() {
+    if (Math.random() < 0.5) {
+      const S = pick([[R(0, 400), 'Oligúrica / anúrica (inicial)'], [R(4000, 5000), 'Poliúrica']]);
+      return { kind: 'choice', ans: S[1], opts: ['Oligúrica / anúrica (inicial)', 'Poliúrica', 'Recuperación completa'], q: `Paciente con IRA postoperatoria que orina <span class="lab">${S[0]} mL/día</span>. ¿En qué fase está?`, sol: `Inicial: 0–400 mL/día; poliúrica: 4–5 L/día. → <b>${S[1]}</b>.` };
+    }
+    const dial = Math.random() < 0.5;
+    const urea = dial ? R(100, 180) : R(40, 80), cr = dial ? Rf(5, 8, 1) : Rf(1.5, 3.5, 1), k = dial ? Rf(5.9, 6.8, 1) : Rf(4.0, 5.2, 1);
+    const ans = dial ? 'Indicar diálisis' : 'Manejo conservador';
+    return { kind: 'choice', ans, opts: ['Indicar diálisis', 'Manejo conservador'], q: `IRA postoperatoria con urea <span class="lab">${urea} mg/dL</span>, creatinina <span class="lab">${cr} mg/dL</span> y potasio <span class="lab">${k} mEq/L</span>. ¿Qué indicas?`, sol: `La diálisis se indica si fallan las medidas conservadoras y la urea llega a ~100, la creatinina a ~5, el potasio se acerca a 6 o hay cambios en el ECG. → <b>${ans}</b>.` }; } },
+  std: { t: 'CP', name: 'Sangrado digestivo alto o bajo', make() {
+    const S = pick([['Vómito con sangre en "asientos de café"', 'Alto'], ['Evacuaciones negras (melena)', 'Alto'], ['Sangre roja rutilante por el recto, lesión distal al ligamento de Treitz', 'Bajo'], ['Sangrado de una úlcera duodenal', 'Alto'], ['Sangrado de un divertículo de colon', 'Bajo']]);
+    return { kind: 'choice', ans: S[1], opts: ['Alto', 'Bajo'], q: `${S[0]}. ¿El sangrado de tubo digestivo es alto o bajo?`, sol: `Alto: esófago, estómago o duodeno (hematemesis, melena). Bajo: distal al ligamento de Treitz, sangre roja rutilante. → <b>${S[1]}</b>.` }; } },
+  postura: { t: 'PO', name: 'Posición postoperatoria', make() {
+    const S = pick([['Paciente con peritonitis que necesita drenaje declive peritoneal', 'Fowler'], ['Paciente que necesita buena movilidad de los hemidiafragmas', 'Fowler'], ['Paciente que puede vomitar y debe drenar secreciones de boca y garganta', 'Sims o inglesa'], ['Paciente en el que se quiere favorecer el retorno venoso', 'Elevación de extremidades inferiores']]);
+    return { kind: 'choice', ans: S[1], opts: ['Fowler', 'Sims o inglesa', 'Elevación de extremidades inferiores'], q: `${S[0]}. ¿Qué posición indicas?`, sol: `Fowler: cabecera elevada ~50 cm. Sims: decúbito lateral con muslo flexionado. Elevación de piernas: retorno venoso. → <b>${S[1]}</b>.` }; } },
 };
 
     return { TOPICS, MC, OP, FC, CASES, GENS };
