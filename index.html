@@ -80,7 +80,7 @@ ul.pts li { margin: 3px 0; max-width: 72ch; }
 .subj-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
 .subj-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .brand span b { color: var(--accent); font-weight: 600; }
-@media (max-width: 520px) { .subjects { margin-left: 0; width: 100%; } .subj-btn { flex: 1; padding: 7px 4px; font-size: .8rem; } }
+@media (max-width: 520px) { .subjects { margin-left: 0; width: 100%; display: grid; grid-template-columns: 1fr 1fr; border-radius: 14px; } .subj-btn { padding: 8px 6px; font-size: .84rem; border-radius: 10px; } }
 
 /* Controles */
 .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0 20px; }
@@ -184,7 +184,7 @@ textarea { width: 100%; min-height: 96px; resize: vertical; font: .95rem/1.5 var
 <header class="top">
   <div class="wrap top-inner">
     <div class="brand"><h1>Repaso de medicina</h1><span>Grupo 5-4 · <b id="subj-label">Reumatología</b></span></div>
-    <div class="subjects" role="group" aria-label="Materia"><button class="subj-btn" type="button" data-subj="reuma" aria-pressed="true">Reumatología</button><button class="subj-btn" type="button" data-subj="farma" aria-pressed="false">Farmacología</button><button class="subj-btn" type="button" data-subj="ciru" aria-pressed="false">Cirugía</button></div>
+    <div class="subjects" role="group" aria-label="Materia"><button class="subj-btn" type="button" data-subj="reuma" aria-pressed="true">Reumatología</button><button class="subj-btn" type="button" data-subj="farma" aria-pressed="false">Farmacología</button><button class="subj-btn" type="button" data-subj="ciru" aria-pressed="false">Cirugía</button><button class="subj-btn" type="button" data-subj="pivote" aria-pressed="false">Datos pivote</button></div>
     <nav class="tabs" role="tablist" aria-label="Secciones">
       <button class="tab" role="tab" id="tab-resumen" data-view="resumen">Resumen</button>
       <button class="tab" role="tab" id="tab-cuestionario" data-view="cuestionario">Cuestionario</button>
@@ -708,6 +708,65 @@ textarea { width: 100%; min-height: 96px; resize: vertical; font: .95rem/1.5 var
       <li><b>Fases:</b> oliguria/anuria (días 1–3, 0–400 mL/día; anuria 3–10 días o más) → regeneración tubular (2–3 semanas) → <b>poliúrica</b> (4–5 L/día) → recuperación.</li>
       <li><b>Diálisis</b> si fallan las medidas conservadoras y la urea llega a ~<span class="lab">100 mg</span>, la creatinina a ~<span class="lab">5 mg</span>, el potasio se acerca a <span class="lab">6 mEq/L</span> o hay alteraciones en el ECG.</li>
     </ul>
+  </article>
+</div>
+<div class="subj-sum" data-subj="pivote" hidden>
+  <p class="lede">Resumen de la presentación «Importancia de los datos pivote en un diagnóstico: signos y síntomas». Las ideas clave vienen <span class="lab">resaltadas así</span>.</p>
+  <div class="controls chips" data-nav="pivote"></div>
+
+  <article class="topic" id="sum-RZ">
+    <h3>1. El razonamiento diagnóstico del internista</h3>
+    <ul class="pts">
+      <li>El médico internista usa varias estrategias diagnósticas; su pensamiento debe ser <b>estructurado, coherente y cimentado en un amplio conocimiento teórico</b>.</li>
+      <li>La <b>historia clínica</b> es el insumo indispensable para tomar decisiones clínicas acertadas. Se necesita <b>inteligencia</b> (obtener e interpretar los datos relevantes) y <b>memoria</b> (recordar la información almacenada) para construir un buen <b>juicio clínico</b>.</li>
+      <li>El internista es el experto en el razonamiento metódico de la relación paciente-enfermedad: elabora una historia clínica detallada, emite hipótesis, las pone a prueba y elige los auxiliares diagnósticos <b>más útiles, económicos e inocuos</b> para cada caso.</li>
+      <li>Su proceso mental no es del todo claro, pero requiere conocimiento teórico amplio, <b>experiencia e intuición</b> para recolectar los datos importantes.</li>
+      <li>Los <b>datos pivote</b> son <b>catalizadores del proceso diagnóstico</b>: dan un punto de partida para construir el diagnóstico. El método está pensado para apoyar la marcha diagnóstica del <b>médico novel</b> (en formación).</li>
+    </ul>
+  </article>
+
+  <article class="topic" id="sum-MM">
+    <h3>2. Memoria e inteligencia</h3>
+    <ul class="pts">
+      <li><b>Memoria:</b> capacidad de retener información y recuperarla a voluntad.</li>
+      <li>Permite combinar la información que manipulamos en el momento (<b>memoria de trabajo</b>) con lo almacenado en la <b>memoria a largo plazo</b>.</li>
+      <li>La memoria de trabajo guarda los bloques de información que manejamos mientras estamos con el paciente y es limitada: un máximo de <span class="lab">10 datos por encuentro</span>.</li>
+      <li>Por eso importa aún más la <b>calidad de los datos y su correcta identificación</b>, lo cual requiere juicio y <b>raciocinio</b>; el raciocinio se vincula con la <b>inteligencia</b>.</li>
+      <li>Inteligencia del médico = <b>capacidad de resolver problemas a partir de los datos</b>. No es solo personal: tiene una <b>dimensión social</b>.</li>
+      <li>El médico titulado tiene un <b>compromiso ineludible con la sociedad</b>: resolver problemas de salud individuales y poblacionales; de ahí la imagen del médico como <b>«eterno estudiante»</b>.</li>
+      <li>Saber obtener e interpretar los datos es una <b>competencia profesional</b>. El enfoque de datos pivote es una de varias estrategias posibles: un método estructurado a partir de la <b>abstracción</b>.</li>
+    </ul>
+  </article>
+
+  <article class="topic" id="sum-AX">
+    <h3>3. La abstracción como gimnasia mental</h3>
+    <ul class="pts">
+      <li>La inteligencia del clínico se demuestra con la capacidad de <b>relacionar hechos entre sí</b>.</li>
+      <li>La mejor gimnasia mental es la <b>abstracción</b>: separar de los datos sus esencias para analizar en qué <b>coinciden</b> y en qué <b>divergen</b>. Entrena la <b>comparación y la deducción</b>.</li>
+      <li>Cada persona es única e irrepetible; una enfermedad varía entre individuos e incluso en la misma persona según las circunstancias. Por eso es <b>infrecuente</b> que un paciente encaje exactamente en la descripción de una enfermedad.</li>
+      <li>Ante esa variabilidad, el clínico recoge datos del <b>interrogatorio</b>, la <b>exploración física</b> y, con prudencia, de los <b>paraclínicos</b>, para comparar, relacionar y deducir el estado mórbido.</li>
+      <li>Esos datos se llaman <b>pivote</b> porque en ellos se apoyan las decisiones diagnósticas, de forma fija o <b>girando la sospecha</b> hacia otras posibilidades <b>sin perder de vista el dato de mayor peso</b>.</li>
+    </ul>
+  </article>
+
+  <article class="topic" id="sum-DP">
+    <h3>4. Identificación de datos pivote</h3>
+    <ul class="pts">
+      <li><b>Dato pivote:</b> por lo general un <b>síntoma</b>, un <b>signo</b>, una <b>conducta o factor de riesgo</b> (p. ej. tabaquismo), un <b>antecedente patológico</b> (p. ej. hipertensión) o una <b>anormalidad paraclínica</b> que, aislada, puede representar alteraciones diversas.</li>
+      <li>Un hecho <b>aislado</b> no siempre es útil; el valor del pivote está en considerar los <b>otros datos a su alrededor</b>.</li>
+      <li>Ejemplo: la <b>disnea</b> sola lleva a una lista interminable de causas (pulmonares y aún más extrapulmonares).</li>
+      <li>Lo más importante de un dato pivote es su <b>cronología de inicio y desarrollo</b> y su <b>relación con otros datos pivote</b> en el contexto único del paciente: <b>edad, sexo, grupo étnico, factores de riesgo y entorno social</b>.</li>
+      <li>Analizar al paciente con disnea por <b>abstracción</b>, identificando cada pivote por separado, hace mucho más sencillo <b>limitar el diagnóstico diferencial</b>.</li>
+    </ul>
+    <div class="tbl-wrap"><table>
+      <tr><th>Tipo de dato pivote</th><th>Ejemplo</th></tr>
+      <tr><td>Síntoma (lo que refiere el paciente)</td><td>Disnea, dolor torácico, fatiga</td></tr>
+      <tr><td>Signo (lo que encuentra el médico)</td><td>Edema, ictericia, soplo, fiebre medida</td></tr>
+      <tr><td>Conducta o factor de riesgo</td><td>Tabaquismo, alcoholismo, sedentarismo</td></tr>
+      <tr><td>Antecedente patológico</td><td>Hipertensión, diabetes, cardiopatía previa</td></tr>
+      <tr><td>Anormalidad paraclínica</td><td>Anemia en la BH, creatinina elevada, alteración en la Rx</td></tr>
+    </table></div>
+    <p class="key"><b>Complemento (no viene en la presentación):</b> <b>síntoma</b> = manifestación subjetiva que refiere el paciente; <b>signo</b> = manifestación objetiva que el médico encuentra o mide en la exploración.</p>
   </article>
 </div>
 </section>
@@ -2062,6 +2121,198 @@ const GENS = {
   postura: { t: 'PO', name: 'Posición postoperatoria', make() {
     const S = pick([['Paciente con peritonitis que necesita drenaje declive peritoneal', 'Fowler'], ['Paciente que necesita buena movilidad de los hemidiafragmas', 'Fowler'], ['Paciente que puede vomitar y debe drenar secreciones de boca y garganta', 'Sims o inglesa'], ['Paciente en el que se quiere favorecer el retorno venoso', 'Elevación de extremidades inferiores']]);
     return { kind: 'choice', ans: S[1], opts: ['Fowler', 'Sims o inglesa', 'Elevación de extremidades inferiores'], q: `${S[0]}. ¿Qué posición indicas?`, sol: `Fowler: cabecera elevada ~50 cm. Sims: decúbito lateral con muslo flexionado. Elevación de piernas: retorno venoso. → <b>${S[1]}</b>.` }; } },
+};
+
+    return { TOPICS, MC, OP, FC, CASES, GENS };
+  } },
+  pivote: { name: "Datos pivote", calcLede: "Ejercicios con casos nuevos en cada intento: clasificar el tipo de dato pivote, distinguir síntoma de signo, cronología del dato, contexto del paciente, límite de la memoria de trabajo y conceptos clave. Al calificar verás la explicación. Se aprueba con <b>80 %</b>.", load() {
+const TOPICS = { RZ: 'Razonamiento del internista', MM: 'Memoria e inteligencia', AX: 'Abstracción', DP: 'Identificación de datos pivote' };
+
+const MC = [
+['RZ','Según la presentación, ¿cómo debe ser el pensamiento del médico internista?',['Estructurado, coherente y cimentado en un amplio conocimiento teórico','Intuitivo sin necesidad de teoría','Basado solo en estudios de laboratorio','Improvisado según el caso'],'Es la base de su proceso diagnóstico.'],
+['RZ','¿Cuál es el insumo indispensable para tomar decisiones clínicas acertadas?',['La información de la historia clínica','La tomografía','La opinión de otro médico','El costo del tratamiento'],'De ella parte todo el juicio clínico.'],
+['RZ','Para construir un adecuado juicio clínico se necesita:',['Inteligencia para interpretar los datos y memoria para recordar lo aprendido','Solo memoria','Solo tecnología','Solo experiencia sin estudio'],'Ambas se complementan.'],
+['RZ','¿Quién es, según la presentación, el experto por excelencia en el razonamiento metódico de la relación paciente-enfermedad?',['El médico internista','El cirujano','El radiólogo','El médico residente de primer año'],'Por su historia clínica detallada y uso de hipótesis.'],
+['RZ','Al elegir auxiliares de diagnóstico, el internista busca los más:',['Útiles, económicos e inocuos','Caros y modernos','Invasivos','Rápidos sin importar el riesgo'],'Para cada caso en particular.'],
+['RZ','¿Qué papel tienen los datos pivote en el proceso diagnóstico?',['Son catalizadores: dan un punto de partida para construir el diagnóstico','Sustituyen la historia clínica','Son el diagnóstico final','No tienen utilidad'],'Facilitan la construcción a partir de un punto de partida.'],
+['RZ','¿Para quién está diseñado principalmente el método de datos pivote?',['Para auxiliar la marcha diagnóstica del médico novel','Solo para especialistas con 20 años de experiencia','Para pacientes','Para administrativos'],'Es decir, el médico en formación.'],
+['RZ','Además del conocimiento teórico, ¿qué más se necesita para recolectar los datos importantes?',['Experiencia e intuición','Solo aparatos de laboratorio','Suerte','Nada más'],'El proceso mental del internista no es del todo claro.'],
+['RZ','Con base en la historia clínica, el internista:',['Emite hipótesis, las pone en práctica y elige auxiliares diagnósticos','Pide todos los estudios disponibles','Da tratamiento sin diagnóstico','Refiere a todos los pacientes'],'Es un proceso metódico.'],
+
+['MM','¿Cómo se define la memoria en la presentación?',['Capacidad de retener información y recuperarla a voluntad','Capacidad de resolver problemas','Capacidad de abstracción','Habilidad para explorar'],'La capacidad de resolver problemas es la inteligencia.'],
+['MM','La memoria de trabajo es:',['Donde almacenamos los bloques de información que manipulamos mientras estamos con el paciente','Lo aprendido en la carrera','Un archivo del expediente','La memoria de los pacientes'],'Se combina con la memoria a largo plazo.'],
+['MM','¿Cuántos datos puede mantener como máximo la memoria de trabajo por encuentro?',['Alrededor de 10','100','2','Ilimitados'],'Por eso importa elegir bien los datos.'],
+['MM','Como la memoria de trabajo es limitada, ¿qué se vuelve más importante?',['La calidad de los datos y su correcta identificación','Pedir más estudios','Memorizar todo','Ver más pacientes'],'Esto requiere juicio y raciocinio.'],
+['MM','La importancia de la memoria en la clínica es que permite combinar:',['La memoria de trabajo con los conocimientos de la memoria a largo plazo','Dos pacientes distintos','El laboratorio con la farmacia','Nada'],'Así se resuelven problemas clínicos.'],
+['MM','El raciocinio se vincula con:',['La inteligencia','La memoria a largo plazo únicamente','La suerte','La exploración física'],'Identificar bien los datos requiere juicio y raciocinio.'],
+['MM','La inteligencia del médico se entiende como:',['La capacidad de resolver problemas a partir de los datos','La cantidad de libros leídos','Su promedio escolar','La rapidez para escribir recetas'],'Tiene además una dimensión social.'],
+['MM','La inteligencia del médico, además de ser una actividad intelectual personal, tiene una dimensión:',['Social','Económica exclusivamente','Deportiva','Política'],'Porque resuelve problemas de salud de la población.'],
+['MM','¿Cuál es el compromiso ineludible del médico titulado?',['Resolver problemas de salud individuales y poblacionales mediante su conocimiento','Solo atender su consulta privada','Publicar artículos','Recetar medicamentos'],'De ahí la imagen del «eterno estudiante».'],
+['MM','La imagen clásica del médico como «eterno estudiante» significa que:',['Debe incrementar constantemente su conocimiento','Nunca termina la carrera','No puede trabajar','Repite materias'],'Seguirá vigente hoy como siempre.'],
+['MM','Saber obtener e interpretar los datos es parte de:',['Las competencias profesionales del médico','Las tareas de enfermería','La administración del hospital','Nada importante'],'Es una habilidad que se entrena.'],
+['MM','El enfoque de datos pivote es:',['Una de varias estrategias posibles, estructurada a partir de la abstracción','La única forma válida de diagnosticar','Un estudio de laboratorio','Un tratamiento'],'Busca apoyar al médico en formación.'],
+
+['AX','¿Cuál es la mejor «gimnasia mental» para un médico según la presentación?',['La abstracción','Memorizar listas','Leer recetas','Ver series médicas'],'Separar de los datos sus esencias.'],
+['AX','El ejercicio de abstracción consiste en:',['Separar de los datos sus esencias para analizar en qué coinciden y en qué divergen','Juntar todos los datos sin analizarlos','Ignorar los datos raros','Pedir más estudios'],'Entrena la comparación y la deducción.'],
+['AX','La abstracción adiestra la mente para:',['La comparación y la deducción','La memorización','La cirugía','El trabajo administrativo'],'Así se relacionan los hechos.'],
+['AX','La inteligencia del clínico se demuestra con la capacidad de:',['Relacionar hechos entre sí','Repetir definiciones','Pedir interconsultas','Escribir rápido'],'Y se ejercita con la abstracción.'],
+['AX','¿Por qué es infrecuente que un paciente encaje exactamente en la descripción de una enfermedad?',['Porque cada persona es única y la enfermedad varía entre individuos y circunstancias','Porque los libros están mal','Porque los pacientes mienten','Porque no existen las enfermedades'],'Por eso se necesita abstraer.'],
+['AX','La misma enfermedad en la misma persona:',['Puede variar en diferentes circunstancias','Siempre es idéntica','Nunca cambia','Desaparece sola'],'Es parte de la variabilidad.'],
+['AX','¿De dónde recoge el clínico los datos para comparar y deducir el estado mórbido?',['Interrogatorio, exploración física y, con prudencia, paraclínicos','Solo de los paraclínicos','Solo de internet','Solo de familiares'],'Con la finalidad de relacionarlos.'],
+['AX','¿Por qué se llaman datos «pivote»?',['Porque en ellos se apoyan las decisiones diagnósticas, que pueden girar hacia otras posibilidades sin perder el dato de mayor peso','Porque giran en el tiempo','Porque son de laboratorio','Porque los define el paciente'],'Como el eje de un pivote.'],
+['AX','Al girar la sospecha diagnóstica hacia otras posibilidades, el clínico debe:',['No perder de vista el dato clínico de mayor peso','Olvidar el primer dato','Pedir todos los estudios','Cambiar de paciente'],'Ese es el sentido del pivote.'],
+
+['DP','¿Cuál de estos NO aparece como tipo de dato pivote?',['El nombre del médico tratante','Un síntoma','Un antecedente patológico','Una anormalidad paraclínica'],'También signos y conductas o factores de riesgo.'],
+['DP','Ejemplo de conducta o factor de riesgo que dio la presentación como dato pivote:',['Tabaquismo','Hipertensión','Disnea','Anemia'],'La hipertensión fue el ejemplo de antecedente patológico.'],
+['DP','Ejemplo de antecedente patológico como dato pivote según la presentación:',['Hipertensión','Tabaquismo','Disnea','Edad'],'El tabaquismo es conducta o factor de riesgo.'],
+['DP','Un dato pivote, de forma aislada, puede representar:',['Alteraciones de índole diversa','Un solo diagnóstico seguro','Nada','Siempre una enfermedad grave'],'Por eso hay que considerar otros datos alrededor.'],
+['DP','¿Por qué no basta un hecho aislado?',['Porque su valor está en los otros datos que lo rodean','Porque siempre es falso','Porque solo sirve el laboratorio','Porque es muy caro'],'El concepto de pivote considera el contexto.'],
+['DP','Si solo exploras la disnea de forma aislada, obtienes:',['Una lista interminable de causas pulmonares y extrapulmonares','El diagnóstico exacto','Una sola causa','Ninguna causa'],'Ejemplo de la presentación.'],
+['DP','Según la presentación, las causas extrapulmonares de disnea son:',['Aún más numerosas que las pulmonares','Inexistentes','Menos que las pulmonares','Solo cardiacas'],'Por eso hay que acotar.'],
+['DP','Lo MÁS importante de un dato pivote es:',['Su cronología de inicio y desarrollo y su relación con otros datos pivote','Su costo','Quién lo detectó','Su nombre técnico'],'En el contexto único del paciente.'],
+['DP','¿Qué elementos forman el contexto único del paciente según la presentación?',['Edad, sexo, grupo étnico, factores de riesgo y entorno social','Solo la edad','Solo el laboratorio','Su seguro médico'],'El dato pivote se interpreta dentro de ese contexto.'],
+['DP','Al analizar por abstracción e identificar los datos pivote por separado:',['Es mucho más sencillo limitar el diagnóstico diferencial','Aumenta la lista de diagnósticos','No cambia nada','Se vuelve imposible diagnosticar'],'Es el objetivo del método.'],
+['DP','Una creatinina elevada en la química sanguínea es un dato pivote de tipo:',['Anormalidad paraclínica','Síntoma','Conducta de riesgo','Antecedente patológico'],'Viene de un estudio de laboratorio.'],
+['DP','El dolor que refiere el paciente es un dato pivote de tipo:',['Síntoma','Signo','Anormalidad paraclínica','Factor de riesgo'],'Es subjetivo, lo cuenta el paciente.'],
+['DP','La ictericia que observas en la exploración es un dato pivote de tipo:',['Signo','Síntoma','Antecedente','Conducta'],'Es objetiva, la encuentra el médico.'],
+];
+
+const OP = [
+['RZ','Explica qué características debe tener el pensamiento del internista y qué necesita para construir un juicio clínico.','Debe ser estructurado, coherente y cimentado en un amplio conocimiento teórico. La historia clínica es el insumo indispensable; se necesita inteligencia para obtener e interpretar los datos relevantes y memoria para recordar la información almacenada, además de experiencia e intuición, para construir un adecuado juicio clínico. Con ella emite hipótesis, las pone a prueba y usa los auxiliares más útiles, económicos e inocuos.',[['estructurado / coherente','estructurad','coherente'],['conocimiento teórico','teoric','teóric','conocimiento'],['historia clínica','historia clinica','historia clínica'],['inteligencia','inteligencia'],['memoria','memoria'],['juicio clínico','juicio'],['útiles, económicos e inocuos','economic','económic','inocu']]],
+['RZ','¿Qué son los datos pivote y para qué sirven en el proceso diagnóstico?','Son datos clínicos (síntoma, signo, conducta o factor de riesgo, antecedente patológico o anormalidad paraclínica) que actúan como catalizadores del proceso diagnóstico: dan un punto de partida para construirlo. En ellos se apoyan las decisiones diagnósticas, que pueden girar hacia otras posibilidades sin perder de vista el dato de mayor peso. El método está diseñado para apoyar la marcha diagnóstica del médico novel.',[['catalizadores','cataliz'],['punto de partida','punto de partida'],['decisiones diagnósticas','decision','decisión'],['girar la sospecha','girar','gira'],['dato de mayor peso','mayor peso'],['médico novel / en formación','novel','formacion','formación']]],
+['MM','Explica la memoria de trabajo, su límite y por qué importa la calidad de los datos.','La memoria es la capacidad de retener información y recuperarla a voluntad. La memoria de trabajo guarda los bloques de información que manipulamos mientras estamos con el paciente y se combina con la memoria a largo plazo. Es limitada: un máximo de unos 10 datos por encuentro. Por eso es más importante la calidad de los datos y su correcta identificación, lo que requiere juicio y raciocinio, ligado a la inteligencia.',[['retener y recuperar','retener','recuperar'],['memoria de trabajo','memoria de trabajo'],['memoria a largo plazo','largo plazo'],['10 datos','10','diez'],['calidad de los datos','calidad'],['raciocinio / juicio','raciocinio','juicio']]],
+['MM','Explica la dimensión social de la inteligencia del médico y el concepto de «eterno estudiante».','La inteligencia del médico es la capacidad de resolver problemas a partir de los datos; no es solo una actividad intelectual personal, sino que tiene una dimensión social. El médico titulado adquiere un compromiso ineludible con la sociedad: resolver problemas de salud individuales y poblacionales mediante su conocimiento. Por eso sigue vigente la imagen del «eterno estudiante» que debe incrementar constantemente su conocimiento.',[['resolver problemas','resolver problemas','resolver'],['dimensión social','social'],['compromiso con la sociedad','compromiso'],['individual y poblacional','individual','poblacion','población'],['eterno estudiante','eterno estudiante'],['incrementar el conocimiento','incrementar','actualiz','estudiar']]],
+['AX','¿En qué consiste la abstracción y por qué es necesaria en la clínica?','Es separar de los datos sus esencias para analizar en qué coinciden y en qué divergen; entrena la comparación y la deducción y es la mejor gimnasia mental del médico. Es necesaria porque cada persona es única, la enfermedad varía entre individuos y en la misma persona según las circunstancias, y es infrecuente que un paciente encaje exactamente en la descripción de una enfermedad. Con datos del interrogatorio, la exploración y los paraclínicos se compara, relaciona y deduce el estado mórbido.',[['separar esencias','esencia','separar'],['coinciden y divergen','coincid','diverg'],['comparación y deducción','compara','deduc'],['gimnasia mental','gimnasia'],['variabilidad / persona única','unica','única','variab'],['interrogatorio / exploración','interrogatorio','exploracion','exploración'],['paraclínicos','paraclinic','paraclínic','laboratorio']]],
+['DP','Define dato pivote, menciona sus tipos y lo más importante para interpretarlo.','Es por lo general un síntoma, un signo, una conducta o factor de riesgo (como el tabaquismo), un antecedente patológico (como la hipertensión) o una anormalidad paraclínica que, aislada, puede representar alteraciones diversas. Un hecho aislado no siempre es útil; su valor está en los otros datos que lo rodean. Lo más importante es su cronología de inicio y desarrollo y su relación con otros datos pivote en el contexto único del paciente: edad, sexo, grupo étnico, factores de riesgo y entorno social.',[['síntoma / signo','sintoma','síntoma','signo'],['factor de riesgo / tabaquismo','factor de riesgo','tabaquismo','conducta'],['antecedente patológico','antecedente'],['anormalidad paraclínica','paraclinic','paraclínic'],['hecho aislado','aislad'],['cronología','cronolog'],['contexto: edad, sexo, entorno','edad','sexo','entorno','etnic','étnic']]],
+['DP','Usa el ejemplo de la disnea para explicar la utilidad del método de datos pivote.','Si se explora la disnea como un hecho aislado, aparece una lista interminable de posibles causas, desde pulmonares hasta un número aún mayor de causas extrapulmonares. Si se analiza al paciente por medio de la abstracción, identificando los datos pivote por separado, considerando su cronología y su relación con otros datos pivote en su contexto (edad, sexo, factores de riesgo, entorno), es mucho más sencillo limitar las posibilidades del diagnóstico diferencial.',[['disnea','disnea'],['lista interminable','interminable','lista'],['pulmonares y extrapulmonares','extrapulmonar','pulmonar'],['abstracción','abstrac'],['identificar por separado','separado'],['limitar el diagnóstico diferencial','diferencial','limitar'],['cronología / contexto','cronolog','contexto']]],
+];
+
+const FC = [
+['RZ','¿Cómo debe ser el pensamiento del internista?','Estructurado, coherente y cimentado en un amplio conocimiento teórico.'],
+['RZ','Insumo indispensable para decisiones clínicas','La información de la historia clínica.'],
+['RZ','¿Qué se necesita para un buen juicio clínico?','Inteligencia (interpretar datos) y memoria (recordar lo almacenado).'],
+['RZ','Auxiliares de diagnóstico ideales','Los más útiles, económicos e inocuos para cada caso.'],
+['RZ','Papel de los datos pivote','Catalizadores del proceso diagnóstico: un punto de partida.'],
+['RZ','¿Para quién es el método?','Para apoyar la marcha diagnóstica del médico novel.'],
+['MM','Definición de memoria','Capacidad de retener información y recuperarla a voluntad.'],
+['MM','Memoria de trabajo','Bloques de información que manejamos mientras estamos con el paciente.'],
+['MM','Límite de la memoria de trabajo','Máximo unos 10 datos por encuentro.'],
+['MM','¿Qué importa más por ese límite?','La calidad de los datos y su correcta identificación.'],
+['MM','Inteligencia del médico','Capacidad de resolver problemas a partir de los datos; con dimensión social.'],
+['MM','Compromiso del médico titulado','Resolver problemas de salud individuales y poblacionales.'],
+['MM','«Eterno estudiante»','El médico debe incrementar constantemente su conocimiento.'],
+['AX','Mejor gimnasia mental del médico','La abstracción.'],
+['AX','¿Qué es la abstracción?','Separar de los datos sus esencias para ver en qué coinciden y divergen.'],
+['AX','La abstracción entrena…','La comparación y la deducción.'],
+['AX','¿Por qué casi ningún paciente es «de libro»?','Cada persona es única y la enfermedad varía entre individuos y circunstancias.'],
+['AX','Fuentes de datos del clínico','Interrogatorio, exploración física y, con prudencia, paraclínicos.'],
+['AX','¿Por qué «pivote»?','Se apoyan en ellos las decisiones y se puede girar la sospecha sin perder el dato de mayor peso.'],
+['DP','Tipos de dato pivote','Síntoma, signo, conducta o factor de riesgo, antecedente patológico, anormalidad paraclínica.'],
+['DP','Ejemplo de factor de riesgo pivote','Tabaquismo.'],
+['DP','Ejemplo de antecedente patológico pivote','Hipertensión.'],
+['DP','Problema del dato aislado','Lleva a listas interminables de causas (ej. disnea).'],
+['DP','Lo más importante de un dato pivote','Su cronología y su relación con otros datos pivote en el contexto del paciente.'],
+['DP','Contexto único del paciente','Edad, sexo, grupo étnico, factores de riesgo y entorno social.'],
+['DP','Beneficio del método','Limitar el diagnóstico diferencial de forma más sencilla.'],
+['DP','Síntoma vs signo (complemento)','Síntoma: lo refiere el paciente. Signo: lo encuentra el médico.'],
+];
+
+const CASES = [
+{ t:'DP', title:'Hombre fumador con falta de aire', text:'Hombre de 64 años, fumador de 40 años, con antecedente de hipertensión. Refiere disnea que empezó hace 2 años con esfuerzos grandes y ha progresado poco a poco. En la exploración hay sibilancias. La radiografía muestra hiperinsuflación.',
+  labs:[['Edad','64 años'],['Tabaquismo','40 años'],['Antecedente','hipertensión'],['Rx','hiperinsuflación']],
+  steps:[
+   ['¿Qué tipo de dato pivote es el tabaquismo?',['Conducta o factor de riesgo','Síntoma','Signo','Anormalidad paraclínica'],'Es el ejemplo que da la presentación.'],
+   ['¿Qué tipo de dato pivote es la hipertensión?',['Antecedente patológico','Síntoma','Factor de riesgo conductual','Signo'],'También es ejemplo de la presentación.'],
+   ['¿Qué dato de la disnea es MÁS útil según el método?',['Su cronología: inicio hace 2 años y progresión lenta','Solo que existe','El nombre del síntoma','Que el paciente lo comentó'],'La cronología y su relación con otros pivotes es lo más importante.'],
+   ['Si analizaras solo la disnea, sin los otros datos, ¿qué pasaría?',['Tendrías una lista interminable de causas pulmonares y extrapulmonares','Tendrías el diagnóstico exacto','No habría causas','Solo pensarías en una causa'],'El dato aislado no limita el diferencial.'],
+  ]},
+{ t:'DP', title:'Mujer joven con disnea súbita', text:'Mujer de 28 años que usa anticonceptivos orales y viajó 14 horas en avión. Hoy, de forma súbita, presenta disnea y dolor torácico. Tiene la pantorrilla derecha aumentada de volumen.',
+  labs:[['Inicio','súbito'],['Viaje','14 h en avión'],['Pantorrilla','aumentada de volumen']],
+  steps:[
+   ['El inicio súbito de la disnea es un ejemplo de:',['La cronología del dato pivote','Un antecedente patológico','Una anormalidad paraclínica','Un dato sin importancia'],'La forma de inicio cambia por completo el diferencial.'],
+   ['La pantorrilla aumentada de volumen que encuentras en la exploración es:',['Un signo','Un síntoma','Un factor de riesgo','Un antecedente'],'Es un hallazgo objetivo.'],
+   ['¿Por qué importa su edad, sexo y el uso de anticonceptivos?',['Forman el contexto único del paciente donde se interpreta el pivote','No importan','Solo sirven para el expediente','Sustituyen la exploración'],'Edad, sexo, factores de riesgo y entorno.'],
+   ['Comparado con el caso de un fumador de 64 años con disnea de 2 años, ¿qué demuestra este caso?',['Que el mismo síntoma con distinta cronología y contexto lleva a diagnósticos distintos','Que la disnea siempre es igual','Que no hay que interrogar','Que solo importa el laboratorio'],'Es la idea central de la abstracción.'],
+  ]},
+{ t:'MM', title:'Consulta con 25 datos', text:'Un estudiante entrevista a un paciente y anota 25 datos sin orden: colores favoritos, trabajos anteriores, síntomas, signos y laboratorios. Se confunde y no llega a ninguna hipótesis.',
+  labs:[['Datos anotados','25']],
+  steps:[
+   ['¿Cuántos datos puede manejar a la vez la memoria de trabajo según la presentación?',['Alrededor de 10 por encuentro','25','100','Ilimitados'],'Por eso se saturó.'],
+   ['¿Qué debió priorizar?',['La calidad de los datos y su correcta identificación','Anotar más datos','Pedir todos los estudios','Repetir la entrevista sin cambios'],'Requiere juicio y raciocinio.'],
+   ['¿Qué estrategia propone la presentación para ordenarlos?',['Identificar los datos pivote por medio de la abstracción','Memorizar todos los datos','Usar solo el laboratorio','Preguntar a otro médico'],'Separar las esencias y relacionarlas.'],
+  ]},
+{ t:'AX', title:'El paciente que no es «de libro»', text:'Un paciente tiene una enfermedad conocida, pero con algunos síntomas distintos a los que describe el libro. El estudiante descarta el diagnóstico porque «no encaja exactamente».',
+  labs:[['Coincidencias','varias'],['Diferencias','algunas']],
+  steps:[
+   ['¿Qué dice la presentación sobre los pacientes que encajan exactamente en la descripción?',['Es relativamente infrecuente encontrarlos','Siempre encajan','Nunca existen enfermedades','Solo en niños'],'Cada persona es única e irrepetible.'],
+   ['¿Qué ejercicio mental debió hacer el estudiante?',['Abstracción: separar las esencias y ver en qué coinciden y en qué divergen','Memorizar otro libro','Ignorar las diferencias','Pedir una tomografía'],'Entrena la comparación y la deducción.'],
+   ['La enfermedad puede variar incluso:',['En la misma persona según las circunstancias','Solo entre países','Solo con la edad','Nunca varía'],'Por eso hay que abstraer.'],
+  ]},
+{ t:'RZ', title:'Elegir estudios para un paciente', text:'Paciente con sospecha diagnóstica clara tras la historia clínica. El residente quiere pedir una tomografía, una resonancia y un panel de 40 estudios. El internista pide un solo estudio sencillo que confirma la hipótesis.',
+  labs:[['Hipótesis','clara'],['Estudio pedido','uno, sencillo']],
+  steps:[
+   ['¿Qué criterio siguió el internista?',['Usar los auxiliares de diagnóstico más útiles, económicos e inocuos','Pedir todo lo disponible','Evitar estudios siempre','Lo más caro'],'Así lo describe la presentación.'],
+   ['¿De dónde sale la hipótesis que se pone a prueba?',['De una historia clínica detallada','Del resultado de la tomografía','De la opinión del paciente','Del azar'],'La historia clínica es el insumo indispensable.'],
+   ['¿Qué capacidades se combinan para ese juicio clínico?',['Inteligencia para interpretar y memoria para recordar lo aprendido','Solo memoria','Solo tecnología','Solo experiencia sin teoría'],'Junto con experiencia e intuición.'],
+  ]},
+{ t:'DP', title:'Anemia en un laboratorio de rutina', text:'Hombre de 70 años asintomático, con antecedente de uso crónico de antiinflamatorios. En un laboratorio de rutina tiene hemoglobina de 8.9 g/dL.',
+  labs:[['Hemoglobina','8.9 g/dL'],['Edad','70 años'],['Fármacos','antiinflamatorios crónicos']],
+  steps:[
+   ['¿Qué tipo de dato pivote es la hemoglobina baja?',['Anormalidad paraclínica','Síntoma','Signo','Conducta'],'Proviene de un estudio de laboratorio.'],
+   ['Aislada, ¿qué puede representar la anemia?',['Alteraciones de índole diversa','Un solo diagnóstico seguro','Nada','Siempre cáncer'],'Por eso se necesitan otros datos.'],
+   ['¿Qué otros datos ayudan a girar o fijar la sospecha?',['Su edad, el uso crónico de antiinflamatorios y la cronología de la anemia','Su color favorito','Su número de seguro','Ninguno'],'El contexto del paciente da sentido al pivote.'],
+  ]},
+];
+
+const GENS = {
+  tipoDato: { t: 'DP', name: 'Tipo de dato pivote', make() {
+    const S = pick([
+      ['El paciente refiere dolor de cabeza desde hace 3 días.', 'Síntoma'],
+      ['Refiere falta de aire al subir escaleras.', 'Síntoma'],
+      ['Refiere cansancio y náuseas.', 'Síntoma'],
+      ['En la exploración encuentras ictericia en escleras.', 'Signo'],
+      ['Auscultas un soplo sistólico.', 'Signo'],
+      ['Encuentras edema con fóvea en ambas piernas.', 'Signo'],
+      ['Fuma una cajetilla diaria desde hace 20 años.', 'Conducta o factor de riesgo'],
+      ['Consume alcohol todos los fines de semana.', 'Conducta o factor de riesgo'],
+      ['Es sedentario y trabaja sentado 10 horas.', 'Conducta o factor de riesgo'],
+      ['Tiene hipertensión diagnosticada hace 8 años.', 'Antecedente patológico'],
+      ['Tuvo un infarto hace 3 años.', 'Antecedente patológico'],
+      ['Tiene diabetes tipo 2 desde hace 10 años.', 'Antecedente patológico'],
+      ['La biometría muestra hemoglobina de 8 g/dL.', 'Anormalidad paraclínica'],
+      ['La creatinina sérica es de 3.2 mg/dL.', 'Anormalidad paraclínica'],
+      ['La radiografía de tórax muestra un derrame pleural.', 'Anormalidad paraclínica']]);
+    return { kind: 'choice', ans: S[1], opts: ['Síntoma', 'Signo', 'Conducta o factor de riesgo', 'Antecedente patológico', 'Anormalidad paraclínica'], q: `«${S[0]}» ¿Qué tipo de dato pivote es?`, sol: `Síntoma: lo refiere el paciente. Signo: lo encuentra el médico. Conducta o factor de riesgo: hábitos como el tabaquismo. Antecedente patológico: enfermedades previas como la hipertensión. Anormalidad paraclínica: laboratorio o imagen. → <b>${S[1]}</b>.` }; } },
+  sintSigno: { t: 'DP', name: '¿Síntoma o signo?', make() {
+    const S = pick([['Dolor abdominal', 'Síntoma'], ['Mareo', 'Síntoma'], ['Comezón', 'Síntoma'], ['Sensación de palpitaciones', 'Síntoma'], ['Fiebre medida de 38.9 °C', 'Signo'], ['Hepatomegalia a la palpación', 'Signo'], ['Taquicardia de 120 lpm en el pulso', 'Signo'], ['Palidez de tegumentos', 'Signo'], ['Náuseas', 'Síntoma'], ['Estertores a la auscultación', 'Signo']]);
+    return { kind: 'choice', ans: S[1], opts: ['Síntoma', 'Signo'], q: `<b>${S[0]}</b>. ¿Es síntoma o signo?`, sol: `Síntoma: subjetivo, lo refiere el paciente. Signo: objetivo, lo encuentra o mide el médico (complemento estándar). → <b>${S[1]}</b>.` }; } },
+  contexto: { t: 'DP', name: '¿Forma parte del contexto del paciente?', make() {
+    const S = pick([['La edad del paciente', 'Sí'], ['Su sexo', 'Sí'], ['Su grupo étnico', 'Sí'], ['Sus factores de riesgo', 'Sí'], ['Su entorno social', 'Sí'], ['El color favorito del médico', 'No'], ['La marca del estetoscopio', 'No'], ['El número de consultorio', 'No']]);
+    return { kind: 'choice', ans: S[1], opts: ['Sí', 'No'], q: `Según la presentación, ¿<b>${S[0].toLowerCase()}</b> forma parte del contexto único del paciente en el que se interpreta un dato pivote?`, sol: `El contexto incluye edad, sexo, grupo étnico, factores de riesgo y entorno social. → <b>${S[1]}</b>.` }; } },
+  memoria: { t: 'MM', name: 'Memoria de trabajo', make() {
+    const n = pick([4, 6, 8, 10, 12, 15, 20, 30]), ans = n <= 10 ? 'Sí, cabe en la memoria de trabajo' : 'No, supera la memoria de trabajo';
+    return { kind: 'choice', ans, opts: ['Sí, cabe en la memoria de trabajo', 'No, supera la memoria de trabajo'], q: `Intentas manejar mentalmente <span class="lab">${n} datos</span> a la vez durante una consulta. ¿Caben en la memoria de trabajo según la presentación?`, sol: `La memoria de trabajo mantiene un máximo de unos 10 datos por encuentro. ${n} ${n <= 10 ? '≤' : '>'} 10 → <b>${ans}</b>. Por eso conviene elegir los datos pivote de mayor calidad.` }; } },
+  concepto: { t: 'AX', name: 'Relaciona el concepto', make() {
+    const S = pick([
+      ['Separar de los datos sus esencias para ver en qué coinciden y en qué divergen', 'Abstracción'],
+      ['Capacidad de retener información y recuperarla a voluntad', 'Memoria'],
+      ['Capacidad de resolver problemas a partir de los datos', 'Inteligencia'],
+      ['Bloques de información que manejamos mientras estamos con el paciente', 'Memoria de trabajo'],
+      ['Dato en el que se apoyan las decisiones diagnósticas y que permite girar la sospecha', 'Dato pivote'],
+      ['Médico que debe incrementar constantemente su conocimiento', 'Eterno estudiante'],
+      ['Insumo indispensable para tomar decisiones clínicas acertadas', 'Historia clínica']]);
+    const all = ['Abstracción', 'Memoria', 'Inteligencia', 'Memoria de trabajo', 'Dato pivote', 'Eterno estudiante', 'Historia clínica'];
+    const opts = shuffle([S[1], ...shuffle(all.filter(x => x !== S[1])).slice(0, 3)]);
+    return { kind: 'choice', ans: S[1], opts, q: `«${S[0]}». ¿A qué concepto corresponde?`, sol: `→ <b>${S[1]}</b>.` }; } },
+  cronologia: { t: 'DP', name: 'Cronología del dato', make() {
+    const S = pick([
+      ['Disnea que empezó de golpe hace 30 minutos', 'Agudo / súbito'],
+      ['Dolor torácico que inició repentinamente al levantarse', 'Agudo / súbito'],
+      ['Tos que lleva 3 meses y ha ido empeorando poco a poco', 'Crónico / progresivo'],
+      ['Pérdida de peso de 8 kg en 6 meses', 'Crónico / progresivo'],
+      ['Dolor de cabeza que aparece cada mes y desaparece en 2 días', 'Recurrente / intermitente'],
+      ['Episodios de palpitaciones que van y vienen desde hace un año', 'Recurrente / intermitente']]);
+    return { kind: 'choice', ans: S[1], opts: ['Agudo / súbito', 'Crónico / progresivo', 'Recurrente / intermitente'], q: `${S[0]}. ¿Cómo describes su cronología?`, sol: `La cronología de inicio y desarrollo es lo más importante de un dato pivote: cambia por completo el diagnóstico diferencial. → <b>${S[1]}</b>.` }; } },
 };
 
     return { TOPICS, MC, OP, FC, CASES, GENS };
